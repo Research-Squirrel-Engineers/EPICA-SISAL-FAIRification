@@ -380,3 +380,185 @@ geolod:PANGAEA_d18O_Source
     dct:creator         "Bouchet, M. et al." ;
     dct:date            "2023"^^xsd:gYear ;
     owl:sameAs          <https://doi.org/10.1594/PANGAEA.961024> .
+# ============================================================================
+# LABELS FÜR EXTERNE KLASSEN UND PROPERTIES
+# (damit Protégé auch für importierte Terme Labels anzeigt)
+# ============================================================================
+
+# ── DCAT ─────────────────────────────────────────────────────────────────────
+dcat:Catalog
+    rdfs:label    "Catalog"@en ;
+    rdfs:comment  "A curated collection of metadata about resources."@en .
+
+dcat:Dataset
+    rdfs:label    "Dataset"@en ;
+    rdfs:comment  "A collection of data published or curated by a single agent."@en .
+
+dcat:Distribution
+    rdfs:label    "Distribution"@en ;
+    rdfs:comment  "A specific representation of a dataset (e.g. downloadable file)."@en .
+
+# ── SOSA / SSN ────────────────────────────────────────────────────────────────
+sosa:Observation
+    rdfs:label    "Observation"@en ;
+    rdfs:comment  "Act of carrying out an observation procedure to estimate a property of a feature of interest."@en .
+
+sosa:Sample
+    rdfs:label    "Sample"@en ;
+    rdfs:comment  "A subset of a feature of interest on which observations may be made."@en .
+
+sosa:ObservableProperty
+    rdfs:label    "Observable Property"@en ;
+    rdfs:comment  "An observable quality (property, characteristic) of a feature of interest."@en .
+
+sosa:isSampleOf
+    rdfs:label    "is sample of"@en ;
+    rdfs:comment  "Relation from a Sample to the feature of interest it is intended to be representative of."@en .
+
+sosa:hasFeatureOfInterest
+    rdfs:label    "has feature of interest"@en ;
+    rdfs:comment  "A relation between an observation and the entity whose property was observed."@en .
+
+sosa:observedProperty
+    rdfs:label    "observed property"@en ;
+    rdfs:comment  "Relation linking an observation to the property that was observed."@en .
+
+sosa:hasSimpleResult
+    rdfs:label    "has simple result"@en ;
+    rdfs:comment  "The simple value of an observation."@en .
+
+sosa:resultTime
+    rdfs:label    "result time"@en ;
+    rdfs:comment  "The instant of time at which the result became available."@en .
+
+# ── PROV-O ────────────────────────────────────────────────────────────────────
+prov:Entity
+    rdfs:label    "Entity"@en ;
+    rdfs:comment  "An entity is a physical, digital, conceptual, or other kind of thing with some fixed aspects."@en .
+
+prov:wasDerivedFrom
+    rdfs:label    "was derived from"@en ;
+    rdfs:comment  "A derivation is a transformation of an entity into another."@en .
+
+# ── GeoSPARQL ────────────────────────────────────────────────────────────────
+geo:Feature
+    rdfs:label    "Feature"@en ;
+    rdfs:comment  "A discrete phenomenon that exists in the universe of discourse."@en .
+
+geo:hasGeometry
+    rdfs:label    "has geometry"@en ;
+    rdfs:comment  "A spatial representation for a given feature."@en .
+
+geo:asWKT
+    rdfs:label    "as WKT"@en ;
+    rdfs:comment  "Serialises a geometry as a WKT literal."@en .
+
+sf:Point
+    rdfs:label    "Point"@en ;
+    rdfs:comment  "A zero-dimensional geometric primitive."@en .
+
+# ── CIDOC-CRM ────────────────────────────────────────────────────────────────
+crm:E22_Human-Made_Object
+    rdfs:label    "Human-Made Object"@en ;
+    rdfs:comment  "CRM E22: A human-made object (e.g. drilled ice core)."@en .
+
+crm:E27_Site
+    rdfs:label    "Site"@en ;
+    rdfs:comment  "CRM E27: An area of land or water delimited for investigation or protection."@en .
+
+crm:E53_Place
+    rdfs:label    "Place"@en ;
+    rdfs:comment  "CRM E53: An extent of space on the surface of the earth."@en .
+
+crm:E7_Activity
+    rdfs:label    "Activity"@en ;
+    rdfs:comment  "CRM E7: An intentional action carried out by an actor."@en .
+
+crm:P7_took_place_at
+    rdfs:label    "took place at"@en ;
+    rdfs:comment  "CRM P7: The place where an activity took place."@en .
+
+crm:P4_has_time-span
+    rdfs:label    "has time-span"@en ;
+    rdfs:comment  "CRM P4: Associates an event with its time-span."@en .
+
+crm:P87_is_identified_by
+    rdfs:label    "is identified by"@en ;
+    rdfs:comment  "CRM P87: Associates a place with an appellation."@en .
+
+crm:P2_has_type
+    rdfs:label    "has type"@en ;
+    rdfs:comment  "CRM P2: Associates an entity with its type."@en .
+
+crm:P53_has_former_or_current_location
+    rdfs:label    "has former or current location"@en ;
+    rdfs:comment  "CRM P53: Associates an object with a place it is or was located at."@en .
+
+# ── CRMsci ───────────────────────────────────────────────────────────────────
+crmsci:S1_Matter_Removal
+    rdfs:label    "Matter Removal"@en ;
+    rdfs:comment  "CRMsci S1: A physical event where matter is removed from a context (e.g. drilling a sample)."@en .
+
+crmsci:S4_Observation
+    rdfs:label    "Observation"@en ;
+    rdfs:comment  "CRMsci S4: A scientific observation event that produces a measurement result."@en .
+
+crmsci:S6_Data_Evaluation
+    rdfs:label    "Data Evaluation"@en ;
+    rdfs:comment  "CRMsci S6: A process of evaluating and interpreting data (e.g. chronology building, filtering)."@en .
+
+crmsci:S9_Property_Type
+    rdfs:label    "Property Type"@en ;
+    rdfs:comment  "CRMsci S9: A type of observable or measurable property."@en .
+
+crmsci:O1_removed
+    rdfs:label    "removed"@en ;
+    rdfs:comment  "CRMsci O1: The matter removed during a S1 Matter Removal event."@en .
+
+# ── Dublin Core ───────────────────────────────────────────────────────────────
+dct:BibliographicResource
+    rdfs:label    "Bibliographic Resource"@en ;
+    rdfs:comment  "A book, article, or other documentary resource."@en .
+
+dct:title
+    rdfs:label    "title"@en .
+
+dct:description
+    rdfs:label    "description"@en .
+
+dct:creator
+    rdfs:label    "creator"@en .
+
+dct:date
+    rdfs:label    "date"@en .
+
+dct:source
+    rdfs:label    "source"@en .
+
+dct:license
+    rdfs:label    "license"@en .
+
+dct:publisher
+    rdfs:label    "publisher"@en .
+
+dct:created
+    rdfs:label    "created"@en .
+
+dct:references
+    rdfs:label    "references"@en .
+
+# ── QUDT ─────────────────────────────────────────────────────────────────────
+qudt:unit
+    rdfs:label    "unit"@en ;
+    rdfs:comment  "The unit of measurement for a quantity."@en .
+
+unit:PPB
+    rdfs:label    "Parts Per Billion"@en ;
+    rdfs:comment  "Unit for trace gas concentrations (ppbv)."@en .
+
+unit:PERMILLE
+    rdfs:label    "Per Mille"@en ;
+    rdfs:comment  "Unit for isotope ratios (‰ SMOW)."@en .
+
+unit:M
+    rdfs:label    "Metre"@en .
