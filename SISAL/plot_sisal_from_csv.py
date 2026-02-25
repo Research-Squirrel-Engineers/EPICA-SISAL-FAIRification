@@ -12,7 +12,7 @@ from scipy.signal import savgol_filter
 
 
 class Tee:
-    """Schreibt gleichzeitig auf stdout und in eine Datei."""
+    """Writes simultaneously to stdout and a file."""
 
     def __init__(self, filepath):
         self.file = open(filepath, "w", encoding="utf-8")
@@ -32,18 +32,20 @@ class Tee:
         self.file.close()
 
 
-# Arbeitsverzeichnis auf Ordner des Skripts setzen
+# Set working directory to the script's folder
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-# Output-Ordner erstellen
+# Create output directories
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.path.join(SCRIPT_DIR, "plots")
 REPORT_DIR = os.path.join(SCRIPT_DIR, "report")
+RDF_DIR = os.path.join(SCRIPT_DIR, "rdf")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 os.makedirs(REPORT_DIR, exist_ok=True)
+os.makedirs(RDF_DIR, exist_ok=True)
 
 # ──────────────────────────────────────────────
-# Gemeinsame Plot-Einstellungen
+# Shared plot settings
 # ──────────────────────────────────────────────
 FIGURE_SIZE = (10, 20)
 DPI = 100
@@ -52,16 +54,16 @@ LINE_WIDTH = 1
 GRID_COLOR = "#cccccc"
 GRID_WIDTH = 1
 
-# Y-Achsen-Ticks (Age in ka BP)
-AGE_MAJOR_TICK_INTERVAL = 20  # alle 20 ka ein dicker Tick
-AGE_MINOR_TICK_INTERVAL = 5  # alle 5 ka ein kleiner Tick
+# Y-axis ticks (age in ka BP)
+AGE_MAJOR_TICK_INTERVAL = 20  # major tick every 20 ka
+AGE_MINOR_TICK_INTERVAL = 5  # minor tick every 5 ka
 
 FONT_SIZE_LABEL = 26
 FONT_SIZE_TICK = 22
 TITLE_FONTSIZE = 26
 FONT_SIZE_MIS = 14
 
-# Glättung
+# Smoothing
 ROLLING_WINDOW = 11
 SG_WINDOW = 11
 SG_POLYORDER = 2
@@ -70,7 +72,7 @@ LINE_WIDTH_SMOOTH = 1.5
 LABEL_PAD = 12
 
 # ──────────────────────────────────────────────
-# MIS-Intervalle (Grenzen in ka BP, LR04)
+# MIS intervals (boundaries in ka BP, LR04)
 # ──────────────────────────────────────────────
 MIS_COLOR_WARM = "#fddbc7"
 MIS_COLOR_INTERSTADIAL = "#fef0e6"
@@ -92,7 +94,7 @@ MIS_INTERVALS = [
 ]
 
 # ──────────────────────────────────────────────
-# SISAL CSV laden
+# Load SISAL CSV
 # ──────────────────────────────────────────────
 
 
@@ -101,7 +103,7 @@ def load_sisal_csv(filepath):
     Liest eine SISAL-CSV-Datei ein.
     Erwartet Spalten: site_id, site_name, entity_id, entity_name,
                       sample_id, age_bp, d18o_permille, d13c_permille
-    Gibt age in ka BP zurück (age_bp / 1000).
+    Returns age in ka BP (age_bp / 1000).
     """
     df = pd.read_csv(filepath)
 
@@ -115,8 +117,8 @@ def load_sisal_csv(filepath):
 
     site_name = df["site_name"].iloc[0]
     entity_ids = df["entity_id"].nunique()
-    print(f"  Geladen: {site_name}")
-    print(f"  Datenpunkte: {len(df)}, Entities: {entity_ids}")
+    print(f"  Loaded: {site_name}")
+    print(f"  Data points: {len(df)}, entities: {entity_ids}")
     print(f"  Age: {df['age_ka'].min():.1f} – {df['age_ka'].max():.1f} ka BP")
     if df["d18o_permille"].notna().any():
         print(
@@ -131,7 +133,7 @@ def load_sisal_csv(filepath):
 
 
 # ──────────────────────────────────────────────
-# MIS-Bänder
+# MIS bands
 # ──────────────────────────────────────────────
 
 
@@ -173,7 +175,7 @@ def draw_mis_bands(ax, y_min_ka, y_max_ka):
 
 
 # ──────────────────────────────────────────────
-# Generische Plot-Funktion (wie EPICA)
+# Generic plot function (mirrors EPICA script)
 # ──────────────────────────────────────────────
 
 
@@ -264,7 +266,7 @@ def create_plot(
         ylabel, fontsize=FONT_SIZE_LABEL, labelpad=LABEL_PAD, fontweight="bold"
     )
 
-    # Glättungs-Untertitel
+    # Smoothing subtitle
     if use_savgol:
         subtitle = f"Savitzky-Golay filter  |  window = {SG_WINDOW} pts  |  polyorder = {SG_POLYORDER}"
     elif rolling_window is not None:
@@ -298,15 +300,15 @@ def create_plot(
 
 
 # ──────────────────────────────────────────────
-# Hilfsfunktion: Plots für eine Höhle erzeugen
+# Helper: generate plots for one cave
 # ──────────────────────────────────────────────
 
 
 def generate_cave_plots(df, site_name, site_slug, d18o_ticks=None, d13c_ticks=None):
     """
-    Erzeugt 6 Plots pro Höhle:
-      d18O vs Age ka BP  – unsmoothed, rolling median, savgol
-      d13C vs Age ka BP  – unsmoothed, rolling median, savgol
+    Generates up to 6 plots per cave:
+      d18O vs Age ka BP  – unsmoothed, rolling median, Savitzky-Golay
+      d13C vs Age ka BP  – unsmoothed, rolling median, Savitzky-Golay
     """
 
     # Saubere Teilsets ohne NaN
@@ -325,7 +327,7 @@ def generate_cave_plots(df, site_name, site_slug, d18o_ticks=None, d13c_ticks=No
         (f"savgol{SG_WINDOW}p{SG_POLYORDER}", {"use_savgol": True}),
     ]:
         if df_d18o.empty:
-            print(f"  ⚠  Keine d18O-Daten für {site_name}, übersprungen.")
+            print(f"  ⚠  No d18O data for {site_name}, skipping.")
             break
         plots.append(
             {
@@ -345,7 +347,7 @@ def generate_cave_plots(df, site_name, site_slug, d18o_ticks=None, d13c_ticks=No
 
     # ── d13C ────────────────────────────────────────────────────────────
     if d13c_ticks is None or df_d13c.empty:
-        print(f"  ⚠  Keine d13C-Daten für {site_name} – übersprungen.")
+        print(f"  ⚠  No d13C data for {site_name} – skipping.")
     else:
         for sm_label, sm_kwargs in [
             ("unsmoothed", {}),
@@ -368,7 +370,7 @@ def generate_cave_plots(df, site_name, site_slug, d18o_ticks=None, d13c_ticks=No
                 }
             )
 
-    print(f"\n  Erstelle {len(plots)} Plots für {site_name} …")
+    print(f"\n  Generating {len(plots)} plots for {site_name} …")
     for cfg in plots:
         print(f"    → {os.path.basename(cfg['filename'])}")
         create_plot(
@@ -387,8 +389,591 @@ def generate_cave_plots(df, site_name, site_slug, d18o_ticks=None, d13c_ticks=No
         )
 
 
+# ══════════════════════════════════════════════════════════════════════════════
+# RDF / LOD  –  SISAL Ontologie-Erweiterung + Datenexport
+# ══════════════════════════════════════════════════════════════════════════════
+#
+# Designprinzip: minimale Erweiterung des EPICA geo-lod Schemas.
+#   Wiederverwendet:  MeasurementType, SmoothingMethod, DataSource,
+#                     ObservableProperty, RollingMedianFilter, SavitzkyGolayFilter
+#   Neu:              Speleothem, Cave, SpeleothemSamplingEvent,
+#                     SpeleothemObservation, UThChronology,
+#                     Delta13CProperty, MeasurementType_d13C
+#
+# PROV-O Provenienz:
+#   SISALv3: Kaushal et al. 2024, ESSD 16, 1933–1963
+#            https://doi.org/10.5194/essd-16-1933-2024
+#            Data DOI: https://doi.org/10.5287/ora-2nanwp4rk
+# ══════════════════════════════════════════════════════════════════════════════
+
+try:
+    from rdflib import Graph, Namespace, URIRef, Literal
+    from rdflib.namespace import RDF, RDFS, OWL, XSD, DCTERMS, PROV
+
+    RDF_AVAILABLE = True
+except ImportError:
+    RDF_AVAILABLE = False
+    print("⚠  rdflib not installed – RDF export disabled. (pip install rdflib)")
+
+
+SISAL_ONTOLOGY_TTL = """\
+@prefix geolod:  <http://w3id.org/geo-lod/> .
+@prefix sosa:    <http://www.w3.org/ns/sosa/> .
+@prefix crm:     <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix crmsci:  <http://www.ics.forth.gr/isl/CRMsci/> .
+@prefix geo:     <http://www.opengis.net/ont/geosparql#> .
+@prefix sf:      <http://www.opengis.net/ont/sf#> .
+@prefix qudt:    <http://qudt.org/schema/qudt/> .
+@prefix unit:    <http://qudt.org/vocab/unit/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+# ============================================================================
+# ONTOLOGIE-HEADER
+# ============================================================================
+
+<http://w3id.org/geo-lod/sisal-extension>
+    a owl:Ontology ;
+    rdfs:label   "geo-lod SISAL Extension"@en ;
+    rdfs:comment "Extends the geo-lod ice-core ontology with speleothem-specific
+                  classes and properties, aligned with the SISALv3 database schema
+                  (Kaushal et al. 2024, ESSD 16, 1933-1963)."@en ;
+    owl:imports  <http://w3id.org/geo-lod/> ;
+    dct:source   <https://doi.org/10.5194/essd-16-1933-2024> ;
+    dct:created  "2024"^^xsd:gYear .
+
+# ============================================================================
+# KLASSEN
+# ============================================================================
+
+# ── Sample ────────────────────────────────────────────────────────────────────
+geolod:Speleothem
+    a owl:Class ;
+    rdfs:subClassOf sosa:Sample ;
+    rdfs:subClassOf crm:E22_Human-Made_Object ;
+    rdfs:label   "Speleothem"@en ;
+    rdfs:comment "Secondary cave carbonate precipitate (stalagmite, stalactite,
+                  flowstone) used as palaeoclimate archive. Corresponds to
+                  entity/persist_id in SISALv3."@en ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty     geolod:collectedFrom ;
+        owl:someValuesFrom geolod:Cave
+    ] .
+
+# ── Site ──────────────────────────────────────────────────────────────────────
+geolod:Cave
+    a owl:Class ;
+    rdfs:subClassOf crm:E53_Place ;
+    rdfs:subClassOf crm:E27_Site ;
+    rdfs:subClassOf geo:Feature ;
+    rdfs:label   "Cave"@en ;
+    rdfs:comment "Geographical cave site from which a speleothem was collected.
+                  Corresponds to site in SISALv3 (site_id, latitude, longitude,
+                  elevation)."@en .
+
+# ── Sampling Event ────────────────────────────────────────────────────────────
+geolod:SpeleothemSamplingEvent
+    a owl:Class ;
+    rdfs:subClassOf crm:E7_Activity ;
+    rdfs:subClassOf crmsci:S1_Matter_Removal ;
+    rdfs:label   "Speleothem Sampling Event"@en ;
+    rdfs:comment "Scientific field event during which a speleothem was collected
+                  from a cave."@en ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty     geolod:tookPlaceAt ;
+        owl:someValuesFrom geolod:Cave
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty     geolod:removedSample ;
+        owl:someValuesFrom geolod:Speleothem
+    ] .
+
+# ── Observation ───────────────────────────────────────────────────────────────
+geolod:SpeleothemObservation
+    a owl:Class ;
+    rdfs:subClassOf sosa:Observation ;
+    rdfs:subClassOf crmsci:S4_Observation ;
+    rdfs:label   "Speleothem Observation"@en ;
+    rdfs:comment "Single stable isotope measurement on a speleothem sample,
+                  characterised by depth (mm), calendar age (ka BP) and measured
+                  value. Corresponds to a row in the d18O or d13C table of
+                  SISALv3."@en ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty     sosa:hasFeatureOfInterest ;
+        owl:someValuesFrom geolod:Speleothem
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty     sosa:observedProperty ;
+        owl:someValuesFrom geolod:ObservableProperty
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty     prov:wasDerivedFrom ;
+        owl:someValuesFrom geolod:DataSource
+    ] .
+
+geolod:Delta18OSpeleothemObservation
+    a owl:Class ;
+    rdfs:subClassOf geolod:SpeleothemObservation ;
+    rdfs:label   "delta-18O Speleothem Observation"@en ;
+    rdfs:comment "Oxygen isotope ratio (delta-18O) in permille VPDB from a
+                  speleothem. Proxy for hydroclimate, moisture source,
+                  temperature."@en .
+
+geolod:Delta13CSpeleothemObservation
+    a owl:Class ;
+    rdfs:subClassOf geolod:SpeleothemObservation ;
+    rdfs:label   "delta-13C Speleothem Observation"@en ;
+    rdfs:comment "Carbon isotope ratio (delta-13C) in permille VPDB from a
+                  speleothem. Proxy for vegetation density, soil CO2, prior
+                  calcite precipitation (Wong & Breecker 2015)."@en .
+
+# ── Chronology ────────────────────────────────────────────────────────────────
+geolod:UThChronology
+    a owl:Class ;
+    rdfs:subClassOf crmsci:S6_Data_Evaluation ;
+    rdfs:label   "U-Th Chronology"@en ;
+    rdfs:comment "Depth-age model for a speleothem based on uranium-thorium
+                  (U-Th) radiometric dating. Corresponds to the Dating and
+                  SISAL_chronology tables in SISALv3. Age-model ensembles
+                  built with linear interpolation, Bchron, Bacon, copRa or
+                  StalAge."@en ;
+    rdfs:seeAlso <https://doi.org/10.5194/essd-16-1933-2024> .
+
+# ── Observable Properties ─────────────────────────────────────────────────────
+geolod:Delta13CProperty
+    a owl:Class ;
+    rdfs:subClassOf geolod:ObservableProperty ;
+    rdfs:label   "delta-13C Isotope Ratio Property"@en ;
+    rdfs:comment "Stable carbon isotope ratio (delta-13C) in permille VPDB.
+                  Sensitive to vegetation dynamics, soil respiration, and prior
+                  calcite precipitation."@en .
+
+# ============================================================================
+# OBJECT PROPERTIES
+# ============================================================================
+
+geolod:collectedFrom
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf sosa:isSampleOf ;
+    rdfs:domain geolod:Speleothem ;
+    rdfs:range  geolod:Cave ;
+    rdfs:label  "collected from"@en ;
+    rdfs:comment "Links a speleothem to the cave from which it was collected."@en .
+
+geolod:ageChronologySpeleothem
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf geolod:ageChronology ;
+    rdfs:domain geolod:SpeleothemObservation ;
+    rdfs:range  geolod:UThChronology ;
+    rdfs:label  "age chronology (speleothem)"@en ;
+    rdfs:comment "U-Th chronology used to assign a calendar age to this
+                  speleothem observation."@en .
+
+# ============================================================================
+# DATATYPE PROPERTIES
+# ============================================================================
+
+geolod:atDepth_mm
+    a owl:DatatypeProperty ;
+    rdfs:domain geolod:SpeleothemObservation ;
+    rdfs:range  xsd:decimal ;
+    rdfs:label  "at depth (mm)"@en ;
+    rdfs:comment "Sampling depth in millimetres from top of speleothem.
+                  Corresponds to depth_sample in SISALv3."@en ;
+    qudt:unit   unit:MilliM .
+
+geolod:entityId
+    a owl:DatatypeProperty ;
+    rdfs:domain geolod:Speleothem ;
+    rdfs:range  xsd:integer ;
+    rdfs:label  "SISAL entity ID"@en ;
+    rdfs:comment "Unique dataset identifier in SISALv3 (entity_id). Multiple
+                  entity_ids may share the same persist_id (same physical
+                  speleothem, different time windows)."@en .
+
+geolod:siteId
+    a owl:DatatypeProperty ;
+    rdfs:domain geolod:Cave ;
+    rdfs:range  xsd:integer ;
+    rdfs:label  "SISAL site ID"@en ;
+    rdfs:comment "Unique site identifier in SISALv3 (site_id)."@en .
+
+# ============================================================================
+# INSTANZEN  –  MeasurementType & DataSource
+# ============================================================================
+
+geolod:MeasurementType_d13C
+    a geolod:MeasurementType ;
+    rdfs:label   "delta-13C Measurement"@en ;
+    rdfs:comment "Stable carbon isotope ratio (delta-13C) in permille VPDB.
+                  SISALv3 table: d13C. Proxy: vegetation, soil CO2, prior
+                  calcite precipitation."@en .
+
+geolod:SISALv3_DataSource
+    a geolod:DataSource ;
+    rdfs:label  "SISALv3 Database"@en ;
+    rdfs:comment "Speleothem Isotopes Synthesis and AnaLysis database, version 3."@en ;
+    dct:identifier
+        "https://doi.org/10.5287/ora-2nanwp4rk"^^xsd:anyURI ;
+    dct:bibliographicCitation
+        "Kaushal, N. et al. (2024): SISALv3: a global speleothem stable isotope and trace element database. Earth Syst. Sci. Data, 16, 1933-1963. https://doi.org/10.5194/essd-16-1933-2024"@en ;
+    prov:wasAttributedTo
+        <https://doi.org/10.5194/essd-16-1933-2024> .
+"""
+
+
+def build_sisal_rdf(
+    df: "pd.DataFrame", site_name: str, site_slug: str
+) -> "Graph | None":
+    """
+    Builds an RDF graph for one SISAL cave site.
+
+    Structure (mirrors build_epica_rdf in the EPICA script):
+      - 1 Cave instance  (site)
+      - 1 Speleothem instance per entity_id
+      - 1 SpeleothemObservation per measurement (d18O / d13C)
+      - Smoothed values (rolling median + Savitzky-Golay) as datatype properties
+      - PROV-O: prov:wasDerivedFrom → geolod:SISALv3_DataSource
+    """
+    if not RDF_AVAILABLE:
+        return None
+
+    # ── Namespaces ────────────────────────────────────────────────────────────
+    GEOLOD = Namespace("http://w3id.org/geo-lod/")
+    SOSA = Namespace("http://www.w3.org/ns/sosa/")
+    GEO = Namespace("http://www.opengis.net/ont/geosparql#")
+    SF = Namespace("http://www.opengis.net/ont/sf#")
+    QUDT = Namespace("http://qudt.org/schema/qudt/")
+    UNIT = Namespace("http://qudt.org/vocab/unit/")
+
+    g = Graph()
+    g.bind("geolod", GEOLOD)
+    g.bind("sosa", SOSA)
+    g.bind("geo", GEO)
+    g.bind("qudt", QUDT)
+    g.bind("unit", UNIT)
+    g.bind("prov", PROV)
+    g.bind("dct", DCTERMS)
+    g.bind("owl", OWL)
+    g.bind("rdfs", RDFS)
+    g.bind("xsd", XSD)
+
+    # ── DataSource (PROV) – wird referenziert, ist in Ontologie definiert ─────
+    src = GEOLOD["SISALv3_DataSource"]
+
+    # ── Cave ──────────────────────────────────────────────────────────────────
+    site_id_val = int(df["site_id"].iloc[0])
+    cave = GEOLOD[f"Cave_{site_slug}"]
+    g.add((cave, RDF.type, GEOLOD["Cave"]))
+    g.add((cave, RDFS.label, Literal(site_name, lang="en")))
+    g.add((cave, GEOLOD["siteId"], Literal(site_id_val, datatype=XSD.integer)))
+
+    # Geometrie (WKT Point) wenn Koordinaten vorhanden
+    if "latitude" in df.columns and "longitude" in df.columns:
+        lat = df["latitude"].iloc[0]
+        lon = df["longitude"].iloc[0]
+        if pd.notna(lat) and pd.notna(lon):
+            geom = GEOLOD[f"Cave_{site_slug}_Geometry"]
+            g.add((geom, RDF.type, URIRef(str(SF) + "Point")))
+            g.add(
+                (
+                    geom,
+                    URIRef(str(GEO) + "asWKT"),
+                    Literal(
+                        f"POINT({float(lon):.6f} {float(lat):.6f})",
+                        datatype=URIRef(str(GEO) + "wktLiteral"),
+                    ),
+                )
+            )
+            g.add((cave, URIRef(str(GEO) + "hasGeometry"), geom))
+
+    # ── Smoothing instances ───────────────────────────────────────────────────
+    smooth_median = GEOLOD[f"RollingMedian_w{ROLLING_WINDOW}"]
+    g.add((smooth_median, RDF.type, GEOLOD["RollingMedianFilter"]))
+    g.add(
+        (
+            smooth_median,
+            GEOLOD["windowSize"],
+            Literal(ROLLING_WINDOW, datatype=XSD.integer),
+        )
+    )
+
+    smooth_sg = GEOLOD[f"SavitzkyGolay_w{SG_WINDOW}_p{SG_POLYORDER}"]
+    g.add((smooth_sg, RDF.type, GEOLOD["SavitzkyGolayFilter"]))
+    g.add((smooth_sg, GEOLOD["windowSize"], Literal(SG_WINDOW, datatype=XSD.integer)))
+    g.add((smooth_sg, GEOLOD["polyOrder"], Literal(SG_POLYORDER, datatype=XSD.integer)))
+
+    # ── MeasurementType instances ─────────────────────────────────────────────
+    mtype_d18o = GEOLOD["MeasurementType_d18O"]
+    g.add((mtype_d18o, RDF.type, GEOLOD["MeasurementType"]))
+    g.add((mtype_d18o, RDFS.label, Literal("delta-18O Measurement", lang="en")))
+
+    mtype_d13c = GEOLOD["MeasurementType_d13C"]
+    g.add((mtype_d13c, RDF.type, GEOLOD["MeasurementType"]))
+    g.add((mtype_d13c, RDFS.label, Literal("delta-13C Measurement", lang="en")))
+
+    # ── Observable Properties ─────────────────────────────────────────────────
+    prop_d18o = GEOLOD["Delta18O_Speleothem"]
+    g.add((prop_d18o, RDF.type, GEOLOD["Delta18OProperty"]))
+    g.add((prop_d18o, RDFS.label, Literal("delta-18O (speleothem)", lang="en")))
+
+    prop_d13c = GEOLOD["Delta13C_Speleothem"]
+    g.add((prop_d13c, RDF.type, GEOLOD["Delta13CProperty"]))
+    g.add((prop_d13c, RDFS.label, Literal("delta-13C (speleothem)", lang="en")))
+
+    # ── U-Th chronology (one per site) ───────────────────────────────────────
+    chron = GEOLOD[f"UThChronology_{site_slug}"]
+    g.add((chron, RDF.type, GEOLOD["UThChronology"]))
+    g.add((chron, RDFS.label, Literal(f"U-Th Chronology – {site_name}", lang="en")))
+    g.add(
+        (
+            chron,
+            RDFS.comment,
+            Literal(
+                "Standardised SISAL chronology (linear interpolation / "
+                "Bchron / Bacon / copRa / StalAge). "
+                "See SISALv3 repository: "
+                "https://doi.org/10.5287/ora-2nanwp4rk",
+                lang="en",
+            ),
+        )
+    )
+
+    # ── Speleotheme & Observations pro entity_id ──────────────────────────────
+    obs_d18o_total = 0
+    obs_d13c_total = 0
+
+    for entity_id, grp in df.groupby("entity_id"):
+        entity_name = (
+            grp["entity_name"].iloc[0]
+            if "entity_name" in grp.columns
+            else str(entity_id)
+        )
+        speleothem = GEOLOD[f"Speleothem_{site_slug}_e{entity_id}"]
+        g.add((speleothem, RDF.type, GEOLOD["Speleothem"]))
+        g.add(
+            (speleothem, RDFS.label, Literal(f"{site_name} – {entity_name}", lang="en"))
+        )
+        g.add(
+            (
+                speleothem,
+                GEOLOD["entityId"],
+                Literal(int(entity_id), datatype=XSD.integer),
+            )
+        )
+        g.add((speleothem, GEOLOD["collectedFrom"], cave))
+
+        # ── d18O ──────────────────────────────────────────────────────────────
+        sub18 = grp[grp["d18o_permille"].notna() & grp["age_ka"].notna()].copy()
+        if not sub18.empty:
+            vals18 = sub18["d18o_permille"].values
+            med18 = (
+                pd.Series(vals18)
+                .rolling(window=ROLLING_WINDOW, center=True, min_periods=1)
+                .median()
+                .values
+            )
+            try:
+                sg18 = savgol_filter(
+                    vals18, window_length=SG_WINDOW, polyorder=SG_POLYORDER
+                )
+            except Exception:
+                sg18 = [None] * len(vals18)
+
+            for i, (_, row) in enumerate(sub18.iterrows()):
+                obs = GEOLOD[f"Obs_d18O_{site_slug}_e{entity_id}_{obs_d18o_total:05d}"]
+                g.add((obs, RDF.type, GEOLOD["Delta18OSpeleothemObservation"]))
+                g.add((obs, SOSA["hasFeatureOfInterest"], speleothem))
+                g.add((obs, SOSA["observedProperty"], prop_d18o))
+                g.add((obs, GEOLOD["measurementType"], mtype_d18o))
+                g.add(
+                    (
+                        obs,
+                        GEOLOD["ageKaBP"],
+                        Literal(round(float(row["age_ka"]), 4), datatype=XSD.decimal),
+                    )
+                )
+                g.add(
+                    (
+                        obs,
+                        GEOLOD["measuredValue"],
+                        Literal(
+                            round(float(row["d18o_permille"]), 4), datatype=XSD.decimal
+                        ),
+                    )
+                )
+                if "depth_sample" in row and pd.notna(row["depth_sample"]):
+                    g.add(
+                        (
+                            obs,
+                            GEOLOD["atDepth_mm"],
+                            Literal(
+                                round(float(row["depth_sample"]), 3),
+                                datatype=XSD.decimal,
+                            ),
+                        )
+                    )
+                g.add((obs, GEOLOD["ageChronologySpeleothem"], chron))
+                if pd.notna(med18[i]):
+                    g.add(
+                        (
+                            obs,
+                            GEOLOD["smoothedValue_rollingMedian"],
+                            Literal(round(float(med18[i]), 4), datatype=XSD.decimal),
+                        )
+                    )
+                    g.add((obs, GEOLOD["smoothingMethod_median"], smooth_median))
+                if sg18[i] is not None and pd.notna(sg18[i]):
+                    g.add(
+                        (
+                            obs,
+                            GEOLOD["smoothedValue_savgol"],
+                            Literal(round(float(sg18[i]), 4), datatype=XSD.decimal),
+                        )
+                    )
+                    g.add((obs, GEOLOD["smoothingMethod_savgol"], smooth_sg))
+                g.add((obs, PROV.wasDerivedFrom, src))
+                obs_d18o_total += 1
+
+        # ── d13C ──────────────────────────────────────────────────────────────
+        sub13 = grp[grp["d13c_permille"].notna() & grp["age_ka"].notna()].copy()
+        if not sub13.empty:
+            vals13 = sub13["d13c_permille"].values
+            med13 = (
+                pd.Series(vals13)
+                .rolling(window=ROLLING_WINDOW, center=True, min_periods=1)
+                .median()
+                .values
+            )
+            try:
+                sg13 = savgol_filter(
+                    vals13, window_length=SG_WINDOW, polyorder=SG_POLYORDER
+                )
+            except Exception:
+                sg13 = [None] * len(vals13)
+
+            for i, (_, row) in enumerate(sub13.iterrows()):
+                obs = GEOLOD[f"Obs_d13C_{site_slug}_e{entity_id}_{obs_d13c_total:05d}"]
+                g.add((obs, RDF.type, GEOLOD["Delta13CSpeleothemObservation"]))
+                g.add((obs, SOSA["hasFeatureOfInterest"], speleothem))
+                g.add((obs, SOSA["observedProperty"], prop_d13c))
+                g.add((obs, GEOLOD["measurementType"], mtype_d13c))
+                g.add(
+                    (
+                        obs,
+                        GEOLOD["ageKaBP"],
+                        Literal(round(float(row["age_ka"]), 4), datatype=XSD.decimal),
+                    )
+                )
+                g.add(
+                    (
+                        obs,
+                        GEOLOD["measuredValue"],
+                        Literal(
+                            round(float(row["d13c_permille"]), 4), datatype=XSD.decimal
+                        ),
+                    )
+                )
+                if "depth_sample" in row and pd.notna(row["depth_sample"]):
+                    g.add(
+                        (
+                            obs,
+                            GEOLOD["atDepth_mm"],
+                            Literal(
+                                round(float(row["depth_sample"]), 3),
+                                datatype=XSD.decimal,
+                            ),
+                        )
+                    )
+                g.add((obs, GEOLOD["ageChronologySpeleothem"], chron))
+                if pd.notna(med13[i]):
+                    g.add(
+                        (
+                            obs,
+                            GEOLOD["smoothedValue_rollingMedian"],
+                            Literal(round(float(med13[i]), 4), datatype=XSD.decimal),
+                        )
+                    )
+                    g.add((obs, GEOLOD["smoothingMethod_median"], smooth_median))
+                if sg13[i] is not None and pd.notna(sg13[i]):
+                    g.add(
+                        (
+                            obs,
+                            GEOLOD["smoothedValue_savgol"],
+                            Literal(round(float(sg13[i]), 4), datatype=XSD.decimal),
+                        )
+                    )
+                    g.add((obs, GEOLOD["smoothingMethod_savgol"], smooth_sg))
+                g.add((obs, PROV.wasDerivedFrom, src))
+                obs_d13c_total += 1
+
+    print(
+        f"  RDF: {obs_d18o_total:,} d18O obs · "
+        f"{obs_d13c_total:,} d13C obs · "
+        f"{len(g):,} triples"
+    )
+    return g
+
+
+def export_sisal_rdf(all_dfs: list, site_slugs: list) -> None:
+    """
+    Exports all RDF artefacts:
+      rdf/sisal_ontology_extension.ttl  – classes, properties, instances
+      rdf/sisal_{slug}_data.ttl          – data per cave
+      rdf/sisal_all_data.ttl             – combined graph of all caves
+    """
+    if not RDF_AVAILABLE:
+        print("  ⚠  RDF export skipped (rdflib not available).")
+        return
+
+    print("\n" + "─" * 60)
+    print("RDF Export  (geo-lod SISAL Extension + data)")
+    print("─" * 60)
+
+    # 1. Ontology file (plain TTL string, no rdflib parsing required)
+    onto_path = os.path.join(RDF_DIR, "sisal_ontology_extension.ttl")
+    with open(onto_path, "w", encoding="utf-8") as f:
+        f.write(SISAL_ONTOLOGY_TTL)
+    print(f"  ✓ {onto_path}")
+
+    # 2. + 3. Datengraphen
+    GEOLOD = Namespace("http://w3id.org/geo-lod/")
+    combined = Graph()
+    combined.bind("geolod", GEOLOD)
+    combined.bind("sosa", Namespace("http://www.w3.org/ns/sosa/"))
+    combined.bind("prov", PROV)
+    combined.bind("dct", DCTERMS)
+    combined.bind("rdfs", RDFS)
+    combined.bind("xsd", XSD)
+
+    for df, slug in zip(all_dfs, site_slugs):
+        site_name = df["site_name"].iloc[0]
+        print(f"\n  {site_name}  ({slug})")
+        g = build_sisal_rdf(df, site_name=site_name, site_slug=slug)
+        if g is None:
+            continue
+        out_path = os.path.join(RDF_DIR, f"sisal_{slug}_data.ttl")
+        g.serialize(destination=out_path, format="turtle")
+        print(f"  ✓ {out_path}")
+        for triple in g:
+            combined.add(triple)
+
+    combined_path = os.path.join(RDF_DIR, "sisal_all_data.ttl")
+    combined.serialize(destination=combined_path, format="turtle")
+    print(f"\n  ✓ {combined_path}  ({len(combined):,} triples total)")
+
+
 # ──────────────────────────────────────────────
-# Hauptprogramm
+# Main
 # ──────────────────────────────────────────────
 
 
@@ -402,8 +987,8 @@ def main():
     print("SISAL Speleothem – Plot Generator")
     print("=" * 60)
 
-    # ── SISAL-Dateien konfigurieren ──────────────────────────────────────
-    # Passe die Pfade ggf. an (relativ zum Skript-Ordner)
+    # ── Configure SISAL input files ───────────────────────────────────────────
+    # Adjust paths if needed (relative to the script directory)
     SISAL_FILES = [
         {
             "path": "v_data_144_botuvera.csv",
@@ -421,7 +1006,7 @@ def main():
             "path": "v_data_140_sanbao.csv",
             "slug": "140_sanbao",
             "d18o_ticks": [-10, -9, -8, -7, -6, -5, -4],
-            "d13c_ticks": None,  # keine d13C-Daten in SISAL für Sanbao
+            "d13c_ticks": None,  # no d13C data in SISAL for Sanbao
         },
         {
             "path": "v_data_275_buracagloriosa.csv",
@@ -432,9 +1017,12 @@ def main():
     ]
 
     total_plots = 0
+    loaded_dfs = []  # collected for RDF export
+    loaded_slugs = []
+
     for cfg in SISAL_FILES:
         print(f"\n{'─' * 60}")
-        print(f"Lade: {cfg['path']}")
+        print(f"Loading: {cfg['path']}")
         print("─" * 60)
 
         filepath = cfg["path"]
@@ -442,7 +1030,7 @@ def main():
             filepath = os.path.join(SCRIPT_DIR, filepath)
 
         if not os.path.exists(filepath):
-            print(f"  ⚠  Datei nicht gefunden: {filepath} – übersprungen.")
+            print(f"  ⚠  File not found: {filepath} – skipping.")
             continue
 
         df = load_sisal_csv(filepath)
@@ -457,11 +1045,20 @@ def main():
         )
         total_plots += 6
 
+        # collect for RDF export
+        loaded_dfs.append(df)
+        loaded_slugs.append(cfg["slug"])
+
+    # ── RDF Export ────────────────────────────────────────────────────────────
+    export_sisal_rdf(loaded_dfs, loaded_slugs)
+
     print("\n" + "=" * 60)
-    print(f"Fertig! Plots gespeichert in '{OUTPUT_DIR}/'")
-    print(f"Gesamt: {total_plots} Plots")
+    print(f"Done! Plots saved to '{OUTPUT_DIR}/'")
+    print(f"Total: {total_plots} plots")
+    if RDF_AVAILABLE:
+        print(f"RDF files saved to '{RDF_DIR}/'")
     print("=" * 60)
-    print(f"Report gespeichert: {report_path}")
+    print(f"Report saved: {report_path}")
     tee.close()
 
 
