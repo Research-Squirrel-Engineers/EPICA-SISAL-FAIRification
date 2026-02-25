@@ -1,5 +1,6 @@
 # Datei: plot_epica_from_tab.py
 import os
+import sys
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator, FuncFormatter, FixedLocator
@@ -17,6 +18,28 @@ except ImportError:
     RDF_AVAILABLE = False
     print("⚠  rdflib nicht installiert – RDF-Export übersprungen. (pip install rdflib)")
 
+
+class Tee:
+    """Schreibt gleichzeitig auf stdout und in eine Datei."""
+
+    def __init__(self, filepath):
+        self.file = open(filepath, "w", encoding="utf-8")
+        self.stdout = sys.stdout
+        sys.stdout = self
+
+    def write(self, data):
+        self.stdout.write(data)
+        self.file.write(data)
+
+    def flush(self):
+        self.stdout.flush()
+        self.file.flush()
+
+    def close(self):
+        sys.stdout = self.stdout
+        self.file.close()
+
+
 # Arbeitsverzeichnis auf Ordner des Skripts setzen
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,8 +47,10 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.path.join(SCRIPT_DIR, "plots")
 RDF_DIR = os.path.join(SCRIPT_DIR, "rdf")
+REPORT_DIR = os.path.join(SCRIPT_DIR, "report")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 os.makedirs(RDF_DIR, exist_ok=True)
+os.makedirs(REPORT_DIR, exist_ok=True)
 
 # ──────────────────────────────────────────────
 # Gemeinsame Plot-Einstellungen
@@ -1962,6 +1987,9 @@ def export_rdf(df_ch4: pd.DataFrame, df_d18o: pd.DataFrame):
 
 
 def main():
+    report_path = os.path.join(REPORT_DIR, "report.txt")
+    tee = Tee(report_path)
+
     print("=" * 60)
     print("EPICA Dome C – Plot Generator (TAB-Dateien, komplett)")
     print("=" * 60)
@@ -2189,7 +2217,9 @@ def main():
 
     print("\n" + "=" * 60)
     print(f"Fertig! Alle {len(plots)} Plots wurden in '{OUTPUT_DIR}/' gespeichert.")
+    print(f"Report gespeichert: {report_path}")
     print("=" * 60)
+    tee.close()
 
 
 if __name__ == "__main__":
