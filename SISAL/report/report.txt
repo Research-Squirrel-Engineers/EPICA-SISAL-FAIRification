@@ -3,6 +3,13 @@ SISAL Speleothem – Plot Generator
 ============================================================
 
 ────────────────────────────────────────────────────────────
+Loading sites: v_sites_all.csv
+────────────────────────────────────────────────────────────
+  Loaded SISAL sites: 305 sites
+  d18O samples total: 318,870
+  d13C samples total: 220,224
+
+────────────────────────────────────────────────────────────
 Loading: v_data_144_botuvera.csv
 ────────────────────────────────────────────────────────────
   Loaded: Botuverá cave
@@ -110,9 +117,13 @@ Loading: v_data_275_buracagloriosa.csv
   ✓ c:\git\EPICA-SISAL-FAIRification\SISAL\plots\275_buracagloriosa_d13c_age_savgol11p2.svg
 
 ────────────────────────────────────────────────────────────
-RDF Export  (geo-lod SISAL Extension + data)
+RDF Export  (geo-lod SISAL Ontology + data)
 ────────────────────────────────────────────────────────────
-  ✓ c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\sisal_ontology_extension.ttl
+  ✓ c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\sisal_ontology.ttl
+
+  Building sites graph …
+  RDF sites: 305 caves · 2,745 triples
+  ✓ c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\sisal_sites.ttl
 
   Botuverá cave  (144_botuvera)
   RDF: 907 d18O obs · 907 d13C obs · 21,795 triples
@@ -130,7 +141,7 @@ RDF Export  (geo-lod SISAL Extension + data)
   RDF: 1,137 d18O obs · 1,137 d13C obs · 27,327 triples
   ✓ c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\sisal_275_buracagloriosa_data.ttl
 
-  ✓ c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\sisal_all_data.ttl  (148,809 triples total)
+  ✓ c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\sisal_all_data.ttl  (151,554 triples total)
 
 ============================================================
 Done! Plots saved to 'c:\git\EPICA-SISAL-FAIRification\SISAL\plots/'

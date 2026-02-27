@@ -435,12 +435,13 @@ SISAL_ONTOLOGY_TTL = """\
 # ONTOLOGIE-HEADER
 # ============================================================================
 
-<http://w3id.org/geo-lod/sisal-extension>
+<http://w3id.org/geo-lod/sisal-ontology>
     a owl:Ontology ;
-    rdfs:label   "geo-lod SISAL Extension"@en ;
-    rdfs:comment "Extends the geo-lod ice-core ontology with speleothem-specific
-                  classes and properties, aligned with the SISALv3 database schema
-                  (Kaushal et al. 2024, ESSD 16, 1933-1963)."@en ;
+    rdfs:label   "geo-lod SISAL Ontology"@en ;
+    rdfs:comment "Ontology for speleothem palaeoclimate data, aligned with the
+                  SISALv3 database schema (Kaushal et al. 2024, ESSD 16,
+                  1933-1963). Extends the geo-lod ice-core vocabulary with
+                  cave-specific classes, properties, and site-level statistics."@en ;
     owl:imports  <http://w3id.org/geo-lod/> ;
     dct:source   <https://doi.org/10.5194/essd-16-1933-2024> ;
     dct:created  "2024"^^xsd:gYear .
@@ -606,6 +607,24 @@ geolod:siteId
     rdfs:range  xsd:integer ;
     rdfs:label  "SISAL site ID"@en ;
     rdfs:comment "Unique site identifier in SISALv3 (site_id)."@en .
+
+geolod:countD18OSamples
+    a owl:DatatypeProperty ;
+    rdfs:domain geolod:Cave ;
+    rdfs:range  xsd:integer ;
+    rdfs:label  "count of d18O samples"@en ;
+    rdfs:comment "Total number of delta-18O measurements available for this
+                  cave site across all entities in SISALv3
+                  (column: n_d18o_samples in v_sites_all)."@en .
+
+geolod:countD13CSamples
+    a owl:DatatypeProperty ;
+    rdfs:domain geolod:Cave ;
+    rdfs:range  xsd:integer ;
+    rdfs:label  "count of d13C samples"@en ;
+    rdfs:comment "Total number of delta-13C measurements available for this
+                  cave site across all entities in SISALv3
+                  (column: n_d13c_samples in v_sites_all)."@en .
 
 # ============================================================================
 # INSTANZEN  –  MeasurementType & DataSource
@@ -924,37 +943,151 @@ def build_sisal_rdf(
     return g
 
 
-def export_sisal_rdf(all_dfs: list, site_slugs: list) -> None:
+def load_sisal_sites_csv(filepath: str) -> "pd.DataFrame":
+    """
+    Loads the SISAL v_sites_all CSV.
+
+    Expected columns: site_id, site_name, wkt, n_d18o_samples, n_d13c_samples
+    WKT format:       POINT(lon lat)  (longitude first, as per GeoSPARQL)
+    Returns a clean DataFrame, sorted by site_id.
+    """
+    df = pd.read_csv(filepath)
+    df["site_id"] = pd.to_numeric(df["site_id"], errors="coerce")
+    df["n_d18o_samples"] = pd.to_numeric(df["n_d18o_samples"], errors="coerce")
+    df["n_d13c_samples"] = pd.to_numeric(df["n_d13c_samples"], errors="coerce")
+    df = (
+        df.dropna(subset=["site_id", "wkt"])
+        .sort_values("site_id")
+        .reset_index(drop=True)
+    )
+
+    print(f"  Loaded SISAL sites: {len(df)} sites")
+    print(f"  d18O samples total: {df['n_d18o_samples'].sum():,}")
+    print(f"  d13C samples total: {df['n_d13c_samples'].sum():,}")
+    return df
+
+
+def build_sisal_sites_rdf(df_sites: "pd.DataFrame") -> "Graph | None":
+    """
+    Builds an RDF graph for ALL 305 SISAL cave sites from v_sites_all.
+
+    Each Cave instance gets:
+      - geolod:siteId          (integer)
+      - rdfs:label             (site_name)
+      - geo:hasGeometry        → sf:Point with geo:asWKT literal
+      - geolod:countD18OSamples (integer)
+      - geolod:countD13CSamples (integer)
+      - prov:wasDerivedFrom    → geolod:SISALv3_DataSource
+    """
+    if not RDF_AVAILABLE:
+        return None
+
+    GEOLOD = Namespace("http://w3id.org/geo-lod/")
+    GEO = Namespace("http://www.opengis.net/ont/geosparql#")
+    SF = Namespace("http://www.opengis.net/ont/sf#")
+
+    g = Graph()
+    g.bind("geolod", GEOLOD)
+    g.bind("geo", GEO)
+    g.bind("prov", PROV)
+    g.bind("rdfs", RDFS)
+    g.bind("xsd", XSD)
+
+    src = GEOLOD["SISALv3_DataSource"]
+
+    for _, row in df_sites.iterrows():
+        site_id = int(row["site_id"])
+        site_name = str(row["site_name"])
+        wkt = str(row["wkt"]).strip()
+
+        # Slug: site_id zero-padded for consistent URI sorting
+        slug = f"site_{site_id:04d}"
+        cave = GEOLOD[f"Cave_{slug}"]
+
+        g.add((cave, RDF.type, GEOLOD["Cave"]))
+        g.add((cave, RDFS.label, Literal(site_name, lang="en")))
+        g.add((cave, GEOLOD["siteId"], Literal(site_id, datatype=XSD.integer)))
+        g.add(
+            (
+                cave,
+                GEOLOD["countD18OSamples"],
+                Literal(int(row["n_d18o_samples"]), datatype=XSD.integer),
+            )
+        )
+        g.add(
+            (
+                cave,
+                GEOLOD["countD13CSamples"],
+                Literal(int(row["n_d13c_samples"]), datatype=XSD.integer),
+            )
+        )
+        g.add((cave, PROV.wasDerivedFrom, src))
+
+        # Geometry: WKT from CSV is already GeoSPARQL-compliant (lon lat)
+        geom = GEOLOD[f"Cave_{slug}_Geometry"]
+        g.add((geom, RDF.type, URIRef(str(SF) + "Point")))
+        g.add(
+            (
+                geom,
+                URIRef(str(GEO) + "asWKT"),
+                Literal(wkt, datatype=URIRef(str(GEO) + "wktLiteral")),
+            )
+        )
+        g.add((cave, URIRef(str(GEO) + "hasGeometry"), geom))
+
+    print(f"  RDF sites: {len(df_sites)} caves · {len(g):,} triples")
+    return g
+
+
+def export_sisal_rdf(
+    all_dfs: list, site_slugs: list, df_sites: "pd.DataFrame | None" = None
+) -> None:
     """
     Exports all RDF artefacts:
-      rdf/sisal_ontology_extension.ttl  – classes, properties, instances
-      rdf/sisal_{slug}_data.ttl          – data per cave
-      rdf/sisal_all_data.ttl             – combined graph of all caves
+      rdf/sisal_ontology.ttl    – classes, properties, instances
+      rdf/sisal_sites.ttl       – all 305 SISAL cave sites (from v_sites_all)
+      rdf/sisal_{slug}_data.ttl – observation data per cave
+      rdf/sisal_all_data.ttl    – combined graph (sites + all cave data)
     """
     if not RDF_AVAILABLE:
         print("  ⚠  RDF export skipped (rdflib not available).")
         return
 
     print("\n" + "─" * 60)
-    print("RDF Export  (geo-lod SISAL Extension + data)")
+    print("RDF Export  (geo-lod SISAL Ontology + data)")
     print("─" * 60)
 
     # 1. Ontology file (plain TTL string, no rdflib parsing required)
-    onto_path = os.path.join(RDF_DIR, "sisal_ontology_extension.ttl")
+    onto_path = os.path.join(RDF_DIR, "sisal_ontology.ttl")
     with open(onto_path, "w", encoding="utf-8") as f:
         f.write(SISAL_ONTOLOGY_TTL)
     print(f"  ✓ {onto_path}")
 
-    # 2. + 3. Datengraphen
+    # 2. Combined graph (will accumulate sites + cave data)
     GEOLOD = Namespace("http://w3id.org/geo-lod/")
     combined = Graph()
     combined.bind("geolod", GEOLOD)
     combined.bind("sosa", Namespace("http://www.w3.org/ns/sosa/"))
+    combined.bind("geo", Namespace("http://www.opengis.net/ont/geosparql#"))
     combined.bind("prov", PROV)
     combined.bind("dct", DCTERMS)
     combined.bind("rdfs", RDFS)
     combined.bind("xsd", XSD)
 
+    # 3. Sites graph (all 305 SISAL cave sites)
+    if df_sites is not None:
+        print(f"\n  Building sites graph …")
+        g_sites = build_sisal_sites_rdf(df_sites)
+        if g_sites is not None:
+            sites_path = os.path.join(RDF_DIR, "sisal_sites.ttl")
+            g_sites.serialize(destination=sites_path, format="turtle")
+            print(f"  ✓ {sites_path}")
+            for triple in g_sites:
+                combined.add(triple)
+    else:
+        print("  ⚠  No sites CSV provided – sisal_sites.ttl skipped.")
+
+    # 4. Per-cave observation data
     for df, slug in zip(all_dfs, site_slugs):
         site_name = df["site_name"].iloc[0]
         print(f"\n  {site_name}  ({slug})")
@@ -967,6 +1100,7 @@ def export_sisal_rdf(all_dfs: list, site_slugs: list) -> None:
         for triple in g:
             combined.add(triple)
 
+    # 5. Combined graph
     combined_path = os.path.join(RDF_DIR, "sisal_all_data.ttl")
     combined.serialize(destination=combined_path, format="turtle")
     print(f"\n  ✓ {combined_path}  ({len(combined):,} triples total)")
@@ -986,6 +1120,9 @@ def main():
     print("=" * 60)
     print("SISAL Speleothem – Plot Generator")
     print("=" * 60)
+
+    # ── Configure SISAL sites file (all 305 sites) ────────────────────────────
+    SITES_FILE = "v_sites_all.csv"
 
     # ── Configure SISAL input files ───────────────────────────────────────────
     # Adjust paths if needed (relative to the script directory)
@@ -1015,6 +1152,21 @@ def main():
             "d13c_ticks": [-10, -8, -6, -4, -2, 0],
         },
     ]
+
+    # ── Load sites CSV ────────────────────────────────────────────────────────
+    print(f"\n{'─' * 60}")
+    print(f"Loading sites: {SITES_FILE}")
+    print("─" * 60)
+    sites_filepath = (
+        SITES_FILE
+        if os.path.isabs(SITES_FILE)
+        else os.path.join(SCRIPT_DIR, SITES_FILE)
+    )
+    df_sites = None
+    if os.path.exists(sites_filepath):
+        df_sites = load_sisal_sites_csv(sites_filepath)
+    else:
+        print(f"  ⚠  Sites file not found: {sites_filepath} – skipping.")
 
     total_plots = 0
     loaded_dfs = []  # collected for RDF export
@@ -1050,7 +1202,7 @@ def main():
         loaded_slugs.append(cfg["slug"])
 
     # ── RDF Export ────────────────────────────────────────────────────────────
-    export_sisal_rdf(loaded_dfs, loaded_slugs)
+    export_sisal_rdf(loaded_dfs, loaded_slugs, df_sites=df_sites)
 
     print("\n" + "=" * 60)
     print(f"Done! Plots saved to '{OUTPUT_DIR}/'")
