@@ -663,6 +663,8 @@ void:Linkset a owl:Class .
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#Delta18O_Speleothem>,
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#Delta18O_suniv0_>,
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#Delta18O_suniv1_>,
+        <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#DrillingSite>,
+        <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#DrillingSite_collection>,
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#E22_Human-Made_Object>,
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#E22_Human-Made_Object_collection>,
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#E27_Site>,
@@ -678,13 +680,18 @@ void:Linkset a owl:Class .
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EPICA_DomeC_d18O_Dataset>,
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EPICA_DomeCampaign_1996_2004_suniv0_>,
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EPICA_DomeCampaign_1996_2004_suniv1_>,
+        <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EPICA_DrillingSite_Collection>,
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EpicaDomeC_Geometry>,
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EpicaDomeC_IceCore_suniv0_>,
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EpicaDomeC_IceCore_suniv1_>,
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EpicaDomeC_Site_suniv0_>,
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EpicaDomeC_Site_suniv1_>,
+        <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EpicaDomeC_Site_suniv2_>,
+        <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EpicaDomeC_Site_suniv3_>,
+        <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#Feature>,
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#FeatureCollection>,
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#FeatureCollection_collection>,
+        <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#Feature_collection>,
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#GeometryCollection>,
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#MeasurementType>,
         <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#MeasurementType_CH4>,
@@ -9338,6 +9345,12 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#Delta18O_suniv1_> ns1:forClass sosa:ObservableProperty ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//Delta18O_suniv1_> .
 
+<https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#DrillingSite> ns1:forClass <#> ;
+    ns1:instance <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//DrillingSite> .
+
+<https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#DrillingSite_collection> ns1:forClass geo:FeatureCollection ;
+    ns1:instance <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//DrillingSite_collection> .
+
 <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#E22_Human-Made_Object> ns1:forClass <#> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//E22_Human-Made_Object> .
 
@@ -9383,6 +9396,9 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EPICA_DomeCampaign_1996_2004_suniv1_> ns1:forClass <http://www.ics.forth.gr/isl/CRMsci/S1_Matter_Removal> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//EPICA_DomeCampaign_1996_2004_suniv1_> .
 
+<https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EPICA_DrillingSite_Collection> ns1:forClass geo:FeatureCollection ;
+    ns1:instance <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//EPICA_DrillingSite_Collection> .
+
 <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EpicaDomeC_Geometry> ns1:forClass <http://www.opengis.net/ont/sf#Point> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//EpicaDomeC_Geometry> .
 
@@ -9392,17 +9408,29 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EpicaDomeC_IceCore_suniv1_> ns1:forClass sosa:Sample ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//EpicaDomeC_IceCore_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EpicaDomeC_Site_suniv0_> ns1:forClass <http://www.cidoc-crm.org/cidoc-crm/E27_Site> ;
+<https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EpicaDomeC_Site_suniv0_> ns1:forClass <http://w3id.org/geo-lod/DrillingSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//EpicaDomeC_Site_suniv0_> .
 
-<https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EpicaDomeC_Site_suniv1_> ns1:forClass <http://www.cidoc-crm.org/cidoc-crm/E53_Place> ;
+<https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EpicaDomeC_Site_suniv1_> ns1:forClass <http://www.cidoc-crm.org/cidoc-crm/E27_Site> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//EpicaDomeC_Site_suniv1_> .
+
+<https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EpicaDomeC_Site_suniv2_> ns1:forClass <http://www.cidoc-crm.org/cidoc-crm/E53_Place> ;
+    ns1:instance <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//EpicaDomeC_Site_suniv2_> .
+
+<https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#EpicaDomeC_Site_suniv3_> ns1:forClass geo:Feature ;
+    ns1:instance <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//EpicaDomeC_Site_suniv3_> .
+
+<https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#Feature> ns1:forClass <#> ;
+    ns1:instance <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//Feature> .
 
 <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#FeatureCollection> ns1:forClass geo:SpatialObjectCollection ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//FeatureCollection> .
 
 <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#FeatureCollection_collection> ns1:forClass skos:Collection ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//FeatureCollection_collection> .
+
+<https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#Feature_collection> ns1:forClass geo:FeatureCollection ;
+    ns1:instance <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//Feature_collection> .
 
 <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//settings/publicTypeIndex.ttl#GeometryCollection> ns1:forClass geo:SpatialObjectCollection ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//GeometryCollection> .
@@ -29622,9 +29650,9 @@ void:Linkset a owl:Class .
 
 <http://w3id.org/geo-lod/MeasurementType> a owl:Class .
 
-geo:FeatureCollection a owl:Class .
-
 <http://w3id.org/geo-lod/Speleothem> a owl:Class .
+
+geo:FeatureCollection a owl:Class .
 
 skos:Collection a owl:Class .
 

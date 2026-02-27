@@ -12399,8 +12399,8 @@ var tree={
               "instancecount": 1234,
               "http://rdfs.org/ns/void#Dataset": 1234,
               "http://www.w3.org/ns/adms#Asset": 1234,
-              "http://www.w3.org/ns/ldp#Resource": 526,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 526
+              "http://www.w3.org/ns/ldp#Resource": 986,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 986
             },
             "http://w3id.org/geo-lod/ageChronologySpeleothem": {
               "instancecount": 1234,
@@ -12425,16 +12425,16 @@ var tree={
             "http://w3id.org/geo-lod/smoothingMethod_median": {
               "instancecount": 1234,
               "http://w3id.org/geo-lod/RollingMedianFilter": 1234,
-              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 993,
-              "http://www.w3.org/ns/ldp#Resource": 993,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 993
+              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 387,
+              "http://www.w3.org/ns/ldp#Resource": 387,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 387
             },
             "http://w3id.org/geo-lod/smoothingMethod_savgol": {
               "instancecount": 1234,
               "http://w3id.org/geo-lod/SavitzkyGolayFilter": 1234,
-              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 1050,
-              "http://www.w3.org/ns/ldp#Resource": 1050,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 1050
+              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 1199,
+              "http://www.w3.org/ns/ldp#Resource": 1199,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 1199
             },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
               "instancecount": 1234
@@ -24810,8 +24810,8 @@ var tree={
               "instancecount": 1234,
               "http://rdfs.org/ns/void#Dataset": 1234,
               "http://www.w3.org/ns/adms#Asset": 1234,
-              "http://www.w3.org/ns/ldp#Resource": 531,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 531
+              "http://www.w3.org/ns/ldp#Resource": 983,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 983
             },
             "http://w3id.org/geo-lod/ageChronologySpeleothem": {
               "instancecount": 1234,
@@ -24826,8 +24826,8 @@ var tree={
             "http://w3id.org/geo-lod/measurementType": {
               "instancecount": 1234,
               "http://w3id.org/geo-lod/MeasurementType": 1234,
-              "http://www.w3.org/ns/ldp#Resource": 841,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 841
+              "http://www.w3.org/ns/ldp#Resource": 590,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 590
             },
             "http://w3id.org/geo-lod/smoothedValue_rollingMedian": {
               "instancecount": 1234
@@ -24838,16 +24838,16 @@ var tree={
             "http://w3id.org/geo-lod/smoothingMethod_median": {
               "instancecount": 1234,
               "http://w3id.org/geo-lod/RollingMedianFilter": 1234,
-              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 972,
-              "http://www.w3.org/ns/ldp#Resource": 972,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 972
+              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 408,
+              "http://www.w3.org/ns/ldp#Resource": 408,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 408
             },
             "http://w3id.org/geo-lod/smoothingMethod_savgol": {
               "instancecount": 1234,
               "http://w3id.org/geo-lod/SavitzkyGolayFilter": 1234,
-              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 1027,
-              "http://www.w3.org/ns/ldp#Resource": 1027,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 1027
+              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 1198,
+              "http://www.w3.org/ns/ldp#Resource": 1198,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 1198
             },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
               "instancecount": 1234
@@ -25105,27 +25105,31 @@ var tree={
         "data": {
           "from": {
             "http://w3id.org/geo-lod/measurementType": {
-              "http://w3id.org/geo-lod/Delta13CSpeleothemObservation": 1234,
-              "http://w3id.org/geo-lod/Delta18OSpeleothemObservation": 1234
+              "http://w3id.org/geo-lod/Delta18OSpeleothemObservation": 1234,
+              "http://w3id.org/geo-lod/Delta13CSpeleothemObservation": 1234
             },
             "http://www.w3.org/2000/01/rdf-schema#member": {
-              "http://www.w3.org/2004/02/skos/core#Collection": 2
+              "http://www.w3.org/2004/02/skos/core#Collection": 2,
+              "http://www.w3.org/ns/ldp#Resource": 2,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 2
             }
           },
           "to": {
             "http://rdfs.org/ns/void#inDataset": {
               "instancecount": 2,
               "http://rdfs.org/ns/void#Dataset": 2,
-              "http://www.w3.org/ns/adms#Asset": 2
+              "http://www.w3.org/ns/adms#Asset": 2,
+              "http://www.w3.org/ns/ldp#Resource": 2,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 2
             },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
               "instancecount": 4
             },
-            "http://www.w3.org/2000/01/rdf-schema#label": {
-              "instancecount": 3
-            },
             "http://www.w3.org/2000/01/rdf-schema#comment": {
               "instancecount": 1
+            },
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "instancecount": 3
             }
           }
         }
@@ -25163,7 +25167,9 @@ var tree={
             "http://rdfs.org/ns/void#inDataset": {
               "instancecount": 1,
               "http://rdfs.org/ns/void#Dataset": 1,
-              "http://www.w3.org/ns/adms#Asset": 1
+              "http://www.w3.org/ns/adms#Asset": 1,
+              "http://www.w3.org/ns/ldp#Resource": 1,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 1
             },
             "http://w3id.org/geo-lod/windowSize": {
               "instancecount": 1
@@ -25384,8 +25390,8 @@ var tree={
               "instancecount": 10,
               "http://rdfs.org/ns/void#Dataset": 10,
               "http://www.w3.org/ns/adms#Asset": 10,
-              "http://www.w3.org/ns/ldp#Resource": 6,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 6
+              "http://www.w3.org/ns/ldp#Resource": 8,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 8
             },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
               "instancecount": 15
@@ -25395,19 +25401,19 @@ var tree={
             },
             "http://www.w3.org/2000/01/rdf-schema#member": {
               "instancecount": 2786,
-              "http://w3id.org/geo-lod/Cave": 1,
-              "http://w3id.org/geo-lod/UThChronology": 1,
-              "http://w3id.org/geo-lod/Delta18OSpeleothemObservation": 1234,
-              "http://w3id.org/geo-lod/Delta18OProperty": 1,
               "http://w3id.org/geo-lod/MeasurementType": 2,
-              "http://www.w3.org/ns/ldp#Resource": 3,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 3,
-              "http://w3id.org/geo-lod/Delta13CProperty": 1,
+              "http://w3id.org/geo-lod/Cave": 1,
+              "http://w3id.org/geo-lod/Delta18OProperty": 1,
+              "http://w3id.org/geo-lod/SavitzkyGolayFilter": 1,
+              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 1,
+              "http://www.w3.org/ns/ldp#Resource": 1,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 1,
               "http://w3id.org/geo-lod/RollingMedianFilter": 1,
-              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 2,
-              "http://w3id.org/geo-lod/Speleothem": 4,
+              "http://w3id.org/geo-lod/Delta18OSpeleothemObservation": 1234,
               "http://w3id.org/geo-lod/Delta13CSpeleothemObservation": 1234,
-              "http://w3id.org/geo-lod/SavitzkyGolayFilter": 1
+              "http://w3id.org/geo-lod/Speleothem": 4,
+              "http://w3id.org/geo-lod/Delta13CProperty": 1,
+              "http://w3id.org/geo-lod/UThChronology": 1
             }
           }
         }
@@ -25427,7 +25433,7 @@ var tree={
         "parent": "http://www.opengis.net/ont/geosparql#SpatialObjectCollection",
         "instancecount": 2,
         "type": "collectionclass",
-        "text": " (gsp:FeatureCollection) [4]",
+        "text": " (gsp:FeatureCollection) [7]",
         "data": {
           "from": {
             "http://www.w3.org/2000/01/rdf-schema#member": {
@@ -25438,9 +25444,7 @@ var tree={
             "http://rdfs.org/ns/void#inDataset": {
               "instancecount": 2,
               "http://rdfs.org/ns/void#Dataset": 2,
-              "http://www.w3.org/ns/adms#Asset": 2,
-              "http://www.w3.org/ns/ldp#Resource": 2,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 2
+              "http://www.w3.org/ns/adms#Asset": 2
             },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
               "instancecount": 2
@@ -31578,8 +31582,8 @@ var tree={
             },
             "http://www.w3.org/2000/01/rdf-schema#member": {
               "http://www.opengis.net/ont/geosparql#GeometryCollection": 305,
-              "http://www.w3.org/ns/ldp#Resource": 295,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 295
+              "http://www.w3.org/ns/ldp#Resource": 221,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 221
             }
           },
           "to": {
@@ -31587,8 +31591,8 @@ var tree={
               "instancecount": 305,
               "http://rdfs.org/ns/void#Dataset": 305,
               "http://www.w3.org/ns/adms#Asset": 305,
-              "http://www.w3.org/ns/ldp#Resource": 238,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 238
+              "http://www.w3.org/ns/ldp#Resource": 56,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 56
             },
             "http://www.opengis.net/ont/geosparql#asWKT": {
               "instancecount": 305
@@ -31769,8 +31773,10 @@ var tree={
             },
             "http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at": {
               "instancecount": 1,
+              "http://w3id.org/geo-lod/DrillingSite": 1,
               "http://www.cidoc-crm.org/cidoc-crm/E27_Site": 1,
-              "http://www.cidoc-crm.org/cidoc-crm/E53_Place": 1
+              "http://www.cidoc-crm.org/cidoc-crm/E53_Place": 1,
+              "http://www.opengis.net/ont/geosparql#Feature": 1
             },
             "http://www.ics.forth.gr/isl/CRMsci/O1_removed": {
               "instancecount": 1,
@@ -31784,6 +31790,56 @@ var tree={
               "instancecount": 1
             }
           }
+        }
+      },
+      {
+        "id": "http://w3id.org/geo-lod/EPICA_DrillingSite_Collection",
+        "parent": "http://www.opengis.net/ont/geosparql#FeatureCollection",
+        "type": "featurecollection",
+        "text": "EPICA Dome C Drilling Site Collection (geolod:EPICA_DrillingSite_Collection)",
+        "data": {
+          "from": {},
+          "to": {}
+        }
+      },
+      {
+        "id": "http://w3id.org/geo-lod/DrillingSite_collection",
+        "parent": "http://www.opengis.net/ont/geosparql#FeatureCollection",
+        "type": "featurecollection",
+        "text": "DrillingSite Instances Collection (geolod:DrillingSite_collection)",
+        "data": {
+          "from": {},
+          "to": {}
+        }
+      },
+      {
+        "id": "http://w3id.org/geo-lod/E27_Site_collection",
+        "parent": "http://www.opengis.net/ont/geosparql#FeatureCollection",
+        "type": "featurecollection",
+        "text": "E27_Site Instances Collection (geolod:E27_Site_collection)",
+        "data": {
+          "from": {},
+          "to": {}
+        }
+      },
+      {
+        "id": "http://w3id.org/geo-lod/E53_Place_collection",
+        "parent": "http://www.opengis.net/ont/geosparql#FeatureCollection",
+        "type": "featurecollection",
+        "text": "E53_Place Instances Collection (geolod:E53_Place_collection)",
+        "data": {
+          "from": {},
+          "to": {}
+        }
+      },
+      {
+        "id": "http://w3id.org/geo-lod/Feature_collection",
+        "parent": "http://www.opengis.net/ont/geosparql#FeatureCollection",
+        "type": "featurecollection",
+        "text": "Feature Instances Collection (geolod:Feature_collection)",
+        "data": {
+          "from": {},
+          "to": {}
         }
       },
       {
@@ -31829,17 +31885,11 @@ var tree={
             }
           },
           "to": {
-            "http://purl.org/dc/terms/created": {
-              "instancecount": 1
-            },
             "http://purl.org/dc/terms/description": {
               "instancecount": 3
             },
             "http://purl.org/dc/terms/license": {
               "instancecount": 3
-            },
-            "http://purl.org/dc/terms/publisher": {
-              "instancecount": 1
             },
             "http://purl.org/dc/terms/source": {
               "instancecount": 4,
@@ -31853,11 +31903,6 @@ var tree={
               "http://rdfs.org/ns/void#Dataset": 3,
               "http://www.w3.org/ns/adms#Asset": 3
             },
-            "http://w3id.org/geo-lod/hasObservation": {
-              "instancecount": 2114,
-              "http://www.ics.forth.gr/isl/CRMsci/S4_Observation": 2114,
-              "http://www.w3.org/ns/sosa/Observation": 2114
-            },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
               "instancecount": 3
             },
@@ -31866,6 +31911,17 @@ var tree={
               "http://purl.org/dc/terms/BibliographicResource": 2
             },
             "http://www.w3.org/ns/dcat#record": {
+              "instancecount": 2114,
+              "http://www.ics.forth.gr/isl/CRMsci/S4_Observation": 2114,
+              "http://www.w3.org/ns/sosa/Observation": 2114
+            },
+            "http://purl.org/dc/terms/created": {
+              "instancecount": 1
+            },
+            "http://purl.org/dc/terms/publisher": {
+              "instancecount": 1
+            },
+            "http://w3id.org/geo-lod/hasObservation": {
               "instancecount": 2114,
               "http://www.ics.forth.gr/isl/CRMsci/S4_Observation": 2114,
               "http://www.w3.org/ns/sosa/Observation": 2114
@@ -74231,8 +74287,10 @@ var tree={
             },
             "http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at": {
               "instancecount": 2114,
+              "http://w3id.org/geo-lod/DrillingSite": 2114,
               "http://www.cidoc-crm.org/cidoc-crm/E27_Site": 2114,
-              "http://www.cidoc-crm.org/cidoc-crm/E53_Place": 2114
+              "http://www.cidoc-crm.org/cidoc-crm/E53_Place": 2114,
+              "http://www.opengis.net/ont/geosparql#Feature": 2114
             },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
               "instancecount": 4228
@@ -74383,11 +74441,11 @@ var tree={
             "http://www.w3.org/2000/01/rdf-schema#member": {
               "http://www.w3.org/2004/02/skos/core#Collection": 4
             },
-            "http://w3id.org/geo-lod/smoothingMethod_median": {
+            "http://w3id.org/geo-lod/ageChronology": {
               "http://www.ics.forth.gr/isl/CRMsci/S4_Observation": 2114,
               "http://www.w3.org/ns/sosa/Observation": 2114
             },
-            "http://w3id.org/geo-lod/ageChronology": {
+            "http://w3id.org/geo-lod/smoothingMethod_median": {
               "http://www.ics.forth.gr/isl/CRMsci/S4_Observation": 2114,
               "http://www.w3.org/ns/sosa/Observation": 2114
             }
@@ -74518,8 +74576,10 @@ var tree={
             },
             "http://www.cidoc-crm.org/cidoc-crm/P53_has_former_or_current_location": {
               "instancecount": 1,
+              "http://w3id.org/geo-lod/DrillingSite": 1,
               "http://www.cidoc-crm.org/cidoc-crm/E27_Site": 1,
-              "http://www.cidoc-crm.org/cidoc-crm/E53_Place": 1
+              "http://www.cidoc-crm.org/cidoc-crm/E53_Place": 1,
+              "http://www.opengis.net/ont/geosparql#Feature": 1
             },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
               "instancecount": 2
@@ -74529,14 +74589,37 @@ var tree={
             },
             "http://www.w3.org/ns/sosa/isSampleOf": {
               "instancecount": 1,
+              "http://w3id.org/geo-lod/DrillingSite": 1,
               "http://www.cidoc-crm.org/cidoc-crm/E27_Site": 1,
-              "http://www.cidoc-crm.org/cidoc-crm/E53_Place": 1
+              "http://www.cidoc-crm.org/cidoc-crm/E53_Place": 1,
+              "http://www.opengis.net/ont/geosparql#Feature": 1
             }
           }
         }
       },
       {
         "id": "http://w3id.org/geo-lod/EpicaDomeC_Site_suniv0_",
+        "parent": "http://w3id.org/geo-lod/DrillingSite",
+        "type": "geoinstance",
+        "text": "EPICA Dome C, East Antarctica (geolod:EpicaDomeC_Site)",
+        "data": {
+          "from": {},
+          "to": {}
+        }
+      },
+      {
+        "id": "http://w3id.org/geo-lod/DrillingSite",
+        "parent": "#",
+        "type": "geoclass",
+        "instancecount": 1,
+        "text": "DrillingSite (geolod:DrillingSite) [1]",
+        "data": {
+          "from": {},
+          "to": {}
+        }
+      },
+      {
+        "id": "http://w3id.org/geo-lod/EpicaDomeC_Site_suniv1_",
         "parent": "http://www.cidoc-crm.org/cidoc-crm/E27_Site",
         "type": "geoinstance",
         "text": "EPICA Dome C, East Antarctica (geolod:EpicaDomeC_Site)",
@@ -74557,7 +74640,7 @@ var tree={
         }
       },
       {
-        "id": "http://w3id.org/geo-lod/EpicaDomeC_Site_suniv1_",
+        "id": "http://w3id.org/geo-lod/EpicaDomeC_Site_suniv2_",
         "parent": "http://www.cidoc-crm.org/cidoc-crm/E53_Place",
         "type": "geoinstance",
         "text": "EPICA Dome C, East Antarctica (geolod:EpicaDomeC_Site)",
@@ -74573,6 +74656,27 @@ var tree={
         "instancecount": 1,
         "text": "E53_Place (crm:E53_Place) [1]",
         "data": {
+          "from": {},
+          "to": {}
+        }
+      },
+      {
+        "id": "http://w3id.org/geo-lod/EpicaDomeC_Site_suniv3_",
+        "parent": "http://www.opengis.net/ont/geosparql#Feature",
+        "type": "geoinstance",
+        "text": "EPICA Dome C, East Antarctica (geolod:EpicaDomeC_Site)",
+        "data": {
+          "from": {},
+          "to": {}
+        }
+      },
+      {
+        "id": "http://www.opengis.net/ont/geosparql#Feature",
+        "parent": "#",
+        "type": "geoclass",
+        "instancecount": 1,
+        "text": "Feature (gsp:Feature) [1]",
+        "data": {
           "from": {
             "http://www.cidoc-crm.org/cidoc-crm/P53_has_former_or_current_location": {
               "http://www.cidoc-crm.org/cidoc-crm/E22_Human-Made_Object": 1,
@@ -74585,7 +74689,7 @@ var tree={
               "http://www.w3.org/ns/sosa/Observation": 2114
             },
             "http://www.w3.org/2000/01/rdf-schema#member": {
-              "http://www.opengis.net/ont/geosparql#FeatureCollection": 2
+              "http://www.opengis.net/ont/geosparql#FeatureCollection": 5
             },
             "http://www.w3.org/ns/sosa/isSampleOf": {
               "http://www.cidoc-crm.org/cidoc-crm/E22_Human-Made_Object": 1,
@@ -74606,7 +74710,7 @@ var tree={
               "http://www.opengis.net/ont/sf#Point": 1
             },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
-              "instancecount": 2
+              "instancecount": 4
             },
             "http://www.w3.org/2000/01/rdf-schema#label": {
               "instancecount": 1
@@ -74740,26 +74844,6 @@ var tree={
               "http://www.w3.org/ns/sosa/Observation": 2114
             }
           }
-        }
-      },
-      {
-        "id": "http://w3id.org/geo-lod/E27_Site_collection",
-        "parent": "http://www.opengis.net/ont/geosparql#FeatureCollection",
-        "type": "featurecollection",
-        "text": "E27_Site Instances Collection (geolod:E27_Site_collection)",
-        "data": {
-          "from": {},
-          "to": {}
-        }
-      },
-      {
-        "id": "http://w3id.org/geo-lod/E53_Place_collection",
-        "parent": "http://www.opengis.net/ont/geosparql#FeatureCollection",
-        "type": "featurecollection",
-        "text": "E53_Place Instances Collection (geolod:E53_Place_collection)",
-        "data": {
-          "from": {},
-          "to": {}
         }
       }
     ]

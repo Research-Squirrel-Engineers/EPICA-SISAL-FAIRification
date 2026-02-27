@@ -2899,7 +2899,8 @@ ns1:geo-lod_www.w3.org_2004_02_skos_core_ a void:Linkset,
     void:objectsTarget skos: ;
     void:subjectsTarget ns1:geo-lod ;
     void:triples 1,
-        10 .
+        10,
+        11 .
 
 ns1:Obs_d13C_145_corchia_e665_00000 a ns1:Delta13CSpeleothemObservation,
         <http://www.w3.org/ns/ldp#BasicContainer>,
@@ -44918,7 +44919,7 @@ ns1:geo-lod_label a void:Dataset,
     void:property rdfs:label ;
     void:triples 20,
         309,
-        2141 .
+        2145 .
 
 ns1:geo-lod_measuredValue a void:Dataset,
         <http://www.w3.org/ns/ldp#BasicContainer>,
@@ -44946,7 +44947,7 @@ ns1:geo-lod_member a void:Dataset,
     rdfs:label "Property Partition: member"@en ;
     void:property rdfs:member ;
     void:triples 916,
-        2131,
+        2135,
         2480 .
 
 ns1:geo-lod_observedProperty a void:Dataset,
@@ -45027,7 +45028,7 @@ ns1:geo-lod_type a void:Dataset,
     void:property rdf:type ;
     void:triples 614,
         2490,
-        4266 .
+        4272 .
 
 ns1:geo-lod_wasDerivedFrom a void:Dataset,
         <http://www.w3.org/ns/ldp#BasicContainer>,
@@ -45175,15 +45176,15 @@ ns1:geo-lod a void:Dataset,
     ns2:distinctBlankNodes 0 ;
     ns2:distinctIRIReferences 2397,
         9655,
-        14608 ;
+        14619 ;
     ns2:distinctLiterals 0 ;
     ns2:distinctRDFNodes 2397,
         9655,
-        14608 ;
+        14619 ;
     ns2:languages 0 ;
     ns2:propertyClasses 0 ;
     dc:language <http://www.lexvo.org/page/iso639-1/en> ;
-    dcterms:modified "2026-02-27T16:39:46"^^xsd:dateTime ;
+    dcterms:modified "2026-02-27T16:56:20"^^xsd:dateTime ;
     dcterms:subject <http://dbpedia.org/resource/Location>,
         <http://dbpedia.org/resource/OGC_GeoSPARQL>,
         <http://dbpedia.org/resource/Time>,
@@ -45201,10 +45202,12 @@ ns1:geo-lod a void:Dataset,
         ns1:geo-lod_Delta13CSpeleothemObservation,
         ns1:geo-lod_Delta18OProperty,
         ns1:geo-lod_Delta18OSpeleothemObservation,
+        ns1:geo-lod_DrillingSite,
         ns1:geo-lod_E22_Human-Made_Object,
         ns1:geo-lod_E27_Site,
         ns1:geo-lod_E53_Place,
         ns1:geo-lod_E7_Activity,
+        ns1:geo-lod_Feature,
         ns1:geo-lod_FeatureCollection,
         ns1:geo-lod_GeometryCollection,
         ns1:geo-lod_MeasurementType,
@@ -45224,16 +45227,16 @@ ns1:geo-lod a void:Dataset,
         ns1:geo-lod_UThChronology ;
     void:classes 6,
         11,
-        21 ;
+        23 ;
     void:dataDump <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//index.ttl> ;
     void:distinctObjects 1770,
         7145,
-        12414 ;
+        12421 ;
     void:distinctSubjects 617,
-        2152,
+        2156,
         2490 ;
     void:entities 615,
-        2146,
+        2150,
         2491 ;
     void:feature <http://www.w3.org/ns/formats/RDFa>,
         <http://www.w3.org/ns/formats/Turtle> ;
@@ -45292,7 +45295,7 @@ ns1:geo-lod a void:Dataset,
         ns1:geo-lod_windowSize ;
     void:triples 4286,
         34641,
-        46679 ;
+        46697 ;
     void:uriSpace "http://w3id.org/geo-lod/"^^xsd:string ;
     void:vocabulary ns2:,
         dcam:,

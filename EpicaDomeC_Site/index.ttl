@@ -4,8 +4,10 @@
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://w3id.org/geo-lod/EpicaDomeC_Site> a ns1:E27_Site,
+<http://w3id.org/geo-lod/EpicaDomeC_Site> a <http://w3id.org/geo-lod/DrillingSite>,
+        ns1:E27_Site,
         ns1:E53_Place,
+        geo:Feature,
         <http://www.w3.org/ns/ldp#Resource>,
         <https://www.iana.org/assignments/media-types/text/turtle#Resource> ;
     rdfs:label "EPICA Dome C, East Antarctica"@en ;
