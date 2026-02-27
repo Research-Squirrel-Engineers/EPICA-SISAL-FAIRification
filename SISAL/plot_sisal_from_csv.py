@@ -415,6 +415,24 @@ except ImportError:
     RDF_AVAILABLE = False
     print("⚠  rdflib not installed – RDF export disabled. (pip install rdflib)")
 
+# geo_lod_utils: shared namespaces, GeoSPARQL helpers, core ontology, Mermaid
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "ontology"))
+try:
+    from geo_lod_utils import (
+        NS as GEO_LOD_NS,
+        get_graph,
+        wkt_point,
+        add_geo_site_from_wkt,
+        add_feature_collection,
+        write_geo_lod_core,
+        write_mermaid as write_geo_lod_mermaid,
+    )
+
+    GEO_LOD_UTILS_AVAILABLE = True
+except ImportError:
+    GEO_LOD_UTILS_AVAILABLE = False
+    print("⚠  geo_lod_utils not found – falling back to local namespace definitions.")
+
 
 SISAL_ONTOLOGY_TTL = """\
 @prefix geolod:  <http://w3id.org/geo-lod/> .
@@ -453,7 +471,7 @@ SISAL_ONTOLOGY_TTL = """\
 # ── Sample ────────────────────────────────────────────────────────────────────
 geolod:Speleothem
     a owl:Class ;
-    rdfs:subClassOf sosa:Sample ;
+    rdfs:subClassOf geolod:PalaeoclimateSample ;
     rdfs:subClassOf crm:E22_Human-Made_Object ;
     rdfs:label   "Speleothem"@en ;
     rdfs:comment "Secondary cave carbonate precipitate (stalagmite, stalactite,
@@ -468,9 +486,7 @@ geolod:Speleothem
 # ── Site ──────────────────────────────────────────────────────────────────────
 geolod:Cave
     a owl:Class ;
-    rdfs:subClassOf crm:E53_Place ;
-    rdfs:subClassOf crm:E27_Site ;
-    rdfs:subClassOf geo:Feature ;
+    rdfs:subClassOf geolod:SamplingLocation ;
     rdfs:label   "Cave"@en ;
     rdfs:comment "Geographical cave site from which a speleothem was collected.
                   Corresponds to site in SISALv3 (site_id, latitude, longitude,
@@ -498,8 +514,7 @@ geolod:SpeleothemSamplingEvent
 # ── Observation ───────────────────────────────────────────────────────────────
 geolod:SpeleothemObservation
     a owl:Class ;
-    rdfs:subClassOf sosa:Observation ;
-    rdfs:subClassOf crmsci:S4_Observation ;
+    rdfs:subClassOf geolod:PalaeoclimateObservation ;
     rdfs:label   "Speleothem Observation"@en ;
     rdfs:comment "Single stable isotope measurement on a speleothem sample,
                   characterised by depth (mm), calendar age (ka BP) and measured
@@ -540,7 +555,7 @@ geolod:Delta13CSpeleothemObservation
 # ── Chronology ────────────────────────────────────────────────────────────────
 geolod:UThChronology
     a owl:Class ;
-    rdfs:subClassOf crmsci:S6_Data_Evaluation ;
+    rdfs:subClassOf geolod:Chronology ;
     rdfs:label   "U-Th Chronology"@en ;
     rdfs:comment "Depth-age model for a speleothem based on uranium-thorium
                   (U-Th) radiometric dating. Corresponds to the Dating and
@@ -666,54 +681,56 @@ def build_sisal_rdf(
     if not RDF_AVAILABLE:
         return None
 
-    # ── Namespaces ────────────────────────────────────────────────────────────
+    # ── Graph + Namespaces (via geo_lod_utils — single source of truth) ──────
+    if GEO_LOD_UTILS_AVAILABLE:
+        g = get_graph()
+    else:
+        g = Graph()
+
     GEOLOD = Namespace("http://w3id.org/geo-lod/")
     SOSA = Namespace("http://www.w3.org/ns/sosa/")
     GEO = Namespace("http://www.opengis.net/ont/geosparql#")
     SF = Namespace("http://www.opengis.net/ont/sf#")
-    CRM = Namespace("http://www.cidoc-crm.org/cidoc-crm/")
     QUDT = Namespace("http://qudt.org/schema/qudt/")
     UNIT = Namespace("http://qudt.org/vocab/unit/")
 
-    g = Graph()
-    g.bind("geolod", GEOLOD)
-    g.bind("sosa", SOSA)
-    g.bind("geo", GEO)
-    g.bind("sf", SF)
-    g.bind("crm", CRM)
-    g.bind("qudt", QUDT)
-    g.bind("unit", UNIT)
-    g.bind("prov", PROV)
-    g.bind("dct", DCTERMS)
-    g.bind("owl", OWL)
-    g.bind("rdfs", RDFS)
-    g.bind("xsd", XSD)
+    if not GEO_LOD_UTILS_AVAILABLE:
+        g.bind("geolod", GEOLOD)
+        g.bind("sosa", SOSA)
+        g.bind("geo", GEO)
+        g.bind("qudt", QUDT)
+        g.bind("unit", UNIT)
+        g.bind("prov", PROV)
+        g.bind("dct", DCTERMS)
+        g.bind("owl", OWL)
+        g.bind("rdfs", RDFS)
+        g.bind("xsd", XSD)
 
     # ── DataSource (PROV) – wird referenziert, ist in Ontologie definiert ─────
     src = GEOLOD["SISALv3_DataSource"]
 
-    # ── Cave (GeoSPARQL + CIDOC-CRM, mirrors EPICA DrillingSite pattern) ─────
+    # ── Cave ──────────────────────────────────────────────────────────────────
     site_id_val = int(df["site_id"].iloc[0])
     cave = GEOLOD[f"Cave_{site_slug}"]
     g.add((cave, RDF.type, GEOLOD["Cave"]))
-    g.add((cave, RDF.type, CRM["E53_Place"]))
-    g.add((cave, RDF.type, CRM["E27_Site"]))
     g.add((cave, RDFS.label, Literal(site_name, lang="en")))
     g.add((cave, GEOLOD["siteId"], Literal(site_id_val, datatype=XSD.integer)))
 
-    # Geometry (WKT Point) if coordinates available
+    # Geometrie (GeoSPARQL 1.1 / CI_full.py pattern — sf:Point + CRS-prefixed WKT)
     if "latitude" in df.columns and "longitude" in df.columns:
         lat = df["latitude"].iloc[0]
         lon = df["longitude"].iloc[0]
         if pd.notna(lat) and pd.notna(lon):
             geom = GEOLOD[f"Cave_{site_slug}_Geometry"]
-            g.add((geom, RDF.type, SF["Point"]))
+            g.add(
+                (geom, RDF.type, SF["Point"])
+            )  # sf:Point only (subClassOf geo:Geometry)
             g.add(
                 (
                     geom,
                     GEO["asWKT"],
                     Literal(
-                        f"POINT({float(lon):.6f} {float(lat):.6f})",
+                        f"<http://www.opengis.net/def/crs/EPSG/0/4326> POINT({float(lon):.6f} {float(lat):.6f})",
                         datatype=GEO["wktLiteral"],
                     ),
                 )
@@ -987,22 +1004,26 @@ def build_sisal_sites_rdf(df_sites: "pd.DataFrame") -> "Graph | None":
     if not RDF_AVAILABLE:
         return None
 
+    # ── Graph + Namespaces (via geo_lod_utils) ───────────────────────────────
+    if GEO_LOD_UTILS_AVAILABLE:
+        g = get_graph()
+    else:
+        g = Graph()
+
     GEOLOD = Namespace("http://w3id.org/geo-lod/")
     GEO = Namespace("http://www.opengis.net/ont/geosparql#")
     SF = Namespace("http://www.opengis.net/ont/sf#")
-    CRM = Namespace("http://www.cidoc-crm.org/cidoc-crm/")
 
-    g = Graph()
-    g.bind("geolod", GEOLOD)
-    g.bind("geo", GEO)
-    g.bind("sf", SF)
-    g.bind("crm", CRM)
-    g.bind("prov", PROV)
-    g.bind("rdfs", RDFS)
-    g.bind("xsd", XSD)
+    if not GEO_LOD_UTILS_AVAILABLE:
+        g.bind("geolod", GEOLOD)
+        g.bind("geo", GEO)
+        g.bind("prov", PROV)
+        g.bind("rdfs", RDFS)
+        g.bind("xsd", XSD)
 
     src = GEOLOD["SISALv3_DataSource"]
 
+    cave_uris: list = []  # für FeatureCollection
     for _, row in df_sites.iterrows():
         site_id = int(row["site_id"])
         site_name = str(row["site_name"])
@@ -1013,8 +1034,6 @@ def build_sisal_sites_rdf(df_sites: "pd.DataFrame") -> "Graph | None":
         cave = GEOLOD[f"Cave_{slug}"]
 
         g.add((cave, RDF.type, GEOLOD["Cave"]))
-        g.add((cave, RDF.type, CRM["E53_Place"]))
-        g.add((cave, RDF.type, CRM["E27_Site"]))
         g.add((cave, RDFS.label, Literal(site_name, lang="en")))
         g.add((cave, GEOLOD["siteId"], Literal(site_id, datatype=XSD.integer)))
         g.add(
@@ -1033,11 +1052,32 @@ def build_sisal_sites_rdf(df_sites: "pd.DataFrame") -> "Graph | None":
         )
         g.add((cave, PROV.wasDerivedFrom, src))
 
-        # Geometry: WKT from CSV is already GeoSPARQL-compliant (lon lat)
+        # Geometry (GeoSPARQL 1.1 / CI_full.py pattern — sf:Point + CRS-prefixed WKT)
         geom = GEOLOD[f"Cave_{slug}_Geometry"]
-        g.add((geom, RDF.type, SF["Point"]))
-        g.add((geom, GEO["asWKT"], Literal(wkt, datatype=GEO["wktLiteral"])))
+        g.add((geom, RDF.type, SF["Point"]))  # sf:Point only (subClassOf geo:Geometry)
+        # Inject EPSG:4326 CRS prefix if absent (CI_full.py pattern)
+        if not wkt.startswith("<"):
+            wkt = f"<http://www.opengis.net/def/crs/EPSG/0/4326> {wkt}"
+        g.add(
+            (
+                geom,
+                GEO["asWKT"],
+                Literal(wkt, datatype=GEO["wktLiteral"]),
+            )
+        )
         g.add((cave, GEO["hasGeometry"], geom))
+
+        cave_uris.append(cave)
+
+    # ── FeatureCollection (GeoSPARQL 1.1 — enables QGIS / Linked Data viewers) ──
+    collection = GEOLOD["SISAL_Cave_Collection"]
+    g.add((collection, RDF.type, GEO["FeatureCollection"]))
+    g.add((collection, RDFS.label, Literal("SISAL Cave Sites Collection", lang="en")))
+    for cave_uri in cave_uris:
+        g.add((collection, RDFS.member, cave_uri))
+    print(
+        f"  FeatureCollection: {len(cave_uris)} members → geolod:SISAL_Cave_Collection"
+    )
 
     print(f"  RDF sites: {len(df_sites)} caves · {len(g):,} triples")
     return g
@@ -1061,7 +1101,20 @@ def export_sisal_rdf(
     print("RDF Export  (geo-lod SISAL Ontology + data)")
     print("─" * 60)
 
-    # 1. Ontology file (plain TTL string, no rdflib parsing required)
+    # 1a. Core ontology (geo_lod_core.ttl) via geo_lod_utils
+    if GEO_LOD_UTILS_AVAILABLE:
+        write_geo_lod_core(RDF_DIR)
+        write_geo_lod_mermaid(
+            RDF_DIR,
+            rolling_window=ROLLING_WINDOW,
+            sg_window=SG_WINDOW,
+            sg_poly=SG_POLYORDER,
+            n_sisal_sites=305,
+        )
+    else:
+        print("  ⚠  geo_lod_utils not available – geo_lod_core.ttl / Mermaid skipped.")
+
+    # 1b. SISAL extension ontology (sisal_ontology.ttl)
     onto_path = os.path.join(RDF_DIR, "sisal_ontology.ttl")
     with open(onto_path, "w", encoding="utf-8") as f:
         f.write(SISAL_ONTOLOGY_TTL)
@@ -1069,16 +1122,17 @@ def export_sisal_rdf(
 
     # 2. Combined graph (will accumulate sites + cave data)
     GEOLOD = Namespace("http://w3id.org/geo-lod/")
-    combined = Graph()
-    combined.bind("geolod", GEOLOD)
-    combined.bind("sosa", Namespace("http://www.w3.org/ns/sosa/"))
-    combined.bind("geo", Namespace("http://www.opengis.net/ont/geosparql#"))
-    combined.bind("sf", Namespace("http://www.opengis.net/ont/sf#"))
-    combined.bind("crm", Namespace("http://www.cidoc-crm.org/cidoc-crm/"))
-    combined.bind("prov", PROV)
-    combined.bind("dct", DCTERMS)
-    combined.bind("rdfs", RDFS)
-    combined.bind("xsd", XSD)
+    if GEO_LOD_UTILS_AVAILABLE:
+        combined = get_graph()
+    else:
+        combined = Graph()
+        combined.bind("geolod", GEOLOD)
+        combined.bind("sosa", Namespace("http://www.w3.org/ns/sosa/"))
+        combined.bind("geo", Namespace("http://www.opengis.net/ont/geosparql#"))
+        combined.bind("prov", PROV)
+        combined.bind("dct", DCTERMS)
+        combined.bind("rdfs", RDFS)
+        combined.bind("xsd", XSD)
 
     # 3. Sites graph (all 305 SISAL cave sites)
     if df_sites is not None:

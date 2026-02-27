@@ -30,6 +30,10 @@ geolod:EPICA_DomeCampaign_1996_2004 a crm:E7_Activity,
     crm:P7_took_place_at geolod:EpicaDomeC_Site ;
     crmsci:O1_removed geolod:EpicaDomeC_IceCore .
 
+geolod:EPICA_DrillingSite_Collection a geo:FeatureCollection ;
+    rdfs:label "EPICA Dome C Drilling Site Collection"@en ;
+    rdfs:member geolod:EpicaDomeC_Site .
+
 geolod:EPICA_DomeC_CH4_Dataset a dcat:Dataset ;
     dct:description "CH₄ concentration measurements from the EPICA Dome C ice core on the EDC2 chronology (0–649 ka BP, 736 data points)."@en ;
     dct:license <https://creativecommons.org/licenses/by/3.0/> ;
@@ -4282,7 +4286,7 @@ geolod:EPICA_DomeC_d18O_Dataset a dcat:Dataset ;
         geolod:Obs_d18O_1377 .
 
 geolod:EpicaDomeC_Geometry a sf:Point ;
-    geo:asWKT "POINT(123.35 -75.1)"^^geo:wktLiteral .
+    geo:asWKT "<http://www.opengis.net/def/crs/EPSG/0/4326> POINT(123.35 -75.1)"^^geo:wktLiteral .
 
 geolod:Obs_CH4_0000 a crmsci:S4_Observation,
         sosa:Observation ;
@@ -42388,8 +42392,10 @@ geolod:EpicaDomeC_IceCore a crm:E22_Human-Made_Object,
     crm:P53_has_former_or_current_location geolod:EpicaDomeC_Site ;
     sosa:isSampleOf geolod:EpicaDomeC_Site .
 
-geolod:EpicaDomeC_Site a crm:E27_Site,
-        crm:E53_Place ;
+geolod:EpicaDomeC_Site a geolod:DrillingSite,
+        crm:E27_Site,
+        crm:E53_Place,
+        geo:Feature ;
     rdfs:label "EPICA Dome C, East Antarctica"@en ;
     crm:P87_is_identified_by "75°06'S, 123°21'E"^^xsd:string ;
     geo:hasGeometry geolod:EpicaDomeC_Geometry .

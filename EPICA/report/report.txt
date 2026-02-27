@@ -71,9 +71,10 @@ RDF Export …
 ────────────────────────────────────────────────────────────
   Writing CH4 observations …
   Writing δ¹⁸O observations …
-  ✓ 40,250 triples written
+  ✓ 40,255 triples written
   ✓ Turtle:  c:\git\EPICA-SISAL-FAIRification\EPICA\rdf\epica_dome_c.ttl
-  ✓ OWL ontology: c:\git\EPICA-SISAL-FAIRification\EPICA\rdf\epica_ontology.ttl
+  ⚠  geo_lod_utils not available – geo_lod_core.ttl skipped.
+  ✓ EPICA ontology: c:\git\EPICA-SISAL-FAIRification\EPICA\rdf\epica_ontology.ttl
   ✓ Mermaid Taxonomy: c:\git\EPICA-SISAL-FAIRification\EPICA\rdf\epica_diagram1_taxonomy.mermaid
   ✓ Mermaid Instance: c:\git\EPICA-SISAL-FAIRification\EPICA\rdf\epica_diagram2_instance.mermaid
 
