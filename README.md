@@ -1,4 +1,4 @@
-# EPICA-SISAL-FAIRification
+# EPICA-SISAL-FAIRification: Palaeoclimate Data Processing Pipeline
 
 ![Squilly Logo](img/logo.png)
 
