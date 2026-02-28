@@ -64,20 +64,6 @@ var minivowlresult={
  "links": [
   {
    "source": 10,
-   "target": 6,
-   "valueTo": "member",
-   "propertyTo": "class",
-   "uriTo": "http://www.w3.org/2000/01/rdf-schema#member"
-  },
-  {
-   "source": 10,
-   "target": 3,
-   "valueTo": "member",
-   "propertyTo": "class",
-   "uriTo": "http://www.w3.org/2000/01/rdf-schema#member"
-  },
-  {
-   "source": 10,
    "target": 0,
    "valueTo": "member",
    "propertyTo": "class",
@@ -85,7 +71,49 @@ var minivowlresult={
   },
   {
    "source": 10,
-   "target": 2,
+   "target": 6,
+   "valueTo": "member",
+   "propertyTo": "class",
+   "uriTo": "http://www.w3.org/2000/01/rdf-schema#member"
+  },
+  {
+   "source": 10,
+   "target": 7,
+   "valueTo": "member",
+   "propertyTo": "class",
+   "uriTo": "http://www.w3.org/2000/01/rdf-schema#member"
+  },
+  {
+   "source": 10,
+   "target": 5,
+   "valueTo": "member",
+   "propertyTo": "class",
+   "uriTo": "http://www.w3.org/2000/01/rdf-schema#member"
+  },
+  {
+   "source": 10,
+   "target": 9,
+   "valueTo": "member",
+   "propertyTo": "class",
+   "uriTo": "http://www.w3.org/2000/01/rdf-schema#member"
+  },
+  {
+   "source": 10,
+   "target": 8,
+   "valueTo": "member",
+   "propertyTo": "class",
+   "uriTo": "http://www.w3.org/2000/01/rdf-schema#member"
+  },
+  {
+   "source": 10,
+   "target": 4,
+   "valueTo": "member",
+   "propertyTo": "class",
+   "uriTo": "http://www.w3.org/2000/01/rdf-schema#member"
+  },
+  {
+   "source": 10,
+   "target": 3,
    "valueTo": "member",
    "propertyTo": "class",
    "uriTo": "http://www.w3.org/2000/01/rdf-schema#member"
@@ -99,94 +127,10 @@ var minivowlresult={
   },
   {
    "source": 10,
-   "target": 7,
+   "target": 2,
    "valueTo": "member",
    "propertyTo": "class",
    "uriTo": "http://www.w3.org/2000/01/rdf-schema#member"
-  },
-  {
-   "source": 10,
-   "target": 8,
-   "valueTo": "member",
-   "propertyTo": "class",
-   "uriTo": "http://www.w3.org/2000/01/rdf-schema#member"
-  },
-  {
-   "source": 10,
-   "target": 5,
-   "valueTo": "member",
-   "propertyTo": "class",
-   "uriTo": "http://www.w3.org/2000/01/rdf-schema#member"
-  },
-  {
-   "source": 10,
-   "target": 9,
-   "valueTo": "member",
-   "propertyTo": "class",
-   "uriTo": "http://www.w3.org/2000/01/rdf-schema#member"
-  },
-  {
-   "source": 10,
-   "target": 4,
-   "valueTo": "member",
-   "propertyTo": "class",
-   "uriTo": "http://www.w3.org/2000/01/rdf-schema#member"
-  },
-  {
-   "source": 0,
-   "target": 8,
-   "valueTo": "smoothingMethod_savgol",
-   "propertyTo": "class",
-   "uriTo": "http://w3id.org/geo-lod/smoothingMethod_savgol"
-  },
-  {
-   "source": 1,
-   "target": 8,
-   "valueTo": "smoothingMethod_savgol",
-   "propertyTo": "class",
-   "uriTo": "http://w3id.org/geo-lod/smoothingMethod_savgol"
-  },
-  {
-   "source": 0,
-   "target": 6,
-   "valueTo": "measurementType",
-   "propertyTo": "class",
-   "uriTo": "http://w3id.org/geo-lod/measurementType"
-  },
-  {
-   "source": 1,
-   "target": 6,
-   "valueTo": "measurementType",
-   "propertyTo": "class",
-   "uriTo": "http://w3id.org/geo-lod/measurementType"
-  },
-  {
-   "source": 0,
-   "target": 3,
-   "valueTo": "hasFeatureOfInterest",
-   "propertyTo": "class",
-   "uriTo": "http://www.w3.org/ns/sosa/hasFeatureOfInterest"
-  },
-  {
-   "source": 1,
-   "target": 3,
-   "valueTo": "hasFeatureOfInterest",
-   "propertyTo": "class",
-   "uriTo": "http://www.w3.org/ns/sosa/hasFeatureOfInterest"
-  },
-  {
-   "source": 0,
-   "target": 9,
-   "valueTo": "ageChronologySpeleothem",
-   "propertyTo": "class",
-   "uriTo": "http://w3id.org/geo-lod/ageChronologySpeleothem"
-  },
-  {
-   "source": 1,
-   "target": 9,
-   "valueTo": "ageChronologySpeleothem",
-   "propertyTo": "class",
-   "uriTo": "http://w3id.org/geo-lod/ageChronologySpeleothem"
   },
   {
    "source": 0,
@@ -229,6 +173,62 @@ var minivowlresult={
    "valueTo": "smoothingMethod_median",
    "propertyTo": "class",
    "uriTo": "http://w3id.org/geo-lod/smoothingMethod_median"
+  },
+  {
+   "source": 0,
+   "target": 3,
+   "valueTo": "hasFeatureOfInterest",
+   "propertyTo": "class",
+   "uriTo": "http://www.w3.org/ns/sosa/hasFeatureOfInterest"
+  },
+  {
+   "source": 1,
+   "target": 3,
+   "valueTo": "hasFeatureOfInterest",
+   "propertyTo": "class",
+   "uriTo": "http://www.w3.org/ns/sosa/hasFeatureOfInterest"
+  },
+  {
+   "source": 0,
+   "target": 6,
+   "valueTo": "measurementType",
+   "propertyTo": "class",
+   "uriTo": "http://w3id.org/geo-lod/measurementType"
+  },
+  {
+   "source": 1,
+   "target": 6,
+   "valueTo": "measurementType",
+   "propertyTo": "class",
+   "uriTo": "http://w3id.org/geo-lod/measurementType"
+  },
+  {
+   "source": 0,
+   "target": 8,
+   "valueTo": "smoothingMethod_savgol",
+   "propertyTo": "class",
+   "uriTo": "http://w3id.org/geo-lod/smoothingMethod_savgol"
+  },
+  {
+   "source": 1,
+   "target": 8,
+   "valueTo": "smoothingMethod_savgol",
+   "propertyTo": "class",
+   "uriTo": "http://w3id.org/geo-lod/smoothingMethod_savgol"
+  },
+  {
+   "source": 0,
+   "target": 9,
+   "valueTo": "ageChronologySpeleothem",
+   "propertyTo": "class",
+   "uriTo": "http://w3id.org/geo-lod/ageChronologySpeleothem"
+  },
+  {
+   "source": 1,
+   "target": 9,
+   "valueTo": "ageChronologySpeleothem",
+   "propertyTo": "class",
+   "uriTo": "http://w3id.org/geo-lod/ageChronologySpeleothem"
   },
   {
    "source": 3,
