@@ -34,7 +34,7 @@
 # ── Sample ────────────────────────────────────────────────────────────────────
 geolod:Speleothem
     a owl:Class ;
-    rdfs:subClassOf sosa:Sample ;
+    rdfs:subClassOf geolod:PalaeoclimateSample ;
     rdfs:subClassOf crm:E22_Human-Made_Object ;
     rdfs:label   "Speleothem"@en ;
     rdfs:comment "Secondary cave carbonate precipitate (stalagmite, stalactite,
@@ -49,9 +49,7 @@ geolod:Speleothem
 # ── Site ──────────────────────────────────────────────────────────────────────
 geolod:Cave
     a owl:Class ;
-    rdfs:subClassOf crm:E53_Place ;
-    rdfs:subClassOf crm:E27_Site ;
-    rdfs:subClassOf geo:Feature ;
+    rdfs:subClassOf geolod:SamplingLocation ;
     rdfs:label   "Cave"@en ;
     rdfs:comment "Geographical cave site from which a speleothem was collected.
                   Corresponds to site in SISALv3 (site_id, latitude, longitude,
@@ -79,8 +77,7 @@ geolod:SpeleothemSamplingEvent
 # ── Observation ───────────────────────────────────────────────────────────────
 geolod:SpeleothemObservation
     a owl:Class ;
-    rdfs:subClassOf sosa:Observation ;
-    rdfs:subClassOf crmsci:S4_Observation ;
+    rdfs:subClassOf geolod:PalaeoclimateObservation ;
     rdfs:label   "Speleothem Observation"@en ;
     rdfs:comment "Single stable isotope measurement on a speleothem sample,
                   characterised by depth (mm), calendar age (ka BP) and measured
@@ -121,7 +118,7 @@ geolod:Delta13CSpeleothemObservation
 # ── Chronology ────────────────────────────────────────────────────────────────
 geolod:UThChronology
     a owl:Class ;
-    rdfs:subClassOf crmsci:S6_Data_Evaluation ;
+    rdfs:subClassOf geolod:Chronology ;
     rdfs:label   "U-Th Chronology"@en ;
     rdfs:comment "Depth-age model for a speleothem based on uranium-thorium
                   (U-Th) radiometric dating. Corresponds to the Dating and
@@ -228,3 +225,18 @@ geolod:SISALv3_DataSource
         "Kaushal, N. et al. (2024): SISALv3: a global speleothem stable isotope and trace element database. Earth Syst. Sci. Data, 16, 1933-1963. https://doi.org/10.5194/essd-16-1933-2024"@en ;
     prov:wasAttributedTo
         <https://doi.org/10.5194/essd-16-1933-2024> .
+
+# ============================================================================
+# NAMED INDIVIDUALS
+# ============================================================================
+
+geolod:AllPalaeoclimateSites_Collection
+    a geo:FeatureCollection , owl:NamedIndividual ;
+    rdfs:label   "All Palaeoclimate Sites Collection"@en ;
+    rdfs:comment "Combined collection of all palaeoclimate sampling locations (ice cores, cave sites, etc.)"@en .
+    # Members are added dynamically from individual datasets (EPICA, SISAL, etc.)
+
+geolod:SISAL_Cave_Collection
+    a geo:FeatureCollection , owl:NamedIndividual ;
+    rdfs:label   "SISAL Cave Sites Collection"@en .
+    # Members are added dynamically from v_sites_all.csv (305 caves)

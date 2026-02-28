@@ -962,6 +962,73 @@ def write_mermaid(
     return paths
 
 
+def write_combined_sites_collection(
+    outdir: str,
+    epica_ttl_path: str | None = None,
+    sisal_sites_ttl_path: str | None = None,
+) -> str:
+    """
+    Writes a combined TTL file that imports EPICA and SISAL site Collections.
+    
+    This creates:
+      - all_palaeoclimate_sites_collection.ttl
+    
+    Which combines:
+      - geolod:EPICA_DrillingSite_Collection (1 member)
+      - geolod:SISAL_Cave_Collection (305 members)
+      
+    Into:
+      - geolod:AllPalaeoclimateSites_Collection (306 members total)
+    
+    Parameters
+    ----------
+    outdir : output directory
+    epica_ttl_path : optional path to epica_dome_c.ttl (for reference/import)
+    sisal_sites_ttl_path : optional path to sisal_sites.ttl (for reference/import)
+    
+    Returns path to written file.
+    """
+    if not RDF_AVAILABLE:
+        print("  ⚠  rdflib not available – combined sites collection skipped.")
+        return ""
+    
+    os.makedirs(outdir, exist_ok=True)
+    
+    g = get_graph()
+    GEOLOD = Namespace(NS["geolod"])
+    GEO = Namespace(NS["geo"])
+    
+    # Create the combined collection
+    all_sites = GEOLOD["AllPalaeoclimateSites_Collection"]
+    g.add((all_sites, RDF.type, GEO["FeatureCollection"]))
+    g.add((all_sites, RDFS.label, Literal("All Palaeoclimate Sites Collection", lang="en")))
+    g.add((all_sites, RDFS.comment, Literal(
+        "Combined collection of all palaeoclimate sampling locations (ice cores, cave sites, etc.)",
+        lang="en"
+    )))
+    
+    # Add comment about how to use this
+    g.add((all_sites, RDFS.comment, Literal(
+        "Individual site members are populated in the respective dataset TTLs "
+        "(epica_dome_c.ttl, sisal_sites.ttl). This collection URI serves as a "
+        "GeoSPARQL entry point for querying all sites across datasets.",
+        lang="en"
+    )))
+    
+    # Optionally add imports/references
+    if epica_ttl_path:
+        g.add((all_sites, RDFS.seeAlso, Literal(epica_ttl_path, datatype=XSD.anyURI)))
+    if sisal_sites_ttl_path:
+        g.add((all_sites, RDFS.seeAlso, Literal(sisal_sites_ttl_path, datatype=XSD.anyURI)))
+    
+    # Write file
+    path = os.path.join(outdir, "all_palaeoclimate_sites_collection.ttl")
+    g.serialize(destination=path, format="turtle")
+    print(f"  ✓ Combined Sites: {path} ({len(g)} triples)")
+    return path
+
+
+
 # ===========================================================================
 # 6.  SELF-TEST  —  python ontology/geo_lod_utils.py
 # ===========================================================================

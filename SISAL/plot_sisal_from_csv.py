@@ -425,6 +425,7 @@ try:
         add_geo_site_from_wkt,
         add_feature_collection,
         write_geo_lod_core,
+        write_combined_sites_collection,
         write_mermaid as write_geo_lod_mermaid,
     )
 
@@ -662,6 +663,21 @@ geolod:SISALv3_DataSource
         "Kaushal, N. et al. (2024): SISALv3: a global speleothem stable isotope and trace element database. Earth Syst. Sci. Data, 16, 1933-1963. https://doi.org/10.5194/essd-16-1933-2024"@en ;
     prov:wasAttributedTo
         <https://doi.org/10.5194/essd-16-1933-2024> .
+
+# ============================================================================
+# NAMED INDIVIDUALS
+# ============================================================================
+
+geolod:AllPalaeoclimateSites_Collection
+    a geo:FeatureCollection , owl:NamedIndividual ;
+    rdfs:label   "All Palaeoclimate Sites Collection"@en ;
+    rdfs:comment "Combined collection of all palaeoclimate sampling locations (ice cores, cave sites, etc.)"@en .
+    # Members are added dynamically from individual datasets (EPICA, SISAL, etc.)
+
+geolod:SISAL_Cave_Collection
+    a geo:FeatureCollection , owl:NamedIndividual ;
+    rdfs:label   "SISAL Cave Sites Collection"@en .
+    # Members are added dynamically from v_sites_all.csv (305 caves)
 """
 
 
@@ -1079,6 +1095,33 @@ def build_sisal_sites_rdf(df_sites: "pd.DataFrame") -> "Graph | None":
         f"  FeatureCollection: {len(cave_uris)} members → geolod:SISAL_Cave_Collection"
     )
 
+    # ── Global Palaeoclimate Sites Collection ──
+    # (combined collection across all datasets — EPICA, SISAL, etc.)
+    global_collection = GEOLOD["AllPalaeoclimateSites_Collection"]
+    g.add((global_collection, RDF.type, GEO["FeatureCollection"]))
+    g.add(
+        (
+            global_collection,
+            RDFS.label,
+            Literal("All Palaeoclimate Sites Collection", lang="en"),
+        )
+    )
+    g.add(
+        (
+            global_collection,
+            RDFS.comment,
+            Literal(
+                "Combined collection of all palaeoclimate sampling locations (ice cores, cave sites, etc.)",
+                lang="en",
+            ),
+        )
+    )
+    for cave_uri in cave_uris:
+        g.add((global_collection, RDFS.member, cave_uri))
+    print(
+        f"  Global Collection: {len(cave_uris)} cave sites added → geolod:AllPalaeoclimateSites_Collection"
+    )
+
     print(f"  RDF sites: {len(df_sites)} caves · {len(g):,} triples")
     return g
 
@@ -1164,6 +1207,30 @@ def export_sisal_rdf(
     combined_path = os.path.join(RDF_DIR, "sisal_all_data.ttl")
     combined.serialize(destination=combined_path, format="turtle")
     print(f"\n  ✓ {combined_path}  ({len(combined):,} triples total)")
+
+    # 6. Combined Sites Collection (optional — if EPICA is available)
+    # This creates a FeatureCollection that references both EPICA and SISAL sites.
+    if GEO_LOD_UTILS_AVAILABLE:
+        epica_data_path = os.path.join(RDF_DIR, "epica_dome_c.ttl")
+        sisal_sites_path = os.path.join(RDF_DIR, "sisal_sites.ttl")
+
+        # Only write if at least one dataset exists
+        if os.path.exists(epica_data_path) or os.path.exists(sisal_sites_path):
+            write_combined_sites_collection(
+                RDF_DIR,
+                epica_ttl_path=(
+                    epica_data_path if os.path.exists(epica_data_path) else None
+                ),
+                sisal_sites_ttl_path=(
+                    sisal_sites_path if os.path.exists(sisal_sites_path) else None
+                ),
+            )
+        else:
+            print(
+                "  ℹ  Combined collection skipped (EPICA/SISAL data files not found yet)"
+            )
+    else:
+        print("  ⚠  geo_lod_utils not available – combined collection skipped.")
 
 
 # ──────────────────────────────────────────────

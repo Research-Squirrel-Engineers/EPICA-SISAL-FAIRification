@@ -119,11 +119,16 @@ Loading: v_data_275_buracagloriosa.csv
 ────────────────────────────────────────────────────────────
 RDF Export  (geo-lod SISAL Ontology + data)
 ────────────────────────────────────────────────────────────
+  ✓ Core ontology : c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\geo_lod_core.ttl
+  ✓ Mermaid       : c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\mermaid_taxonomy.mermaid
+  ✓ Mermaid       : c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\mermaid_instance_epica.mermaid
+  ✓ Mermaid       : c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\mermaid_instance_sisal.mermaid
   ✓ c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\sisal_ontology.ttl
 
   Building sites graph …
   FeatureCollection: 305 members → geolod:SISAL_Cave_Collection
-  RDF sites: 305 caves · 3,052 triples
+  Global Collection: 305 cave sites added → geolod:AllPalaeoclimateSites_Collection
+  RDF sites: 305 caves · 3,360 triples
   ✓ c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\sisal_sites.ttl
 
   Botuverá cave  (144_botuvera)
@@ -142,7 +147,8 @@ RDF Export  (geo-lod SISAL Ontology + data)
   RDF: 1,137 d18O obs · 1,137 d13C obs · 27,327 triples
   ✓ c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\sisal_275_buracagloriosa_data.ttl
 
-  ✓ c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\sisal_all_data.ttl  (151,861 triples total)
+  ✓ c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\sisal_all_data.ttl  (152,169 triples total)
+  ✓ Combined Sites: c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\all_palaeoclimate_sites_collection.ttl (5 triples)
 
 ============================================================
 Done! Plots saved to 'c:\git\EPICA-SISAL-FAIRification\SISAL\plots/'

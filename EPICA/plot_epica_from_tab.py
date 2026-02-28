@@ -28,6 +28,7 @@ try:
         add_geo_site,
         add_feature_collection,
         write_geo_lod_core,
+        write_combined_sites_collection,
         write_mermaid as write_geo_lod_mermaid,
     )
 
@@ -784,6 +785,29 @@ def build_epica_rdf(df_ch4: pd.DataFrame, df_d18o: pd.DataFrame) -> "Graph":
     )
     g.add((collection, RDFS.member, site))
 
+    # ── Global Palaeoclimate Sites Collection ──
+    # (combined collection across all datasets — EPICA, SISAL, etc.)
+    global_collection = GEOLOD["AllPalaeoclimateSites_Collection"]
+    g.add((global_collection, RDF.type, GEO["FeatureCollection"]))
+    g.add(
+        (
+            global_collection,
+            RDFS.label,
+            Literal("All Palaeoclimate Sites Collection", lang="en"),
+        )
+    )
+    g.add(
+        (
+            global_collection,
+            RDFS.comment,
+            Literal(
+                "Combined collection of all palaeoclimate sampling locations (ice cores, cave sites, etc.)",
+                lang="en",
+            ),
+        )
+    )
+    g.add((global_collection, RDFS.member, site))
+
     # ── Eiskern: Probe (SOSA Sample + CIDOC-CRM E22_Human-Made_Object) ───
     core = GEOLOD["EpicaDomeC_IceCore"]
     g.add((core, RDF.type, SOSA["Sample"]))
@@ -1269,6 +1293,12 @@ geolod:atDepth_m
 # NAMED INDIVIDUALS
 # ============================================================================
 
+geolod:AllPalaeoclimateSites_Collection
+    a geo:FeatureCollection , owl:NamedIndividual ;
+    rdfs:label          "All Palaeoclimate Sites Collection"@en ;
+    rdfs:comment        "Combined collection of all palaeoclimate sampling locations (ice cores, cave sites, etc.)"@en .
+    # Members are added dynamically from individual datasets (EPICA, SISAL, etc.)
+
 geolod:EPICA_DrillingSite_Collection
     a geo:FeatureCollection , owl:NamedIndividual ;
     rdfs:label          "EPICA Dome C Drilling Site Collection"@en ;
@@ -1413,6 +1443,32 @@ unit:M                  rdfs:label "Metre"@en .
         )
     else:
         export_mermaid()  # fallback to local
+
+    # ── 4. Combined Sites Collection (optional — if SISAL is available) ──────
+    # This creates a FeatureCollection that references both EPICA and SISAL sites.
+    # The collection itself is defined in the ontology, but members are added
+    # dynamically from the data TTLs (epica_dome_c.ttl, sisal_sites.ttl).
+    if GEO_LOD_UTILS_AVAILABLE:
+        sisal_sites_path = os.path.join(RDF_DIR, "sisal_sites.ttl")
+        epica_data_path = os.path.join(RDF_DIR, "epica_dome_c.ttl")
+
+        # Only write if both datasets exist
+        if os.path.exists(sisal_sites_path) or os.path.exists(epica_data_path):
+            write_combined_sites_collection(
+                RDF_DIR,
+                epica_ttl_path=(
+                    epica_data_path if os.path.exists(epica_data_path) else None
+                ),
+                sisal_sites_ttl_path=(
+                    sisal_sites_path if os.path.exists(sisal_sites_path) else None
+                ),
+            )
+        else:
+            print(
+                "  ℹ  Combined collection skipped (SISAL/EPICA data files not found yet)"
+            )
+    else:
+        print("  ⚠  geo_lod_utils not available – combined collection skipped.")
 
 
 def export_mermaid():
