@@ -44890,7 +44890,7 @@ ns1:geo-lod_comment a void:Dataset,
     rdfs:label "Property Partition: comment"@en ;
     void:property rdfs:comment ;
     void:triples 1,
-        2 .
+        3 .
 
 ns1:geo-lod_entityId a void:Dataset,
         <http://www.w3.org/ns/ldp#BasicContainer>,
@@ -44918,8 +44918,8 @@ ns1:geo-lod_label a void:Dataset,
     rdfs:label "Property Partition: label"@en ;
     void:property rdfs:label ;
     void:triples 20,
-        309,
-        2145 .
+        310,
+        2146 .
 
 ns1:geo-lod_measuredValue a void:Dataset,
         <http://www.w3.org/ns/ldp#BasicContainer>,
@@ -44946,8 +44946,8 @@ ns1:geo-lod_member a void:Dataset,
         <https://www.iana.org/assignments/media-types/text/turtle#Resource> ;
     rdfs:label "Property Partition: member"@en ;
     void:property rdfs:member ;
-    void:triples 916,
-        2135,
+    void:triples 1222,
+        2137,
         2480 .
 
 ns1:geo-lod_observedProperty a void:Dataset,
@@ -45026,9 +45026,9 @@ ns1:geo-lod_type a void:Dataset,
         <https://www.iana.org/assignments/media-types/text/turtle#Resource> ;
     rdfs:label "Property Partition: type"@en ;
     void:property rdf:type ;
-    void:triples 614,
+    void:triples 615,
         2490,
-        4272 .
+        4273 .
 
 ns1:geo-lod_wasDerivedFrom a void:Dataset,
         <http://www.w3.org/ns/ldp#BasicContainer>,
@@ -45168,23 +45168,23 @@ ns1:geo-lod a void:Dataset,
         31,
         34 ;
     ns2:averagePropertyIRILength 40,
-        41 ;
+        42 ;
     ns2:averageSubjectIRILength 36,
         42,
         54 ;
     ns2:datatypes 0 ;
     ns2:distinctBlankNodes 0 ;
-    ns2:distinctIRIReferences 2397,
+    ns2:distinctIRIReferences 2402,
         9655,
-        14619 ;
+        14623 ;
     ns2:distinctLiterals 0 ;
-    ns2:distinctRDFNodes 2397,
+    ns2:distinctRDFNodes 2402,
         9655,
-        14619 ;
+        14623 ;
     ns2:languages 0 ;
     ns2:propertyClasses 0 ;
     dc:language <http://www.lexvo.org/page/iso639-1/en> ;
-    dcterms:modified "2026-02-27T16:56:20"^^xsd:dateTime ;
+    dcterms:modified "2026-02-28T09:19:11"^^xsd:dateTime ;
     dcterms:subject <http://dbpedia.org/resource/Location>,
         <http://dbpedia.org/resource/OGC_GeoSPARQL>,
         <http://dbpedia.org/resource/Time>,
@@ -45229,18 +45229,18 @@ ns1:geo-lod a void:Dataset,
         11,
         23 ;
     void:dataDump <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//index.ttl> ;
-    void:distinctObjects 1770,
+    void:distinctObjects 1773,
         7145,
-        12421 ;
-    void:distinctSubjects 617,
-        2156,
+        12424 ;
+    void:distinctSubjects 618,
+        2157,
         2490 ;
-    void:entities 615,
-        2150,
+    void:entities 616,
+        2151,
         2491 ;
     void:feature <http://www.w3.org/ns/formats/RDFa>,
         <http://www.w3.org/ns/formats/Turtle> ;
-    void:properties 10,
+    void:properties 11,
         20,
         42 ;
     void:propertyPartition ns1:geo-lod_O1_removed,
@@ -45293,9 +45293,9 @@ ns1:geo-lod a void:Dataset,
         ns1:geo-lod_unit,
         ns1:geo-lod_wasDerivedFrom,
         ns1:geo-lod_windowSize ;
-    void:triples 4286,
+    void:triples 4596,
         34641,
-        46697 ;
+        46703 ;
     void:uriSpace "http://w3id.org/geo-lod/"^^xsd:string ;
     void:vocabulary ns2:,
         dcam:,

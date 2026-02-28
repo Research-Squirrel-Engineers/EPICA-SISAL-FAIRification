@@ -2,6 +2,7 @@ var search={
   "AICC2023 ice core chronology (Bouchet et al. 2023)": "http://w3id.org/geo-lod/AICC2023_Chronology",
   "Abaco Island cave": "http://w3id.org/geo-lod/Cave_site_0070",
   "Abaliget cave": "http://w3id.org/geo-lod/Cave_site_0031",
+  "All Palaeoclimate Sites Collection": "http://w3id.org/geo-lod/AllPalaeoclimateSites_Collection",
   "Amir Timur cave": "http://w3id.org/geo-lod/Cave_site_0296",
   "Andriamaniloke": "http://w3id.org/geo-lod/Cave_site_0252",
   "Anjohibe": "http://w3id.org/geo-lod/Cave_site_0094",

@@ -39,23 +39,23 @@
         31,
         34 ;
     ns1:averagePropertyIRILength 40,
-        41 ;
+        42 ;
     ns1:averageSubjectIRILength 36,
         42,
         54 ;
     ns1:datatypes 0 ;
     ns1:distinctBlankNodes 0 ;
-    ns1:distinctIRIReferences 2397,
+    ns1:distinctIRIReferences 2402,
         9655,
-        14619 ;
+        14623 ;
     ns1:distinctLiterals 0 ;
-    ns1:distinctRDFNodes 2397,
+    ns1:distinctRDFNodes 2402,
         9655,
-        14619 ;
+        14623 ;
     ns1:languages 0 ;
     ns1:propertyClasses 0 ;
     dc:language <http://www.lexvo.org/page/iso639-1/en> ;
-    dcterms:modified "2026-02-27T16:56:20"^^xsd:dateTime ;
+    dcterms:modified "2026-02-28T09:19:11"^^xsd:dateTime ;
     dcterms:subject <http://dbpedia.org/resource/Location>,
         <http://dbpedia.org/resource/OGC_GeoSPARQL>,
         <http://dbpedia.org/resource/Time>,
@@ -100,18 +100,18 @@
         11,
         23 ;
     void:dataDump <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//index.ttl> ;
-    void:distinctObjects 1770,
+    void:distinctObjects 1773,
         7145,
-        12421 ;
-    void:distinctSubjects 617,
-        2156,
+        12424 ;
+    void:distinctSubjects 618,
+        2157,
         2490 ;
-    void:entities 615,
-        2150,
+    void:entities 616,
+        2151,
         2491 ;
     void:feature <http://www.w3.org/ns/formats/RDFa>,
         <http://www.w3.org/ns/formats/Turtle> ;
-    void:properties 10,
+    void:properties 11,
         20,
         42 ;
     void:propertyPartition <http://w3id.org/geo-lod/geo-lod_O1_removed>,
@@ -164,9 +164,9 @@
         <http://w3id.org/geo-lod/geo-lod_unit>,
         <http://w3id.org/geo-lod/geo-lod_wasDerivedFrom>,
         <http://w3id.org/geo-lod/geo-lod_windowSize> ;
-    void:triples 4286,
+    void:triples 4596,
         34641,
-        46697 ;
+        46703 ;
     void:uriSpace "http://w3id.org/geo-lod/"^^xsd:string ;
     void:vocabulary ns1:,
         dcam:,

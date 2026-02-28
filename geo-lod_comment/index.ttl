@@ -8,5 +8,5 @@
     rdfs:label "Property Partition: comment"@en ;
     void:property rdfs:comment ;
     void:triples 1,
-        2 .
+        3 .
 
