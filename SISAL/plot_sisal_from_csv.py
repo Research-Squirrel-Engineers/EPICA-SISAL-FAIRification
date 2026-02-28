@@ -40,9 +40,11 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.path.join(SCRIPT_DIR, "plots")
 REPORT_DIR = os.path.join(SCRIPT_DIR, "report")
 RDF_DIR = os.path.join(SCRIPT_DIR, "rdf")
+ONTOLOGY_DIR = os.path.join(os.path.dirname(SCRIPT_DIR), "ontology")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 os.makedirs(REPORT_DIR, exist_ok=True)
 os.makedirs(RDF_DIR, exist_ok=True)
+os.makedirs(ONTOLOGY_DIR, exist_ok=True)
 
 # ──────────────────────────────────────────────
 # Shared plot settings
@@ -1148,7 +1150,7 @@ def export_sisal_rdf(
     if GEO_LOD_UTILS_AVAILABLE:
         write_geo_lod_core(RDF_DIR)
         write_geo_lod_mermaid(
-            RDF_DIR,
+            ONTOLOGY_DIR,
             rolling_window=ROLLING_WINDOW,
             sg_window=SG_WINDOW,
             sg_poly=SG_POLYORDER,

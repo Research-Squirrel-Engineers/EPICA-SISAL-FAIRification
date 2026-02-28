@@ -587,190 +587,167 @@ def write_geo_lod_core(outdir: str) -> str:
 MERMAID_TAXONOMY: str = textwrap.dedent(
     """\
     flowchart LR
-
-        subgraph EXT["External Ontologies"]
+    %% External Ontologies
+    subgraph EXT["External Ontologies"]
+        direction TB
+        
+        subgraph CRM["CIDOC-CRM"]
             direction TB
-
-            subgraph GEO_ONT["GeoSPARQL"]
-                direction TB
-                GF["geo:Feature"]
-                GFC["geo:FeatureCollection"]
-                GG["geo:Geometry"]
-            end
-
-            subgraph SF_ONT["Simple Features"]
-                SFP["sf:Point"]
-            end
-
-            subgraph CRM_GRP["CIDOC-CRM"]
-                direction TB
-                CE53["crm:E53_Place"]
-                CE27["crm:E27_Site"]
-                CE22["crm:E22_Human-Made_Object"]
-                CE7["crm:E7_Activity"]
-            end
-
-            subgraph CRMSCI_GRP["CRMsci"]
-                direction TB
-                CS4["crmsci:S4_Observation"]
-                CS6["crmsci:S6_Data_Evaluation"]
-                CS9["crmsci:S9_Property_Type"]
-                CS1["crmsci:S1_Matter_Removal"]
-            end
-
-            subgraph SOSA_GRP["SOSA / SSN"]
-                direction TB
-                SO["sosa:Observation"]
-                SS["sosa:Sample"]
-                SP["sosa:ObservableProperty"]
-            end
-
-            subgraph PROV_GRP["PROV-O"]
-                PE["prov:Entity"]
-            end
-
-            SFP -->|subClassOf| GG
-            GFC -.->|rdfs:member| GF
+            CE53["crm:E53_Place"]
+            CE27["crm:E27_Site"]
+            CE22["crm:E22_Human-Made_Object"]
+            CE7["crm:E7_Activity"]
         end
-
-        subgraph CORE["geo-lod Core  (geo_lod_core.ttl)"]
+        
+        subgraph CRMSCI["CRMsci"]
             direction TB
-
-            subgraph C_LOC["Locations"]
-                SL["SamplingLocation"]
-                SL -->|subClassOf| GF
-                SL -->|subClassOf| CE53
-                SL -->|subClassOf| CE27
-            end
-
-            subgraph C_SAMP["Samples"]
-                PS["PalaeoclimateSample"]
-                PS -->|subClassOf| SS
-            end
-
-            subgraph C_OBS["Observations"]
-                PO["PalaeoclimateObservation"]
-                PO -->|subClassOf| CS4
-                PO -->|subClassOf| SO
-            end
-
-            subgraph C_PROP["Observable Properties"]
-                OP["ObservableProperty"]
-                D18OP["Delta18OProperty"]
-                OP -->|subClassOf| SP
-                OP -->|subClassOf| CS9
-                D18OP -->|subClassOf| OP
-            end
-
-            subgraph C_CHRON["Chronology"]
-                CH["Chronology"]
-            end
-
-            subgraph C_SMOOTH["Smoothing"]
-                SM["SmoothingMethod"]
-                RM["RollingMedianFilter"]
-                SG["SavitzkyGolayFilter"]
-                SM -->|subClassOf| CS6
-                RM -->|subClassOf| SM
-                SG -->|subClassOf| SM
-            end
-
-            subgraph C_MTYPE["Measurement Type"]
-                MT["MeasurementType"]
-                MT -->|subClassOf| CS6
-            end
-
-            subgraph C_DS["Data Source"]
-                DS["DataSource"]
-                DS -->|subClassOf| PE
-            end
+            CS4["crmsci:S4_Observation"]
+            CS1["crmsci:S1_Matter_Removal"]
+            CS6["crmsci:S6_Data_Evaluation"]
+            CS9["crmsci:S9_Property_Type"]
         end
-
-        subgraph EPICA["geo-lod EPICA Extension  (epica_ontology.ttl)"]
+        
+        subgraph SOSA["SOSA"]
             direction TB
-
-            subgraph EP_LOC["Ice Core Location"]
-                DRSITE["DrillingSite"]
-                DRSITE -->|subClassOf| SL
-            end
-
-            subgraph EP_SAMP["Ice Core Sample"]
-                IC["IceCore"]
-                IC -->|subClassOf| PS
-                IC -->|subClassOf| CE22
-            end
-
-            subgraph EP_OBS["Ice Core Observations"]
-                ICO["IceCoreObservation"]
-                CH4O["CH4Observation"]
-                D18OO["Delta18OObservation"]
-                ICO -->|subClassOf| PO
-                CH4O -->|subClassOf| ICO
-                D18OO -->|subClassOf| ICO
-            end
-
-            subgraph EP_PROP["Ice Core Properties"]
-                CH4P["CH4ConcentrationProperty"]
-                CH4P -->|subClassOf| OP
-            end
-
-            subgraph EP_CHRON["Ice Core Chronology"]
-                ICC["IceCoreChronology"]
-                ICC -->|subClassOf| CH
-            end
-
-            subgraph EP_DATA["Catalogue & Dataset"]
-                PCC["PalaeoclimateDataCatalogue"]
-                ICD["IceCoreDataset"]
-                CH4D["CH4Dataset"]
-                D18OD["Delta18ODataset"]
-                CH4D -->|subClassOf| ICD
-                D18OD -->|subClassOf| ICD
-            end
-
-            subgraph EP_CAMP["Campaign"]
-                DC["DrillingCampaign"]
-                DC -->|subClassOf| CE7
-            end
+            SO["sosa:Observation"]
+            SS["sosa:Sample"]
+            SP["sosa:ObservableProperty"]
         end
-
-        subgraph SISAL["geo-lod SISAL Extension  (sisal_ontology.ttl)"]
-            direction TB
-
-            subgraph SI_LOC["Speleothem Location"]
-                CAVE["Cave"]
-                CAVE -->|subClassOf| SL
-            end
-
-            subgraph SI_SAMP["Speleothem Sample"]
-                SPEL["Speleothem"]
-                SPEL -->|subClassOf| PS
-            end
-
-            subgraph SI_EVT["Sampling Event"]
-                SSE["SpeleothemSamplingEvent"]
-                SSE -->|subClassOf| CS1
-            end
-
-            subgraph SI_OBS["Speleothem Observations"]
-                SPO["SpeleothemObservation"]
-                D18OS["Delta18OSpeleothemObservation"]
-                D13CS["Delta13CSpeleothemObservation"]
-                SPO -->|subClassOf| PO
-                D18OS -->|subClassOf| SPO
-                D13CS -->|subClassOf| SPO
-            end
-
-            subgraph SI_PROP["Speleothem Properties"]
-                D13CP["Delta13CProperty"]
-                D13CP -->|subClassOf| OP
-            end
-
-            subgraph SI_CHRON["U-Th Chronology"]
-                UTHC["UThChronology"]
-                UTHC -->|subClassOf| CH
-            end
+        
+        subgraph GEO["GeoSPARQL"]
+            GF["geo:Feature"]
         end
+        
+        subgraph PROV["PROV-O"]
+            PE["prov:Entity"]
+        end
+    end
+    
+    %% Core Ontology
+    subgraph CORE["geo-lod Core Ontology"]
+        direction TB
+        PALOBS["PalaeoclimateObservation"]
+        PALSAMPLE["PalaeoclimateSample"]
+        SAMPLINGLOC["SamplingLocation"]
+        CHRONO["Chronology"]
+        OBSPROP["ObservableProperty"]
+        DATASRC["DataSource"]
+        MTYPE["MeasurementType"]
+        SMOOTH["SmoothingMethod"]
+    end
+    
+    %% EPICA Extension
+    subgraph EPICA["EPICA Ice Core Extension"]
+        direction TB
+        ICEOBS["IceCoreObservation"]
+        CH4OBS["CH4Observation"]
+        D18OOBS["Delta18OObservation"]
+        ICECORE["IceCore"]
+        DRILLSITE["DrillingSite"]
+        DRILLCAMP["DrillingCampaign"]
+        ICECHRONO["IceCoreChronology"]
+    end
+    
+    %% SISAL Extension
+    subgraph SISAL["SISAL Speleothem Extension"]
+        direction TB
+        SPELOBS["SpeleothemObservation"]
+        D18OSPELOBS["Delta18OSpeleothemObservation"]
+        D13COBS["Delta13CSpeleothemObservation"]
+        SPEL["Speleothem"]
+        CAVE["Cave"]
+        SSE["SpeleothemSamplingEvent"]
+        UTHCHRONO["UThChronology"]
+    end
+    
+    %% External to Core relationships
+    SO -.-> PALOBS
+    CS4 -.-> PALOBS
+    SS -.-> PALSAMPLE
+    CE53 -.-> SAMPLINGLOC
+    CE27 -.-> SAMPLINGLOC
+    GF -.-> SAMPLINGLOC
+    SP -.-> OBSPROP
+    CS9 -.-> OBSPROP
+    CS9 -.-> MTYPE
+    CS6 -.-> CHRONO
+    CS6 -.-> SMOOTH
+    PE -.-> DATASRC
+    CE7 -.-> DRILLCAMP
+    CS1 -.-> DRILLCAMP
+    CE7 -.-> SSE
+    CS1 -.-> SSE
+    
+    %% Core to Extensions
+    PALOBS --> ICEOBS
+    PALOBS --> SPELOBS
+    ICEOBS --> CH4OBS
+    ICEOBS --> D18OOBS
+    SPELOBS --> D18OSPELOBS
+    SPELOBS --> D13COBS
+    
+    PALSAMPLE --> ICECORE
+    PALSAMPLE --> SPEL
+    CE22 -.-> ICECORE
+    
+    SAMPLINGLOC --> DRILLSITE
+    SAMPLINGLOC --> CAVE
+    
+    CHRONO --> ICECHRONO
+    CHRONO --> UTHCHRONO
+    
+    %% Styling - External Ontologies
+    style EXT fill:#fafafa,stroke:#999,color:#333
+    style CRM fill:#fde8e8,stroke:#9b2226,color:#333
+    style CRMSCI fill:#ffe8e8,stroke:#e63946,color:#333
+    style SOSA fill:#e8f0fb,stroke:#1d3557,color:#333
+    style GEO fill:#e8f1f7,stroke:#457b9d,color:#333
+    style PROV fill:#fef0e8,stroke:#e76f51,color:#333
+    
+    style CE53 fill:#9b2226,color:#fff,stroke:#7a1a1d
+    style CE27 fill:#9b2226,color:#fff,stroke:#7a1a1d
+    style CE22 fill:#9b2226,color:#fff,stroke:#7a1a1d
+    style CE7 fill:#9b2226,color:#fff,stroke:#7a1a1d
+    style CS4 fill:#e63946,color:#fff,stroke:#c1121f
+    style CS1 fill:#e63946,color:#fff,stroke:#c1121f
+    style CS6 fill:#e63946,color:#fff,stroke:#c1121f
+    style CS9 fill:#e63946,color:#fff,stroke:#c1121f
+    style SO fill:#1d3557,color:#fff,stroke:#0d2137
+    style SS fill:#1d3557,color:#fff,stroke:#0d2137
+    style SP fill:#1d3557,color:#fff,stroke:#0d2137
+    style GF fill:#457b9d,color:#fff,stroke:#2c5f7a
+    style PE fill:#e76f51,color:#fff,stroke:#c45c3e
+    
+    %% Styling - Core
+    style CORE fill:#e8f4f8,stroke:#457b9d,stroke-width:2px,color:#333
+    style PALOBS fill:#74c0fc,color:#000,stroke:#1971c2,stroke-width:2px
+    style PALSAMPLE fill:#74c0fc,color:#000,stroke:#1971c2,stroke-width:2px
+    style SAMPLINGLOC fill:#74c0fc,color:#000,stroke:#1971c2,stroke-width:2px
+    style CHRONO fill:#74c0fc,color:#000,stroke:#1971c2,stroke-width:2px
+    style OBSPROP fill:#a5d8ff,color:#000,stroke:#4dabf7
+    style DATASRC fill:#a5d8ff,color:#000,stroke:#4dabf7
+    style MTYPE fill:#a5d8ff,color:#000,stroke:#4dabf7
+    style SMOOTH fill:#a5d8ff,color:#000,stroke:#4dabf7
+    
+    %% Styling - EPICA
+    style EPICA fill:#d4edda,stroke:#2d6a4f,stroke-width:2px,color:#333
+    style ICEOBS fill:#2d6a4f,color:#fff,stroke:#1b4332,stroke-width:2px
+    style CH4OBS fill:#40916c,color:#fff,stroke:#2d6a4f
+    style D18OOBS fill:#40916c,color:#fff,stroke:#2d6a4f
+    style ICECORE fill:#2d6a4f,color:#fff,stroke:#1b4332,stroke-width:2px
+    style DRILLSITE fill:#2d6a4f,color:#fff,stroke:#1b4332,stroke-width:2px
+    style DRILLCAMP fill:#2d6a4f,color:#fff,stroke:#1b4332,stroke-width:2px
+    style ICECHRONO fill:#40916c,color:#fff,stroke:#2d6a4f
+    
+    %% Styling - SISAL
+    style SISAL fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#333
+    style SPELOBS fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
+    style D18OSPELOBS fill:#b8860b,color:#fff,stroke:#856404
+    style D13COBS fill:#b8860b,color:#fff,stroke:#856404
+    style SPEL fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
+    style CAVE fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
+    style SSE fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
+    style UTHCHRONO fill:#b8860b,color:#fff,stroke:#856404
 """
 )
 
@@ -779,81 +756,112 @@ def _mermaid_instance_epica(rw: int, sgw: int, sgp: int) -> str:
     """EPICA named-individual instance diagram."""
     return textwrap.dedent(
         f"""\
-        flowchart LR
+    flowchart LR
 
-            COLLECTION["geo:FeatureCollection
-            geolod:EPICA_DrillingSite_Collection
-            1 member"]
+    CATALOG(["PalaeoclimateDataCatalogue
+    geolod:EPICA_DomeC_Catalog"])
+    
+    DATASET(["IceCoreDataset
+    geolod:EPICA_DomeC_Dataset"])
+    
+    OBS(["IceCoreObservation
+    geolod:Obs_CH4_0001
+    geolod:Obs_d18O_0001"])
+    
+    CORE(["IceCore
+    geolod:EpicaDomeC_IceCore"])
+    
+    SITE(["DrillingSite
+    geolod:EpicaDomeC_Site"])
+    
+    CAMPAIGN(["DrillingCampaign
+    EPICA Dome C 1996-2004"])
+    
+    PROP_CH4(["CH4ConcentrationProperty"])
+    PROP_D18O(["Delta18OProperty"])
+    MTYPE_CH4(["MeasurementType CH4"])
+    MTYPE_D18O(["MeasurementType d18O"])
+    CHRON_EDC2(["EDC2 Chronology"])
+    CHRON_AICC(["AICC2023 Chronology"])
+    MEDIAN(["RollingMedianFilter w11"])
+    SG(["SavitzkyGolayFilter w11 p2"])
+    SOURCE_CH4(["PANGAEA 472484
+    Spahni 2006"])
+    SOURCE_D18O(["PANGAEA 961024
+    Bouchet 2023"])
+    
+    GEOM(["sf:Point
+    geolod:EpicaDomeC_Geometry"])
+    
+    LDEPTH((atDepth_m))
+    LAGE((ageKaBP))
+    LVAL((measuredValue))
+    LMEDIAN((smoothed median))
+    LSG((smoothed savgol))
+    LWKT((asWKT POINT))
+    LPPB((unit PPB))
+    LPRM((unit PERMILLE))
 
-            CATALOG["PalaeoclimateDataCatalogue
-            geolod:EPICA_DomeC_Catalog"]
+    CATALOG -->|dcat:dataset| DATASET
+    DATASET -->|hasObservation| OBS
+    DATASET -->|hasDrillingCampaign| CAMPAIGN
+    OBS -->|hasFeatureOfInterest| CORE
+    OBS -->|observedProperty| PROP_CH4
+    OBS -->|observedProperty| PROP_D18O
+    OBS -->|measurementType| MTYPE_CH4
+    OBS -->|measurementType| MTYPE_D18O
+    OBS -->|ageChronology| CHRON_EDC2
+    OBS -->|ageChronology| CHRON_AICC
+    OBS -->|smoothingMethod| MEDIAN
+    OBS -->|smoothingMethod| SG
+    OBS -->|wasDerivedFrom| SOURCE_CH4
+    OBS -->|wasDerivedFrom| SOURCE_D18O
+    OBS -.->|atDepth_m| LDEPTH
+    OBS -.->|ageKaBP| LAGE
+    OBS -.->|measuredValue| LVAL
+    OBS -.->|smoothed| LMEDIAN
+    OBS -.->|smoothed| LSG
+    PROP_CH4 -.->|unit| LPPB
+    PROP_D18O -.->|unit| LPRM
+    CORE -->|extractedFrom| SITE
+    CAMPAIGN -->|tookPlaceAt| SITE
+    CAMPAIGN -->|removedSample| CORE
+    SITE -->|geo:hasGeometry| GEOM
+    GEOM -.->|asWKT| LWKT
 
-            DATASET["IceCoreDataset
-            geolod:EPICA_DomeC_Dataset"]
-
-            OBS["IceCoreObservation
-            geolod:Obs_CH4_0001 ...
-            geolod:Obs_d18O_0001 ..."]
-
-            CORE["IceCore
-            geolod:EpicaDomeC_IceCore"]
-
-            SITE["DrillingSite / geo:Feature
-            geolod:EpicaDomeC_Site
-            crm:E53_Place · crm:E27_Site"]
-
-            GEOM["sf:Point
-            geolod:EpicaDomeC_Geometry
-            asWKT: EPSG:4326 POINT(123.35 -75.1)"]
-
-            CAMPAIGN["DrillingCampaign
-            EPICA Dome C 1996-2004"]
-
-            PROP_CH4["CH4ConcentrationProperty
-            geolod:CH4Concentration"]
-
-            PROP_D18O["Delta18OProperty (shared core)
-            geolod:Delta18O"]
-
-            MTYPE_CH4["MeasurementType
-            geolod:MeasurementType_CH4"]
-
-            MTYPE_D18O["MeasurementType (shared core)
-            geolod:MeasurementType_d18O"]
-
-            CHRON_EDC2["IceCoreChronology
-            geolod:EDC2_Chronology"]
-
-            CHRON_AICC["IceCoreChronology
-            geolod:AICC2023_Chronology"]
-
-            MEDIAN["RollingMedianFilter
-            geolod:RollingMedian_w{rw}
-            windowSize: {rw}"]
-
-            SAVGOL["SavitzkyGolayFilter
-            geolod:SavitzkyGolay_w{sgw}_p{sgp}
-            windowSize: {sgw} polyOrder: {sgp}"]
-
-            DATASRC["DataSource
-            geolod:EPICA_DomeC_CH4_Source
-            geolod:EPICA_DomeC_d18O_Source"]
-
-            COLLECTION -->|"rdfs:member"| SITE
-            CATALOG  -->|"dcat:dataset"| DATASET
-            DATASET  -->|"geolod:hasObservation"| OBS
-            OBS      -->|"sosa:hasFeatureOfInterest"| CORE
-            CORE     -->|"geolod:extractedFrom"| SITE
-            SITE     -->|"geo:hasGeometry"| GEOM
-            CAMPAIGN -->|"crm:P7_took_place_at"| SITE
-            OBS      -->|"geolod:measurementType"| MTYPE_CH4
-            OBS      -->|"geolod:measurementType"| MTYPE_D18O
-            OBS      -->|"geolod:ageChronology"| CHRON_EDC2
-            OBS      -->|"geolod:ageChronology"| CHRON_AICC
-            OBS      -->|"geolod:smoothingMethod_median"| MEDIAN
-            OBS      -->|"geolod:smoothingMethod_savgol"| SAVGOL
-            OBS      -->|"prov:wasDerivedFrom"| DATASRC
-    """
+    %% Main instances - darker green
+    style CATALOG fill:#2d6a4f,color:#fff,stroke:#1b4332,stroke-width:2px
+    style DATASET fill:#2d6a4f,color:#fff,stroke:#1b4332,stroke-width:2px
+    style OBS fill:#2d6a4f,color:#fff,stroke:#1b4332,stroke-width:2px
+    style CORE fill:#2d6a4f,color:#fff,stroke:#1b4332,stroke-width:2px
+    style SITE fill:#2d6a4f,color:#fff,stroke:#1b4332,stroke-width:2px
+    style CAMPAIGN fill:#2d6a4f,color:#fff,stroke:#1b4332,stroke-width:2px
+    
+    %% Supporting instances - lighter green
+    style PROP_CH4 fill:#40916c,color:#fff,stroke:#2d6a4f
+    style PROP_D18O fill:#40916c,color:#fff,stroke:#2d6a4f
+    style MTYPE_CH4 fill:#40916c,color:#fff,stroke:#2d6a4f
+    style MTYPE_D18O fill:#40916c,color:#fff,stroke:#2d6a4f
+    style CHRON_EDC2 fill:#40916c,color:#fff,stroke:#2d6a4f
+    style CHRON_AICC fill:#40916c,color:#fff,stroke:#2d6a4f
+    style MEDIAN fill:#40916c,color:#fff,stroke:#2d6a4f
+    style SG fill:#40916c,color:#fff,stroke:#2d6a4f
+    style SOURCE_CH4 fill:#40916c,color:#fff,stroke:#2d6a4f
+    style SOURCE_D18O fill:#40916c,color:#fff,stroke:#2d6a4f
+    
+    %% Geometry - blue
+    style GEOM fill:#457b9d,color:#fff,stroke:#2c5f7a
+    
+    %% Literals - bright yellow
+    style LDEPTH fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LAGE fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LVAL fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LMEDIAN fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LSG fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LWKT fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LPPB fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LPRM fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+"""
     )
 
 
@@ -861,60 +869,96 @@ def _mermaid_instance_sisal(n: int = 305) -> str:
     """SISAL named-individual instance diagram."""
     return textwrap.dedent(
         f"""\
-        flowchart LR
+    flowchart LR
 
-            COLLECTION["geo:FeatureCollection
-            geolod:SISAL_Cave_Collection
-            {n} members"]
+    COLLECTION(["geo:FeatureCollection
+    geolod:SISAL_Cave_Collection
+    305 members"])
 
-            CAVE["Cave / geo:Feature
-            geolod:Cave_site_0001 ...
-            crm:E53_Place · crm:E27_Site"]
+    CAVE(["Cave
+    geolod:Cave_site_0001"])
 
-            GEOM["sf:Point
-            geolod:Cave_site_0001_Geometry ...
-            asWKT: EPSG:4326 POINT(lon lat)"]
+    GEOM(["sf:Point
+    geolod:Cave_site_0001_Geometry"])
 
-            SPEL["Speleothem
-            geolod:Speleothem_entity_XXXX"]
+    SPEL(["Speleothem
+    geolod:Speleothem_entity_XXXX"])
 
-            SSE["SpeleothemSamplingEvent"]
+    SSE(["SpeleothemSamplingEvent"])
 
-            OBS["SpeleothemObservation
-            geolod:Obs_d18O_XXXX
-            geolod:Obs_d13C_XXXX"]
+    OBS(["SpeleothemObservation
+    geolod:Obs_d18O_XXXX
+    geolod:Obs_d13C_XXXX"])
 
-            MTYPE_D18O["MeasurementType (shared core)
-            geolod:MeasurementType_d18O"]
+    PROP_D18O(["Delta18OProperty"])
+    PROP_D13C(["Delta13CProperty"])
+    MTYPE_D18O(["MeasurementType d18O"])
+    MTYPE_D13C(["MeasurementType d13C"])
+    UTHC(["UThChronology"])
+    MEDIAN(["RollingMedianFilter w11"])
+    SAVGOL(["SavitzkyGolayFilter w11 p2"])
+    DATASRC(["SISALv3 DataSource"])
 
-            MTYPE_D13C["MeasurementType
-            geolod:MeasurementType_d13C"]
+    LAGE((ageKaBP))
+    LDEPTH((atDepth_mm))
+    LVAL((measuredValue))
+    LMEDIAN((smoothed median))
+    LSG((smoothed savgol))
+    LWKT((asWKT POINT))
+    LPRM((unit PERMILLE))
 
-            UTHC["UThChronology
-            geolod:UThChronology_entity_XXXX"]
+    COLLECTION -->|rdfs:member| CAVE
+    CAVE -->|geo:hasGeometry| GEOM
+    SPEL -->|collectedFrom| CAVE
+    SSE -->|tookPlaceAt| CAVE
+    SSE -->|removedSample| SPEL
+    OBS -->|hasFeatureOfInterest| SPEL
+    OBS -->|observedProperty| PROP_D18O
+    OBS -->|observedProperty| PROP_D13C
+    OBS -->|measurementType| MTYPE_D18O
+    OBS -->|measurementType| MTYPE_D13C
+    OBS -->|ageChronology| UTHC
+    OBS -->|smoothingMethod| MEDIAN
+    OBS -->|smoothingMethod| SAVGOL
+    OBS -->|wasDerivedFrom| DATASRC
+    OBS -.->|ageKaBP| LAGE
+    OBS -.->|atDepth_mm| LDEPTH
+    OBS -.->|measuredValue| LVAL
+    OBS -.->|smoothed| LMEDIAN
+    OBS -.->|smoothed| LSG
+    PROP_D18O -.->|unit| LPRM
+    PROP_D13C -.->|unit| LPRM
+    GEOM -.->|asWKT| LWKT
 
-            MEDIAN["RollingMedianFilter
-            geolod:RollingMedian_wN"]
-
-            SAVGOL["SavitzkyGolayFilter
-            geolod:SavitzkyGolay_wN_pP"]
-
-            DATASRC["DataSource
-            geolod:SISALv3_DataSource"]
-
-            COLLECTION -->|"rdfs:member"| CAVE
-            CAVE       -->|"geo:hasGeometry"| GEOM
-            SPEL       -->|"geolod:collectedFrom"| CAVE
-            SSE        -->|"geolod:tookPlaceAt"| CAVE
-            SSE        -->|"geolod:removedSample"| SPEL
-            OBS        -->|"sosa:hasFeatureOfInterest"| SPEL
-            OBS        -->|"geolod:measurementType"| MTYPE_D18O
-            OBS        -->|"geolod:measurementType"| MTYPE_D13C
-            OBS        -->|"geolod:ageChronologySpeleothem"| UTHC
-            OBS        -->|"geolod:smoothingMethod_median"| MEDIAN
-            OBS        -->|"geolod:smoothingMethod_savgol"| SAVGOL
-            OBS        -->|"prov:wasDerivedFrom"| DATASRC
-    """
+    %% Main instances - darker yellow/brown
+    style COLLECTION fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
+    style CAVE fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
+    style SPEL fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
+    style SSE fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
+    style OBS fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
+    
+    %% Supporting instances - lighter brown
+    style PROP_D18O fill:#b8860b,color:#fff,stroke:#856404
+    style PROP_D13C fill:#b8860b,color:#fff,stroke:#856404
+    style MTYPE_D18O fill:#b8860b,color:#fff,stroke:#856404
+    style MTYPE_D13C fill:#b8860b,color:#fff,stroke:#856404
+    style UTHC fill:#b8860b,color:#fff,stroke:#856404
+    style MEDIAN fill:#b8860b,color:#fff,stroke:#856404
+    style SAVGOL fill:#b8860b,color:#fff,stroke:#856404
+    style DATASRC fill:#b8860b,color:#fff,stroke:#856404
+    
+    %% Geometry - blue
+    style GEOM fill:#457b9d,color:#fff,stroke:#2c5f7a
+    
+    %% Literals - bright yellow
+    style LAGE fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LDEPTH fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LVAL fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LMEDIAN fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LSG fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LWKT fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LPRM fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+"""
     )
 
 
@@ -960,73 +1004,6 @@ def write_mermaid(
         print(f"  ✓ Mermaid       : {path}")
         paths[filename] = path
     return paths
-
-
-def write_combined_sites_collection(
-    outdir: str,
-    epica_ttl_path: str | None = None,
-    sisal_sites_ttl_path: str | None = None,
-) -> str:
-    """
-    Writes a combined TTL file that imports EPICA and SISAL site Collections.
-    
-    This creates:
-      - all_palaeoclimate_sites_collection.ttl
-    
-    Which combines:
-      - geolod:EPICA_DrillingSite_Collection (1 member)
-      - geolod:SISAL_Cave_Collection (305 members)
-      
-    Into:
-      - geolod:AllPalaeoclimateSites_Collection (306 members total)
-    
-    Parameters
-    ----------
-    outdir : output directory
-    epica_ttl_path : optional path to epica_dome_c.ttl (for reference/import)
-    sisal_sites_ttl_path : optional path to sisal_sites.ttl (for reference/import)
-    
-    Returns path to written file.
-    """
-    if not RDF_AVAILABLE:
-        print("  ⚠  rdflib not available – combined sites collection skipped.")
-        return ""
-    
-    os.makedirs(outdir, exist_ok=True)
-    
-    g = get_graph()
-    GEOLOD = Namespace(NS["geolod"])
-    GEO = Namespace(NS["geo"])
-    
-    # Create the combined collection
-    all_sites = GEOLOD["AllPalaeoclimateSites_Collection"]
-    g.add((all_sites, RDF.type, GEO["FeatureCollection"]))
-    g.add((all_sites, RDFS.label, Literal("All Palaeoclimate Sites Collection", lang="en")))
-    g.add((all_sites, RDFS.comment, Literal(
-        "Combined collection of all palaeoclimate sampling locations (ice cores, cave sites, etc.)",
-        lang="en"
-    )))
-    
-    # Add comment about how to use this
-    g.add((all_sites, RDFS.comment, Literal(
-        "Individual site members are populated in the respective dataset TTLs "
-        "(epica_dome_c.ttl, sisal_sites.ttl). This collection URI serves as a "
-        "GeoSPARQL entry point for querying all sites across datasets.",
-        lang="en"
-    )))
-    
-    # Optionally add imports/references
-    if epica_ttl_path:
-        g.add((all_sites, RDFS.seeAlso, Literal(epica_ttl_path, datatype=XSD.anyURI)))
-    if sisal_sites_ttl_path:
-        g.add((all_sites, RDFS.seeAlso, Literal(sisal_sites_ttl_path, datatype=XSD.anyURI)))
-    
-    # Write file
-    path = os.path.join(outdir, "all_palaeoclimate_sites_collection.ttl")
-    g.serialize(destination=path, format="turtle")
-    print(f"  ✓ Combined Sites: {path} ({len(g)} triples)")
-    return path
-
 
 
 # ===========================================================================
