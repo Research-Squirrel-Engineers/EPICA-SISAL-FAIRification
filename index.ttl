@@ -44890,6 +44890,7 @@ ns1:geo-lod_comment a void:Dataset,
     rdfs:label "Property Partition: comment"@en ;
     void:property rdfs:comment ;
     void:triples 1,
+        2,
         3 .
 
 ns1:geo-lod_entityId a void:Dataset,
@@ -44918,7 +44919,7 @@ ns1:geo-lod_label a void:Dataset,
     rdfs:label "Property Partition: label"@en ;
     void:property rdfs:label ;
     void:triples 20,
-        310,
+        313,
         2146 .
 
 ns1:geo-lod_measuredValue a void:Dataset,
@@ -44946,7 +44947,7 @@ ns1:geo-lod_member a void:Dataset,
         <https://www.iana.org/assignments/media-types/text/turtle#Resource> ;
     rdfs:label "Property Partition: member"@en ;
     void:property rdfs:member ;
-    void:triples 1222,
+    void:triples 1334,
         2137,
         2480 .
 
@@ -45026,7 +45027,7 @@ ns1:geo-lod_type a void:Dataset,
         <https://www.iana.org/assignments/media-types/text/turtle#Resource> ;
     rdfs:label "Property Partition: type"@en ;
     void:property rdf:type ;
-    void:triples 615,
+    void:triples 692,
         2490,
         4273 .
 
@@ -45164,8 +45165,7 @@ ns1:geo-lod a void:Dataset,
         <https://www.iana.org/assignments/media-types/text/turtle#Resource> ;
     rdfs:label "geo-lod"@en ;
     ns2:averageLiteralLength 0 ;
-    ns2:averageObjectIRILength 30,
-        31,
+    ns2:averageObjectIRILength 31,
         34 ;
     ns2:averagePropertyIRILength 40,
         42 ;
@@ -45174,17 +45174,17 @@ ns1:geo-lod a void:Dataset,
         54 ;
     ns2:datatypes 0 ;
     ns2:distinctBlankNodes 0 ;
-    ns2:distinctIRIReferences 2402,
+    ns2:distinctIRIReferences 2505,
         9655,
         14623 ;
     ns2:distinctLiterals 0 ;
-    ns2:distinctRDFNodes 2402,
+    ns2:distinctRDFNodes 2505,
         9655,
         14623 ;
     ns2:languages 0 ;
     ns2:propertyClasses 0 ;
     dc:language <http://www.lexvo.org/page/iso639-1/en> ;
-    dcterms:modified "2026-03-23T13:34:38"^^xsd:dateTime ;
+    dcterms:modified "2026-03-23T14:10:57"^^xsd:dateTime ;
     dcterms:subject <http://dbpedia.org/resource/Location>,
         <http://dbpedia.org/resource/OGC_GeoSPARQL>,
         <http://dbpedia.org/resource/Time>,
@@ -45193,7 +45193,9 @@ ns1:geo-lod a void:Dataset,
     dcterms:title "geo-lod"@en ;
     vann:preferredNamespacePrefix "geo-lod"^^xsd:string ;
     vann:preferredNamespaceUri "http://w3id.org/geo-lod/"^^xsd:anyURI ;
-    void:classPartition ns1:geo-lod_BibliographicResource,
+    void:classPartition ns1:geo-lod_A2_Stratigraphic_Volume_Unit,
+        ns1:geo-lod_ArchaeologicalCaveSite,
+        ns1:geo-lod_BibliographicResource,
         ns1:geo-lod_Catalog,
         ns1:geo-lod_Cave,
         ns1:geo-lod_Collection,
@@ -45225,22 +45227,22 @@ ns1:geo-lod a void:Dataset,
         ns1:geo-lod_SpatialObjectCollection,
         ns1:geo-lod_Speleothem,
         ns1:geo-lod_UThChronology ;
-    void:classes 6,
+    void:classes 8,
         11,
         23 ;
     void:dataDump <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//index.ttl> ;
-    void:distinctObjects 1773,
+    void:distinctObjects 1866,
         7145,
         12424 ;
-    void:distinctSubjects 618,
+    void:distinctSubjects 621,
         2157,
         2490 ;
-    void:entities 616,
+    void:entities 619,
         2151,
         2491 ;
     void:feature <http://www.w3.org/ns/formats/RDFa>,
         <http://www.w3.org/ns/formats/Turtle> ;
-    void:properties 11,
+    void:properties 18,
         20,
         42 ;
     void:propertyPartition ns1:geo-lod_O1_removed,
@@ -45252,6 +45254,9 @@ ns1:geo-lod a void:Dataset,
         ns1:geo-lod_ageChronology,
         ns1:geo-lod_ageChronologySpeleothem,
         ns1:geo-lod_ageKaBP,
+        ns1:geo-lod_archaeologicalBroaderContext,
+        ns1:geo-lod_archaeologicalCategory,
+        ns1:geo-lod_archaeologicalConfidence,
         ns1:geo-lod_asWKT,
         ns1:geo-lod_atDepth_m,
         ns1:geo-lod_collectedFrom,
@@ -45270,17 +45275,20 @@ ns1:geo-lod a void:Dataset,
         ns1:geo-lod_hasObservation,
         ns1:geo-lod_hasSimpleResult,
         ns1:geo-lod_isSampleOf,
+        ns1:geo-lod_isUNESCOWorldHeritage,
         ns1:geo-lod_label,
         ns1:geo-lod_license,
         ns1:geo-lod_measuredValue,
         ns1:geo-lod_measurementType,
         ns1:geo-lod_member,
+        ns1:geo-lod_note,
         ns1:geo-lod_observedProperty,
         ns1:geo-lod_polyOrder,
         ns1:geo-lod_publisher,
         ns1:geo-lod_record,
         ns1:geo-lod_references,
         ns1:geo-lod_resultTime,
+        ns1:geo-lod_sameAs,
         ns1:geo-lod_siteId,
         ns1:geo-lod_smoothedValue_rollingMedian,
         ns1:geo-lod_smoothedValue_savgol,
@@ -45290,10 +45298,11 @@ ns1:geo-lod a void:Dataset,
         ns1:geo-lod_subClassOf,
         ns1:geo-lod_title,
         ns1:geo-lod_type,
+        ns1:geo-lod_unescoWHId,
         ns1:geo-lod_unit,
         ns1:geo-lod_wasDerivedFrom,
         ns1:geo-lod_windowSize ;
-    void:triples 4596,
+    void:triples 4981,
         34641,
         46703 ;
     void:uriSpace "http://w3id.org/geo-lod/"^^xsd:string ;

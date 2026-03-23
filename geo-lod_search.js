@@ -1,4 +1,5 @@
 var search={
+  "A2_Stratigraphic_Volume_Unit Instances Collection": "http://w3id.org/geo-lod/A2_Stratigraphic_Volume_Unit_collection",
   "AICC2023 ice core chronology (Bouchet et al. 2023)": "http://w3id.org/geo-lod/AICC2023_Chronology",
   "Abaco Island cave": "http://w3id.org/geo-lod/Cave_site_0070",
   "Abaliget cave": "http://w3id.org/geo-lod/Cave_site_0031",
@@ -13,6 +14,7 @@ var search={
   "Antro del Corchia \u2013 CC-7_2018": "http://w3id.org/geo-lod/Speleothem_145_corchia_e667",
   "Antro del Corchia \u2013 CC27": "http://w3id.org/geo-lod/Speleothem_145_corchia_e670",
   "Arch cave": "http://w3id.org/geo-lod/Cave_site_0149",
+  "ArchaeologicalCaveSite Instances Collection": "http://w3id.org/geo-lod/ArchaeologicalCaveSite_collection",
   "Ascunsa cave": "http://w3id.org/geo-lod/Cave_site_0072",
   "Atta cave": "http://w3id.org/geo-lod/Cave_site_0280",
   "Aurora cave": "http://w3id.org/geo-lod/Cave_site_0161",
@@ -999,6 +1001,7 @@ var search={
   "S4_Observation Instances Collection": "http://w3id.org/geo-lod/S4_Observation_collection",
   "S6_Data_Evaluation Instances Collection": "http://w3id.org/geo-lod/S6_Data_Evaluation_collection",
   "S9_Property_Type Instances Collection": "http://w3id.org/geo-lod/S9_Property_Type_collection",
+  "SISAL Archaeological Cave Sites Collection": "http://w3id.org/geo-lod/SISAL_ArchaeologicalCave_Collection",
   "SISAL Cave Sites Collection": "http://w3id.org/geo-lod/SISAL_Cave_Collection",
   "Sa balma des quart\u00f3 cave": "http://w3id.org/geo-lod/Cave_site_0342",
   "Sahiya cave": "http://w3id.org/geo-lod/Cave_site_0054",
