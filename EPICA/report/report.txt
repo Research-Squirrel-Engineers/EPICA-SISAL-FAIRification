@@ -78,6 +78,7 @@ RDF Export …
   ✓ Mermaid       : c:\git\EPICA-SISAL-FAIRification\ontology\mermaid_taxonomy.mermaid
   ✓ Mermaid       : c:\git\EPICA-SISAL-FAIRification\ontology\mermaid_instance_epica.mermaid
   ✓ Mermaid       : c:\git\EPICA-SISAL-FAIRification\ontology\mermaid_instance_sisal.mermaid
+  ✓ Mermaid       : c:\git\EPICA-SISAL-FAIRification\ontology\mermaid_instance_ci.mermaid
   ℹ  Combined collection skipped (feature not implemented)
 
 ============================================================

@@ -3,7 +3,7 @@
                              EPICA + SISAL Pipeline                             
 ════════════════════════════════════════════════════════════════════════════════
 
-  Timestamp: 2026-02-28 12:42:09
+  Timestamp: 2026-03-23 14:23:21
   Directory: c:\git\EPICA-SISAL-FAIRification
 
 
@@ -14,11 +14,13 @@
   Directory structure:
   ✓ EPICA directory found: EPICA/
   ✓ SISAL directory found: SISAL/
+  ✓ CI directory found: CI/
   ✓ Ontology directory found: ontology/
 
   Scripts:
   ✓ EPICA script found: plot_epica_from_tab.py
   ✓ SISAL script found: plot_sisal_from_csv.py
+  ✓ CI script found: ci_pipeline.py
 
 ────────────────────────────────────────────────────────────────────────────────
   2. EPICA Dome C (Ice Core)
@@ -38,12 +40,22 @@
     PYTHONPATH: c:\git\EPICA-SISAL-FAIRification\ontology
   ✓ SISAL Processing completed successfully
 
+────────────────────────────────────────────────────────────────────────────────
+  4. Campanian Ignimbrite (CI Findspots)
+────────────────────────────────────────────────────────────────────────────────
+
+  ▶ Starting CI Findspot Processing ...
+    Path: c:\git\EPICA-SISAL-FAIRification\CI\ci_pipeline.py
+    PYTHONPATH: c:\git\EPICA-SISAL-FAIRification\ontology
+  ✓ CI Findspot Processing completed successfully
+
 ════════════════════════════════════════════════════════════════════════════════
                                     Summary                                     
 ════════════════════════════════════════════════════════════════════════════════
 
   EPICA:  ✓ Success
   SISAL:  ✓ Success
+  CI:     ✓ Success
 
-  Total duration: 45.1 seconds
+  Total duration: 102.3 seconds
   Log saved to: c:\git\EPICA-SISAL-FAIRification\pipeline_report.txt

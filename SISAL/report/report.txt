@@ -123,6 +123,7 @@ RDF Export  (geo-lod SISAL Ontology + data)
   ✓ Mermaid       : c:\git\EPICA-SISAL-FAIRification\ontology\mermaid_taxonomy.mermaid
   ✓ Mermaid       : c:\git\EPICA-SISAL-FAIRification\ontology\mermaid_instance_epica.mermaid
   ✓ Mermaid       : c:\git\EPICA-SISAL-FAIRification\ontology\mermaid_instance_sisal.mermaid
+  ✓ Mermaid       : c:\git\EPICA-SISAL-FAIRification\ontology\mermaid_instance_ci.mermaid
   ✓ c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\sisal_ontology.ttl
 
   Building sites graph …

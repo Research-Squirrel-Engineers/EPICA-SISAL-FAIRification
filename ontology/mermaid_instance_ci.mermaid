@@ -1,0 +1,70 @@
+flowchart LR
+
+EVENT(["CIVolcanicEvent
+geolod:ci_volcanic_event
+~40 ka BP"])
+
+SOURCE(["crm:E53_Place
+geolod:ci_source_area
+Campi Flegrei"])
+
+COLLECTION(["geo:FeatureCollection
+geolod:ci/CIFindspotCollection
+74 members"])
+
+SITE(["CIFindspot
+geolod:ci/cisite_1 ...
+geolod:ci/cisite_74"])
+
+ARCHSITE(["CIArchaeologicalSite
+geolod:ci/cisite_19
+geolod:ci/cisite_44 ..."])
+
+GEOM(["sf:Point / SP6_Declarative_Place
+geolod:ci/cisite_1_geom"])
+
+AGENT(["prov:Agent / foaf:Person
+fsld:agent_0000-0002-3246-3531"])
+
+ACTIVITY(["prov:Activity / fsl:Georeferencing
+geolod:ci/cisite_1_activity"])
+
+LWKT((asWKT POINT))
+LLABEL((rdfs:label))
+LCERT((hasCertaintyLevel))
+LLIT((hasLiteratureReference))
+
+EVENT -->|crm:P7_took_place_at| ARCHSITE
+EVENT -->|crm:P12_occurred_in_presence_of| SITE
+EVENT -->|crm:P7_took_place_at| SOURCE
+COLLECTION -->|rdfs:member| SITE
+COLLECTION -->|rdfs:member| ARCHSITE
+SITE -->|geo:hasGeometry| GEOM
+ARCHSITE -->|geo:hasGeometry| GEOM
+SITE -->|prov:wasGeneratedBy| ACTIVITY
+SITE -->|prov:wasAttributedTo| AGENT
+ACTIVITY -->|prov:wasAssociatedWith| AGENT
+GEOM -.->|asWKT| LWKT
+SITE -.->|rdfs:label| LLABEL
+SITE -.->|hasCertaintyLevel| LCERT
+SITE -.->|hasLiteratureReference| LLIT
+
+%% Main instances - terracotta
+style EVENT fill:#a0522d,color:#fff,stroke:#7a3b1e,stroke-width:2px
+style SOURCE fill:#a0522d,color:#fff,stroke:#7a3b1e,stroke-width:2px
+style COLLECTION fill:#a0522d,color:#fff,stroke:#7a3b1e,stroke-width:2px
+style SITE fill:#a0522d,color:#fff,stroke:#7a3b1e,stroke-width:2px
+style ARCHSITE fill:#cd6c2a,color:#fff,stroke:#a0522d,stroke-width:2px
+
+%% Supporting
+style AGENT fill:#cd6c2a,color:#fff,stroke:#a0522d
+style ACTIVITY fill:#cd6c2a,color:#fff,stroke:#a0522d
+
+%% Geometry - blue
+style GEOM fill:#457b9d,color:#fff,stroke:#2c5f7a
+
+%% Literals - bright yellow
+style LWKT fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+style LLABEL fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+style LCERT fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+style LLIT fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px

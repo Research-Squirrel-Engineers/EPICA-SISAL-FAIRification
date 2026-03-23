@@ -659,7 +659,24 @@ MERMAID_TAXONOMY: str = textwrap.dedent(
         SSE["SpeleothemSamplingEvent"]
         UTHCHRONO["UThChronology"]
     end
-    
+
+    %% CI Extension
+    subgraph CI["CI Campanian Ignimbrite Extension"]
+        direction TB
+        CIFINDSPOT["CIFindspot"]
+        CIARCHSITE["CIArchaeologicalSite"]
+        CIVOLEVENT["CIVolcanicEvent"]
+        CITEPHRA["CITephraDeposit"]
+    end
+
+    subgraph CRMEXT["CRMarchaeo / CRMgeo"]
+        direction TB
+        CA2["crmarchaeo:A2_Stratigraphic_Volume_Unit"]
+        CGP6["crmgeo:SP6_Declarative_Place"]
+        CE5["crm:E5_Event"]
+        CE26["crm:E26_Physical_Feature"]
+    end
+
     %% External to Core relationships
     SO -.-> PALOBS
     CS4 -.-> PALOBS
@@ -695,7 +712,15 @@ MERMAID_TAXONOMY: str = textwrap.dedent(
     
     CHRONO --> ICECHRONO
     CHRONO --> UTHCHRONO
-    
+
+    %% Core to CI
+    SAMPLINGLOC --> CIFINDSPOT
+    CIFINDSPOT --> CIARCHSITE
+    CA2 -.-> CIARCHSITE
+    CE5 -.-> CIVOLEVENT
+    CE26 -.-> CITEPHRA
+    CGP6 -.-> CIFINDSPOT
+
     %% Styling - External Ontologies
     style EXT fill:#fafafa,stroke:#999,color:#333
     style CRM fill:#fde8e8,stroke:#9b2226,color:#333
@@ -748,6 +773,20 @@ MERMAID_TAXONOMY: str = textwrap.dedent(
     style CAVE fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
     style SSE fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
     style UTHCHRONO fill:#b8860b,color:#fff,stroke:#856404
+
+    %% Styling - CI
+    style CI fill:#fce8d5,stroke:#a0522d,stroke-width:2px,color:#333
+    style CIFINDSPOT fill:#a0522d,color:#fff,stroke:#7a3b1e,stroke-width:2px
+    style CIARCHSITE fill:#cd6c2a,color:#fff,stroke:#a0522d
+    style CIVOLEVENT fill:#cd6c2a,color:#fff,stroke:#a0522d
+    style CITEPHRA fill:#cd6c2a,color:#fff,stroke:#a0522d
+
+    %% Styling - CRMarchaeo / CRMgeo
+    style CRMEXT fill:#f5e6f0,stroke:#7b2d8b,stroke-width:2px,color:#333
+    style CA2 fill:#7b2d8b,color:#fff,stroke:#5c1f6a
+    style CGP6 fill:#7b2d8b,color:#fff,stroke:#5c1f6a
+    style CE5 fill:#9b2226,color:#fff,stroke:#7a1a1d
+    style CE26 fill:#9b2226,color:#fff,stroke:#7a1a1d
 """
 )
 
@@ -962,21 +1001,101 @@ def _mermaid_instance_sisal(n: int = 305) -> str:
     )
 
 
+def _mermaid_instance_ci(n: int = 74) -> str:
+    """CI named-individual instance diagram."""
+    return textwrap.dedent(
+        f"""\
+    flowchart LR
+
+    EVENT(["CIVolcanicEvent
+    geolod:ci_volcanic_event
+    ~40 ka BP"])
+
+    SOURCE(["crm:E53_Place
+    geolod:ci_source_area
+    Campi Flegrei"])
+
+    COLLECTION(["geo:FeatureCollection
+    geolod:ci/CIFindspotCollection
+    {n} members"])
+
+    SITE(["CIFindspot
+    geolod:ci/cisite_1 ...
+    geolod:ci/cisite_{n}"])
+
+    ARCHSITE(["CIArchaeologicalSite
+    geolod:ci/cisite_19
+    geolod:ci/cisite_44 ..."])
+
+    GEOM(["sf:Point / SP6_Declarative_Place
+    geolod:ci/cisite_1_geom"])
+
+    AGENT(["prov:Agent / foaf:Person
+    fsld:agent_0000-0002-3246-3531"])
+
+    ACTIVITY(["prov:Activity / fsl:Georeferencing
+    geolod:ci/cisite_1_activity"])
+
+    LWKT((asWKT POINT))
+    LLABEL((rdfs:label))
+    LCERT((hasCertaintyLevel))
+    LLIT((hasLiteratureReference))
+
+    EVENT -->|crm:P7_took_place_at| ARCHSITE
+    EVENT -->|crm:P12_occurred_in_presence_of| SITE
+    EVENT -->|crm:P7_took_place_at| SOURCE
+    COLLECTION -->|rdfs:member| SITE
+    COLLECTION -->|rdfs:member| ARCHSITE
+    SITE -->|geo:hasGeometry| GEOM
+    ARCHSITE -->|geo:hasGeometry| GEOM
+    SITE -->|prov:wasGeneratedBy| ACTIVITY
+    SITE -->|prov:wasAttributedTo| AGENT
+    ACTIVITY -->|prov:wasAssociatedWith| AGENT
+    GEOM -.->|asWKT| LWKT
+    SITE -.->|rdfs:label| LLABEL
+    SITE -.->|hasCertaintyLevel| LCERT
+    SITE -.->|hasLiteratureReference| LLIT
+
+    %% Main instances - terracotta
+    style EVENT fill:#a0522d,color:#fff,stroke:#7a3b1e,stroke-width:2px
+    style SOURCE fill:#a0522d,color:#fff,stroke:#7a3b1e,stroke-width:2px
+    style COLLECTION fill:#a0522d,color:#fff,stroke:#7a3b1e,stroke-width:2px
+    style SITE fill:#a0522d,color:#fff,stroke:#7a3b1e,stroke-width:2px
+    style ARCHSITE fill:#cd6c2a,color:#fff,stroke:#a0522d,stroke-width:2px
+
+    %% Supporting
+    style AGENT fill:#cd6c2a,color:#fff,stroke:#a0522d
+    style ACTIVITY fill:#cd6c2a,color:#fff,stroke:#a0522d
+
+    %% Geometry - blue
+    style GEOM fill:#457b9d,color:#fff,stroke:#2c5f7a
+
+    %% Literals - bright yellow
+    style LWKT fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LLABEL fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LCERT fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LLIT fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+"""
+    )
+
+
 def write_mermaid(
     outdir: str,
     rolling_window: int = 11,
     sg_window: int = 11,
     sg_poly: int = 2,
     n_sisal_sites: int = 305,
+    n_ci_sites: int = 74,
 ) -> dict[str, str]:
     """
-    Write all three Mermaid diagram files to *outdir*.
+    Write all Mermaid diagram files to *outdir*.
 
     Files
     -----
-    mermaid_taxonomy.mermaid         combined class hierarchy (Core + EPICA + SISAL)
+    mermaid_taxonomy.mermaid         combined class hierarchy (Core + EPICA + SISAL + CI)
     mermaid_instance_epica.mermaid   EPICA named-individual instance diagram
     mermaid_instance_sisal.mermaid   SISAL named-individual instance diagram
+    mermaid_instance_ci.mermaid      CI named-individual instance diagram
 
     Parameters
     ----------
@@ -985,6 +1104,7 @@ def write_mermaid(
     sg_window       : Savitzky-Golay window size
     sg_poly         : Savitzky-Golay polynomial order
     n_sisal_sites   : number of SISAL cave sites (for collection label)
+    n_ci_sites      : number of CI findspot sites (for collection label)
 
     Returns dict of {filename: full_path}.
     """
@@ -995,6 +1115,7 @@ def write_mermaid(
             rolling_window, sg_window, sg_poly
         ),
         "mermaid_instance_sisal.mermaid": _mermaid_instance_sisal(n_sisal_sites),
+        "mermaid_instance_ci.mermaid": _mermaid_instance_ci(n_ci_sites),
     }
     paths: dict[str, str] = {}
     for filename, content in diagrams.items():

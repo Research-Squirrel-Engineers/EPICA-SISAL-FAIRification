@@ -15,6 +15,7 @@ import shutil
 SCRIPT_DIR = Path(__file__).parent.absolute()
 EPICA_SCRIPT = SCRIPT_DIR / "EPICA" / "plot_epica_from_tab.py"
 SISAL_SCRIPT = SCRIPT_DIR / "SISAL" / "plot_sisal_from_csv.py"
+CI_SCRIPT    = SCRIPT_DIR / "CI" / "ci_pipeline.py"
 ONTOLOGY_DIR = SCRIPT_DIR / "ontology"
 
 EPICA_PLOTS_DIR = SCRIPT_DIR / "EPICA" / "plots"
@@ -23,6 +24,7 @@ EPICA_REPORT_DIR = SCRIPT_DIR / "EPICA" / "report"
 SISAL_PLOTS_DIR = SCRIPT_DIR / "SISAL" / "plots"
 SISAL_RDF_DIR = SCRIPT_DIR / "SISAL" / "rdf"
 SISAL_REPORT_DIR = SCRIPT_DIR / "SISAL" / "report"
+CI_RDF_DIR = SCRIPT_DIR / "CI" / "rdf"
 
 # Global log file
 LOG_FILE = SCRIPT_DIR / "pipeline_report.txt"
@@ -119,6 +121,7 @@ def clean_all_outputs() -> None:
     total += clean_directory(SISAL_PLOTS_DIR, "SISAL plots")
     total += clean_directory(SISAL_RDF_DIR, "SISAL RDF")
     total += clean_directory(SISAL_REPORT_DIR, "SISAL reports")
+    total += clean_directory(CI_RDF_DIR, "CI RDF")
 
     if ONTOLOGY_DIR.exists():
         count = 0
@@ -177,11 +180,12 @@ def run_script(script_path: Path, description: str) -> bool:
         return False
 
 
-def print_summary(epica: bool, sisal: bool, start: datetime):
+def print_summary(epica: bool, sisal: bool, ci: bool, start: datetime):
     print_header("Summary", char="═")
     duration = datetime.now() - start
-    print(f"  EPICA:  {'✓ Success' if epica else '✗ Failed'}")
-    print(f"  SISAL:  {'✓ Success' if sisal else '✗ Failed'}")
+    print(f"  EPICA:  {'✓ Success' if epica else '✗ Failed / skipped'}")
+    print(f"  SISAL:  {'✓ Success' if sisal else '✗ Failed / skipped'}")
+    print(f"  CI:     {'✓ Success' if ci    else '✗ Failed / skipped'}")
     print(f"\n  Total duration: {duration.total_seconds():.1f} seconds")
     print(f"  Log saved to: {LOG_FILE}")
 
@@ -192,6 +196,7 @@ def main():
     )
     parser.add_argument("--epica-only", action="store_true")
     parser.add_argument("--sisal-only", action="store_true")
+    parser.add_argument("--ci-only", action="store_true")
     parser.add_argument("--clean", action="store_true")
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args()
@@ -214,30 +219,37 @@ def main():
     print("\n  Directory structure:")
     check_directory_exists(SCRIPT_DIR / "EPICA", "EPICA directory")
     check_directory_exists(SCRIPT_DIR / "SISAL", "SISAL directory")
+    check_directory_exists(SCRIPT_DIR / "CI",    "CI directory")
     check_directory_exists(ONTOLOGY_DIR, "Ontology directory")
 
     print("\n  Scripts:")
     epica_exists = check_file_exists(EPICA_SCRIPT, "EPICA script")
     sisal_exists = check_file_exists(SISAL_SCRIPT, "SISAL script")
+    ci_exists    = check_file_exists(CI_SCRIPT,    "CI script")
 
     epica_ok = False
     sisal_ok = False
+    ci_ok    = False
 
-    if not args.sisal_only and epica_exists:
+    if not args.sisal_only and not args.ci_only and epica_exists:
         print_section("2. EPICA Dome C (Ice Core)")
         epica_ok = run_script(EPICA_SCRIPT, "EPICA Dome C Processing")
 
-    if not args.epica_only and sisal_exists:
+    if not args.epica_only and not args.ci_only and sisal_exists:
         print_section("3. SISAL (Speleothems)")
         sisal_ok = run_script(SISAL_SCRIPT, "SISAL Processing")
 
-    print_summary(epica_ok, sisal_ok, start)
+    if not args.epica_only and not args.sisal_only and ci_exists:
+        print_section("4. Campanian Ignimbrite (CI Findspots)")
+        ci_ok = run_script(CI_SCRIPT, "CI Findspot Processing")
+
+    print_summary(epica_ok, sisal_ok, ci_ok, start)
 
     # Close log file
     tee.close()
     sys.stdout = tee.terminal
 
-    if not epica_ok or not sisal_ok:
+    if not epica_ok or not sisal_ok or not ci_ok:
         print("⚠  Some steps failed — see errors above.")
         sys.exit(1)
     else:
