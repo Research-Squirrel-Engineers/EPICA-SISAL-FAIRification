@@ -3,7 +3,7 @@
             <ows:Title>Static WFS 1.1.0</ows:Title>
             <ows:Abstract>This Static WFS exposes geodata included in the knowledge grap for the inclusion into GIS applications.</ows:Abstract>
             <ows:Keywords>
-            <ows:Keyword>https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification/</ows:Keyword>
+            <ows:Keyword>https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD/</ows:Keyword>
             <ows:Type>String</ows:Type>
             </ows:Keywords>
             <ows:ServiceType>WFS</ows:ServiceType>
@@ -13,7 +13,7 @@
         </ows:ServiceIdentification>
         <ows:OperationsMetadata>
             <ows:Operation name="GetCapabilities">
-                <ows:DCP><ows:HTTP><ows:Get xlink:href="https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//wfs/"/></ows:HTTP></ows:DCP>
+                <ows:DCP><ows:HTTP><ows:Get xlink:href="https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//wfs/"/></ows:HTTP></ows:DCP>
                 <ows:Parameter name="AcceptVersions">
                     <ows:Value>1.1.0</ows:Value>
                 </ows:Parameter>
@@ -22,14 +22,14 @@
                 </ows:Parameter>
             </ows:Operation>
             <ows:Operation name="DescribeFeatureType">
-                <ows:DCP><ows:HTTP><ows:Get xlink:href="https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//wfs/DescribeFeatureType/"/></ows:HTTP></ows:DCP>
+                <ows:DCP><ows:HTTP><ows:Get xlink:href="https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//wfs/DescribeFeatureType/"/></ows:HTTP></ows:DCP>
                 <ows:Parameter name="resultType">
                     <ows:Value>results</ows:Value>
                     <ows:Value>hits</ows:Value>
                 </ows:Parameter>
             </ows:Operation>
             <ows:Operation name="GetFeature">
-                <ows:DCP><ows:HTTP><ows:Get xlink:href="https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//wfs/GetFeature/"/></ows:HTTP></ows:DCP>
+                <ows:DCP><ows:HTTP><ows:Get xlink:href="https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//wfs/GetFeature/"/></ows:HTTP></ows:DCP>
                 <ows:Parameter name="resultType">
                     <ows:Value>results</ows:Value>
                     <ows:Value>hits</ows:Value>
@@ -38,15 +38,9 @@
         </ows:OperationsMetadata>
         <wfs:FeatureTypeList>
                 <wfs:FeatureType>
-                    <wfs:Name>DrillingSite_collection</wfs:Name>
-                    <wfs:Title>DrillingSite_collection</wfs:Title>
-                    <wfs:Abstract>FeatureCollection DrillingSite_collection</wfs:Abstract>
-                    <wfs:DefaultSRS>http://www.opengis.net/def/crs/EPSG/0/4326</wfs:DefaultSRS></wfs:FeatureType>
-
-                <wfs:FeatureType>
-                    <wfs:Name>AllPalaeoclimateSites_Collection</wfs:Name>
-                    <wfs:Title>AllPalaeoclimateSites_Collection</wfs:Title>
-                    <wfs:Abstract>FeatureCollection AllPalaeoclimateSites_Collection</wfs:Abstract>
+                    <wfs:Name>Feature_collection</wfs:Name>
+                    <wfs:Title>Feature_collection</wfs:Title>
+                    <wfs:Abstract>FeatureCollection Feature_collection</wfs:Abstract>
                     <wfs:DefaultSRS>http://www.opengis.net/def/crs/EPSG/0/4326</wfs:DefaultSRS></wfs:FeatureType>
 
                 <wfs:FeatureType>
@@ -62,21 +56,21 @@
                     <wfs:DefaultSRS>http://www.opengis.net/def/crs/EPSG/0/4326</wfs:DefaultSRS></wfs:FeatureType>
 
                 <wfs:FeatureType>
-                    <wfs:Name>Feature_collection</wfs:Name>
-                    <wfs:Title>Feature_collection</wfs:Title>
-                    <wfs:Abstract>FeatureCollection Feature_collection</wfs:Abstract>
+                    <wfs:Name>AllPalaeoclimateSites_Collection</wfs:Name>
+                    <wfs:Title>AllPalaeoclimateSites_Collection</wfs:Title>
+                    <wfs:Abstract>FeatureCollection AllPalaeoclimateSites_Collection</wfs:Abstract>
+                    <wfs:DefaultSRS>http://www.opengis.net/def/crs/EPSG/0/4326</wfs:DefaultSRS></wfs:FeatureType>
+
+                <wfs:FeatureType>
+                    <wfs:Name>DrillingSite_collection</wfs:Name>
+                    <wfs:Title>DrillingSite_collection</wfs:Title>
+                    <wfs:Abstract>FeatureCollection DrillingSite_collection</wfs:Abstract>
                     <wfs:DefaultSRS>http://www.opengis.net/def/crs/EPSG/0/4326</wfs:DefaultSRS></wfs:FeatureType>
 
                 <wfs:FeatureType>
                     <wfs:Name>E53_Place_collection</wfs:Name>
                     <wfs:Title>E53_Place_collection</wfs:Title>
                     <wfs:Abstract>FeatureCollection E53_Place_collection</wfs:Abstract>
-                    <wfs:DefaultSRS>http://www.opengis.net/def/crs/EPSG/0/4326</wfs:DefaultSRS></wfs:FeatureType>
-
-                <wfs:FeatureType>
-                    <wfs:Name>Cave_collection</wfs:Name>
-                    <wfs:Title>Cave_collection</wfs:Title>
-                    <wfs:Abstract>FeatureCollection Cave_collection</wfs:Abstract>
                     <wfs:DefaultSRS>http://www.opengis.net/def/crs/EPSG/0/4326</wfs:DefaultSRS></wfs:FeatureType>
 
                 <wfs:FeatureType>
@@ -89,6 +83,12 @@
                     <wfs:Name>Point_collection</wfs:Name>
                     <wfs:Title>Point_collection</wfs:Title>
                     <wfs:Abstract>FeatureCollection Point_collection</wfs:Abstract>
+                    <wfs:DefaultSRS>http://www.opengis.net/def/crs/EPSG/0/4326</wfs:DefaultSRS></wfs:FeatureType>
+
+                <wfs:FeatureType>
+                    <wfs:Name>Cave_collection</wfs:Name>
+                    <wfs:Title>Cave_collection</wfs:Title>
+                    <wfs:Abstract>FeatureCollection Cave_collection</wfs:Abstract>
                     <wfs:DefaultSRS>http://www.opengis.net/def/crs/EPSG/0/4326</wfs:DefaultSRS></wfs:FeatureType>
 </wfs:FeatureTypeList>
             <ogc:Filter_Capabilities></ogc:Filter_Capabilities>

@@ -167,9 +167,9 @@
     rdfs:label "Occurrences of vocabulary http://www.w3.org/2001/XMLSchema# in geo-lod" ;
     voaf:inDataset <http://w3id.org/geo-lod/geo-lod> .
 
-<https://github.com/Research-Squirrel-Engineers/EPICA-SISAL-FAIRification> a adms:AssetRepository ;
+<https://github.com/Research-Squirrel-Engineers/GeoScience-FAIRification-LOD> a adms:AssetRepository ;
     rdfs:label "Repository for geo-lod"@en ;
-    dcat:accessURL "https://github.com/Research-Squirrel-Engineers/EPICA-SISAL-FAIRification"^^xsd:anyURI ;
+    dcat:accessURL "https://github.com/Research-Squirrel-Engineers/GeoScience-FAIRification-LOD"^^xsd:anyURI ;
     dcat:dataset <http://w3id.org/geo-lod/geo-lod> .
 
 <http://dbpedia.org/resource/Location> rdfs:label "Location"@en .
@@ -359,7 +359,7 @@ doap: a voaf:Vocabulary ;
 
 <http://w3id.org/geo-lod/geo-lod_dist_ttl> a adms:AssetDistribution ;
     rdfs:label "geo-lod TTL Distribution"@en ;
-    dcat:downloadURL "https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//index.ttl"^^xsd:anyURI ;
+    dcat:downloadURL "https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//index.ttl"^^xsd:anyURI ;
     dcat:mediaType <http://www.w3.org/ns/formats/Turtle> .
 
 <http://w3id.org/geo-lod/geo-lod_entityId> a void:Dataset ;
@@ -593,7 +593,7 @@ skos: a voaf:Vocabulary ;
     vext:languages 0 ;
     vext:propertyClasses 0 ;
     dc:language <http://www.lexvo.org/page/iso639-1/en> ;
-    dcterms:modified "2026-03-23T13:26:09"^^xsd:dateTime ;
+    dcterms:modified "2026-03-23T13:34:38"^^xsd:dateTime ;
     dcterms:subject <http://dbpedia.org/resource/Location>,
         <http://dbpedia.org/resource/OGC_GeoSPARQL>,
         <http://dbpedia.org/resource/Time>,
@@ -625,7 +625,7 @@ skos: a voaf:Vocabulary ;
         <http://w3id.org/geo-lod/geo-lod_Speleothem>,
         <http://w3id.org/geo-lod/geo-lod_UThChronology> ;
     void:classes 11 ;
-    void:dataDump <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//index.ttl> ;
+    void:dataDump <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//index.ttl> ;
     void:distinctObjects 7145 ;
     void:distinctSubjects 2490 ;
     void:entities 2491 ;
@@ -692,7 +692,7 @@ skos: a voaf:Vocabulary ;
         "Person"@en,
         "Q121810372"@en,
         "Time"@en ;
-    dcat:landingPage <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification/> ;
-    foaf:homepage <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification/> ;
-    foaf:page <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//index.html> .
+    dcat:landingPage <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD/> ;
+    foaf:homepage <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD/> ;
+    foaf:page <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//index.html> .
 

@@ -55,7 +55,7 @@
     ns1:languages 0 ;
     ns1:propertyClasses 0 ;
     dc:language <http://www.lexvo.org/page/iso639-1/en> ;
-    dcterms:modified "2026-03-23T13:26:09"^^xsd:dateTime ;
+    dcterms:modified "2026-03-23T13:34:38"^^xsd:dateTime ;
     dcterms:subject <http://dbpedia.org/resource/Location>,
         <http://dbpedia.org/resource/OGC_GeoSPARQL>,
         <http://dbpedia.org/resource/Time>,
@@ -99,7 +99,7 @@
     void:classes 6,
         11,
         23 ;
-    void:dataDump <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//index.ttl> ;
+    void:dataDump <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//index.ttl> ;
     void:distinctObjects 1773,
         7145,
         12424 ;
@@ -206,7 +206,7 @@
         "Person"@en,
         "Q121810372"@en,
         "Time"@en ;
-    dcat:landingPage <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification/> ;
-    foaf:homepage <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification/> ;
-    foaf:page <https://Research-Squirrel-Engineers.github.io/EPICA-SISAL-FAIRification//index.html> .
+    dcat:landingPage <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD/> ;
+    foaf:homepage <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD/> ;
+    foaf:page <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//index.html> .
 
