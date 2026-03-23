@@ -4,8 +4,15 @@ COLLECTION(["geo:FeatureCollection
 geolod:SISAL_Cave_Collection
 305 members"])
 
+ARCHCOLL(["geo:FeatureCollection
+geolod:SISAL_ArchaeologicalCave_Collection"])
+
 CAVE(["Cave
 geolod:Cave_site_0001"])
+
+ARCHCAVE(["ArchaeologicalCaveSite
+geolod:Cave_site_0077
+Chauvet cave"])
 
 GEOM(["sf:Point
 geolod:Cave_site_0001_Geometry"])
@@ -27,6 +34,9 @@ UTHC(["UThChronology"])
 MEDIAN(["RollingMedianFilter w11"])
 SAVGOL(["SavitzkyGolayFilter w11 p2"])
 DATASRC(["SISALv3 DataSource"])
+WIKIDATA(["wikidata:Q191483"])
+UNESCO(["UNESCO WH #1426"])
+ARCHCTX(["geolod:PalaeolithicContext"])
 
 LAGE((ageKaBP))
 LDEPTH((atDepth_mm))
@@ -35,9 +45,19 @@ LMEDIAN((smoothed median))
 LSG((smoothed savgol))
 LWKT((asWKT POINT))
 LPRM((unit PERMILLE))
+LCAT(("archaeologicalCategory
+'Palaeolithic Art'"))
+LCONF((confidence: high))
 
 COLLECTION -->|rdfs:member| CAVE
+ARCHCOLL -->|rdfs:member| ARCHCAVE
 CAVE -->|geo:hasGeometry| GEOM
+ARCHCAVE -->|geo:hasGeometry| GEOM
+ARCHCAVE -->|owl:sameAs| WIKIDATA
+ARCHCAVE -->|geolod:unescoWHId| UNESCO
+ARCHCAVE -->|archaeologicalBroaderContext| ARCHCTX
+ARCHCAVE -.->|archaeologicalCategory| LCAT
+ARCHCAVE -.->|archaeologicalConfidence| LCONF
 SPEL -->|collectedFrom| CAVE
 SSE -->|tookPlaceAt| CAVE
 SSE -->|removedSample| SPEL
@@ -61,7 +81,9 @@ GEOM -.->|asWKT| LWKT
 
 %% Main instances - darker yellow/brown
 style COLLECTION fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
+style ARCHCOLL fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
 style CAVE fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
+style ARCHCAVE fill:#b8860b,color:#fff,stroke:#856404,stroke-width:2px
 style SPEL fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
 style SSE fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
 style OBS fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
@@ -75,6 +97,9 @@ style UTHC fill:#b8860b,color:#fff,stroke:#856404
 style MEDIAN fill:#b8860b,color:#fff,stroke:#856404
 style SAVGOL fill:#b8860b,color:#fff,stroke:#856404
 style DATASRC fill:#b8860b,color:#fff,stroke:#856404
+style WIKIDATA fill:#990000,color:#fff,stroke:#660000
+style UNESCO fill:#005a8c,color:#fff,stroke:#003d61
+style ARCHCTX fill:#b8860b,color:#fff,stroke:#856404
 
 %% Geometry - blue
 style GEOM fill:#457b9d,color:#fff,stroke:#2c5f7a
@@ -87,3 +112,5 @@ style LMEDIAN fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
 style LSG fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
 style LWKT fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
 style LPRM fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+style LCAT fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+style LCONF fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px

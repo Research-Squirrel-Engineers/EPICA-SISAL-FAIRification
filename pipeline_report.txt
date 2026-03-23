@@ -3,7 +3,7 @@
                              EPICA + SISAL Pipeline                             
 ════════════════════════════════════════════════════════════════════════════════
 
-  Timestamp: 2026-03-23 14:23:21
+  Timestamp: 2026-03-23 15:07:47
   Directory: c:\git\EPICA-SISAL-FAIRification
 
 
@@ -57,5 +57,5 @@
   SISAL:  ✓ Success
   CI:     ✓ Success
 
-  Total duration: 102.3 seconds
+  Total duration: 67.5 seconds
   Log saved to: c:\git\EPICA-SISAL-FAIRification\pipeline_report.txt

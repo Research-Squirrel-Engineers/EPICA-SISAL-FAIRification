@@ -394,6 +394,34 @@ GEO_LOD_CORE_TTL: str = textwrap.dedent(
         rdfs:comment "Polynomial least-squares smoothing filter preserving \\
     higher signal moments."@en .
 
+    # -- ArchaeologicalContext vocabulary (SISAL archaeological enrichment) ---
+
+    geolod:ArchaeologicalContext
+        a owl:Class ;
+        rdfs:label   "Archaeological Context"@en ;
+        rdfs:comment "Controlled vocabulary class for broader cultural-temporal \\
+    context categories used in archaeological cave site classification."@en .
+
+    geolod:PalaeolithicContext
+        a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+        rdfs:label   "Palaeolithic Context"@en .
+
+    geolod:PrehistoricContext
+        a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+        rdfs:label   "Prehistoric Context"@en .
+
+    geolod:PalaeontologicalContext
+        a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+        rdfs:label   "Palaeontological Context"@en .
+
+    geolod:HistoricContext
+        a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+        rdfs:label   "Historic Context"@en .
+
+    geolod:MesoamericanContext
+        a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+        rdfs:label   "Mesoamerican Context"@en .
+
     # -- DataSource --
 
     geolod:DataSource
@@ -656,6 +684,7 @@ MERMAID_TAXONOMY: str = textwrap.dedent(
         D13COBS["Delta13CSpeleothemObservation"]
         SPEL["Speleothem"]
         CAVE["Cave"]
+        ARCHCAVE["ArchaeologicalCaveSite"]
         SSE["SpeleothemSamplingEvent"]
         UTHCHRONO["UThChronology"]
     end
@@ -709,6 +738,8 @@ MERMAID_TAXONOMY: str = textwrap.dedent(
     
     SAMPLINGLOC --> DRILLSITE
     SAMPLINGLOC --> CAVE
+    CAVE --> ARCHCAVE
+    CA2 -.-> ARCHCAVE
     
     CHRONO --> ICECHRONO
     CHRONO --> UTHCHRONO
@@ -771,6 +802,7 @@ MERMAID_TAXONOMY: str = textwrap.dedent(
     style D13COBS fill:#b8860b,color:#fff,stroke:#856404
     style SPEL fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
     style CAVE fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
+    style ARCHCAVE fill:#b8860b,color:#fff,stroke:#856404
     style SSE fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
     style UTHCHRONO fill:#b8860b,color:#fff,stroke:#856404
 
@@ -912,10 +944,17 @@ def _mermaid_instance_sisal(n: int = 305) -> str:
 
     COLLECTION(["geo:FeatureCollection
     geolod:SISAL_Cave_Collection
-    305 members"])
+    {n} members"])
+
+    ARCHCOLL(["geo:FeatureCollection
+    geolod:SISAL_ArchaeologicalCave_Collection"])
 
     CAVE(["Cave
     geolod:Cave_site_0001"])
+
+    ARCHCAVE(["ArchaeologicalCaveSite
+    geolod:Cave_site_0077
+    Chauvet cave"])
 
     GEOM(["sf:Point
     geolod:Cave_site_0001_Geometry"])
@@ -937,6 +976,9 @@ def _mermaid_instance_sisal(n: int = 305) -> str:
     MEDIAN(["RollingMedianFilter w11"])
     SAVGOL(["SavitzkyGolayFilter w11 p2"])
     DATASRC(["SISALv3 DataSource"])
+    WIKIDATA(["wikidata:Q191483"])
+    UNESCO(["UNESCO WH #1426"])
+    ARCHCTX(["geolod:PalaeolithicContext"])
 
     LAGE((ageKaBP))
     LDEPTH((atDepth_mm))
@@ -945,9 +987,19 @@ def _mermaid_instance_sisal(n: int = 305) -> str:
     LSG((smoothed savgol))
     LWKT((asWKT POINT))
     LPRM((unit PERMILLE))
+    LCAT(("archaeologicalCategory
+    'Palaeolithic Art'"))
+    LCONF((confidence: high))
 
     COLLECTION -->|rdfs:member| CAVE
+    ARCHCOLL -->|rdfs:member| ARCHCAVE
     CAVE -->|geo:hasGeometry| GEOM
+    ARCHCAVE -->|geo:hasGeometry| GEOM
+    ARCHCAVE -->|owl:sameAs| WIKIDATA
+    ARCHCAVE -->|geolod:unescoWHId| UNESCO
+    ARCHCAVE -->|archaeologicalBroaderContext| ARCHCTX
+    ARCHCAVE -.->|archaeologicalCategory| LCAT
+    ARCHCAVE -.->|archaeologicalConfidence| LCONF
     SPEL -->|collectedFrom| CAVE
     SSE -->|tookPlaceAt| CAVE
     SSE -->|removedSample| SPEL
@@ -971,7 +1023,9 @@ def _mermaid_instance_sisal(n: int = 305) -> str:
 
     %% Main instances - darker yellow/brown
     style COLLECTION fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
+    style ARCHCOLL fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
     style CAVE fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
+    style ARCHCAVE fill:#b8860b,color:#fff,stroke:#856404,stroke-width:2px
     style SPEL fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
     style SSE fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
     style OBS fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
@@ -985,6 +1039,9 @@ def _mermaid_instance_sisal(n: int = 305) -> str:
     style MEDIAN fill:#b8860b,color:#fff,stroke:#856404
     style SAVGOL fill:#b8860b,color:#fff,stroke:#856404
     style DATASRC fill:#b8860b,color:#fff,stroke:#856404
+    style WIKIDATA fill:#990000,color:#fff,stroke:#660000
+    style UNESCO fill:#005a8c,color:#fff,stroke:#003d61
+    style ARCHCTX fill:#b8860b,color:#fff,stroke:#856404
     
     %% Geometry - blue
     style GEOM fill:#457b9d,color:#fff,stroke:#2c5f7a
@@ -997,6 +1054,8 @@ def _mermaid_instance_sisal(n: int = 305) -> str:
     style LSG fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
     style LWKT fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
     style LPRM fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LCAT fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
+    style LCONF fill:#ffd60a,color:#000,stroke:#d4a005,stroke-width:2px
 """
     )
 

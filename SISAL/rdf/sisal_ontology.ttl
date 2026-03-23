@@ -46,8 +46,90 @@ geolod:Speleothem
         owl:someValuesFrom geolod:Cave
     ] .
 
-# ── Site ──────────────────────────────────────────────────────────────────────
-geolod:Cave
+@prefix crmarchaeo: <http://www.cidoc-crm.org/crmarchaeo/> .
+
+# ── Cave sub-types ────────────────────────────────────────────────────────────
+geolod:ArchaeologicalCaveSite
+    a owl:Class ;
+    rdfs:subClassOf geolod:Cave ;
+    rdfs:subClassOf crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label   "Archaeological Cave Site"@en ;
+    rdfs:comment "A SISAL cave site that also carries confirmed or probable
+                  archaeological evidence (art, human occupation, skeletal
+                  remains, inscriptions, etc.). Modelling mirrors the
+                  CIArchaeologicalSite pattern from ci_pipeline.py."@en .
+
+# ============================================================================
+# PROPERTIES — archaeological enrichment
+# ============================================================================
+
+geolod:archaeologicalCategory
+    a owl:DatatypeProperty ;
+    rdfs:domain  geolod:ArchaeologicalCaveSite ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "archaeological category"@en ;
+    rdfs:comment "Free-text classification of the archaeological character
+                  (e.g. 'Palaeolithic Art', 'Prehistoric Occupation')."@en .
+
+geolod:archaeologicalBroaderContext
+    a owl:ObjectProperty ;
+    rdfs:domain  geolod:ArchaeologicalCaveSite ;
+    rdfs:range   geolod:ArchaeologicalContext ;
+    rdfs:label   "archaeological broader context"@en ;
+    rdfs:comment "Links the site to a controlled vocabulary term for its
+                  broader cultural-temporal context."@en .
+
+geolod:archaeologicalConfidence
+    a owl:DatatypeProperty ;
+    rdfs:domain  geolod:ArchaeologicalCaveSite ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "archaeological confidence"@en ;
+    rdfs:comment "Confidence level of the archaeological attribution
+                  (high / medium / low)."@en .
+
+geolod:isUNESCOWorldHeritage
+    a owl:DatatypeProperty ;
+    rdfs:domain  geolod:Cave ;
+    rdfs:range   xsd:boolean ;
+    rdfs:label   "is UNESCO World Heritage"@en ;
+    rdfs:comment "True if the cave site lies within a UNESCO World Heritage
+                  property."@en .
+
+geolod:unescoWHId
+    a owl:ObjectProperty ;
+    rdfs:domain  geolod:Cave ;
+    rdfs:label   "UNESCO WH identifier"@en ;
+    rdfs:comment "URI of the UNESCO World Heritage list entry
+                  (https://whc.unesco.org/en/list/{id})."@en .
+
+# ── Controlled vocabulary for broader archaeological contexts ─────────────────
+geolod:ArchaeologicalContext
+    a owl:Class ;
+    rdfs:label   "Archaeological Context"@en ;
+    rdfs:comment "Controlled vocabulary class for broader cultural-temporal
+                  context categories."@en .
+
+geolod:PalaeolithicContext
+    a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+    rdfs:label "Palaeolithic Context"@en .
+
+geolod:PrehistoricContext
+    a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+    rdfs:label "Prehistoric Context"@en .
+
+geolod:PalaeontologicalContext
+    a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+    rdfs:label "Palaeontological Context"@en .
+
+geolod:HistoricContext
+    a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+    rdfs:label "Historic Context"@en .
+
+geolod:MesoamericanContext
+    a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+    rdfs:label "Mesoamerican Context"@en .
+
+
     a owl:Class ;
     rdfs:subClassOf geolod:SamplingLocation ;
     rdfs:label   "Cave"@en ;

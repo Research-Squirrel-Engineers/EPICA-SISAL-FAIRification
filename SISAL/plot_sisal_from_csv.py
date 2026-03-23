@@ -485,8 +485,90 @@ geolod:Speleothem
         owl:someValuesFrom geolod:Cave
     ] .
 
-# ── Site ──────────────────────────────────────────────────────────────────────
-geolod:Cave
+@prefix crmarchaeo: <http://www.cidoc-crm.org/crmarchaeo/> .
+
+# ── Cave sub-types ────────────────────────────────────────────────────────────
+geolod:ArchaeologicalCaveSite
+    a owl:Class ;
+    rdfs:subClassOf geolod:Cave ;
+    rdfs:subClassOf crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label   "Archaeological Cave Site"@en ;
+    rdfs:comment "A SISAL cave site that also carries confirmed or probable
+                  archaeological evidence (art, human occupation, skeletal
+                  remains, inscriptions, etc.). Modelling mirrors the
+                  CIArchaeologicalSite pattern from ci_pipeline.py."@en .
+
+# ============================================================================
+# PROPERTIES — archaeological enrichment
+# ============================================================================
+
+geolod:archaeologicalCategory
+    a owl:DatatypeProperty ;
+    rdfs:domain  geolod:ArchaeologicalCaveSite ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "archaeological category"@en ;
+    rdfs:comment "Free-text classification of the archaeological character
+                  (e.g. 'Palaeolithic Art', 'Prehistoric Occupation')."@en .
+
+geolod:archaeologicalBroaderContext
+    a owl:ObjectProperty ;
+    rdfs:domain  geolod:ArchaeologicalCaveSite ;
+    rdfs:range   geolod:ArchaeologicalContext ;
+    rdfs:label   "archaeological broader context"@en ;
+    rdfs:comment "Links the site to a controlled vocabulary term for its
+                  broader cultural-temporal context."@en .
+
+geolod:archaeologicalConfidence
+    a owl:DatatypeProperty ;
+    rdfs:domain  geolod:ArchaeologicalCaveSite ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "archaeological confidence"@en ;
+    rdfs:comment "Confidence level of the archaeological attribution
+                  (high / medium / low)."@en .
+
+geolod:isUNESCOWorldHeritage
+    a owl:DatatypeProperty ;
+    rdfs:domain  geolod:Cave ;
+    rdfs:range   xsd:boolean ;
+    rdfs:label   "is UNESCO World Heritage"@en ;
+    rdfs:comment "True if the cave site lies within a UNESCO World Heritage
+                  property."@en .
+
+geolod:unescoWHId
+    a owl:ObjectProperty ;
+    rdfs:domain  geolod:Cave ;
+    rdfs:label   "UNESCO WH identifier"@en ;
+    rdfs:comment "URI of the UNESCO World Heritage list entry
+                  (https://whc.unesco.org/en/list/{id})."@en .
+
+# ── Controlled vocabulary for broader archaeological contexts ─────────────────
+geolod:ArchaeologicalContext
+    a owl:Class ;
+    rdfs:label   "Archaeological Context"@en ;
+    rdfs:comment "Controlled vocabulary class for broader cultural-temporal
+                  context categories."@en .
+
+geolod:PalaeolithicContext
+    a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+    rdfs:label "Palaeolithic Context"@en .
+
+geolod:PrehistoricContext
+    a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+    rdfs:label "Prehistoric Context"@en .
+
+geolod:PalaeontologicalContext
+    a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+    rdfs:label "Palaeontological Context"@en .
+
+geolod:HistoricContext
+    a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+    rdfs:label "Historic Context"@en .
+
+geolod:MesoamericanContext
+    a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+    rdfs:label "Mesoamerican Context"@en .
+
+
     a owl:Class ;
     rdfs:subClassOf geolod:SamplingLocation ;
     rdfs:label   "Cave"@en ;
@@ -987,20 +1069,42 @@ def load_sisal_sites_csv(filepath: str) -> "pd.DataFrame":
     Loads the SISAL v_sites_all CSV.
 
     Expected columns: site_id, site_name, wkt, n_d18o_samples, n_d13c_samples
+    Optional columns (archaeological enrichment, added 2025):
+        isArchaeologicalSite, arch_category, arch_broader_context, arch_note,
+        wikidata_qid, osm_id, osm_type, osm_url,
+        isUNESCO, unesco_wh_id, arch_confidence
     WKT format:       POINT(lon lat)  (longitude first, as per GeoSPARQL)
     Returns a clean DataFrame, sorted by site_id.
     """
     df = pd.read_csv(filepath)
+    # v_sites_all.csv uses 'sisal_site_id'; normalise to 'site_id'
+    if "sisal_site_id" in df.columns and "site_id" not in df.columns:
+        df = df.rename(columns={"sisal_site_id": "site_id"})
     df["site_id"] = pd.to_numeric(df["site_id"], errors="coerce")
     df["n_d18o_samples"] = pd.to_numeric(df["n_d18o_samples"], errors="coerce")
     df["n_d13c_samples"] = pd.to_numeric(df["n_d13c_samples"], errors="coerce")
+
+    # Archaeological enrichment columns — inject as None if absent
+    # (backwards-compatible: works with older v_sites_all versions too)
+    for col in [
+        "isArchaeologicalSite", "arch_category", "arch_broader_context", "arch_note",
+        "wikidata_qid", "osm_id", "osm_type", "osm_url",
+        "isUNESCO", "unesco_wh_id", "arch_confidence",
+    ]:
+        if col not in df.columns:
+            df[col] = None
+
     df = (
         df.dropna(subset=["site_id", "wkt"])
         .sort_values("site_id")
         .reset_index(drop=True)
     )
 
+    arch_count = (df["isArchaeologicalSite"].astype(str).str.lower() == "true").sum()
+    unesco_count = (df["isUNESCO"].astype(str).str.lower() == "yes").sum()
     print(f"  Loaded SISAL sites: {len(df)} sites")
+    print(f"  Archaeological sites: {arch_count}")
+    print(f"  UNESCO World Heritage caves: {unesco_count}")
     print(f"  d18O samples total: {df['n_d18o_samples'].sum():,}")
     print(f"  d13C samples total: {df['n_d13c_samples'].sum():,}")
     return df
@@ -1008,15 +1112,27 @@ def load_sisal_sites_csv(filepath: str) -> "pd.DataFrame":
 
 def build_sisal_sites_rdf(df_sites: "pd.DataFrame") -> "Graph | None":
     """
-    Builds an RDF graph for ALL 305 SISAL cave sites from v_sites_all.
+    Builds an RDF graph for ALL SISAL cave sites from v_sites_all.
 
     Each Cave instance gets:
-      - geolod:siteId          (integer)
-      - rdfs:label             (site_name)
-      - geo:hasGeometry        → sf:Point with geo:asWKT literal
+      - geolod:siteId           (integer)
+      - rdfs:label              (site_name)
+      - geo:hasGeometry         → sf:Point with geo:asWKT literal
       - geolod:countD18OSamples (integer)
       - geolod:countD13CSamples (integer)
-      - prov:wasDerivedFrom    → geolod:SISALv3_DataSource
+      - prov:wasDerivedFrom     → geolod:SISALv3_DataSource
+
+    Archaeological enrichment (if isArchaeologicalSite == true):
+      - rdf:type geolod:ArchaeologicalCaveSite
+      - rdf:type crmarchaeo:A2_Stratigraphic_Volume_Unit
+      - geolod:archaeologicalCategory   (Literal)
+      - geolod:archaeologicalBroaderContext (URI)
+      - skos:note               (arch_note)
+      - geolod:archaeologicalConfidence (Literal)
+
+    Linked data:
+      - owl:sameAs → Wikidata entity URI  (if wikidata_qid present)
+      - geolod:isUNESCOWorldHeritage xsd:boolean + geolod:unescoWHId URI
     """
     if not RDF_AVAILABLE:
         return None
@@ -1030,6 +1146,8 @@ def build_sisal_sites_rdf(df_sites: "pd.DataFrame") -> "Graph | None":
     GEOLOD = Namespace("http://w3id.org/geo-lod/")
     GEO = Namespace("http://www.opengis.net/ont/geosparql#")
     SF = Namespace("http://www.opengis.net/ont/sf#")
+    CRMARCHAEO = Namespace("http://www.cidoc-crm.org/crmarchaeo/")
+    SKOS_NS = Namespace("http://www.w3.org/2004/02/skos/core#")
 
     if not GEO_LOD_UTILS_AVAILABLE:
         g.bind("geolod", GEOLOD)
@@ -1038,9 +1156,22 @@ def build_sisal_sites_rdf(df_sites: "pd.DataFrame") -> "Graph | None":
         g.bind("rdfs", RDFS)
         g.bind("xsd", XSD)
 
+    # Always bind archaeology-related prefixes
+    g.bind("crmarchaeo", CRMARCHAEO)
+    g.bind("skos", SKOS_NS)
+    g.bind("owl", OWL)
+
     src = GEOLOD["SISALv3_DataSource"]
 
-    cave_uris: list = []  # für FeatureCollection
+    cave_uris: list = []        # für FeatureCollection
+    arch_uris: list = []        # für ArchaeologicalCaveSite FeatureCollection
+    arch_count = 0
+
+    def _val(row, col):
+        """Return stripped string or None for NaN/None/empty."""
+        v = str(row.get(col, "") or "").strip()
+        return None if v in ("", "nan", "None") else v
+
     for _, row in df_sites.iterrows():
         site_id = int(row["site_id"])
         site_name = str(row["site_name"])
@@ -1050,79 +1181,121 @@ def build_sisal_sites_rdf(df_sites: "pd.DataFrame") -> "Graph | None":
         slug = f"site_{site_id:04d}"
         cave = GEOLOD[f"Cave_{slug}"]
 
+        # ── Core Cave triples ─────────────────────────────────────────────────
         g.add((cave, RDF.type, GEOLOD["Cave"]))
         g.add((cave, RDFS.label, Literal(site_name, lang="en")))
         g.add((cave, GEOLOD["siteId"], Literal(site_id, datatype=XSD.integer)))
-        g.add(
-            (
-                cave,
-                GEOLOD["countD18OSamples"],
-                Literal(int(row["n_d18o_samples"]), datatype=XSD.integer),
-            )
-        )
-        g.add(
-            (
-                cave,
-                GEOLOD["countD13CSamples"],
-                Literal(int(row["n_d13c_samples"]), datatype=XSD.integer),
-            )
-        )
+        g.add((
+            cave,
+            GEOLOD["countD18OSamples"],
+            Literal(int(row["n_d18o_samples"]), datatype=XSD.integer),
+        ))
+        g.add((
+            cave,
+            GEOLOD["countD13CSamples"],
+            Literal(int(row["n_d13c_samples"]), datatype=XSD.integer),
+        ))
         g.add((cave, PROV.wasDerivedFrom, src))
 
-        # Geometry (GeoSPARQL 1.1 / CI_full.py pattern — sf:Point + CRS-prefixed WKT)
+        # ── Geometry (GeoSPARQL 1.1 / CI_full.py pattern) ────────────────────
         geom = GEOLOD[f"Cave_{slug}_Geometry"]
-        g.add((geom, RDF.type, SF["Point"]))  # sf:Point only (subClassOf geo:Geometry)
-        # Inject EPSG:4326 CRS prefix if absent (CI_full.py pattern)
+        g.add((geom, RDF.type, SF["Point"]))
         if not wkt.startswith("<"):
             wkt = f"<http://www.opengis.net/def/crs/EPSG/0/4326> {wkt}"
-        g.add(
-            (
-                geom,
-                GEO["asWKT"],
-                Literal(wkt, datatype=GEO["wktLiteral"]),
-            )
-        )
+        g.add((geom, GEO["asWKT"], Literal(wkt, datatype=GEO["wktLiteral"])))
         g.add((cave, GEO["hasGeometry"], geom))
 
         cave_uris.append(cave)
 
-    # ── FeatureCollection (GeoSPARQL 1.1 — enables QGIS / Linked Data viewers) ──
+        # ── Archaeological enrichment (CI-pattern) ────────────────────────────
+        is_arch = str(row.get("isArchaeologicalSite", "") or "").strip().lower() == "true"
+        if is_arch:
+            # Typing — mirrors ci_pipeline.py: domain class + CRMarchaeo
+            g.add((cave, RDF.type, GEOLOD["ArchaeologicalCaveSite"]))
+            g.add((cave, RDF.type, CRMARCHAEO["A2_Stratigraphic_Volume_Unit"]))
+
+            # Archaeological category (free text label)
+            arch_cat = _val(row, "arch_category")
+            if arch_cat:
+                g.add((cave, GEOLOD["archaeologicalCategory"],
+                       Literal(arch_cat, lang="en")))
+
+            # Broader context (as URI individual — e.g. geolod:PalaeolithicContext)
+            arch_ctx = _val(row, "arch_broader_context")
+            if arch_ctx:
+                g.add((cave, GEOLOD["archaeologicalBroaderContext"],
+                       GEOLOD[arch_ctx]))
+
+            # Free-text note
+            arch_note = _val(row, "arch_note")
+            if arch_note:
+                g.add((cave, SKOS_NS["note"], Literal(arch_note, lang="en")))
+
+            # Confidence level
+            conf = _val(row, "arch_confidence")
+            if conf:
+                g.add((cave, GEOLOD["archaeologicalConfidence"], Literal(conf)))
+
+            arch_uris.append(cave)
+            arch_count += 1
+
+        # ── Wikidata sameAs (independent of archaeological flag) ──────────────
+        wd_qid = _val(row, "wikidata_qid")
+        if wd_qid:
+            g.add((cave, OWL.sameAs,
+                   URIRef(f"https://www.wikidata.org/entity/{wd_qid}")))
+
+        # ── UNESCO World Heritage ─────────────────────────────────────────────
+        is_unesco = str(row.get("isUNESCO", "") or "").strip().lower() == "yes"
+        if is_unesco:
+            g.add((cave, GEOLOD["isUNESCOWorldHeritage"],
+                   Literal(True, datatype=XSD.boolean)))
+            wh_id = _val(row, "unesco_wh_id")
+            if wh_id:
+                # Normalise float (1426.0) → int string ("1426")
+                try:
+                    wh_id = str(int(float(wh_id)))
+                except (ValueError, TypeError):
+                    pass
+                g.add((cave, GEOLOD["unescoWHId"],
+                       URIRef(f"https://whc.unesco.org/en/list/{wh_id}")))
+
+    # ── FeatureCollection: all caves ─────────────────────────────────────────
     collection = GEOLOD["SISAL_Cave_Collection"]
     g.add((collection, RDF.type, GEO["FeatureCollection"]))
     g.add((collection, RDFS.label, Literal("SISAL Cave Sites Collection", lang="en")))
     for cave_uri in cave_uris:
         g.add((collection, RDFS.member, cave_uri))
-    print(
-        f"  FeatureCollection: {len(cave_uris)} members → geolod:SISAL_Cave_Collection"
-    )
+    print(f"  FeatureCollection: {len(cave_uris)} members → geolod:SISAL_Cave_Collection")
 
-    # ── Global Palaeoclimate Sites Collection ──
-    # (combined collection across all datasets — EPICA, SISAL, etc.)
+    # ── FeatureCollection: archaeological caves only ──────────────────────────
+    if arch_uris:
+        arch_collection = GEOLOD["SISAL_ArchaeologicalCave_Collection"]
+        g.add((arch_collection, RDF.type, GEO["FeatureCollection"]))
+        g.add((arch_collection, RDFS.label,
+               Literal("SISAL Archaeological Cave Sites Collection", lang="en")))
+        g.add((arch_collection, RDFS.comment, Literal(
+            "SISAL cave sites with confirmed or probable archaeological evidence "
+            "(art, occupation, human remains, inscriptions, etc.).", lang="en")))
+        for au in arch_uris:
+            g.add((arch_collection, RDFS.member, au))
+        print(f"  ArchaeologicalCave Collection: {len(arch_uris)} members "
+              f"→ geolod:SISAL_ArchaeologicalCave_Collection")
+
+    # ── Global Palaeoclimate Sites Collection ─────────────────────────────────
     global_collection = GEOLOD["AllPalaeoclimateSites_Collection"]
     g.add((global_collection, RDF.type, GEO["FeatureCollection"]))
-    g.add(
-        (
-            global_collection,
-            RDFS.label,
-            Literal("All Palaeoclimate Sites Collection", lang="en"),
-        )
-    )
-    g.add(
-        (
-            global_collection,
-            RDFS.comment,
-            Literal(
-                "Combined collection of all palaeoclimate sampling locations (ice cores, cave sites, etc.)",
-                lang="en",
-            ),
-        )
-    )
+    g.add((global_collection, RDFS.label,
+           Literal("All Palaeoclimate Sites Collection", lang="en")))
+    g.add((global_collection, RDFS.comment, Literal(
+        "Combined collection of all palaeoclimate sampling locations "
+        "(ice cores, cave sites, etc.)", lang="en")))
     for cave_uri in cave_uris:
         g.add((global_collection, RDFS.member, cave_uri))
-    print(
-        f"  Global Collection: {len(cave_uris)} cave sites added → geolod:AllPalaeoclimateSites_Collection"
-    )
+    print(f"  Global Collection: {len(cave_uris)} cave sites added "
+          f"→ geolod:AllPalaeoclimateSites_Collection")
 
+    print(f"  Archaeological sites modelled: {arch_count}")
     print(f"  RDF sites: {len(df_sites)} caves · {len(g):,} triples")
     return g
 

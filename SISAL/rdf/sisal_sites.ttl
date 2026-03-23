@@ -1,8 +1,11 @@
+@prefix crmarchaeo: <http://www.cidoc-crm.org/crmarchaeo/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix geolod: <http://w3id.org/geo-lod/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sf: <http://www.opengis.net/ont/sf#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 geolod:AllPalaeoclimateSites_Collection a geo:FeatureCollection ;
@@ -313,6 +316,47 @@ geolod:AllPalaeoclimateSites_Collection a geo:FeatureCollection ;
         geolod:Cave_site_0364,
         geolod:Cave_site_0365,
         geolod:Cave_site_0366 .
+
+geolod:SISAL_ArchaeologicalCave_Collection a geo:FeatureCollection ;
+    rdfs:label "SISAL Archaeological Cave Sites Collection"@en ;
+    rdfs:comment "SISAL cave sites with confirmed or probable archaeological evidence (art, occupation, human remains, inscriptions, etc.)."@en ;
+    rdfs:member geolod:Cave_site_0004,
+        geolod:Cave_site_0011,
+        geolod:Cave_site_0016,
+        geolod:Cave_site_0019,
+        geolod:Cave_site_0067,
+        geolod:Cave_site_0071,
+        geolod:Cave_site_0073,
+        geolod:Cave_site_0077,
+        geolod:Cave_site_0081,
+        geolod:Cave_site_0087,
+        geolod:Cave_site_0104,
+        geolod:Cave_site_0108,
+        geolod:Cave_site_0118,
+        geolod:Cave_site_0135,
+        geolod:Cave_site_0136,
+        geolod:Cave_site_0160,
+        geolod:Cave_site_0161,
+        geolod:Cave_site_0182,
+        geolod:Cave_site_0223,
+        geolod:Cave_site_0226,
+        geolod:Cave_site_0245,
+        geolod:Cave_site_0253,
+        geolod:Cave_site_0258,
+        geolod:Cave_site_0266,
+        geolod:Cave_site_0267,
+        geolod:Cave_site_0268,
+        geolod:Cave_site_0275,
+        geolod:Cave_site_0286,
+        geolod:Cave_site_0295,
+        geolod:Cave_site_0297,
+        geolod:Cave_site_0298,
+        geolod:Cave_site_0324,
+        geolod:Cave_site_0329,
+        geolod:Cave_site_0337,
+        geolod:Cave_site_0353,
+        geolod:Cave_site_0359,
+        geolod:Cave_site_0364 .
 
 geolod:SISAL_Cave_Collection a geo:FeatureCollection ;
     rdfs:label "SISAL Cave Sites Collection"@en ;
@@ -1561,14 +1605,6 @@ geolod:Cave_site_0003 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0003_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0004 a geolod:Cave ;
-    rdfs:label "Villars cave"@en ;
-    geolod:countD13CSamples 1126 ;
-    geolod:countD18OSamples 1126 ;
-    geolod:siteId 4 ;
-    geo:hasGeometry geolod:Cave_site_0004_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0005 a geolod:Cave ;
     rdfs:label "Yangkou cave"@en ;
     geolod:countD13CSamples 1104 ;
@@ -1617,14 +1653,6 @@ geolod:Cave_site_0010 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0010_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0011 a geolod:Cave ;
-    rdfs:label "Jeita cave"@en ;
-    geolod:countD13CSamples 1830 ;
-    geolod:countD18OSamples 1830 ;
-    geolod:siteId 11 ;
-    geo:hasGeometry geolod:Cave_site_0011_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0012 a geolod:Cave ;
     rdfs:label "Mawmluh cave"@en ;
     geolod:countD13CSamples 2480 ;
@@ -1657,28 +1685,12 @@ geolod:Cave_site_0015 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0015_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0016 a geolod:Cave ;
-    rdfs:label "Han-sur-Lesse cave"@en ;
-    geolod:countD13CSamples 953 ;
-    geolod:countD18OSamples 953 ;
-    geolod:siteId 16 ;
-    geo:hasGeometry geolod:Cave_site_0016_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0017 a geolod:Cave ;
     rdfs:label "Huangye cave"@en ;
     geolod:countD13CSamples 0 ;
     geolod:countD18OSamples 381 ;
     geolod:siteId 17 ;
     geo:hasGeometry geolod:Cave_site_0017_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0019 a geolod:Cave ;
-    rdfs:label "Kanaan cave"@en ;
-    geolod:countD13CSamples 965 ;
-    geolod:countD18OSamples 965 ;
-    geolod:siteId 19 ;
-    geo:hasGeometry geolod:Cave_site_0019_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
 geolod:Cave_site_0020 a geolod:Cave ;
@@ -1969,14 +1981,6 @@ geolod:Cave_site_0066 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0066_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0067 a geolod:Cave ;
-    rdfs:label "Clearwater/Wind caves connection"@en ;
-    geolod:countD13CSamples 385 ;
-    geolod:countD18OSamples 385 ;
-    geolod:siteId 67 ;
-    geo:hasGeometry geolod:Cave_site_0067_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0069 a geolod:Cave ;
     rdfs:label "Xinglong cave"@en ;
     geolod:countD13CSamples 395 ;
@@ -1993,14 +1997,6 @@ geolod:Cave_site_0070 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0070_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0071 a geolod:Cave ;
-    rdfs:label "Baradla cave"@en ;
-    geolod:countD13CSamples 559 ;
-    geolod:countD18OSamples 559 ;
-    geolod:siteId 71 ;
-    geo:hasGeometry geolod:Cave_site_0071_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0072 a geolod:Cave ;
     rdfs:label "Ascunsa cave"@en ;
     geolod:countD13CSamples 890 ;
@@ -2009,28 +2005,12 @@ geolod:Cave_site_0072 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0072_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0073 a geolod:Cave ;
-    rdfs:label "Bourgeois–Delaunay cave"@en ;
-    geolod:countD13CSamples 358 ;
-    geolod:countD18OSamples 358 ;
-    geolod:siteId 73 ;
-    geo:hasGeometry geolod:Cave_site_0073_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0074 a geolod:Cave ;
     rdfs:label "Cango cave"@en ;
     geolod:countD13CSamples 170 ;
     geolod:countD18OSamples 170 ;
     geolod:siteId 74 ;
     geo:hasGeometry geolod:Cave_site_0074_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0077 a geolod:Cave ;
-    rdfs:label "Chauvet cave"@en ;
-    geolod:countD13CSamples 187 ;
-    geolod:countD18OSamples 187 ;
-    geolod:siteId 77 ;
-    geo:hasGeometry geolod:Cave_site_0077_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
 geolod:Cave_site_0078 a geolod:Cave ;
@@ -2055,14 +2035,6 @@ geolod:Cave_site_0080 a geolod:Cave ;
     geolod:countD18OSamples 669 ;
     geolod:siteId 80 ;
     geo:hasGeometry geolod:Cave_site_0080_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0081 a geolod:Cave ;
-    rdfs:label "Gueldaman cave"@en ;
-    geolod:countD13CSamples 425 ;
-    geolod:countD18OSamples 425 ;
-    geolod:siteId 81 ;
-    geo:hasGeometry geolod:Cave_site_0081_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
 geolod:Cave_site_0082 a geolod:Cave ;
@@ -2103,14 +2075,6 @@ geolod:Cave_site_0086 a geolod:Cave ;
     geolod:countD18OSamples 95 ;
     geolod:siteId 86 ;
     geo:hasGeometry geolod:Cave_site_0086_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0087 a geolod:Cave ;
-    rdfs:label "Pindal cave"@en ;
-    geolod:countD13CSamples 413 ;
-    geolod:countD18OSamples 422 ;
-    geolod:siteId 87 ;
-    geo:hasGeometry geolod:Cave_site_0087_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
 geolod:Cave_site_0090 a geolod:Cave ;
@@ -2201,14 +2165,6 @@ geolod:Cave_site_0103 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0103_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0104 a geolod:Cave ;
-    rdfs:label "Liang Luar"@en ;
-    geolod:countD13CSamples 2047 ;
-    geolod:countD18OSamples 2715 ;
-    geolod:siteId 104 ;
-    geo:hasGeometry geolod:Cave_site_0104_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0105 a geolod:Cave ;
     rdfs:label "Schneckenloch cave"@en ;
     geolod:countD13CSamples 2477 ;
@@ -2231,14 +2187,6 @@ geolod:Cave_site_0107 a geolod:Cave ;
     geolod:countD18OSamples 4047 ;
     geolod:siteId 107 ;
     geo:hasGeometry geolod:Cave_site_0107_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0108 a geolod:Cave ;
-    rdfs:label "Clamouse cave"@en ;
-    geolod:countD13CSamples 299 ;
-    geolod:countD18OSamples 299 ;
-    geolod:siteId 108 ;
-    geo:hasGeometry geolod:Cave_site_0108_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
 geolod:Cave_site_0109 a geolod:Cave ;
@@ -2295,14 +2243,6 @@ geolod:Cave_site_0117 a geolod:Cave ;
     geolod:countD18OSamples 6356 ;
     geolod:siteId 117 ;
     geo:hasGeometry geolod:Cave_site_0117_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0118 a geolod:Cave ;
-    rdfs:label "Clearwater cave"@en ;
-    geolod:countD13CSamples 0 ;
-    geolod:countD18OSamples 228 ;
-    geolod:siteId 118 ;
-    geo:hasGeometry geolod:Cave_site_0118_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
 geolod:Cave_site_0120 a geolod:Cave ;
@@ -2391,22 +2331,6 @@ geolod:Cave_site_0134 a geolod:Cave ;
     geolod:countD18OSamples 1191 ;
     geolod:siteId 134 ;
     geo:hasGeometry geolod:Cave_site_0134_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0135 a geolod:Cave ;
-    rdfs:label "Grotte de Piste"@en ;
-    geolod:countD13CSamples 0 ;
-    geolod:countD18OSamples 588 ;
-    geolod:siteId 135 ;
-    geo:hasGeometry geolod:Cave_site_0135_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0136 a geolod:Cave ;
-    rdfs:label "Juxtlahuaca cave"@en ;
-    geolod:countD13CSamples 679 ;
-    geolod:countD18OSamples 2698 ;
-    geolod:siteId 136 ;
-    geo:hasGeometry geolod:Cave_site_0136_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
 geolod:Cave_site_0137 a geolod:Cave ;
@@ -2553,22 +2477,6 @@ geolod:Cave_site_0158 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0158_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0160 a geolod:Cave ;
-    rdfs:label "Soreq cave"@en ;
-    geolod:countD13CSamples 0 ;
-    geolod:countD18OSamples 1432 ;
-    geolod:siteId 160 ;
-    geo:hasGeometry geolod:Cave_site_0160_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0161 a geolod:Cave ;
-    rdfs:label "Aurora cave"@en ;
-    geolod:countD13CSamples 124 ;
-    geolod:countD18OSamples 124 ;
-    geolod:siteId 161 ;
-    geo:hasGeometry geolod:Cave_site_0161_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0162 a geolod:Cave ;
     rdfs:label "Calcite cave (Mt Luxmore, Fiordland)"@en ;
     geolod:countD13CSamples 51 ;
@@ -2687,14 +2595,6 @@ geolod:Cave_site_0181 a geolod:Cave ;
     geolod:countD18OSamples 2679 ;
     geolod:siteId 181 ;
     geo:hasGeometry geolod:Cave_site_0181_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0182 a geolod:Cave ;
-    rdfs:label "Kotumsar cave"@en ;
-    geolod:countD13CSamples 1546 ;
-    geolod:countD18OSamples 1546 ;
-    geolod:siteId 182 ;
-    geo:hasGeometry geolod:Cave_site_0182_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
 geolod:Cave_site_0183 a geolod:Cave ;
@@ -2953,14 +2853,6 @@ geolod:Cave_site_0222 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0222_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0223 a geolod:Cave ;
-    rdfs:label "Wanxiang cave"@en ;
-    geolod:countD13CSamples 0 ;
-    geolod:countD18OSamples 711 ;
-    geolod:siteId 223 ;
-    geo:hasGeometry geolod:Cave_site_0223_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0224 a geolod:Cave ;
     rdfs:label "Xianglong cave"@en ;
     geolod:countD13CSamples 981 ;
@@ -2975,14 +2867,6 @@ geolod:Cave_site_0225 a geolod:Cave ;
     geolod:countD18OSamples 683 ;
     geolod:siteId 225 ;
     geo:hasGeometry geolod:Cave_site_0225_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0226 a geolod:Cave ;
-    rdfs:label "Cueva del Diamante"@en ;
-    geolod:countD13CSamples 1833 ;
-    geolod:countD18OSamples 1830 ;
-    geolod:siteId 226 ;
-    geo:hasGeometry geolod:Cave_site_0226_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
 geolod:Cave_site_0230 a geolod:Cave ;
@@ -3089,14 +2973,6 @@ geolod:Cave_site_0244 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0244_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0245 a geolod:Cave ;
-    rdfs:label "Nakarallu cave"@en ;
-    geolod:countD13CSamples 1134 ;
-    geolod:countD18OSamples 1134 ;
-    geolod:siteId 245 ;
-    geo:hasGeometry geolod:Cave_site_0245_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0246 a geolod:Cave ;
     rdfs:label "Palawan cave"@en ;
     geolod:countD13CSamples 0 ;
@@ -3137,14 +3013,6 @@ geolod:Cave_site_0252 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0252_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0253 a geolod:Cave ;
-    rdfs:label "Hoq cave"@en ;
-    geolod:countD13CSamples 1426 ;
-    geolod:countD18OSamples 1426 ;
-    geolod:siteId 253 ;
-    geo:hasGeometry geolod:Cave_site_0253_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0254 a geolod:Cave ;
     rdfs:label "PP29"@en ;
     geolod:countD13CSamples 158 ;
@@ -3167,14 +3035,6 @@ geolod:Cave_site_0256 a geolod:Cave ;
     geolod:countD18OSamples 40 ;
     geolod:siteId 256 ;
     geo:hasGeometry geolod:Cave_site_0256_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0258 a geolod:Cave ;
-    rdfs:label "B7 cave"@en ;
-    geolod:countD13CSamples 142 ;
-    geolod:countD18OSamples 142 ;
-    geolod:siteId 258 ;
-    geo:hasGeometry geolod:Cave_site_0258_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
 geolod:Cave_site_0259 a geolod:Cave ;
@@ -3225,30 +3085,6 @@ geolod:Cave_site_0265 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0265_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0266 a geolod:Cave ;
-    rdfs:label "Cueva Victoria"@en ;
-    geolod:countD13CSamples 1030 ;
-    geolod:countD18OSamples 1030 ;
-    geolod:siteId 266 ;
-    geo:hasGeometry geolod:Cave_site_0266_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0267 a geolod:Cave ;
-    rdfs:label "Gruta do Casal da Lebre"@en ;
-    geolod:countD13CSamples 55 ;
-    geolod:countD18OSamples 55 ;
-    geolod:siteId 267 ;
-    geo:hasGeometry geolod:Cave_site_0267_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0268 a geolod:Cave ;
-    rdfs:label "Pere Noel cave"@en ;
-    geolod:countD13CSamples 260 ;
-    geolod:countD18OSamples 260 ;
-    geolod:siteId 268 ;
-    geo:hasGeometry geolod:Cave_site_0268_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0269 a geolod:Cave ;
     rdfs:label "Gejkar cave"@en ;
     geolod:countD13CSamples 840 ;
@@ -3295,14 +3131,6 @@ geolod:Cave_site_0274 a geolod:Cave ;
     geolod:countD18OSamples 1018 ;
     geolod:siteId 274 ;
     geo:hasGeometry geolod:Cave_site_0274_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0275 a geolod:Cave ;
-    rdfs:label "Buraca Gloriosa"@en ;
-    geolod:countD13CSamples 1178 ;
-    geolod:countD18OSamples 1178 ;
-    geolod:siteId 275 ;
-    geo:hasGeometry geolod:Cave_site_0275_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
 geolod:Cave_site_0277 a geolod:Cave ;
@@ -3377,14 +3205,6 @@ geolod:Cave_site_0285 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0285_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0286 a geolod:Cave ;
-    rdfs:label "La Garma cave"@en ;
-    geolod:countD13CSamples 497 ;
-    geolod:countD18OSamples 765 ;
-    geolod:siteId 286 ;
-    geo:hasGeometry geolod:Cave_site_0286_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0287 a geolod:Cave ;
     rdfs:label "Twin Forks cave"@en ;
     geolod:countD13CSamples 34 ;
@@ -3441,36 +3261,12 @@ geolod:Cave_site_0294 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0294_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0295 a geolod:Cave ;
-    rdfs:label "Qadisha cave"@en ;
-    geolod:countD13CSamples 228 ;
-    geolod:countD18OSamples 228 ;
-    geolod:siteId 295 ;
-    geo:hasGeometry geolod:Cave_site_0295_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0296 a geolod:Cave ;
     rdfs:label "Amir Timur cave"@en ;
     geolod:countD13CSamples 270 ;
     geolod:countD18OSamples 270 ;
     geolod:siteId 296 ;
     geo:hasGeometry geolod:Cave_site_0296_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0297 a geolod:Cave ;
-    rdfs:label "Bàsura cave"@en ;
-    geolod:countD13CSamples 0 ;
-    geolod:countD18OSamples 265 ;
-    geolod:siteId 297 ;
-    geo:hasGeometry geolod:Cave_site_0297_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0298 a geolod:Cave ;
-    rdfs:label "Belum cave"@en ;
-    geolod:countD13CSamples 861 ;
-    geolod:countD18OSamples 861 ;
-    geolod:siteId 298 ;
-    geo:hasGeometry geolod:Cave_site_0298_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
 geolod:Cave_site_0299 a geolod:Cave ;
@@ -3641,14 +3437,6 @@ geolod:Cave_site_0323 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0323_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0324 a geolod:Cave ;
-    rdfs:label "La Vallina"@en ;
-    geolod:countD13CSamples 890 ;
-    geolod:countD18OSamples 890 ;
-    geolod:siteId 324 ;
-    geo:hasGeometry geolod:Cave_site_0324_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0325 a geolod:Cave ;
     rdfs:label "Larga cave"@en ;
     geolod:countD13CSamples 2032 ;
@@ -3679,14 +3467,6 @@ geolod:Cave_site_0328 a geolod:Cave ;
     geolod:countD18OSamples 536 ;
     geolod:siteId 328 ;
     geo:hasGeometry geolod:Cave_site_0328_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0329 a geolod:Cave ;
-    rdfs:label "Matupi cave"@en ;
-    geolod:countD13CSamples 222 ;
-    geolod:countD18OSamples 222 ;
-    geolod:siteId 329 ;
-    geo:hasGeometry geolod:Cave_site_0329_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
 geolod:Cave_site_0330 a geolod:Cave ;
@@ -3735,14 +3515,6 @@ geolod:Cave_site_0336 a geolod:Cave ;
     geolod:countD18OSamples 685 ;
     geolod:siteId 336 ;
     geo:hasGeometry geolod:Cave_site_0336_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
-geolod:Cave_site_0337 a geolod:Cave ;
-    rdfs:label "Pir Ghar cave"@en ;
-    geolod:countD13CSamples 116 ;
-    geolod:countD18OSamples 116 ;
-    geolod:siteId 337 ;
-    geo:hasGeometry geolod:Cave_site_0337_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
 geolod:Cave_site_0338 a geolod:Cave ;
@@ -3865,14 +3637,6 @@ geolod:Cave_site_0352 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0352_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0353 a geolod:Cave ;
-    rdfs:label "Wintimdouine"@en ;
-    geolod:countD13CSamples 0 ;
-    geolod:countD18OSamples 1597 ;
-    geolod:siteId 353 ;
-    geo:hasGeometry geolod:Cave_site_0353_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0354 a geolod:Cave ;
     rdfs:label "Wulu cave"@en ;
     geolod:countD13CSamples 945 ;
@@ -3913,14 +3677,6 @@ geolod:Cave_site_0358 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0358_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0359 a geolod:Cave ;
-    rdfs:label "Zoolithen cave"@en ;
-    geolod:countD13CSamples 263 ;
-    geolod:countD18OSamples 263 ;
-    geolod:siteId 359 ;
-    geo:hasGeometry geolod:Cave_site_0359_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0360 a geolod:Cave ;
     rdfs:label "Bigonda cave"@en ;
     geolod:countD13CSamples 758 ;
@@ -3953,14 +3709,6 @@ geolod:Cave_site_0363 a geolod:Cave ;
     geo:hasGeometry geolod:Cave_site_0363_Geometry ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 
-geolod:Cave_site_0364 a geolod:Cave ;
-    rdfs:label "Naharon"@en ;
-    geolod:countD13CSamples 419 ;
-    geolod:countD18OSamples 419 ;
-    geolod:siteId 364 ;
-    geo:hasGeometry geolod:Cave_site_0364_Geometry ;
-    prov:wasDerivedFrom geolod:SISALv3_DataSource .
-
 geolod:Cave_site_0365 a geolod:Cave ;
     rdfs:label "Pot au Feu"@en ;
     geolod:countD13CSamples 229 ;
@@ -3975,5 +3723,564 @@ geolod:Cave_site_0366 a geolod:Cave ;
     geolod:countD18OSamples 609 ;
     geolod:siteId 366 ;
     geo:hasGeometry geolod:Cave_site_0366_Geometry ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0004 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Villars cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PalaeolithicContext ;
+    geolod:archaeologicalCategory "Palaeolithic Art"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 1126 ;
+    geolod:countD18OSamples 1126 ;
+    geolod:siteId 4 ;
+    geo:hasGeometry geolod:Cave_site_0004_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q3578093> ;
+    skos:note "Palaeolithic paintings, Dordogne"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0011 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Jeita cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Prehistoric Occupation"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 1830 ;
+    geolod:countD18OSamples 1830 ;
+    geolod:siteId 11 ;
+    geo:hasGeometry geolod:Cave_site_0011_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q193368> ;
+    skos:note "Prehistoric finds"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0016 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Han-sur-Lesse cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Prehistoric Occupation"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 953 ;
+    geolod:countD18OSamples 953 ;
+    geolod:siteId 16 ;
+    geo:hasGeometry geolod:Cave_site_0016_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q1571916> ;
+    skos:note "Archaeological finds"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0019 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Kanaan cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Prehistoric Occupation"@en ;
+    geolod:archaeologicalConfidence "medium" ;
+    geolod:countD13CSamples 965 ;
+    geolod:countD18OSamples 965 ;
+    geolod:siteId 19 ;
+    geo:hasGeometry geolod:Cave_site_0019_Geometry ;
+    skos:note "Prehistoric context"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0067 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Clearwater/Wind caves connection"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Prehistoric Occupation"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 385 ;
+    geolod:countD18OSamples 385 ;
+    geolod:isUNESCOWorldHeritage true ;
+    geolod:siteId 67 ;
+    geolod:unescoWHId <https://whc.unesco.org/en/list/709> ;
+    geo:hasGeometry geolod:Cave_site_0067_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q1092810> ;
+    skos:note "Mulu – prehistoric finds"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0071 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Baradla cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Neolithic / Bronze Age"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 559 ;
+    geolod:countD18OSamples 559 ;
+    geolod:isUNESCOWorldHeritage true ;
+    geolod:siteId 71 ;
+    geolod:unescoWHId <https://whc.unesco.org/en/list/171> ;
+    geo:hasGeometry geolod:Cave_site_0071_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q816830> ;
+    skos:note "Neolithic–Bronze Age finds, UNESCO World Heritage"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0073 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Bourgeois–Delaunay cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PalaeolithicContext ;
+    geolod:archaeologicalCategory "Palaeolithic Occupation"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 358 ;
+    geolod:countD18OSamples 358 ;
+    geolod:siteId 73 ;
+    geo:hasGeometry geolod:Cave_site_0073_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q2968020> ;
+    skos:note "La Chaise, Palaeolithic hominin remains"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0077 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Chauvet cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PalaeolithicContext ;
+    geolod:archaeologicalCategory "Palaeolithic Art"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 187 ;
+    geolod:countD18OSamples 187 ;
+    geolod:isUNESCOWorldHeritage true ;
+    geolod:siteId 77 ;
+    geolod:unescoWHId <https://whc.unesco.org/en/list/1426> ;
+    geo:hasGeometry geolod:Cave_site_0077_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q191483> ;
+    skos:note "UNESCO World Heritage, ~36,000 BP cave paintings"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0081 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Gueldaman cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Neolithic / Protohistoric"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 425 ;
+    geolod:countD18OSamples 425 ;
+    geolod:siteId 81 ;
+    geo:hasGeometry geolod:Cave_site_0081_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q16838232> ;
+    skos:note "Neolithic artefacts"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0087 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Pindal cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PalaeolithicContext ;
+    geolod:archaeologicalCategory "Palaeolithic Art"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 413 ;
+    geolod:countD18OSamples 422 ;
+    geolod:isUNESCOWorldHeritage true ;
+    geolod:siteId 87 ;
+    geolod:unescoWHId <https://whc.unesco.org/en/list/714> ;
+    geo:hasGeometry geolod:Cave_site_0087_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q1665461> ;
+    skos:note "Rock art, Asturias"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0104 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Liang Luar"@en ;
+    geolod:archaeologicalBroaderContext geolod:PalaeontologicalContext ;
+    geolod:archaeologicalCategory "Hominin Site"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 2047 ;
+    geolod:countD18OSamples 2715 ;
+    geolod:siteId 104 ;
+    geo:hasGeometry geolod:Cave_site_0104_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q1847377> ;
+    skos:note "Type site for Homo floresiensis"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0108 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Clamouse cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PalaeolithicContext ;
+    geolod:archaeologicalCategory "Palaeolithic Occupation"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 299 ;
+    geolod:countD18OSamples 299 ;
+    geolod:siteId 108 ;
+    geo:hasGeometry geolod:Cave_site_0108_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q1060261> ;
+    skos:note "Prehistoric occupation"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0118 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Clearwater cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Prehistoric Occupation"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 0 ;
+    geolod:countD18OSamples 228 ;
+    geolod:isUNESCOWorldHeritage true ;
+    geolod:siteId 118 ;
+    geolod:unescoWHId <https://whc.unesco.org/en/list/709> ;
+    geo:hasGeometry geolod:Cave_site_0118_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q1092810> ;
+    skos:note "Prehistoric finds, Mulu"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0135 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Grotte de Piste"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Prehistoric Art"@en ;
+    geolod:archaeologicalConfidence "medium" ;
+    geolod:countD13CSamples 0 ;
+    geolod:countD18OSamples 588 ;
+    geolod:siteId 135 ;
+    geo:hasGeometry geolod:Cave_site_0135_Geometry ;
+    skos:note "Prehistoric rock art"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0136 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Juxtlahuaca cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:MesoamericanContext ;
+    geolod:archaeologicalCategory "Mesoamerican Art"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 679 ;
+    geolod:countD18OSamples 2698 ;
+    geolod:siteId 136 ;
+    geo:hasGeometry geolod:Cave_site_0136_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q1377944> ;
+    skos:note "Olmec cave paintings"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0160 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Soreq cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Prehistoric Occupation"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 0 ;
+    geolod:countD18OSamples 1432 ;
+    geolod:siteId 160 ;
+    geo:hasGeometry geolod:Cave_site_0160_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q2305521> ;
+    skos:note "Near major prehistoric sites, key palaeoclimate proxy"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0161 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Aurora cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Prehistoric Occupation"@en ;
+    geolod:archaeologicalConfidence "low" ;
+    geolod:countD13CSamples 124 ;
+    geolod:countD18OSamples 124 ;
+    geolod:siteId 161 ;
+    geo:hasGeometry geolod:Cave_site_0161_Geometry ;
+    skos:note "Near Homo luzonensis sites"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0182 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Kotumsar cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Prehistoric Occupation"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 1546 ;
+    geolod:countD18OSamples 1546 ;
+    geolod:siteId 182 ;
+    geo:hasGeometry geolod:Cave_site_0182_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q6434952> ;
+    skos:note "Archaeological finds reported"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0223 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Wanxiang cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:HistoricContext ;
+    geolod:archaeologicalCategory "Historic / Prehistoric"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 0 ;
+    geolod:countD18OSamples 711 ;
+    geolod:siteId 223 ;
+    geo:hasGeometry geolod:Cave_site_0223_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q7965218> ;
+    skos:note "Archaeological context reported"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0226 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Cueva del Diamante"@en ;
+    geolod:archaeologicalBroaderContext geolod:MesoamericanContext ;
+    geolod:archaeologicalCategory "Mesoamerican"@en ;
+    geolod:archaeologicalConfidence "medium" ;
+    geolod:countD13CSamples 1833 ;
+    geolod:countD18OSamples 1830 ;
+    geolod:siteId 226 ;
+    geo:hasGeometry geolod:Cave_site_0226_Geometry ;
+    skos:note "Archaeological cave"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0245 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Nakarallu cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Prehistoric Occupation"@en ;
+    geolod:archaeologicalConfidence "medium" ;
+    geolod:countD13CSamples 1134 ;
+    geolod:countD18OSamples 1134 ;
+    geolod:siteId 245 ;
+    geo:hasGeometry geolod:Cave_site_0245_Geometry ;
+    skos:note "Prehistoric finds"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0253 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Hoq cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:HistoricContext ;
+    geolod:archaeologicalCategory "Ancient Inscriptions"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 1426 ;
+    geolod:countD18OSamples 1426 ;
+    geolod:siteId 253 ;
+    geo:hasGeometry geolod:Cave_site_0253_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q1622209> ;
+    skos:note "Ancient inscriptions, Socotra Island"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0258 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "B7 cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Prehistoric Occupation"@en ;
+    geolod:archaeologicalConfidence "medium" ;
+    geolod:countD13CSamples 142 ;
+    geolod:countD18OSamples 142 ;
+    geolod:siteId 258 ;
+    geo:hasGeometry geolod:Cave_site_0258_Geometry ;
+    skos:note "Soreq area, prehistoric context"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0266 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Cueva Victoria"@en ;
+    geolod:archaeologicalBroaderContext geolod:PalaeontologicalContext ;
+    geolod:archaeologicalCategory "Pleistocene Fauna / Hominins"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 1030 ;
+    geolod:countD18OSamples 1030 ;
+    geolod:siteId 266 ;
+    geo:hasGeometry geolod:Cave_site_0266_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q3011793> ;
+    skos:note "Hominins & Pleistocene fauna"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0267 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Gruta do Casal da Lebre"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Prehistoric Occupation"@en ;
+    geolod:archaeologicalConfidence "medium" ;
+    geolod:countD13CSamples 55 ;
+    geolod:countD18OSamples 55 ;
+    geolod:siteId 267 ;
+    geo:hasGeometry geolod:Cave_site_0267_Geometry ;
+    skos:note "Prehistoric finds"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0268 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Pere Noel cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PalaeolithicContext ;
+    geolod:archaeologicalCategory "Palaeolithic Occupation"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 260 ;
+    geolod:countD18OSamples 260 ;
+    geolod:siteId 268 ;
+    geo:hasGeometry geolod:Cave_site_0268_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q3374490> ;
+    skos:note "Prehistoric occupation"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0275 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Buraca Gloriosa"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Prehistoric Occupation"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 1178 ;
+    geolod:countD18OSamples 1178 ;
+    geolod:siteId 275 ;
+    geo:hasGeometry geolod:Cave_site_0275_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q4995636> ;
+    skos:note "Pleistocene/Prehistoric finds"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0286 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "La Garma cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PalaeolithicContext ;
+    geolod:archaeologicalCategory "Palaeolithic Art"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 497 ;
+    geolod:countD18OSamples 765 ;
+    geolod:isUNESCOWorldHeritage true ;
+    geolod:siteId 286 ;
+    geolod:unescoWHId <https://whc.unesco.org/en/list/714> ;
+    geo:hasGeometry geolod:Cave_site_0286_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q1243761> ;
+    skos:note "Palaeolithic occupation & art, Cantabria"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0295 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Qadisha cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:HistoricContext ;
+    geolod:archaeologicalCategory "Sacred / Historic"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 228 ;
+    geolod:countD18OSamples 228 ;
+    geolod:isUNESCOWorldHeritage true ;
+    geolod:siteId 295 ;
+    geolod:unescoWHId <https://whc.unesco.org/en/list/850> ;
+    geo:hasGeometry geolod:Cave_site_0295_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q643919> ;
+    skos:note "Qadisha Valley, UNESCO World Heritage"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0297 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Bàsura cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PalaeolithicContext ;
+    geolod:archaeologicalCategory "Palaeolithic Art"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 0 ;
+    geolod:countD18OSamples 265 ;
+    geolod:siteId 297 ;
+    geo:hasGeometry geolod:Cave_site_0297_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q1756800> ;
+    skos:note "Palaeolithic footprints & art, Liguria"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0298 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Belum cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Prehistoric Occupation"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 861 ;
+    geolod:countD18OSamples 861 ;
+    geolod:siteId 298 ;
+    geo:hasGeometry geolod:Cave_site_0298_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q900775> ;
+    skos:note "Prehistoric occupation"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0324 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "La Vallina"@en ;
+    geolod:archaeologicalBroaderContext geolod:PalaeolithicContext ;
+    geolod:archaeologicalCategory "Palaeolithic Art"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 890 ;
+    geolod:countD18OSamples 890 ;
+    geolod:siteId 324 ;
+    geo:hasGeometry geolod:Cave_site_0324_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q6479849> ;
+    skos:note "Rock art, Asturias"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0329 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Matupi cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "African Later Stone Age"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 222 ;
+    geolod:countD18OSamples 222 ;
+    geolod:siteId 329 ;
+    geo:hasGeometry geolod:Cave_site_0329_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q6789024> ;
+    skos:note "Later Stone Age artefacts"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0337 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Pir Ghar cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Prehistoric Occupation"@en ;
+    geolod:archaeologicalConfidence "medium" ;
+    geolod:countD13CSamples 116 ;
+    geolod:countD18OSamples 116 ;
+    geolod:siteId 337 ;
+    geo:hasGeometry geolod:Cave_site_0337_Geometry ;
+    skos:note "South Asian prehistoric occupation"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0353 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Wintimdouine"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Prehistoric Art"@en ;
+    geolod:archaeologicalConfidence "medium" ;
+    geolod:countD13CSamples 0 ;
+    geolod:countD18OSamples 1597 ;
+    geolod:siteId 353 ;
+    geo:hasGeometry geolod:Cave_site_0353_Geometry ;
+    skos:note "Prehistoric rock art"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0359 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Zoolithen cave"@en ;
+    geolod:archaeologicalBroaderContext geolod:PalaeontologicalContext ;
+    geolod:archaeologicalCategory "Pleistocene Fauna"@en ;
+    geolod:archaeologicalConfidence "high" ;
+    geolod:countD13CSamples 263 ;
+    geolod:countD18OSamples 263 ;
+    geolod:siteId 359 ;
+    geo:hasGeometry geolod:Cave_site_0359_Geometry ;
+    owl:sameAs <https://www.wikidata.org/entity/Q2590036> ;
+    skos:note "Cave bear & Pleistocene megafauna"@en ;
+    prov:wasDerivedFrom geolod:SISALv3_DataSource .
+
+geolod:Cave_site_0364 a geolod:ArchaeologicalCaveSite,
+        geolod:Cave,
+        crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+    rdfs:label "Naharon"@en ;
+    geolod:archaeologicalBroaderContext geolod:PrehistoricContext ;
+    geolod:archaeologicalCategory "Prehistoric Occupation"@en ;
+    geolod:archaeologicalConfidence "medium" ;
+    geolod:countD13CSamples 419 ;
+    geolod:countD18OSamples 419 ;
+    geolod:siteId 364 ;
+    geo:hasGeometry geolod:Cave_site_0364_Geometry ;
+    skos:note "Submerged prehistoric human remains (underwater archaeology)"@en ;
     prov:wasDerivedFrom geolod:SISALv3_DataSource .
 

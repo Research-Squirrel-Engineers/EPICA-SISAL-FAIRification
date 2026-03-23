@@ -130,6 +130,34 @@ geolod:SavitzkyGolayFilter
     rdfs:comment "Polynomial least-squares smoothing filter preserving \
 higher signal moments."@en .
 
+# -- ArchaeologicalContext vocabulary (SISAL archaeological enrichment) ---
+
+geolod:ArchaeologicalContext
+    a owl:Class ;
+    rdfs:label   "Archaeological Context"@en ;
+    rdfs:comment "Controlled vocabulary class for broader cultural-temporal \
+context categories used in archaeological cave site classification."@en .
+
+geolod:PalaeolithicContext
+    a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+    rdfs:label   "Palaeolithic Context"@en .
+
+geolod:PrehistoricContext
+    a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+    rdfs:label   "Prehistoric Context"@en .
+
+geolod:PalaeontologicalContext
+    a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+    rdfs:label   "Palaeontological Context"@en .
+
+geolod:HistoricContext
+    a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+    rdfs:label   "Historic Context"@en .
+
+geolod:MesoamericanContext
+    a geolod:ArchaeologicalContext, owl:NamedIndividual ;
+    rdfs:label   "Mesoamerican Context"@en .
+
 # -- DataSource --
 
 geolod:DataSource

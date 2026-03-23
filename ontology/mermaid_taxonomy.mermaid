@@ -68,6 +68,7 @@ subgraph SISAL["SISAL Speleothem Extension"]
     D13COBS["Delta13CSpeleothemObservation"]
     SPEL["Speleothem"]
     CAVE["Cave"]
+    ARCHCAVE["ArchaeologicalCaveSite"]
     SSE["SpeleothemSamplingEvent"]
     UTHCHRONO["UThChronology"]
 end
@@ -121,6 +122,8 @@ CE22 -.-> ICECORE
 
 SAMPLINGLOC --> DRILLSITE
 SAMPLINGLOC --> CAVE
+CAVE --> ARCHCAVE
+CA2 -.-> ARCHCAVE
 
 CHRONO --> ICECHRONO
 CHRONO --> UTHCHRONO
@@ -183,6 +186,7 @@ style D18OSPELOBS fill:#b8860b,color:#fff,stroke:#856404
 style D13COBS fill:#b8860b,color:#fff,stroke:#856404
 style SPEL fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
 style CAVE fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
+style ARCHCAVE fill:#b8860b,color:#fff,stroke:#856404
 style SSE fill:#856404,color:#fff,stroke:#664d03,stroke-width:2px
 style UTHCHRONO fill:#b8860b,color:#fff,stroke:#856404
 
