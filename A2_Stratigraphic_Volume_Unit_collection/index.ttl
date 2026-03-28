@@ -43,5 +43,14 @@
         <http://w3id.org/geo-lod/Cave_site_0337>,
         <http://w3id.org/geo-lod/Cave_site_0353>,
         <http://w3id.org/geo-lod/Cave_site_0359>,
-        <http://w3id.org/geo-lod/Cave_site_0364> .
+        <http://w3id.org/geo-lod/Cave_site_0364>,
+        <http://w3id.org/geo-lod/ci/cisite_19>,
+        <http://w3id.org/geo-lod/ci/cisite_44>,
+        <http://w3id.org/geo-lod/ci/cisite_45>,
+        <http://w3id.org/geo-lod/ci/cisite_50>,
+        <http://w3id.org/geo-lod/ci/cisite_51>,
+        <http://w3id.org/geo-lod/ci/cisite_59>,
+        <http://w3id.org/geo-lod/ci/cisite_62>,
+        <http://w3id.org/geo-lod/ci/cisite_63>,
+        <http://w3id.org/geo-lod/ci/cisite_65> .
 
