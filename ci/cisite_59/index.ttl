@@ -10,7 +10,7 @@
 <http://w3id.org/geo-lod/ci/cisite_59> a ns2:Site,
         ns1:CIArchaeologicalSite,
         ns1:CIFindspot,
-        <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit>,
+        <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit>,
         <http://www.w3.org/ns/ldp#Resource>,
         prov:Entity,
         <https://pleiades.stoa.org/places/vocab#Place>,

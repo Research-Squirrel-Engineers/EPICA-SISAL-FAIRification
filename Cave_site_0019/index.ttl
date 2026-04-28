@@ -8,7 +8,7 @@
 
 ns1:Cave_site_0019 a ns1:ArchaeologicalCaveSite,
         ns1:Cave,
-        <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit>,
+        <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit>,
         <http://www.w3.org/ns/ldp#Resource>,
         <https://www.iana.org/assignments/media-types/text/turtle#Resource> ;
     rdfs:label "Kanaan cave"@en ;

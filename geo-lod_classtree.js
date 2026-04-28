@@ -121,9 +121,7 @@ var tree={
         "data": {
           "from": {
             "http://www.w3.org/2000/01/rdf-schema#member": {
-              "http://www.w3.org/2004/02/skos/core#Collection": 1,
-              "http://www.w3.org/ns/ldp#Resource": 1,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 1
+              "http://www.w3.org/2004/02/skos/core#Collection": 1
             }
           },
           "to": {
@@ -131,8 +129,8 @@ var tree={
               "instancecount": 7,
               "http://www.w3.org/ns/adms#Asset": 7,
               "http://rdfs.org/ns/void#Dataset": 7,
-              "http://www.w3.org/ns/ldp#Resource": 5,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 5
+              "http://www.w3.org/ns/ldp#Resource": 2,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 2
             },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
               "instancecount": 9
@@ -143,11 +141,11 @@ var tree={
             "http://www.w3.org/2000/01/rdf-schema#member": {
               "instancecount": 425,
               "http://fuzzy-sl.squirrel.link/ontology/Site": 388,
-              "http://w3id.org/geo-lod/CIArchaeologicalSite": 63,
               "http://w3id.org/geo-lod/CIFindspot": 388,
-              "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit": 63,
               "http://www.w3.org/ns/prov#Entity": 388,
-              "https://pleiades.stoa.org/places/vocab#Place": 388
+              "https://pleiades.stoa.org/places/vocab#Place": 388,
+              "http://w3id.org/geo-lod/CIArchaeologicalSite": 63,
+              "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit": 63
             }
           }
         }
@@ -2406,35 +2404,20 @@ var tree={
             },
             "http://www.w3.org/ns/prov#wasGeneratedBy": {
               "http://fuzzy-sl.squirrel.link/ontology/Site": 148,
-              "http://w3id.org/geo-lod/CIFindspot": 148,
-              "http://www.w3.org/ns/prov#Entity": 148,
-              "https://pleiades.stoa.org/places/vocab#Place": 148,
               "http://w3id.org/geo-lod/CIArchaeologicalSite": 18,
-              "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit": 18
+              "http://w3id.org/geo-lod/CIFindspot": 148,
+              "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit": 18,
+              "http://www.w3.org/ns/prov#Entity": 148,
+              "https://pleiades.stoa.org/places/vocab#Place": 148
             }
           },
           "to": {
-            "http://fuzzy-sl.squirrel.link/ontology/activityDesc": {
-              "instancecount": 74
-            },
-            "http://fuzzy-sl.squirrel.link/ontology/hasSource": {
-              "instancecount": 74
-            },
-            "http://fuzzy-sl.squirrel.link/ontology/hasSourceType": {
-              "instancecount": 74
-            },
             "http://rdfs.org/ns/void#inDataset": {
               "instancecount": 148,
               "http://www.w3.org/ns/adms#Asset": 148,
               "http://rdfs.org/ns/void#Dataset": 148,
-              "http://www.w3.org/ns/ldp#Resource": 112,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 112
-            },
-            "http://w3id.org/geo-lod/hasCertaintyLevel": {
-              "instancecount": 74
-            },
-            "http://w3id.org/geo-lod/hasLiteratureReference": {
-              "instancecount": 100
+              "http://www.w3.org/ns/ldp#Resource": 81,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 81
             },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
               "instancecount": 222
@@ -2445,6 +2428,26 @@ var tree={
             "http://www.w3.org/ns/prov#startedAtTime": {
               "instancecount": 148
             },
+            "http://www.w3.org/ns/prov#wasAssociatedWith": {
+              "instancecount": 148,
+              "http://www.w3.org/ns/prov#Agent": 74,
+              "http://xmlns.com/foaf/0.1/Person": 74
+            },
+            "http://fuzzy-sl.squirrel.link/ontology/activityDesc": {
+              "instancecount": 74
+            },
+            "http://fuzzy-sl.squirrel.link/ontology/hasSource": {
+              "instancecount": 74
+            },
+            "http://fuzzy-sl.squirrel.link/ontology/hasSourceType": {
+              "instancecount": 74
+            },
+            "http://w3id.org/geo-lod/hasCertaintyLevel": {
+              "instancecount": 74
+            },
+            "http://w3id.org/geo-lod/hasLiteratureReference": {
+              "instancecount": 100
+            },
             "http://www.w3.org/ns/prov#used": {
               "instancecount": 74,
               "http://fuzzy-sl.squirrel.link/ontology/Site": 74,
@@ -2452,12 +2455,7 @@ var tree={
               "http://www.w3.org/ns/prov#Entity": 74,
               "https://pleiades.stoa.org/places/vocab#Place": 74,
               "http://w3id.org/geo-lod/CIArchaeologicalSite": 9,
-              "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit": 9
-            },
-            "http://www.w3.org/ns/prov#wasAssociatedWith": {
-              "instancecount": 148,
-              "http://www.w3.org/ns/prov#Agent": 74,
-              "http://xmlns.com/foaf/0.1/Person": 74
+              "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit": 9
             }
           }
         }
@@ -3967,12 +3965,12 @@ var tree={
               "http://www.w3.org/ns/prov#Entity": 74,
               "https://pleiades.stoa.org/places/vocab#Place": 74,
               "http://w3id.org/geo-lod/CIArchaeologicalSite": 9,
-              "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit": 9
+              "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit": 9
             },
             "http://www.w3.org/2000/01/rdf-schema#member": {
               "http://www.opengis.net/ont/geosparql#GeometryCollection": 148,
-              "http://www.w3.org/ns/ldp#Resource": 60,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 60
+              "http://www.w3.org/ns/ldp#Resource": 11,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 11
             }
           },
           "to": {
@@ -3980,8 +3978,8 @@ var tree={
               "instancecount": 74,
               "http://www.w3.org/ns/adms#Asset": 74,
               "http://rdfs.org/ns/void#Dataset": 74,
-              "http://www.w3.org/ns/ldp#Resource": 51,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 51
+              "http://www.w3.org/ns/ldp#Resource": 49,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 49
             },
             "http://w3id.org/geo-lod/hasCertaintyDescription": {
               "instancecount": 74
@@ -7021,8 +7019,8 @@ var tree={
               "instancecount": 65,
               "http://www.w3.org/ns/adms#Asset": 65,
               "http://rdfs.org/ns/void#Dataset": 65,
-              "http://www.w3.org/ns/ldp#Resource": 48,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 48
+              "http://www.w3.org/ns/ldp#Resource": 39,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 39
             },
             "http://w3id.org/geo-lod/hasCertaintyDescription": {
               "instancecount": 65
@@ -7072,11 +7070,11 @@ var tree={
               "http://fuzzy-sl.squirrel.link/ontology/Georeferencing": 65,
               "http://www.w3.org/ns/prov#Activity": 130
             },
-            "http://fuzzy-sl.squirrel.link/ontology/partlyMatch": {
-              "instancecount": 8
-            },
             "http://fuzzy-sl.squirrel.link/ontology/spatialCloseMatch": {
               "instancecount": 14
+            },
+            "http://fuzzy-sl.squirrel.link/ontology/partlyMatch": {
+              "instancecount": 8
             },
             "http://fuzzy-sl.squirrel.link/ontology/dubiousMatch": {
               "instancecount": 3
@@ -7187,7 +7185,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/ci/cisite_19_suniv5_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Paglicci Cave (ci:cisite_19)",
         "data": {
@@ -7197,7 +7195,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/ci/cisite_44_suniv5_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Toplitsa Cave (Bulgaria) (ci:cisite_44)",
         "data": {
@@ -7207,7 +7205,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/ci/cisite_45_suniv5_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Franchthi Cave (Greece) (ci:cisite_45)",
         "data": {
@@ -7217,7 +7215,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/ci/cisite_50_suniv5_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Golema Pesht Cave near Zdunje (Macedonia) (ci:cisite_50)",
         "data": {
@@ -7227,7 +7225,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/ci/cisite_51_suniv5_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Crvena Stiljena (Montenegro) (ci:cisite_51)",
         "data": {
@@ -7237,7 +7235,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/ci/cisite_59_suniv5_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Kostenki-Borshchevo (Russia) (ci:cisite_59)",
         "data": {
@@ -7247,7 +7245,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/ci/cisite_62_suniv5_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Tabula Traiana (Serbia) (ci:cisite_62)",
         "data": {
@@ -7257,7 +7255,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/ci/cisite_63_suniv5_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Titel Pleateau (Serbia) (ci:cisite_63)",
         "data": {
@@ -7267,7 +7265,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/ci/cisite_65_suniv5_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Haua-Fteah (Libya) (ci:cisite_65)",
         "data": {
@@ -7276,7 +7274,7 @@ var tree={
         }
       },
       {
-        "id": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "id": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "parent": "#",
         "type": "geoclass",
         "instancecount": 9,
@@ -7285,8 +7283,8 @@ var tree={
           "from": {
             "http://www.w3.org/2000/01/rdf-schema#member": {
               "http://www.opengis.net/ont/geosparql#FeatureCollection": 63,
-              "http://www.w3.org/ns/ldp#Resource": 9,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 9
+              "http://www.w3.org/ns/ldp#Resource": 7,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 7
             },
             "http://www.w3.org/ns/prov#used": {
               "http://fuzzy-sl.squirrel.link/ontology/Georeferencing": 9,
@@ -7307,8 +7305,8 @@ var tree={
               "instancecount": 9,
               "http://www.w3.org/ns/adms#Asset": 9,
               "http://rdfs.org/ns/void#Dataset": 9,
-              "http://www.w3.org/ns/ldp#Resource": 8,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 8
+              "http://www.w3.org/ns/ldp#Resource": 7,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 7
             },
             "http://w3id.org/geo-lod/hasCertaintyDescription": {
               "instancecount": 9
@@ -7467,8 +7465,8 @@ var tree={
               "instancecount": 3,
               "http://www.w3.org/ns/adms#Asset": 3,
               "http://rdfs.org/ns/void#Dataset": 3,
-              "http://www.w3.org/ns/ldp#Resource": 2,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 2
+              "http://www.w3.org/ns/ldp#Resource": 3,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 3
             },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
               "instancecount": 5
@@ -19895,8 +19893,8 @@ var tree={
               "instancecount": 1234,
               "http://www.w3.org/ns/adms#Asset": 1234,
               "http://rdfs.org/ns/void#Dataset": 1234,
-              "http://www.w3.org/ns/ldp#Resource": 839,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 839
+              "http://www.w3.org/ns/ldp#Resource": 500,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 500
             },
             "http://w3id.org/geo-lod/ageChronologySpeleothem": {
               "instancecount": 1234,
@@ -19921,16 +19919,16 @@ var tree={
             "http://w3id.org/geo-lod/smoothingMethod_median": {
               "instancecount": 1234,
               "http://w3id.org/geo-lod/RollingMedianFilter": 1234,
-              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 989,
-              "http://www.w3.org/ns/ldp#Resource": 989,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 989
+              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 566,
+              "http://www.w3.org/ns/ldp#Resource": 566,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 566
             },
             "http://w3id.org/geo-lod/smoothingMethod_savgol": {
               "instancecount": 1234,
               "http://w3id.org/geo-lod/SavitzkyGolayFilter": 1234,
-              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 1,
-              "http://www.w3.org/ns/ldp#Resource": 1,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 1
+              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 705,
+              "http://www.w3.org/ns/ldp#Resource": 705,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 705
             },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
               "instancecount": 1234
@@ -32306,8 +32304,8 @@ var tree={
               "instancecount": 1234,
               "http://www.w3.org/ns/adms#Asset": 1234,
               "http://rdfs.org/ns/void#Dataset": 1234,
-              "http://www.w3.org/ns/ldp#Resource": 853,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 853
+              "http://www.w3.org/ns/ldp#Resource": 497,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 497
             },
             "http://w3id.org/geo-lod/ageChronologySpeleothem": {
               "instancecount": 1234,
@@ -32322,8 +32320,8 @@ var tree={
             "http://w3id.org/geo-lod/measurementType": {
               "instancecount": 1234,
               "http://w3id.org/geo-lod/MeasurementType": 1234,
-              "http://www.w3.org/ns/ldp#Resource": 245,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 245
+              "http://www.w3.org/ns/ldp#Resource": 636,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 636
             },
             "http://w3id.org/geo-lod/smoothedValue_rollingMedian": {
               "instancecount": 1234
@@ -32334,16 +32332,16 @@ var tree={
             "http://w3id.org/geo-lod/smoothingMethod_median": {
               "instancecount": 1234,
               "http://w3id.org/geo-lod/RollingMedianFilter": 1234,
-              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 1008,
-              "http://www.w3.org/ns/ldp#Resource": 1008,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 1008
+              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 566,
+              "http://www.w3.org/ns/ldp#Resource": 566,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 566
             },
             "http://w3id.org/geo-lod/smoothingMethod_savgol": {
               "instancecount": 1234,
               "http://w3id.org/geo-lod/SavitzkyGolayFilter": 1234,
-              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 1,
-              "http://www.w3.org/ns/ldp#Resource": 1,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 1
+              "http://www.ics.forth.gr/isl/CRMsci/S6_Data_Evaluation": 702,
+              "http://www.w3.org/ns/ldp#Resource": 702,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 702
             },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
               "instancecount": 1234
@@ -32466,8 +32464,8 @@ var tree={
               "instancecount": 4,
               "http://www.w3.org/ns/adms#Asset": 4,
               "http://rdfs.org/ns/void#Dataset": 4,
-              "http://www.w3.org/ns/ldp#Resource": 3,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 3
+              "http://www.w3.org/ns/ldp#Resource": 1,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 1
             },
             "http://w3id.org/geo-lod/collectedFrom": {
               "instancecount": 4,
@@ -32514,9 +32512,7 @@ var tree={
             "http://rdfs.org/ns/void#inDataset": {
               "instancecount": 1,
               "http://www.w3.org/ns/adms#Asset": 1,
-              "http://rdfs.org/ns/void#Dataset": 1,
-              "http://www.w3.org/ns/ldp#Resource": 1,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 1
+              "http://rdfs.org/ns/void#Dataset": 1
             },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
               "instancecount": 1
@@ -32556,9 +32552,7 @@ var tree={
             "http://rdfs.org/ns/void#inDataset": {
               "instancecount": 1,
               "http://www.w3.org/ns/adms#Asset": 1,
-              "http://rdfs.org/ns/void#Dataset": 1,
-              "http://www.w3.org/ns/ldp#Resource": 1,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 1
+              "http://rdfs.org/ns/void#Dataset": 1
             },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
               "instancecount": 1
@@ -32598,31 +32592,29 @@ var tree={
         "data": {
           "from": {
             "http://w3id.org/geo-lod/measurementType": {
-              "http://w3id.org/geo-lod/Delta18OSpeleothemObservation": 1234,
-              "http://w3id.org/geo-lod/Delta13CSpeleothemObservation": 1234
+              "http://w3id.org/geo-lod/Delta13CSpeleothemObservation": 1234,
+              "http://w3id.org/geo-lod/Delta18OSpeleothemObservation": 1234
             },
             "http://www.w3.org/2000/01/rdf-schema#member": {
               "http://www.w3.org/2004/02/skos/core#Collection": 2,
-              "http://www.w3.org/ns/ldp#Resource": 2,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 2
+              "http://www.w3.org/ns/ldp#Resource": 1,
+              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 1
             }
           },
           "to": {
             "http://rdfs.org/ns/void#inDataset": {
               "instancecount": 2,
               "http://www.w3.org/ns/adms#Asset": 2,
-              "http://rdfs.org/ns/void#Dataset": 2,
-              "http://www.w3.org/ns/ldp#Resource": 2,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 2
+              "http://rdfs.org/ns/void#Dataset": 2
             },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
               "instancecount": 4
             },
-            "http://www.w3.org/2000/01/rdf-schema#comment": {
-              "instancecount": 1
-            },
             "http://www.w3.org/2000/01/rdf-schema#label": {
               "instancecount": 3
+            },
+            "http://www.w3.org/2000/01/rdf-schema#comment": {
+              "instancecount": 1
             }
           }
         }
@@ -32707,9 +32699,7 @@ var tree={
             "http://rdfs.org/ns/void#inDataset": {
               "instancecount": 1,
               "http://www.w3.org/ns/adms#Asset": 1,
-              "http://rdfs.org/ns/void#Dataset": 1,
-              "http://www.w3.org/ns/ldp#Resource": 1,
-              "https://www.iana.org/assignments/media-types/text/turtle#Resource": 1
+              "http://rdfs.org/ns/void#Dataset": 1
             },
             "http://w3id.org/geo-lod/polyOrder": {
               "instancecount": 1
@@ -39393,7 +39383,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0004_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Villars cave (geolod:Cave_site_0004)",
         "data": {
@@ -39403,7 +39393,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0011_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Jeita cave (geolod:Cave_site_0011)",
         "data": {
@@ -39413,7 +39403,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0016_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Han-sur-Lesse cave (geolod:Cave_site_0016)",
         "data": {
@@ -39423,7 +39413,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0019_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Kanaan cave (geolod:Cave_site_0019)",
         "data": {
@@ -39433,7 +39423,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0067_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Clearwater/Wind caves connection (geolod:Cave_site_0067)",
         "data": {
@@ -39443,7 +39433,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0071_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Baradla cave (geolod:Cave_site_0071)",
         "data": {
@@ -39453,7 +39443,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0073_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Bourgeois\u2013Delaunay cave (geolod:Cave_site_0073)",
         "data": {
@@ -39463,7 +39453,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0077_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Chauvet cave (geolod:Cave_site_0077)",
         "data": {
@@ -39473,7 +39463,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0081_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Gueldaman cave (geolod:Cave_site_0081)",
         "data": {
@@ -39483,7 +39473,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0087_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Pindal cave (geolod:Cave_site_0087)",
         "data": {
@@ -39493,7 +39483,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0104_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Liang Luar (geolod:Cave_site_0104)",
         "data": {
@@ -39503,7 +39493,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0108_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Clamouse cave (geolod:Cave_site_0108)",
         "data": {
@@ -39513,7 +39503,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0118_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Clearwater cave (geolod:Cave_site_0118)",
         "data": {
@@ -39523,7 +39513,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0135_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Grotte de Piste (geolod:Cave_site_0135)",
         "data": {
@@ -39533,7 +39523,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0136_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Juxtlahuaca cave (geolod:Cave_site_0136)",
         "data": {
@@ -39543,7 +39533,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0160_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Soreq cave (geolod:Cave_site_0160)",
         "data": {
@@ -39553,7 +39543,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0161_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Aurora cave (geolod:Cave_site_0161)",
         "data": {
@@ -39563,7 +39553,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0182_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Kotumsar cave (geolod:Cave_site_0182)",
         "data": {
@@ -39573,7 +39563,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0223_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Wanxiang cave (geolod:Cave_site_0223)",
         "data": {
@@ -39583,7 +39573,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0226_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Cueva del Diamante (geolod:Cave_site_0226)",
         "data": {
@@ -39593,7 +39583,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0245_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Nakarallu cave (geolod:Cave_site_0245)",
         "data": {
@@ -39603,7 +39593,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0253_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Hoq cave (geolod:Cave_site_0253)",
         "data": {
@@ -39613,7 +39603,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0258_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "B7 cave (geolod:Cave_site_0258)",
         "data": {
@@ -39623,7 +39613,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0266_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Cueva Victoria (geolod:Cave_site_0266)",
         "data": {
@@ -39633,7 +39623,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0267_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Gruta do Casal da Lebre (geolod:Cave_site_0267)",
         "data": {
@@ -39643,7 +39633,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0268_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Pere Noel cave (geolod:Cave_site_0268)",
         "data": {
@@ -39653,7 +39643,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0275_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Buraca Gloriosa (geolod:Cave_site_0275)",
         "data": {
@@ -39663,7 +39653,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0286_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "La Garma cave (geolod:Cave_site_0286)",
         "data": {
@@ -39673,7 +39663,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0295_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Qadisha cave (geolod:Cave_site_0295)",
         "data": {
@@ -39683,7 +39673,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0297_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "B\u00e0sura cave (geolod:Cave_site_0297)",
         "data": {
@@ -39693,7 +39683,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0298_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Belum cave (geolod:Cave_site_0298)",
         "data": {
@@ -39703,7 +39693,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0324_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "La Vallina (geolod:Cave_site_0324)",
         "data": {
@@ -39713,7 +39703,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0329_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Matupi cave (geolod:Cave_site_0329)",
         "data": {
@@ -39723,7 +39713,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0337_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Pir Ghar cave (geolod:Cave_site_0337)",
         "data": {
@@ -39733,7 +39723,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0353_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Wintimdouine (geolod:Cave_site_0353)",
         "data": {
@@ -39743,7 +39733,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0359_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Zoolithen cave (geolod:Cave_site_0359)",
         "data": {
@@ -39753,7 +39743,7 @@ var tree={
       },
       {
         "id": "http://w3id.org/geo-lod/Cave_site_0364_suniv2_",
-        "parent": "http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit",
+        "parent": "http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit",
         "type": "geoinstance",
         "text": "Naharon (geolod:Cave_site_0364)",
         "data": {
@@ -39844,21 +39834,6 @@ var tree={
             }
           },
           "to": {
-            "http://rdfs.org/ns/void#inDataset": {
-              "instancecount": 2,
-              "http://www.w3.org/ns/adms#Asset": 2,
-              "http://rdfs.org/ns/void#Dataset": 2
-            },
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
-              "instancecount": 2
-            },
-            "http://www.w3.org/2000/01/rdf-schema#label": {
-              "instancecount": 2
-            },
-            "http://www.w3.org/ns/dcat#dataset": {
-              "instancecount": 6,
-              "http://www.w3.org/ns/dcat#Dataset": 6
-            },
             "http://purl.org/dc/terms/created": {
               "instancecount": 1
             },
@@ -39873,6 +39848,21 @@ var tree={
             },
             "http://purl.org/dc/terms/title": {
               "instancecount": 1
+            },
+            "http://rdfs.org/ns/void#inDataset": {
+              "instancecount": 2,
+              "http://www.w3.org/ns/adms#Asset": 2,
+              "http://rdfs.org/ns/void#Dataset": 2
+            },
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
+              "instancecount": 2
+            },
+            "http://www.w3.org/2000/01/rdf-schema#label": {
+              "instancecount": 2
+            },
+            "http://www.w3.org/ns/dcat#dataset": {
+              "instancecount": 6,
+              "http://www.w3.org/ns/dcat#Dataset": 6
             }
           }
         }
@@ -39993,11 +39983,17 @@ var tree={
             }
           },
           "to": {
+            "http://purl.org/dc/terms/created": {
+              "instancecount": 1
+            },
             "http://purl.org/dc/terms/description": {
               "instancecount": 3
             },
             "http://purl.org/dc/terms/license": {
               "instancecount": 3
+            },
+            "http://purl.org/dc/terms/publisher": {
+              "instancecount": 1
             },
             "http://purl.org/dc/terms/source": {
               "instancecount": 4,
@@ -40011,6 +40007,11 @@ var tree={
               "http://www.w3.org/ns/adms#Asset": 3,
               "http://rdfs.org/ns/void#Dataset": 3
             },
+            "http://w3id.org/geo-lod/hasObservation": {
+              "instancecount": 2114,
+              "http://www.ics.forth.gr/isl/CRMsci/S4_Observation": 2114,
+              "http://www.w3.org/ns/sosa/Observation": 2114
+            },
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": {
               "instancecount": 3
             },
@@ -40019,17 +40020,6 @@ var tree={
               "http://purl.org/dc/terms/BibliographicResource": 2
             },
             "http://www.w3.org/ns/dcat#record": {
-              "instancecount": 2114,
-              "http://www.ics.forth.gr/isl/CRMsci/S4_Observation": 2114,
-              "http://www.w3.org/ns/sosa/Observation": 2114
-            },
-            "http://purl.org/dc/terms/created": {
-              "instancecount": 1
-            },
-            "http://purl.org/dc/terms/publisher": {
-              "instancecount": 1
-            },
-            "http://w3id.org/geo-lod/hasObservation": {
               "instancecount": 2114,
               "http://www.ics.forth.gr/isl/CRMsci/S4_Observation": 2114,
               "http://www.w3.org/ns/sosa/Observation": 2114
@@ -82549,11 +82539,11 @@ var tree={
             "http://www.w3.org/2000/01/rdf-schema#member": {
               "http://www.w3.org/2004/02/skos/core#Collection": 4
             },
-            "http://w3id.org/geo-lod/smoothingMethod_median": {
+            "http://w3id.org/geo-lod/smoothingMethod_savgol": {
               "http://www.ics.forth.gr/isl/CRMsci/S4_Observation": 2114,
               "http://www.w3.org/ns/sosa/Observation": 2114
             },
-            "http://w3id.org/geo-lod/smoothingMethod_savgol": {
+            "http://w3id.org/geo-lod/smoothingMethod_median": {
               "http://www.ics.forth.gr/isl/CRMsci/S4_Observation": 2114,
               "http://www.w3.org/ns/sosa/Observation": 2114
             }
@@ -82573,11 +82563,11 @@ var tree={
             "http://purl.org/dc/terms/references": {
               "instancecount": 2
             },
-            "http://w3id.org/geo-lod/windowSize": {
-              "instancecount": 2
-            },
             "http://w3id.org/geo-lod/polyOrder": {
               "instancecount": 1
+            },
+            "http://w3id.org/geo-lod/windowSize": {
+              "instancecount": 2
             }
           }
         }

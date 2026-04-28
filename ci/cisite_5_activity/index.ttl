@@ -15,8 +15,8 @@
     ns2:hasCertaintyLevel ns1:high ;
     ns2:hasLiteratureReference "Fedele et al., 2008",
         "Giaccio et al., 2008" ;
-    prov:endedAtTime "2026-04-28T09:27:24.026589+00:00"^^xsd:dateTime ;
-    prov:startedAtTime "2026-04-28T09:27:24.004285+00:00"^^xsd:dateTime ;
+    prov:endedAtTime "2026-04-28T09:50:57.866415+00:00"^^xsd:dateTime ;
+    prov:startedAtTime "2026-04-28T09:50:57.842709+00:00"^^xsd:dateTime ;
     prov:used <http://w3id.org/geo-lod/ci/cisite_5> ;
     prov:wasAssociatedWith <http://orcid.org/0000-0002-3246-3531> .
 

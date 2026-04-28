@@ -8321,7 +8321,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0004_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0004_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0004_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0004_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0004_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0005> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -8369,7 +8369,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0011_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0011_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0011_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0011_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0011_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0012> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -8405,7 +8405,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0016_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0016_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0016_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0016_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0016_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0017> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -8423,7 +8423,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0019_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0019_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0019_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0019_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0019_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0020> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -8651,7 +8651,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0067_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0067_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0067_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0067_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0067_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0069> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -8675,7 +8675,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0071_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0071_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0071_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0071_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0071_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0072> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -8693,7 +8693,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0073_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0073_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0073_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0073_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0073_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0074> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -8711,7 +8711,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0077_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0077_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0077_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0077_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0077_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0078> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -8741,7 +8741,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0081_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0081_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0081_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0081_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0081_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0082> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -8783,7 +8783,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0087_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0087_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0087_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0087_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0087_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0090> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -8861,7 +8861,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0104_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0104_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0104_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0104_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0104_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0105> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -8891,7 +8891,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0108_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0108_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0108_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0108_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0108_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0109> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -8945,7 +8945,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0118_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0118_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0118_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0118_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0118_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0120> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -9023,7 +9023,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0135_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0135_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0135_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0135_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0135_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0136_Geometry> ns1:forClass <http://www.opengis.net/ont/sf#Point> ;
@@ -9035,7 +9035,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0136_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0136_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0136_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0136_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0136_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0137> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -9155,7 +9155,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0160_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0160_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0160_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0160_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0160_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0161_Geometry> ns1:forClass <http://www.opengis.net/ont/sf#Point> ;
@@ -9167,7 +9167,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0161_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0161_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0161_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0161_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0161_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0162> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -9269,7 +9269,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0182_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0182_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0182_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0182_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0182_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0183> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -9473,7 +9473,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0223_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0223_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0223_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0223_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0223_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0224> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -9497,7 +9497,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0226_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0226_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0226_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0226_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0226_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0230> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -9587,7 +9587,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0245_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0245_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0245_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0245_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0245_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0246> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -9629,7 +9629,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0253_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0253_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0253_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0253_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0253_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0254> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -9659,7 +9659,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0258_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0258_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0258_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0258_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0258_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0259> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -9707,7 +9707,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0266_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0266_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0266_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0266_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0266_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0267_Geometry> ns1:forClass <http://www.opengis.net/ont/sf#Point> ;
@@ -9719,7 +9719,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0267_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0267_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0267_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0267_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0267_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0268_Geometry> ns1:forClass <http://www.opengis.net/ont/sf#Point> ;
@@ -9731,7 +9731,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0268_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0268_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0268_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0268_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0268_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0269> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -9779,7 +9779,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0275_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0275_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0275_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0275_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0275_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0277> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -9845,7 +9845,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0286_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0286_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0286_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0286_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0286_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0287> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -9899,7 +9899,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0295_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0295_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0295_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0295_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0295_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0296> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -9917,7 +9917,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0297_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0297_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0297_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0297_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0297_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0298_Geometry> ns1:forClass <http://www.opengis.net/ont/sf#Point> ;
@@ -9929,7 +9929,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0298_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0298_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0298_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0298_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0298_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0299> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -10067,7 +10067,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0324_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0324_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0324_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0324_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0324_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0325> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -10103,7 +10103,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0329_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0329_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0329_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0329_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0329_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0330> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -10151,7 +10151,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0337_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0337_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0337_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0337_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0337_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0338> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -10253,7 +10253,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0353_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0353_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0353_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0353_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0353_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0354> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -10295,7 +10295,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0359_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0359_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0359_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0359_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0359_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0360> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -10331,7 +10331,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0364_suniv1_> ns1:forClass <http://w3id.org/geo-lod/ArchaeologicalCaveSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0364_suniv1_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0364_suniv2_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0364_suniv2_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_site_0364_suniv2_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0365> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
@@ -31154,7 +31154,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_19_suniv4_> ns1:forClass <http://w3id.org/geo-lod/CIArchaeologicalSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_19_suniv4_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_19_suniv5_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_19_suniv5_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_19_suniv5_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_1_activity_suniv0_> ns1:forClass <http://fuzzy-sl.squirrel.link/ontology/Georeferencing> ;
@@ -31997,7 +31997,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_44_suniv4_> ns1:forClass <http://w3id.org/geo-lod/CIArchaeologicalSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_44_suniv4_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_44_suniv5_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_44_suniv5_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_44_suniv5_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_45_activity_suniv0_> ns1:forClass <http://fuzzy-sl.squirrel.link/ontology/Georeferencing> ;
@@ -32030,7 +32030,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_45_suniv4_> ns1:forClass <http://w3id.org/geo-lod/CIArchaeologicalSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_45_suniv4_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_45_suniv5_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_45_suniv5_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_45_suniv5_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_46_activity_suniv0_> ns1:forClass <http://fuzzy-sl.squirrel.link/ontology/Georeferencing> ;
@@ -32198,7 +32198,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_50_suniv4_> ns1:forClass <http://w3id.org/geo-lod/CIArchaeologicalSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_50_suniv4_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_50_suniv5_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_50_suniv5_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_50_suniv5_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_51_activity_suniv0_> ns1:forClass <http://fuzzy-sl.squirrel.link/ontology/Georeferencing> ;
@@ -32231,7 +32231,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_51_suniv4_> ns1:forClass <http://w3id.org/geo-lod/CIArchaeologicalSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_51_suniv4_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_51_suniv5_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_51_suniv5_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_51_suniv5_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_52_activity_suniv0_> ns1:forClass <http://fuzzy-sl.squirrel.link/ontology/Georeferencing> ;
@@ -32453,7 +32453,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_59_suniv4_> ns1:forClass <http://w3id.org/geo-lod/CIArchaeologicalSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_59_suniv4_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_59_suniv5_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_59_suniv5_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_59_suniv5_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_5_activity_suniv0_> ns1:forClass <http://fuzzy-sl.squirrel.link/ontology/Georeferencing> ;
@@ -32567,7 +32567,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_62_suniv4_> ns1:forClass <http://w3id.org/geo-lod/CIArchaeologicalSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_62_suniv4_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_62_suniv5_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_62_suniv5_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_62_suniv5_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_63_activity_suniv0_> ns1:forClass <http://fuzzy-sl.squirrel.link/ontology/Georeferencing> ;
@@ -32600,7 +32600,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_63_suniv4_> ns1:forClass <http://w3id.org/geo-lod/CIArchaeologicalSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_63_suniv4_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_63_suniv5_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_63_suniv5_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_63_suniv5_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_64_activity_suniv0_> ns1:forClass <http://fuzzy-sl.squirrel.link/ontology/Georeferencing> ;
@@ -32660,7 +32660,7 @@ void:Linkset a owl:Class .
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_65_suniv4_> ns1:forClass <http://w3id.org/geo-lod/CIArchaeologicalSite> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_65_suniv4_> .
 
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_65_suniv5_> ns1:forClass <http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
+<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_65_suniv5_> ns1:forClass <http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//cisite_65_suniv5_> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#cisite_6_activity_suniv0_> ns1:forClass <http://fuzzy-sl.squirrel.link/ontology/Georeferencing> ;
@@ -32803,7 +32803,7 @@ geo:FeatureCollection a owl:Class ;
 
 skos:Collection a owl:Class .
 
-<http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit> a owl:Class .
+<http://www.cidoc-crm.org/extensions/crmarchaeo/A2_Stratigraphic_Volume_Unit> a owl:Class .
 
 <http://fuzzy-sl.squirrel.link/ontology/Georeferencing> a owl:Class .
 
