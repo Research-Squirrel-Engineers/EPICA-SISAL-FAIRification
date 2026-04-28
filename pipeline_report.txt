@@ -3,7 +3,7 @@
                           EPICA + SISAL + CI Pipeline                           
 ════════════════════════════════════════════════════════════════════════════════
 
-  Timestamp: 2026-04-28 10:01:48
+  Timestamp: 2026-04-28 11:43:57
   Directory: c:\git\EPICA-SISAL-FAIRification
 
 
@@ -82,15 +82,15 @@
   ▶ Parse & merge ...
     + crm_bridging.ttl:       21 Triples
     + geo_lod_core.ttl:      168 Triples
-    + epica_dome_c.ttl:   40,258 Triples
-    + epica_ontology.ttl:      162 Triples
-    + sisal_140_sanbao_data.ttl:   70,069 Triples
-    + sisal_144_botuvera_data.ttl:   21,782 Triples
-    + sisal_145_corchia_data.ttl:   29,638 Triples
-    + sisal_275_buracagloriosa_data.ttl:   27,314 Triples
-    + sisal_all_data.ttl:    3,660 Triples
-    + sisal_ontology.ttl:      141 Triples
-    + sisal_sites.ttl:        0 Triples
+    + epica_dome_c.ttl:   40,259 Triples (40,258 new, 1 dup)
+    + epica_ontology.ttl:      180 Triples (162 new, 18 dup)
+    + sisal_140_sanbao_data.ttl:   70,075 Triples (70,069 new, 6 dup)
+    + sisal_144_botuvera_data.ttl:   21,795 Triples (21,782 new, 13 dup)
+    + sisal_145_corchia_data.ttl:   29,651 Triples (29,638 new, 13 dup)
+    + sisal_275_buracagloriosa_data.ttl:   27,327 Triples (27,314 new, 13 dup)
+    + sisal_all_data.ttl:  152,472 Triples (3,660 new, 148,812 dup)
+    + sisal_ontology.ttl:      166 Triples (141 new, 25 dup)
+    + sisal_sites.ttl:    3,663 Triples (0 new, 3,663 dup)
     + ci_findspots.ttl:    3,512 Triples
 
   ▶ Serialisiere Bundle nach geo-lod-bundle.ttl ...
@@ -126,14 +126,14 @@
     Top-10 Properties nach Vorkommen:
       18,174  http://www.w3.org/1999/02/22-rdf-syntax-ns#type
       14,881  http://www.w3.org/ns/prov#wasDerivedFrom
-      14,502  http://www.w3.org/ns/sosa/observedProperty
-      14,502  http://w3id.org/geo-lod/smoothedValue_rollingMedian
-      14,502  http://www.w3.org/ns/sosa/hasFeatureOfInterest
-      14,502  http://w3id.org/geo-lod/smoothingMethod_median
-      14,502  http://w3id.org/geo-lod/smoothingMethod_savgol
       14,502  http://w3id.org/geo-lod/smoothedValue_savgol
+      14,502  http://w3id.org/geo-lod/smoothingMethod_savgol
+      14,502  http://w3id.org/geo-lod/smoothedValue_rollingMedian
+      14,502  http://w3id.org/geo-lod/smoothingMethod_median
       14,502  http://w3id.org/geo-lod/measurementType
-      12,388  http://w3id.org/geo-lod/ageKaBP
+      14,502  http://www.w3.org/ns/sosa/observedProperty
+      14,502  http://www.w3.org/ns/sosa/hasFeatureOfInterest
+      12,388  http://w3id.org/geo-lod/ageChronologySpeleothem
 
     CRM-Coverage:   ✓
     SHACL:          ✓
@@ -147,5 +147,5 @@
   CI:      ✓ Success
   Bundle:  ✓ Success
 
-  Total duration: 306.1 seconds
+  Total duration: 157.1 seconds
   Log saved to: c:\git\EPICA-SISAL-FAIRification\pipeline_report.txt

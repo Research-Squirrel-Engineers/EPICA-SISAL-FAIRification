@@ -35,6 +35,7 @@ except ImportError as e:
 # pyshacl ist optional - SHACL-Validierung wird übersprungen, wenn nicht da.
 try:
     from pyshacl import validate as shacl_validate
+
     PYSHACL_AVAILABLE = True
 except ImportError:
     PYSHACL_AVAILABLE = False
@@ -97,16 +98,22 @@ def _repair_multiline_strings(ttl_text: str) -> tuple[str, int]:
     return _BROKEN_LITERAL.sub(_repl, ttl_text), n
 
 
-def _parse_with_repair(graph: Graph, path: Path) -> tuple[int, bool]:
+def _parse_with_repair(graph: Graph, path: Path) -> tuple[int, int, bool]:
     """Versucht erst normales Parsen, fällt bei Fehler auf Auto-Repair zurück.
 
-    Returns: (added_triples, repaired_flag)
+    Returns: (added_triples, file_triples, repaired_flag)
+      - added_triples: wieviele Triples NEU im Graph durch dieses Parsing
+      - file_triples:  wieviele Triples die Datei selbst enthält (für Anzeige
+                       von Aggregaten, deren Inhalt schon im Bundle ist)
+      - repaired_flag: True wenn Auto-Repair greifen musste
+
     Wirft Exception nur, wenn auch der Repair-Versuch fehlschlägt.
     """
     before = len(graph)
+    repaired_flag = False
+
     try:
         graph.parse(path, format="turtle")
-        return len(graph) - before, False
     except Exception as first_err:
         try:
             text = path.read_text(encoding="utf-8")
@@ -118,12 +125,32 @@ def _parse_with_repair(graph: Graph, path: Path) -> tuple[int, bool]:
             raise first_err
 
         graph.parse(data=repaired, format="turtle")
-        return len(graph) - before, True
+        repaired_flag = True
+
+    added = len(graph) - before
+
+    # Datei isoliert parsen, um die intrinsische Triple-Zahl zu kennen.
+    # Das ist nur nötig, wenn 'added' nicht der vollen Datei entspricht
+    # (sprich: Set-Duplikate mit bereits geladenem Material).
+    # Wir zählen immer mit, weil's billig ist.
+    file_graph = Graph()
+    try:
+        file_graph.parse(path, format="turtle")
+    except Exception:
+        if repaired_flag:
+            file_graph.parse(data=repaired, format="turtle")
+        else:
+            # Sollte nicht passieren - wenn das erste Parsen klappte, klappt das hier auch
+            pass
+    file_triples = len(file_graph)
+
+    return added, file_triples, repaired_flag
 
 
 # ---------------------------------------------------------------------------
 # Bundle Builder
 # ---------------------------------------------------------------------------
+
 
 def _collect_ttl_files(source_dirs: Iterable[Path]) -> list[Path]:
     files: list[Path] = []
@@ -192,13 +219,13 @@ def build_bundle(
         return None
 
     g = Graph()
-    g.bind("crm",        Namespace(CRM_FAMILY_PREFIXES[0]))
-    g.bind("crmsci",     Namespace("http://www.ics.forth.gr/isl/CRMsci/"))
-    g.bind("crmgeo",     Namespace("http://www.ics.forth.gr/isl/CRMgeo/"))
+    g.bind("crm", Namespace(CRM_FAMILY_PREFIXES[0]))
+    g.bind("crmsci", Namespace("http://www.ics.forth.gr/isl/CRMsci/"))
+    g.bind("crmgeo", Namespace("http://www.ics.forth.gr/isl/CRMgeo/"))
     g.bind("crmarchaeo", Namespace("http://www.ics.forth.gr/isl/CRMarchaeo/"))
-    g.bind("geo-lod",    GEO_LOD)
-    g.bind("owl",        OWL)
-    g.bind("rdfs",       RDFS)
+    g.bind("geo-lod", GEO_LOD)
+    g.bind("owl", OWL)
+    g.bind("rdfs", RDFS)
 
     print("\n  ▶ Parse & merge ...")
     parse_errors: list[tuple[Path, str]] = []
@@ -206,9 +233,18 @@ def build_bundle(
 
     for f in all_files:
         try:
-            added, was_repaired = _parse_with_repair(g, f)
+            added, file_triples, was_repaired = _parse_with_repair(g, f)
             tag = "  (auto-repaired)" if was_repaired else ""
-            print(f"    + {f.name}: {added:>8,} Triples{tag}")
+            # Wenn alle Triples neu sind: nur eine Zahl zeigen.
+            # Wenn die Datei mehr Triples enthält als sie zum Bundle beiträgt
+            # (= Aggregat / Set-Duplikate), beide Zahlen zeigen.
+            if added == file_triples:
+                print(f"    + {f.name}: {file_triples:>8,} Triples{tag}")
+            else:
+                print(
+                    f"    + {f.name}: {file_triples:>8,} Triples "
+                    f"({added:,} new, {file_triples - added:,} dup){tag}"
+                )
             if was_repaired:
                 repaired_files.append(f)
         except Exception as e:
@@ -221,8 +257,8 @@ def build_bundle(
         print("  ⚠  Auto-Repair angewendet - FIX IN GENERATOR-SKRIPTEN NÖTIG:")
         for f in repaired_files:
             print(f"      • {f}")
-        print("    → Mehrzeilige String-Literale müssen mit \"\"\"...\"\"\"")
-        print("      statt \"...\" geschrieben werden (Turtle-Spec).")
+        print('    → Mehrzeilige String-Literale müssen mit """..."""')
+        print('      statt "..." geschrieben werden (Turtle-Spec).')
 
     if parse_errors:
         print(f"\n  ⚠  {len(parse_errors)} Datei(en) konnten nicht geparst werden.")
@@ -239,6 +275,7 @@ def build_bundle(
 # ---------------------------------------------------------------------------
 # Validation: CIDOC-CRM Coverage (strict)
 # ---------------------------------------------------------------------------
+
 
 def _is_crm_class(uri: URIRef) -> bool:
     s = str(uri)
@@ -257,14 +294,24 @@ def validate_crm_coverage(g: Graph) -> bool:
     print("\n  ▶ CIDOC-CRM Coverage-Check (strict CRM-family) ...")
 
     instance_classes: set[URIRef] = {
-        o for _, _, o in g.triples((None, RDF.type, None))
-        if isinstance(o, URIRef)
+        o for _, _, o in g.triples((None, RDF.type, None)) if isinstance(o, URIRef)
     }
 
-    skip = {OWL.Class, OWL.NamedIndividual, OWL.ObjectProperty,
-            OWL.DatatypeProperty, OWL.Ontology, OWL.AnnotationProperty,
-            OWL.Restriction, OWL.AllDisjointClasses, OWL.AllDifferent,
-            RDFS.Class, RDFS.Datatype, RDF.Property, RDF.List}
+    skip = {
+        OWL.Class,
+        OWL.NamedIndividual,
+        OWL.ObjectProperty,
+        OWL.DatatypeProperty,
+        OWL.Ontology,
+        OWL.AnnotationProperty,
+        OWL.Restriction,
+        OWL.AllDisjointClasses,
+        OWL.AllDifferent,
+        RDFS.Class,
+        RDFS.Datatype,
+        RDF.Property,
+        RDF.List,
+    }
     instance_classes -= skip
 
     if not instance_classes:
@@ -309,6 +356,7 @@ def validate_crm_coverage(g: Graph) -> bool:
 # ---------------------------------------------------------------------------
 # Validation: SHACL
 # ---------------------------------------------------------------------------
+
 
 def _find_shape_files(ontology_dir: Path) -> list[Path]:
     candidates: list[Path] = []
@@ -370,13 +418,15 @@ def validate_shacl(g: Graph, ontology_dir: Path) -> bool:
 # Sanity Checks
 # ---------------------------------------------------------------------------
 
+
 def sanity_report(g: Graph) -> None:
     print("\n  ▶ Sanity-Report ...")
 
-    n_triples  = len(g)
+    n_triples = len(g)
     n_subjects = len(set(g.subjects()))
-    classes    = Counter(o for _, _, o in g.triples((None, RDF.type, None))
-                         if isinstance(o, URIRef))
+    classes = Counter(
+        o for _, _, o in g.triples((None, RDF.type, None)) if isinstance(o, URIRef)
+    )
     properties = Counter(p for _, p, _ in g)
 
     print(f"    Triples:         {n_triples:,}")
@@ -397,6 +447,7 @@ def sanity_report(g: Graph) -> None:
 # Public Entry Point
 # ---------------------------------------------------------------------------
 
+
 def run_bundle_step(
     script_dir: Path,
     ontology_dir: Path,
@@ -414,7 +465,7 @@ def run_bundle_step(
     if g is None:
         return False
 
-    crm_ok   = validate_crm_coverage(g)
+    crm_ok = validate_crm_coverage(g)
     shacl_ok = validate_shacl(g, ontology_dir)
     sanity_report(g)
 
@@ -428,13 +479,14 @@ def run_bundle_step(
 # CLI
 # ---------------------------------------------------------------------------
 
+
 def _main() -> int:
     here = Path(__file__).parent.absolute()
     ontology_dir = here / "ontology"
     rdf_dirs = [
         here / "EPICA" / "rdf",
         here / "SISAL" / "rdf",
-        here / "CI"    / "rdf",
+        here / "CI" / "rdf",
     ]
     ok = run_bundle_step(here, ontology_dir, rdf_dirs)
     return 0 if ok else 1
