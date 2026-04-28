@@ -16,8 +16,8 @@
     ns1:hasLiteratureReference "Buggle, B. et al. (2013)",
         "Buggle, B. et al. (2014)",
         "Obreht, I. et al. (2017), Fig. 1" ;
-    prov:endedAtTime "2026-03-23T15:08:54.241809+00:00"^^xsd:dateTime ;
-    prov:startedAtTime "2026-03-23T15:08:54.032141+00:00"^^xsd:dateTime ;
+    prov:endedAtTime "2026-04-28T09:27:24.109698+00:00"^^xsd:dateTime ;
+    prov:startedAtTime "2026-04-28T09:27:24.004285+00:00"^^xsd:dateTime ;
     prov:used <http://w3id.org/geo-lod/ci/cisite_104> ;
     prov:wasAssociatedWith <http://orcid.org/0000-0002-3246-3531> .
 

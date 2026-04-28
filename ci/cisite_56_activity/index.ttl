@@ -14,8 +14,8 @@
     void:inDataset ns2:geo-lod ;
     ns2:hasCertaintyLevel ns1:dubious ;
     ns2:hasLiteratureReference "Pötter et al., 2021" ;
-    prov:endedAtTime "2026-03-23T15:08:54.212054+00:00"^^xsd:dateTime ;
-    prov:startedAtTime "2026-03-23T15:08:54.032141+00:00"^^xsd:dateTime ;
+    prov:endedAtTime "2026-04-28T09:27:24.095479+00:00"^^xsd:dateTime ;
+    prov:startedAtTime "2026-04-28T09:27:24.004285+00:00"^^xsd:dateTime ;
     prov:used <http://w3id.org/geo-lod/ci/cisite_56> ;
     prov:wasAssociatedWith <http://orcid.org/0009-0008-2877-3204> .
 

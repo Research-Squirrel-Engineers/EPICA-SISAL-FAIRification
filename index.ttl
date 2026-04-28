@@ -10023,19 +10023,19 @@
         54 ;
     ns1:datatypes 0 ;
     ns1:distinctBlankNodes 0 ;
-    ns1:distinctIRIReferences 1057,
+    ns1:distinctIRIReferences 1040,
         2505,
         9655,
         14623 ;
     ns1:distinctLiterals 0 ;
-    ns1:distinctRDFNodes 1057,
+    ns1:distinctRDFNodes 1040,
         2505,
         9655,
         14623 ;
     ns1:languages 0 ;
     ns1:propertyClasses 0 ;
     dc:language <http://www.lexvo.org/page/iso639-1/en> ;
-    dcterms:modified "2026-03-28T15:32:00"^^xsd:dateTime ;
+    dcterms:modified "2026-04-28T07:33:59"^^xsd:dateTime ;
     dcterms:subject <http://dbpedia.org/resource/Location>,
         <http://dbpedia.org/resource/OGC_GeoSPARQL>,
         <http://dbpedia.org/resource/Time>,
@@ -10093,7 +10093,7 @@
         16,
         23 ;
     void:dataDump <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//index.ttl> ;
-    void:distinctObjects 710,
+    void:distinctObjects 693,
         1866,
         7145,
         12424 ;
