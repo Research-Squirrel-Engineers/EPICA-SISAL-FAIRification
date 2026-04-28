@@ -3,7 +3,7 @@
                           EPICA + SISAL + CI Pipeline                           
 ════════════════════════════════════════════════════════════════════════════════
 
-  Timestamp: 2026-04-28 11:43:57
+  Timestamp: 2026-04-28 12:34:00
   Directory: c:\git\EPICA-SISAL-FAIRification
 
 
@@ -88,13 +88,13 @@
     + sisal_144_botuvera_data.ttl:   21,795 Triples (21,782 new, 13 dup)
     + sisal_145_corchia_data.ttl:   29,651 Triples (29,638 new, 13 dup)
     + sisal_275_buracagloriosa_data.ttl:   27,327 Triples (27,314 new, 13 dup)
-    + sisal_all_data.ttl:  152,472 Triples (3,660 new, 148,812 dup)
+    + sisal_all_data.ttl:  152,460 Triples (3,648 new, 148,812 dup)
     + sisal_ontology.ttl:      166 Triples (141 new, 25 dup)
     + sisal_sites.ttl:    3,663 Triples (0 new, 3,663 dup)
     + ci_findspots.ttl:    3,512 Triples
 
   ▶ Serialisiere Bundle nach geo-lod-bundle.ttl ...
-  ✓ Bundle geschrieben: 196,725 Triples, 10,178.7 KB
+  ✓ Bundle geschrieben: 196,713 Triples, 10,178.2 KB
 
   ▶ CIDOC-CRM Coverage-Check (strict CRM-family) ...
     Instanz-Klassen geprüft: 46
@@ -102,12 +102,41 @@
     ✗ ohne CRM-Anker:        0
 
   ▶ SHACL-Validierung ...
-    ⚠  Keine Shape-Dateien gefunden - übersprungen.
-       Erwartet z.B. unter: c:\git\EPICA-SISAL-FAIRification\ontology\shapes/*.ttl
+    + lade Shapes: core_shapes.ttl
+    SHACL-Ergebnis: 0 Violation(s), 4 Warning(s)
+      Validation Report
+      Conforms: False
+      Results (4):
+      Validation Result in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+      	Severity: sh:Warning
+      	Source Shape: [ sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("DataSource should reference dct:source URI (DOI, repository, etc.).", lang=en) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:nodeKind sh:IRI ; sh:path dct:source ; sh:severity sh:Warning ]
+      	Focus Node: geolod:PANGAEA_CH4_Source
+      	Result Path: dct:source
+      	Message: DataSource should reference dct:source URI (DOI, repository, etc.).
+      Validation Result in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+      	Severity: sh:Warning
+      	Source Shape: [ sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("DataSource should reference dct:source URI (DOI, repository, etc.).", lang=en) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:nodeKind sh:IRI ; sh:path dct:source ; sh:severity sh:Warning ]
+      	Focus Node: geolod:PANGAEA_d18O_Source
+      	Result Path: dct:source
+      	Message: DataSource should reference dct:source URI (DOI, repository, etc.).
+      Validation Result in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+      	Severity: sh:Warning
+      	Source Shape: [ sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("DataSource should reference dct:source URI (DOI, repository, etc.).", lang=en) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:nodeKind sh:IRI ; sh:path dct:source ; sh:severity sh:Warning ]
+      	Focus Node: geolod:SISALv3_DataSource
+      	Result Path: dct:source
+      	Message: DataSource should reference dct:source URI (DOI, repository, etc.).
+      Validation Result in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+      	Severity: sh:Warning
+      	Source Shape: [ sh:message Literal("CIArchaeologicalSite should have at least one skos:closeMatch to an external authority (Pleiades, Wikidata, etc.).", lang=en) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:nodeKind sh:IRI ; sh:path skos:closeMatch ; sh:severity sh:Warning ]
+      	Focus Node: ci:cisite_59
+      	Result Path: skos:closeMatch
+      	Message: CIArchaeologicalSite should have at least one skos:closeMatch to an external authority (Pleiades, Wikidata, etc.).
+
+    ⚠  Nur Warnings - Bundle gilt als gültig.
 
   ▶ Sanity-Report ...
-    Triples:         196,725
-    Subjekte:        15,610
+    Triples:         196,713
+    Subjekte:        15,606
     Distinkte Typen: 52
     Distinkte Props: 92
 
@@ -117,21 +146,21 @@
        2,114  http://www.ics.forth.gr/isl/CRMsci/S4_Observation
        2,114  http://www.w3.org/ns/sosa/Observation
          380  http://www.opengis.net/ont/sf#Point
-         309  http://w3id.org/geo-lod/Cave
+         305  http://w3id.org/geo-lod/Cave
          148  http://www.w3.org/ns/prov#Activity
           74  http://fuzzy-sl.squirrel.link/ontology/Georeferencing
           74  http://www.ics.forth.gr/isl/CRMgeo/SP6_Declarative_Place
           74  http://fuzzy-sl.squirrel.link/ontology/Site
 
     Top-10 Properties nach Vorkommen:
-      18,174  http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+      18,170  http://www.w3.org/1999/02/22-rdf-syntax-ns#type
       14,881  http://www.w3.org/ns/prov#wasDerivedFrom
-      14,502  http://w3id.org/geo-lod/smoothedValue_savgol
-      14,502  http://w3id.org/geo-lod/smoothingMethod_savgol
-      14,502  http://w3id.org/geo-lod/smoothedValue_rollingMedian
-      14,502  http://w3id.org/geo-lod/smoothingMethod_median
       14,502  http://w3id.org/geo-lod/measurementType
+      14,502  http://w3id.org/geo-lod/smoothingMethod_median
+      14,502  http://w3id.org/geo-lod/smoothedValue_rollingMedian
       14,502  http://www.w3.org/ns/sosa/observedProperty
+      14,502  http://w3id.org/geo-lod/smoothingMethod_savgol
+      14,502  http://w3id.org/geo-lod/smoothedValue_savgol
       14,502  http://www.w3.org/ns/sosa/hasFeatureOfInterest
       12,388  http://w3id.org/geo-lod/ageChronologySpeleothem
 
@@ -147,5 +176,5 @@
   CI:      ✓ Success
   Bundle:  ✓ Success
 
-  Total duration: 157.1 seconds
+  Total duration: 293.1 seconds
   Log saved to: c:\git\EPICA-SISAL-FAIRification\pipeline_report.txt

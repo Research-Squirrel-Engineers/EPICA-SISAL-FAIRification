@@ -771,7 +771,11 @@ def build_sisal_rdf(
 
     # ── Cave ──────────────────────────────────────────────────────────────────
     site_id_val = int(df["site_id"].iloc[0])
-    cave = GEOLOD[f"Cave_{site_slug}"]
+    # Use the canonical Cave URI scheme from v_sites_all (Cave_site_NNNN).
+    # This avoids creating duplicate "stub" Caves (Cave_<slug>) that would
+    # otherwise be parallel to the fully-modelled global Cave instances.
+    site_id_slug = f"site_{site_id_val:04d}"
+    cave = GEOLOD[f"Cave_{site_id_slug}"]
     g.add((cave, RDF.type, GEOLOD["Cave"]))
     g.add((cave, RDFS.label, Literal(site_name, lang="en")))
     g.add((cave, GEOLOD["siteId"], Literal(site_id_val, datatype=XSD.integer)))
@@ -781,7 +785,7 @@ def build_sisal_rdf(
         lat = df["latitude"].iloc[0]
         lon = df["longitude"].iloc[0]
         if pd.notna(lat) and pd.notna(lon):
-            geom = GEOLOD[f"Cave_{site_slug}_Geometry"]
+            geom = GEOLOD[f"Cave_{site_id_slug}_Geometry"]
             g.add(
                 (geom, RDF.type, SF["Point"])
             )  # sf:Point only (subClassOf geo:Geometry)

@@ -29566,28 +29566,28 @@ geolod:Obs_d18O_275_buracagloriosa_e587_01136 a geolod:Delta18OSpeleothemObserva
     sosa:hasFeatureOfInterest geolod:Speleothem_275_buracagloriosa_e587 ;
     sosa:observedProperty geolod:Delta18O_Speleothem .
 
-geolod:Cave_275_buracagloriosa a geolod:Cave ;
+geolod:Cave_site_0275 a geolod:Cave ;
     rdfs:label "Buraca Gloriosa"@en ;
     geolod:siteId 275 .
 
 geolod:Speleothem_275_buracagloriosa_e583 a geolod:Speleothem ;
     rdfs:label "Buraca Gloriosa – BG41"@en ;
-    geolod:collectedFrom geolod:Cave_275_buracagloriosa ;
+    geolod:collectedFrom geolod:Cave_site_0275 ;
     geolod:entityId 583 .
 
 geolod:Speleothem_275_buracagloriosa_e585 a geolod:Speleothem ;
     rdfs:label "Buraca Gloriosa – BG67"@en ;
-    geolod:collectedFrom geolod:Cave_275_buracagloriosa ;
+    geolod:collectedFrom geolod:Cave_site_0275 ;
     geolod:entityId 585 .
 
 geolod:Speleothem_275_buracagloriosa_e586 a geolod:Speleothem ;
     rdfs:label "Buraca Gloriosa – BG611"@en ;
-    geolod:collectedFrom geolod:Cave_275_buracagloriosa ;
+    geolod:collectedFrom geolod:Cave_site_0275 ;
     geolod:entityId 586 .
 
 geolod:Speleothem_275_buracagloriosa_e584 a geolod:Speleothem ;
     rdfs:label "Buraca Gloriosa – BG66"@en ;
-    geolod:collectedFrom geolod:Cave_275_buracagloriosa ;
+    geolod:collectedFrom geolod:Cave_site_0275 ;
     geolod:entityId 584 .
 
 geolod:Delta13C_Speleothem a geolod:Delta13CProperty ;
@@ -29604,7 +29604,7 @@ geolod:MeasurementType_d18O a geolod:MeasurementType ;
 
 geolod:Speleothem_275_buracagloriosa_e587 a geolod:Speleothem ;
     rdfs:label "Buraca Gloriosa – BG6LR"@en ;
-    geolod:collectedFrom geolod:Cave_275_buracagloriosa ;
+    geolod:collectedFrom geolod:Cave_site_0275 ;
     geolod:entityId 587 .
 
 geolod:RollingMedian_w11 a geolod:RollingMedianFilter ;

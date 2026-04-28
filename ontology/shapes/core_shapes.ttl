@@ -1,0 +1,440 @@
+# ============================================================================
+# core_shapes.ttl
+# geo-lod SHACL Shapes
+# <http://w3id.org/geo-lod/shapes>
+#
+# Purpose
+#   Validates the geo-lod knowledge graph (EPICA + SISAL + CI) against the
+#   minimum data-quality constraints required for FAIR publication and
+#   N4O ingestion.
+#
+# Severity policy
+#   sh:Violation  -- structural constraints that must hold for the bundle
+#                    to be considered valid (every site has label, geometry,
+#                    provenance; every observation has FoI/property/value).
+#   sh:Warning    -- vocabulary / format constraints that flag unusual
+#                    values without invalidating the bundle (e.g. an
+#                    archaeologicalConfidence value outside the expected set).
+#
+# Shape groups
+#   A. Site shapes        — Cave, ArchaeologicalCaveSite, CIFindspot,
+#                           CIArchaeologicalSite, DrillingSite
+#   B. Observation shapes — Delta18OSpeleothemObservation, Delta13CSpeleothem-
+#                           Observation, plus generic sosa:Observation
+#   C. Geometry shapes    — geo:Geometry / sf:Point with WKT literal
+#   D. Provenance shapes  — DataSource, prov:Activity
+#
+# Validation
+#   The bundle_rdf.py SHACL step picks up *.ttl files from ontology/shapes/
+#   automatically. Run via: python main.py
+# ============================================================================
+
+@prefix sh:         <http://www.w3.org/ns/shacl#> .
+@prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:        <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix geolod:     <http://w3id.org/geo-lod/> .
+@prefix sosa:       <http://www.w3.org/ns/sosa/> .
+@prefix prov:       <http://www.w3.org/ns/prov#> .
+@prefix geo:        <http://www.opengis.net/ont/geosparql#> .
+@prefix sf:         <http://www.opengis.net/ont/sf#> .
+@prefix dct:        <http://purl.org/dc/terms/> .
+@prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
+
+<http://w3id.org/geo-lod/shapes>
+    a owl:Ontology ;
+    rdfs:label   "geo-lod SHACL Shapes"@en ;
+    rdfs:comment "Data-quality constraints for the geo-lod knowledge graph (EPICA + SISAL + CI). See ontology/shapes/core_shapes.ttl for the full shape inventory."@en .
+
+
+# ============================================================================
+# A. SITE SHAPES
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# A.1  Cave  (SISAL)
+# ----------------------------------------------------------------------------
+# Hard requirements: every cave site must have a label, an integer site ID,
+# and provenance to its data source. Geometry is required for FAIR/spatial
+# discovery but downgraded to Warning because some legacy SISAL records
+# lack coordinates.
+
+geolod:CaveShape
+    a sh:NodeShape ;
+    sh:targetClass geolod:Cave ;
+    rdfs:label "Cave shape"@en ;
+
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:Literal ;
+        sh:severity sh:Violation ;
+        sh:message "Every Cave must have at least one rdfs:label."@en ;
+    ] ;
+
+    sh:property [
+        sh:path geolod:siteId ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:integer ;
+        sh:severity sh:Violation ;
+        sh:message "Every Cave must have exactly one integer geolod:siteId."@en ;
+    ] ;
+
+    sh:property [
+        sh:path prov:wasDerivedFrom ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:severity sh:Violation ;
+        sh:message "Every Cave must declare its data source via prov:wasDerivedFrom."@en ;
+    ] ;
+
+    sh:property [
+        sh:path geo:hasGeometry ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:severity sh:Warning ;
+        sh:message "Cave is missing geo:hasGeometry — required for FAIR spatial discovery."@en ;
+    ] .
+
+
+# ----------------------------------------------------------------------------
+# A.2  ArchaeologicalCaveSite  (SISAL archaeological enrichment)
+# ----------------------------------------------------------------------------
+# Inherits all Cave constraints plus archaeological metadata.
+
+geolod:ArchaeologicalCaveSiteShape
+    a sh:NodeShape ;
+    sh:targetClass geolod:ArchaeologicalCaveSite ;
+    rdfs:label "ArchaeologicalCaveSite shape"@en ;
+
+    sh:property [
+        sh:path geolod:archaeologicalCategory ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:Literal ;
+        sh:severity sh:Violation ;
+        sh:message "Every ArchaeologicalCaveSite must declare an archaeologicalCategory."@en ;
+    ] ;
+
+    sh:property [
+        sh:path geolod:archaeologicalConfidence ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in ( "high" "medium" "low" ) ;
+        sh:severity sh:Warning ;
+        sh:message "archaeologicalConfidence should be one of: high, medium, low."@en ;
+    ] ;
+
+    sh:property [
+        sh:path geolod:archaeologicalBroaderContext ;
+        sh:minCount 1 ;
+        sh:class geolod:ArchaeologicalContext ;
+        sh:severity sh:Violation ;
+        sh:message "archaeologicalBroaderContext must reference a geolod:ArchaeologicalContext individual."@en ;
+    ] .
+
+
+# ----------------------------------------------------------------------------
+# A.3  CIFindspot  (Campanian Ignimbrite findspot, CAA model)
+# ----------------------------------------------------------------------------
+# CI uses a richer CAA-style metadata model with explicit creator, licence,
+# certainty, and SKOS labels.
+
+geolod:CIFindspotShape
+    a sh:NodeShape ;
+    sh:targetClass geolod:CIFindspot ;
+    rdfs:label "CIFindspot shape"@en ;
+
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:Literal ;
+        sh:severity sh:Violation ;
+        sh:message "Every CIFindspot must have at least one rdfs:label."@en ;
+    ] ;
+
+    sh:property [
+        sh:path skos:prefLabel ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "Every CIFindspot must have a skos:prefLabel."@en ;
+    ] ;
+
+    sh:property [
+        sh:path geo:hasGeometry ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:severity sh:Violation ;
+        sh:message "Every CIFindspot must have geo:hasGeometry."@en ;
+    ] ;
+
+    sh:property [
+        sh:path dct:license ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "Every CIFindspot must declare a dct:license."@en ;
+    ] ;
+
+    sh:property [
+        sh:path geolod:hasCertaintyLevel ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "Every CIFindspot must have exactly one geolod:hasCertaintyLevel."@en ;
+    ] .
+
+
+# ----------------------------------------------------------------------------
+# A.4  CIArchaeologicalSite  (CI findspot with archaeological evidence)
+# ----------------------------------------------------------------------------
+# Inherits CIFindspot constraints; expects at least one external mapping.
+
+geolod:CIArchaeologicalSiteShape
+    a sh:NodeShape ;
+    sh:targetClass geolod:CIArchaeologicalSite ;
+    rdfs:label "CIArchaeologicalSite shape"@en ;
+
+    sh:property [
+        sh:path skos:closeMatch ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:severity sh:Warning ;
+        sh:message "CIArchaeologicalSite should have at least one skos:closeMatch to an external authority (Pleiades, Wikidata, etc.)."@en ;
+    ] .
+
+
+# ----------------------------------------------------------------------------
+# A.5  DrillingSite  (EPICA)
+# ----------------------------------------------------------------------------
+
+geolod:DrillingSiteShape
+    a sh:NodeShape ;
+    sh:targetClass geolod:DrillingSite ;
+    rdfs:label "DrillingSite shape"@en ;
+
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:Literal ;
+        sh:severity sh:Violation ;
+        sh:message "Every DrillingSite must have at least one rdfs:label."@en ;
+    ] ;
+
+    sh:property [
+        sh:path geo:hasGeometry ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:severity sh:Violation ;
+        sh:message "Every DrillingSite must have geo:hasGeometry."@en ;
+    ] .
+
+
+# ============================================================================
+# B. OBSERVATION SHAPES
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# B.1  Generic sosa:Observation  (applies to ALL observations)
+# ----------------------------------------------------------------------------
+# Every observation in the bundle must satisfy the SOSA core pattern:
+# FoI, observedProperty, and a result.
+
+geolod:ObservationShape
+    a sh:NodeShape ;
+    sh:targetClass sosa:Observation ;
+    rdfs:label "sosa:Observation shape"@en ;
+
+    sh:property [
+        sh:path sosa:hasFeatureOfInterest ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:severity sh:Violation ;
+        sh:message "Every sosa:Observation must declare a sosa:hasFeatureOfInterest."@en ;
+    ] ;
+
+    sh:property [
+        sh:path sosa:observedProperty ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:severity sh:Violation ;
+        sh:message "Every sosa:Observation must declare a sosa:observedProperty."@en ;
+    ] ;
+
+    sh:property [
+        sh:path prov:wasDerivedFrom ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "Observation should carry a prov:wasDerivedFrom for citation tracking."@en ;
+    ] .
+
+
+# ----------------------------------------------------------------------------
+# B.2  SpeleothemObservation  (δ¹⁸O / δ¹³C)
+# ----------------------------------------------------------------------------
+# Specific to SISAL-derived observations: must have measured value, age, and
+# both smoothing variants.
+
+geolod:Delta18OSpeleothemObservationShape
+    a sh:NodeShape ;
+    sh:targetClass geolod:Delta18OSpeleothemObservation ;
+    rdfs:label "Delta18OSpeleothemObservation shape"@en ;
+
+    sh:property [
+        sh:path geolod:measuredValue ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:or (
+            [ sh:datatype xsd:decimal ]
+            [ sh:datatype xsd:double  ]
+            [ sh:datatype xsd:float   ]
+        ) ;
+        sh:severity sh:Violation ;
+        sh:message "Delta18O observation must have exactly one numeric measuredValue (xsd:decimal/double/float)."@en ;
+    ] ;
+
+    sh:property [
+        sh:path geolod:ageKaBP ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:or (
+            [ sh:datatype xsd:decimal ]
+            [ sh:datatype xsd:double  ]
+            [ sh:datatype xsd:float   ]
+        ) ;
+        sh:severity sh:Violation ;
+        sh:message "Delta18O observation must have exactly one numeric ageKaBP (xsd:decimal/double/float)."@en ;
+    ] ;
+
+    sh:property [
+        sh:path geolod:measurementType ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:severity sh:Violation ;
+        sh:message "Delta18O observation must declare its measurementType."@en ;
+    ] .
+
+
+geolod:Delta13CSpeleothemObservationShape
+    a sh:NodeShape ;
+    sh:targetClass geolod:Delta13CSpeleothemObservation ;
+    rdfs:label "Delta13CSpeleothemObservation shape"@en ;
+
+    sh:property [
+        sh:path geolod:measuredValue ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:or (
+            [ sh:datatype xsd:decimal ]
+            [ sh:datatype xsd:double  ]
+            [ sh:datatype xsd:float   ]
+        ) ;
+        sh:severity sh:Violation ;
+        sh:message "Delta13C observation must have exactly one numeric measuredValue (xsd:decimal/double/float)."@en ;
+    ] ;
+
+    sh:property [
+        sh:path geolod:ageKaBP ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:or (
+            [ sh:datatype xsd:decimal ]
+            [ sh:datatype xsd:double  ]
+            [ sh:datatype xsd:float   ]
+        ) ;
+        sh:severity sh:Violation ;
+        sh:message "Delta13C observation must have exactly one numeric ageKaBP (xsd:decimal/double/float)."@en ;
+    ] .
+
+
+# ============================================================================
+# C. GEOMETRY SHAPES
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# C.1  geo:Geometry  (any Feature's geometry must carry asWKT)
+# ----------------------------------------------------------------------------
+
+geolod:GeometryShape
+    a sh:NodeShape ;
+    sh:targetClass geo:Geometry ;
+    rdfs:label "GeoSPARQL Geometry shape"@en ;
+
+    sh:property [
+        sh:path geo:asWKT ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype geo:wktLiteral ;
+        sh:severity sh:Violation ;
+        sh:message "Every geo:Geometry must have exactly one geo:asWKT literal of datatype geo:wktLiteral."@en ;
+    ] .
+
+
+# ----------------------------------------------------------------------------
+# C.2  sf:Point  (sub-class of geo:Geometry — same constraint)
+# ----------------------------------------------------------------------------
+
+geolod:PointShape
+    a sh:NodeShape ;
+    sh:targetClass sf:Point ;
+    rdfs:label "sf:Point shape"@en ;
+
+    sh:property [
+        sh:path geo:asWKT ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype geo:wktLiteral ;
+        sh:severity sh:Violation ;
+        sh:message "Every sf:Point must have exactly one geo:asWKT literal."@en ;
+    ] .
+
+
+# ============================================================================
+# D. PROVENANCE SHAPES
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# D.1  DataSource  (every source must be identifiable + dated)
+# ----------------------------------------------------------------------------
+
+geolod:DataSourceShape
+    a sh:NodeShape ;
+    sh:targetClass geolod:DataSource ;
+    rdfs:label "DataSource shape"@en ;
+
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "Every DataSource must have rdfs:label."@en ;
+    ] ;
+
+    sh:property [
+        sh:path dct:source ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:severity sh:Warning ;
+        sh:message "DataSource should reference dct:source URI (DOI, repository, etc.)."@en ;
+    ] .
+
+
+# ----------------------------------------------------------------------------
+# D.2  prov:Activity  (every recorded activity has a generatedAtTime)
+# ----------------------------------------------------------------------------
+# Soft constraint — many synthetic activities (smoothing, aggregation) may
+# not carry timestamps in this iteration.
+
+geolod:ProvActivityShape
+    a sh:NodeShape ;
+    sh:targetClass prov:Activity ;
+    rdfs:label "prov:Activity shape"@en ;
+
+    sh:property [
+        sh:path prov:generatedAtTime ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:dateTime ;
+        sh:severity sh:Warning ;
+        sh:message "prov:Activity should have at most one prov:generatedAtTime (xsd:dateTime)."@en ;
+    ] .

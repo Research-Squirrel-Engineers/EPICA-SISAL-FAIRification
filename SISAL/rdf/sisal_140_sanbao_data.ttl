@@ -75826,98 +75826,98 @@ geolod:Obs_d18O_140_sanbao_e846_05831 a geolod:Delta18OSpeleothemObservation ;
     sosa:hasFeatureOfInterest geolod:Speleothem_140_sanbao_e846 ;
     sosa:observedProperty geolod:Delta18O_Speleothem .
 
-geolod:Cave_140_sanbao a geolod:Cave ;
+geolod:Cave_site_0140 a geolod:Cave ;
     rdfs:label "Sanbao cave"@en ;
     geolod:siteId 140 .
 
 geolod:Speleothem_140_sanbao_e494 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – TF"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 494 .
 
 geolod:Speleothem_140_sanbao_e491 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – SB34"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 491 .
 
 geolod:Speleothem_140_sanbao_e299 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – SB-44"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 299 .
 
 geolod:Speleothem_140_sanbao_e493 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – SB42"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 493 .
 
 geolod:Speleothem_140_sanbao_e304 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – SB-58"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 304 .
 
 geolod:Speleothem_140_sanbao_e297 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – SB-27"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 297 .
 
 geolod:Speleothem_140_sanbao_e492 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – SB41"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 492 .
 
 geolod:Speleothem_140_sanbao_e300 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – SB-49"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 300 .
 
 geolod:Speleothem_140_sanbao_e482 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – SB3"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 482 .
 
 geolod:Speleothem_140_sanbao_e488 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – SB25-1"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 488 .
 
 geolod:Speleothem_140_sanbao_e295 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – SB-10_2009"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 295 .
 
 geolod:Speleothem_140_sanbao_e296 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – SB-26_2009"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 296 .
 
 geolod:Speleothem_140_sanbao_e486 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – SB23"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 486 .
 
 geolod:Speleothem_140_sanbao_e485 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – SB22"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 485 .
 
 geolod:Speleothem_140_sanbao_e489 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – SB25-2"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 489 .
 
 geolod:Speleothem_140_sanbao_e298 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – SB-43"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 298 .
 
 geolod:Speleothem_140_sanbao_e484 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – SB11"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 484 .
 
 geolod:Speleothem_140_sanbao_e846 a geolod:Speleothem ;
     rdfs:label "Sanbao cave – SB61"@en ;
-    geolod:collectedFrom geolod:Cave_140_sanbao ;
+    geolod:collectedFrom geolod:Cave_site_0140 ;
     geolod:entityId 846 .
 
 geolod:Delta18O_Speleothem a geolod:Delta18OProperty ;

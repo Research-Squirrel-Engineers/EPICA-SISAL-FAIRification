@@ -23586,13 +23586,13 @@ geolod:Obs_d18O_144_botuvera_e312_00906 a geolod:Delta18OSpeleothemObservation ;
     sosa:hasFeatureOfInterest geolod:Speleothem_144_botuvera_e312 ;
     sosa:observedProperty geolod:Delta18O_Speleothem .
 
-geolod:Cave_144_botuvera a geolod:Cave ;
+geolod:Cave_site_0144 a geolod:Cave ;
     rdfs:label "Botuverá cave"@en ;
     geolod:siteId 144 .
 
 geolod:Speleothem_144_botuvera_e311 a geolod:Speleothem ;
     rdfs:label "Botuverá cave – BTV21a"@en ;
-    geolod:collectedFrom geolod:Cave_144_botuvera ;
+    geolod:collectedFrom geolod:Cave_site_0144 ;
     geolod:entityId 311 .
 
 geolod:Delta13C_Speleothem a geolod:Delta13CProperty ;
@@ -23609,7 +23609,7 @@ geolod:MeasurementType_d18O a geolod:MeasurementType ;
 
 geolod:Speleothem_144_botuvera_e312 a geolod:Speleothem ;
     rdfs:label "Botuverá cave – BT-2"@en ;
-    geolod:collectedFrom geolod:Cave_144_botuvera ;
+    geolod:collectedFrom geolod:Cave_site_0144 ;
     geolod:entityId 312 .
 
 geolod:RollingMedian_w11 a geolod:RollingMedianFilter ;

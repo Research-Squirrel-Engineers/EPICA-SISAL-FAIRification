@@ -32088,28 +32088,28 @@ geolod:Obs_d18O_145_corchia_e670_01233 a geolod:Delta18OSpeleothemObservation ;
     sosa:hasFeatureOfInterest geolod:Speleothem_145_corchia_e670 ;
     sosa:observedProperty geolod:Delta18O_Speleothem .
 
-geolod:Cave_145_corchia a geolod:Cave ;
+geolod:Cave_site_0145 a geolod:Cave ;
     rdfs:label "Antro del Corchia"@en ;
     geolod:siteId 145 .
 
 geolod:Speleothem_145_corchia_e665 a geolod:Speleothem ;
     rdfs:label "Antro del Corchia – CC-1_2018"@en ;
-    geolod:collectedFrom geolod:Cave_145_corchia ;
+    geolod:collectedFrom geolod:Cave_site_0145 ;
     geolod:entityId 665 .
 
 geolod:Speleothem_145_corchia_e670 a geolod:Speleothem ;
     rdfs:label "Antro del Corchia – CC27"@en ;
-    geolod:collectedFrom geolod:Cave_145_corchia ;
+    geolod:collectedFrom geolod:Cave_site_0145 ;
     geolod:entityId 670 .
 
 geolod:Speleothem_145_corchia_e667 a geolod:Speleothem ;
     rdfs:label "Antro del Corchia – CC-7_2018"@en ;
-    geolod:collectedFrom geolod:Cave_145_corchia ;
+    geolod:collectedFrom geolod:Cave_site_0145 ;
     geolod:entityId 667 .
 
 geolod:Speleothem_145_corchia_e668 a geolod:Speleothem ;
     rdfs:label "Antro del Corchia – CC-28_2018"@en ;
-    geolod:collectedFrom geolod:Cave_145_corchia ;
+    geolod:collectedFrom geolod:Cave_site_0145 ;
     geolod:entityId 668 .
 
 geolod:Delta13C_Speleothem a geolod:Delta13CProperty ;

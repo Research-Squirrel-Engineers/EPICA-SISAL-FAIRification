@@ -393,7 +393,7 @@ def validate_shacl(g: Graph, ontology_dir: Path) -> bool:
         print(f"    + lade Shapes: {sf.name}")
         shapes_graph.parse(sf, format="turtle")
 
-    conforms, _, results_text = shacl_validate(
+    conforms, results_graph, results_text = shacl_validate(
         data_graph=g,
         shacl_graph=shapes_graph,
         ont_graph=None,
@@ -408,10 +408,38 @@ def validate_shacl(g: Graph, ontology_dir: Path) -> bool:
         print("    ✓ Alle SHACL-Shapes erfüllt.")
         return True
 
-    print("    ✗ SHACL-Verletzungen gefunden:")
+    # Conforms=False kann durch Violations ODER Warnings ausgelöst werden.
+    # Nur sh:Violation soll das Bundle blockieren - Warnings sind Audit-Hinweise.
+    SH = Namespace("http://www.w3.org/ns/shacl#")
+    n_violations = 0
+    n_warnings = 0
+    n_other = 0
+    for r in results_graph.subjects(RDF.type, SH.ValidationResult):
+        sev = next(results_graph.objects(r, SH.resultSeverity), None)
+        if sev == SH.Violation:
+            n_violations += 1
+        elif sev == SH.Warning:
+            n_warnings += 1
+        else:
+            n_other += 1
+
+    # Output: erst Übersicht, dann die Details aus pyshacl
+    print(
+        f"    SHACL-Ergebnis: "
+        f"{n_violations} Violation(s), "
+        f"{n_warnings} Warning(s)" + (f", {n_other} sonstige" if n_other else "")
+    )
     for line in results_text.splitlines():
         print(f"      {line}")
-    return False
+
+    if n_violations > 0:
+        # Hard fail - es gibt strukturelle Probleme im Bundle
+        return False
+
+    # Nur Warnings: Bundle gilt als gültig, Hinweise sind Audit-Material
+    print()
+    print("    ⚠  Nur Warnings - Bundle gilt als gültig.")
+    return True
 
 
 # ---------------------------------------------------------------------------
