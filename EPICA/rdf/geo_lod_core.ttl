@@ -57,6 +57,7 @@ geolod:SamplingLocation
 
 geolod:PalaeoclimateSample
     a owl:Class ;
+    rdfs:subClassOf crm:E18_Physical_Thing ;
     rdfs:subClassOf sosa:Sample ;
     rdfs:label   "Palaeoclimate Sample"@en ;
     rdfs:comment "A physical archive recording a palaeoclimate signal  (ice core or speleothem)."@en .
@@ -151,6 +152,7 @@ geolod:MesoamericanContext
 
 geolod:DataSource
     a owl:Class ;
+    rdfs:subClassOf crm:E73_Information_Object ;
     rdfs:subClassOf prov:Entity ;
     rdfs:label   "Data Source"@en ;
     rdfs:comment "A citable source (database, repository, publication)  from which palaeoclimate observations were obtained."@en .

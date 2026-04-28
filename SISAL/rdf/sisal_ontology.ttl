@@ -19,10 +19,7 @@
 <http://w3id.org/geo-lod/sisal-ontology>
     a owl:Ontology ;
     rdfs:label   "geo-lod SISAL Ontology"@en ;
-    rdfs:comment "Ontology for speleothem palaeoclimate data, aligned with the
-                  SISALv3 database schema (Kaushal et al. 2024, ESSD 16,
-                  1933-1963). Extends the geo-lod ice-core vocabulary with
-                  cave-specific classes, properties, and site-level statistics."@en ;
+    rdfs:comment "Ontology for speleothem palaeoclimate data, aligned with the SISALv3 database schema (Kaushal et al. 2024, ESSD 16, 1933-1963). Extends the geo-lod ice-core vocabulary with cave-specific classes, properties, and site-level statistics."@en ;
     owl:imports  <http://w3id.org/geo-lod/> ;
     dct:source   <https://doi.org/10.5194/essd-16-1933-2024> ;
     dct:created  "2024"^^xsd:gYear .
@@ -37,16 +34,14 @@ geolod:Speleothem
     rdfs:subClassOf geolod:PalaeoclimateSample ;
     rdfs:subClassOf crm:E22_Human-Made_Object ;
     rdfs:label   "Speleothem"@en ;
-    rdfs:comment "Secondary cave carbonate precipitate (stalagmite, stalactite,
-                  flowstone) used as palaeoclimate archive. Corresponds to
-                  entity/persist_id in SISALv3."@en ;
+    rdfs:comment "Secondary cave carbonate precipitate (stalagmite, stalactite, flowstone) used as palaeoclimate archive. Corresponds to entity/persist_id in SISALv3."@en ;
     rdfs:subClassOf [
         a owl:Restriction ;
         owl:onProperty     geolod:collectedFrom ;
         owl:someValuesFrom geolod:Cave
     ] .
 
-@prefix crmarchaeo: <http://www.cidoc-crm.org/crmarchaeo/> .
+@prefix crmarchaeo: <http://www.cidoc-crm.org/extensions/crmarchaeo/> .
 
 # ── Cave sub-types ────────────────────────────────────────────────────────────
 geolod:ArchaeologicalCaveSite
@@ -54,10 +49,7 @@ geolod:ArchaeologicalCaveSite
     rdfs:subClassOf geolod:Cave ;
     rdfs:subClassOf crmarchaeo:A2_Stratigraphic_Volume_Unit ;
     rdfs:label   "Archaeological Cave Site"@en ;
-    rdfs:comment "A SISAL cave site that also carries confirmed or probable
-                  archaeological evidence (art, human occupation, skeletal
-                  remains, inscriptions, etc.). Modelling mirrors the
-                  CIArchaeologicalSite pattern from ci_pipeline.py."@en .
+    rdfs:comment "A SISAL cave site that also carries confirmed or probable archaeological evidence (art, human occupation, skeletal remains, inscriptions, etc.). Modelling mirrors the CIArchaeologicalSite pattern from ci_pipeline.py."@en .
 
 # ============================================================================
 # PROPERTIES — archaeological enrichment
@@ -68,46 +60,40 @@ geolod:archaeologicalCategory
     rdfs:domain  geolod:ArchaeologicalCaveSite ;
     rdfs:range   xsd:string ;
     rdfs:label   "archaeological category"@en ;
-    rdfs:comment "Free-text classification of the archaeological character
-                  (e.g. 'Palaeolithic Art', 'Prehistoric Occupation')."@en .
+    rdfs:comment "Free-text classification of the archaeological character (e.g. 'Palaeolithic Art', 'Prehistoric Occupation')."@en .
 
 geolod:archaeologicalBroaderContext
     a owl:ObjectProperty ;
     rdfs:domain  geolod:ArchaeologicalCaveSite ;
     rdfs:range   geolod:ArchaeologicalContext ;
     rdfs:label   "archaeological broader context"@en ;
-    rdfs:comment "Links the site to a controlled vocabulary term for its
-                  broader cultural-temporal context."@en .
+    rdfs:comment "Links the site to a controlled vocabulary term for its broader cultural-temporal context."@en .
 
 geolod:archaeologicalConfidence
     a owl:DatatypeProperty ;
     rdfs:domain  geolod:ArchaeologicalCaveSite ;
     rdfs:range   xsd:string ;
     rdfs:label   "archaeological confidence"@en ;
-    rdfs:comment "Confidence level of the archaeological attribution
-                  (high / medium / low)."@en .
+    rdfs:comment "Confidence level of the archaeological attribution (high / medium / low)."@en .
 
 geolod:isUNESCOWorldHeritage
     a owl:DatatypeProperty ;
     rdfs:domain  geolod:Cave ;
     rdfs:range   xsd:boolean ;
     rdfs:label   "is UNESCO World Heritage"@en ;
-    rdfs:comment "True if the cave site lies within a UNESCO World Heritage
-                  property."@en .
+    rdfs:comment "True if the cave site lies within a UNESCO World Heritage property."@en .
 
 geolod:unescoWHId
     a owl:ObjectProperty ;
     rdfs:domain  geolod:Cave ;
     rdfs:label   "UNESCO WH identifier"@en ;
-    rdfs:comment "URI of the UNESCO World Heritage list entry
-                  (https://whc.unesco.org/en/list/{id})."@en .
+    rdfs:comment "URI of the UNESCO World Heritage list entry (https://whc.unesco.org/en/list/{id})."@en .
 
 # ── Controlled vocabulary for broader archaeological contexts ─────────────────
 geolod:ArchaeologicalContext
     a owl:Class ;
     rdfs:label   "Archaeological Context"@en ;
-    rdfs:comment "Controlled vocabulary class for broader cultural-temporal
-                  context categories."@en .
+    rdfs:comment "Controlled vocabulary class for broader cultural-temporal context categories."@en .
 
 geolod:PalaeolithicContext
     a geolod:ArchaeologicalContext, owl:NamedIndividual ;
@@ -129,13 +115,12 @@ geolod:MesoamericanContext
     a geolod:ArchaeologicalContext, owl:NamedIndividual ;
     rdfs:label "Mesoamerican Context"@en .
 
-
+# ── Cave  (geographical site of speleothem collection) ───────────────────────
+geolod:Cave
     a owl:Class ;
     rdfs:subClassOf geolod:SamplingLocation ;
     rdfs:label   "Cave"@en ;
-    rdfs:comment "Geographical cave site from which a speleothem was collected.
-                  Corresponds to site in SISALv3 (site_id, latitude, longitude,
-                  elevation)."@en .
+    rdfs:comment "Geographical cave site from which a speleothem was collected. Corresponds to site in SISALv3 (site_id, latitude, longitude, elevation)."@en .
 
 # ── Sampling Event ────────────────────────────────────────────────────────────
 geolod:SpeleothemSamplingEvent
@@ -143,8 +128,7 @@ geolod:SpeleothemSamplingEvent
     rdfs:subClassOf crm:E7_Activity ;
     rdfs:subClassOf crmsci:S1_Matter_Removal ;
     rdfs:label   "Speleothem Sampling Event"@en ;
-    rdfs:comment "Scientific field event during which a speleothem was collected
-                  from a cave."@en ;
+    rdfs:comment "Scientific field event during which a speleothem was collected from a cave."@en ;
     rdfs:subClassOf [
         a owl:Restriction ;
         owl:onProperty     geolod:tookPlaceAt ;
@@ -161,10 +145,7 @@ geolod:SpeleothemObservation
     a owl:Class ;
     rdfs:subClassOf geolod:PalaeoclimateObservation ;
     rdfs:label   "Speleothem Observation"@en ;
-    rdfs:comment "Single stable isotope measurement on a speleothem sample,
-                  characterised by depth (mm), calendar age (ka BP) and measured
-                  value. Corresponds to a row in the d18O or d13C table of
-                  SISALv3."@en ;
+    rdfs:comment "Single stable isotope measurement on a speleothem sample, characterised by depth (mm), calendar age (ka BP) and measured value. Corresponds to a row in the d18O or d13C table of SISALv3."@en ;
     rdfs:subClassOf [
         a owl:Restriction ;
         owl:onProperty     sosa:hasFeatureOfInterest ;
@@ -185,28 +166,20 @@ geolod:Delta18OSpeleothemObservation
     a owl:Class ;
     rdfs:subClassOf geolod:SpeleothemObservation ;
     rdfs:label   "delta-18O Speleothem Observation"@en ;
-    rdfs:comment "Oxygen isotope ratio (delta-18O) in permille VPDB from a
-                  speleothem. Proxy for hydroclimate, moisture source,
-                  temperature."@en .
+    rdfs:comment "Oxygen isotope ratio (delta-18O) in permille VPDB from a speleothem. Proxy for hydroclimate, moisture source, temperature."@en .
 
 geolod:Delta13CSpeleothemObservation
     a owl:Class ;
     rdfs:subClassOf geolod:SpeleothemObservation ;
     rdfs:label   "delta-13C Speleothem Observation"@en ;
-    rdfs:comment "Carbon isotope ratio (delta-13C) in permille VPDB from a
-                  speleothem. Proxy for vegetation density, soil CO2, prior
-                  calcite precipitation (Wong & Breecker 2015)."@en .
+    rdfs:comment "Carbon isotope ratio (delta-13C) in permille VPDB from a speleothem. Proxy for vegetation density, soil CO2, prior calcite precipitation (Wong & Breecker 2015)."@en .
 
 # ── Chronology ────────────────────────────────────────────────────────────────
 geolod:UThChronology
     a owl:Class ;
     rdfs:subClassOf geolod:Chronology ;
     rdfs:label   "U-Th Chronology"@en ;
-    rdfs:comment "Depth-age model for a speleothem based on uranium-thorium
-                  (U-Th) radiometric dating. Corresponds to the Dating and
-                  SISAL_chronology tables in SISALv3. Age-model ensembles
-                  built with linear interpolation, Bchron, Bacon, copRa or
-                  StalAge."@en ;
+    rdfs:comment "Depth-age model for a speleothem based on uranium-thorium (U-Th) radiometric dating. Corresponds to the Dating and SISAL_chronology tables in SISALv3. Age-model ensembles built with linear interpolation, Bchron, Bacon, copRa or StalAge."@en ;
     rdfs:seeAlso <https://doi.org/10.5194/essd-16-1933-2024> .
 
 # ── Observable Properties ─────────────────────────────────────────────────────
@@ -214,9 +187,7 @@ geolod:Delta13CProperty
     a owl:Class ;
     rdfs:subClassOf geolod:ObservableProperty ;
     rdfs:label   "delta-13C Isotope Ratio Property"@en ;
-    rdfs:comment "Stable carbon isotope ratio (delta-13C) in permille VPDB.
-                  Sensitive to vegetation dynamics, soil respiration, and prior
-                  calcite precipitation."@en .
+    rdfs:comment "Stable carbon isotope ratio (delta-13C) in permille VPDB. Sensitive to vegetation dynamics, soil respiration, and prior calcite precipitation."@en .
 
 # ============================================================================
 # OBJECT PROPERTIES
@@ -236,8 +207,7 @@ geolod:ageChronologySpeleothem
     rdfs:domain geolod:SpeleothemObservation ;
     rdfs:range  geolod:UThChronology ;
     rdfs:label  "age chronology (speleothem)"@en ;
-    rdfs:comment "U-Th chronology used to assign a calendar age to this
-                  speleothem observation."@en .
+    rdfs:comment "U-Th chronology used to assign a calendar age to this speleothem observation."@en .
 
 # ============================================================================
 # DATATYPE PROPERTIES
@@ -248,8 +218,7 @@ geolod:atDepth_mm
     rdfs:domain geolod:SpeleothemObservation ;
     rdfs:range  xsd:decimal ;
     rdfs:label  "at depth (mm)"@en ;
-    rdfs:comment "Sampling depth in millimetres from top of speleothem.
-                  Corresponds to depth_sample in SISALv3."@en ;
+    rdfs:comment "Sampling depth in millimetres from top of speleothem. Corresponds to depth_sample in SISALv3."@en ;
     qudt:unit   unit:MilliM .
 
 geolod:entityId
@@ -257,9 +226,7 @@ geolod:entityId
     rdfs:domain geolod:Speleothem ;
     rdfs:range  xsd:integer ;
     rdfs:label  "SISAL entity ID"@en ;
-    rdfs:comment "Unique dataset identifier in SISALv3 (entity_id). Multiple
-                  entity_ids may share the same persist_id (same physical
-                  speleothem, different time windows)."@en .
+    rdfs:comment "Unique dataset identifier in SISALv3 (entity_id). Multiple entity_ids may share the same persist_id (same physical speleothem, different time windows)."@en .
 
 geolod:siteId
     a owl:DatatypeProperty ;
@@ -273,18 +240,14 @@ geolod:countD18OSamples
     rdfs:domain geolod:Cave ;
     rdfs:range  xsd:integer ;
     rdfs:label  "count of d18O samples"@en ;
-    rdfs:comment "Total number of delta-18O measurements available for this
-                  cave site across all entities in SISALv3
-                  (column: n_d18o_samples in v_sites_all)."@en .
+    rdfs:comment "Total number of delta-18O measurements available for this cave site across all entities in SISALv3 (column: n_d18o_samples in v_sites_all)."@en .
 
 geolod:countD13CSamples
     a owl:DatatypeProperty ;
     rdfs:domain geolod:Cave ;
     rdfs:range  xsd:integer ;
     rdfs:label  "count of d13C samples"@en ;
-    rdfs:comment "Total number of delta-13C measurements available for this
-                  cave site across all entities in SISALv3
-                  (column: n_d13c_samples in v_sites_all)."@en .
+    rdfs:comment "Total number of delta-13C measurements available for this cave site across all entities in SISALv3 (column: n_d13c_samples in v_sites_all)."@en .
 
 # ============================================================================
 # INSTANZEN  –  MeasurementType & DataSource
@@ -293,9 +256,7 @@ geolod:countD13CSamples
 geolod:MeasurementType_d13C
     a geolod:MeasurementType ;
     rdfs:label   "delta-13C Measurement"@en ;
-    rdfs:comment "Stable carbon isotope ratio (delta-13C) in permille VPDB.
-                  SISALv3 table: d13C. Proxy: vegetation, soil CO2, prior
-                  calcite precipitation."@en .
+    rdfs:comment "Stable carbon isotope ratio (delta-13C) in permille VPDB. SISALv3 table: d13C. Proxy: vegetation, soil CO2, prior calcite precipitation."@en .
 
 geolod:SISALv3_DataSource
     a geolod:DataSource ;

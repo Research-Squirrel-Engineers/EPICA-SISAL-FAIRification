@@ -1,4 +1,4 @@
-@prefix crmarchaeo: <http://www.cidoc-crm.org/crmarchaeo/> .
+@prefix crmarchaeo: <http://www.cidoc-crm.org/extensions/crmarchaeo/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix geolod: <http://w3id.org/geo-lod/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .

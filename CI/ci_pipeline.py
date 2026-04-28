@@ -146,7 +146,7 @@ def _build_graph() -> "Graph":
             "geo": "http://www.opengis.net/ont/geosparql#",
             "sf": "http://www.opengis.net/ont/sf#",
             "crm": "http://www.cidoc-crm.org/cidoc-crm/",
-            "crmarchaeo": "http://www.cidoc-crm.org/crmarchaeo/",
+            "crmarchaeo": "http://www.cidoc-crm.org/extensions/crmarchaeo/",
             "crmgeo": "http://www.ics.forth.gr/isl/CRMgeo/",
             "sosa": "http://www.w3.org/ns/sosa/",
             "foaf": "http://xmlns.com/foaf/0.1/",
@@ -180,7 +180,7 @@ def build_ci_rdf(data: pd.DataFrame, starttime: str) -> "Graph":
     GEO = Namespace("http://www.opengis.net/ont/geosparql#")
     SF = Namespace("http://www.opengis.net/ont/sf#")
     CRM = Namespace("http://www.cidoc-crm.org/cidoc-crm/")
-    CRMARCH = Namespace("http://www.cidoc-crm.org/crmarchaeo/")
+    CRMARCH = Namespace("http://www.cidoc-crm.org/extensions/crmarchaeo/")
     CRMGEO = Namespace("http://www.ics.forth.gr/isl/CRMgeo/")
     GEOLOD = Namespace(GEOLOD_BASE)
     CI = Namespace(CI_BASE)
