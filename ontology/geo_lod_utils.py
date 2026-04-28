@@ -286,8 +286,9 @@ GEO_LOD_CORE_TTL: str = textwrap.dedent(
     @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
     @prefix geo:     <http://www.opengis.net/ont/geosparql#> .
     @prefix sf:      <http://www.opengis.net/ont/sf#> .
-    @prefix crm:     <http://www.cidoc-crm.org/cidoc-crm/> .
-    @prefix crmsci:  <http://www.ics.forth.gr/isl/CRMsci/> .
+    @prefix crm:        <http://www.cidoc-crm.org/cidoc-crm/> .
+    @prefix crmsci:     <http://www.ics.forth.gr/isl/CRMsci/> .
+    @prefix crmarchaeo: <http://www.cidoc-crm.org/extensions/crmarchaeo/> .
     @prefix sosa:    <http://www.w3.org/ns/sosa/> .
     @prefix qudt:    <http://qudt.org/schema/qudt/> .
     @prefix unit:    <http://qudt.org/vocab/unit/> .
@@ -354,6 +355,7 @@ GEO_LOD_CORE_TTL: str = textwrap.dedent(
 
     geolod:Chronology
         a owl:Class ;
+        rdfs:subClassOf crmsci:S4_Observation ;
         rdfs:label   "Chronology"@en ;
         rdfs:comment "A depth-age model assigning calendar ages to positions  within a palaeoclimate archive."@en .
 
@@ -389,6 +391,7 @@ GEO_LOD_CORE_TTL: str = textwrap.dedent(
 
     geolod:ArchaeologicalContext
         a owl:Class ;
+        rdfs:subClassOf crm:E55_Type ;
         rdfs:label   "Archaeological Context"@en ;
         rdfs:comment "Controlled vocabulary class for broader cultural-temporal  context categories used in archaeological cave site classification."@en .
 
@@ -411,6 +414,21 @@ GEO_LOD_CORE_TTL: str = textwrap.dedent(
     geolod:MesoamericanContext
         a geolod:ArchaeologicalContext, owl:NamedIndividual ;
         rdfs:label   "Mesoamerican Context"@en .
+
+    # -- CI Findspots  (Campanian Ignimbrite tephra documentation sites) -------
+
+    geolod:CIFindspot
+        a owl:Class ;
+        rdfs:subClassOf crm:E27_Site ;
+        rdfs:label   "Campanian Ignimbrite Findspot"@en ;
+        rdfs:comment "A documented findspot of Campanian Ignimbrite tephra. Modelled as crm:E27_Site so that geometry, name, and finds can attach via standard CRM patterns."@en .
+
+    geolod:CIArchaeologicalSite
+        a owl:Class ;
+        rdfs:subClassOf geolod:CIFindspot ;
+        rdfs:subClassOf crmarchaeo:A2_Stratigraphic_Volume_Unit ;
+        rdfs:label   "CI Archaeological Site"@en ;
+        rdfs:comment "A CI Findspot that also carries confirmed or probable archaeological evidence (artefacts, occupation layers, stratified contexts). Mirrors the ArchaeologicalCaveSite pattern in the SISAL extension."@en .
 
     # -- DataSource --
 

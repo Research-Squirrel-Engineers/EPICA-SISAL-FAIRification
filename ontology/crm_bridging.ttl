@@ -1,0 +1,135 @@
+# ============================================================================
+# crm_bridging.ttl
+# geo-lod ↔ CIDOC-CRM Bridging Axioms
+# <http://w3id.org/geo-lod/crm-bridging>
+#
+# Purpose
+#   Anchors every external standard vocabulary that is instantiated in the
+#   geo-lod knowledge graph (EPICA + SISAL + CI) into the CIDOC-CRM family,
+#   so that all instances are reachable from a CRM-family class via the
+#   transitive closure of rdfs:subClassOf.
+#
+#   This is required for ingestion into the NFDI4Objects Knowledge Graph,
+#   which mandates a CRM-family ancestor for every typed instance.
+#
+# Crosswalk
+#   See ontology/README.md (section 2.2) for the rationale behind each
+#   mapping and the open questions / decisions still to be made.
+#
+# Validation
+#   The CRM-coverage check in bundle_rdf.py enforces that every typed
+#   instance has a CRM-family ancestor. This file is loaded as part of
+#   ontology/*.ttl and contributes the bridging axioms.
+# ============================================================================
+
+@prefix crm:        <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix crmsci:     <http://www.ics.forth.gr/isl/CRMsci/> .
+@prefix crmgeo:     <http://www.ics.forth.gr/isl/CRMgeo/> .
+@prefix crmarchaeo: <http://www.cidoc-crm.org/extensions/crmarchaeo/> .
+
+@prefix sosa:       <http://www.w3.org/ns/sosa/> .
+@prefix prov:       <http://www.w3.org/ns/prov#> .
+@prefix geo:        <http://www.opengis.net/ont/geosparql#> .
+@prefix sf:         <http://www.opengis.net/ont/sf#> .
+@prefix dcat:       <http://www.w3.org/ns/dcat#> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix foaf:       <http://xmlns.com/foaf/0.1/> .
+@prefix pleiades:   <https://pleiades.stoa.org/places/vocab#> .
+@prefix fuzzysl:    <http://fuzzy-sl.squirrel.link/ontology/> .
+
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:        <http://www.w3.org/2002/07/owl#> .
+@prefix dct:        <http://purl.org/dc/terms/> .
+
+# ============================================================================
+# Ontology header
+# ============================================================================
+
+<http://w3id.org/geo-lod/crm-bridging>
+    a owl:Ontology ;
+    rdfs:label   "geo-lod ↔ CIDOC-CRM Bridging Axioms"@en ;
+    rdfs:comment """Bridges external standard vocabularies (SOSA, PROV-O, GeoSPARQL, DCAT, FOAF, Dublin Core, Pleiades, fuzzy-sl) into the CIDOC-CRM family so that every instance in the geo-lod knowledge graph has a CRM-family ancestor. Required for ingestion into the NFDI4Objects Knowledge Graph."""@en ;
+    owl:imports  <http://w3id.org/geo-lod/> ;
+    dct:created  "2026-04"^^<http://www.w3.org/2001/XMLSchema#gYearMonth> .
+
+# ============================================================================
+# SOSA  →  CRMsci
+# ============================================================================
+# Sensor, Observation, Sample and Actuator Ontology aligned with the
+# scientific-observation pattern in CRMsci.
+# https://www.w3.org/TR/vocab-ssn/
+
+sosa:Observation
+    rdfs:subClassOf crmsci:S4_Observation .
+
+sosa:Sample
+    rdfs:subClassOf crm:E18_Physical_Thing .
+
+sosa:ObservableProperty
+    rdfs:subClassOf crmsci:S9_Property_Type .
+
+# ============================================================================
+# PROV-O  →  CRM
+# ============================================================================
+# W3C provenance ontology - direct alignment to CRM core entity/event/actor.
+# https://www.w3.org/TR/prov-o/
+
+prov:Entity
+    rdfs:subClassOf crm:E70_Thing .
+
+prov:Activity
+    rdfs:subClassOf crm:E7_Activity .
+
+prov:Agent
+    rdfs:subClassOf crm:E39_Actor .
+
+# ============================================================================
+# FOAF  →  CRM
+# ============================================================================
+# Friend-of-a-Friend - persons.
+
+foaf:Person
+    rdfs:subClassOf crm:E21_Person .
+
+# ============================================================================
+# GeoSPARQL / Simple Features  →  CRM / CRMgeo
+# ============================================================================
+# OGC standards for spatial data.
+# https://www.ogc.org/standards/geosparql
+
+geo:Feature
+    rdfs:subClassOf crm:E1_CRM_Entity .
+
+geo:FeatureCollection
+    rdfs:subClassOf crm:E78_Curated_Holding .
+
+sf:Point
+    rdfs:subClassOf crmgeo:SP6_Declarative_Place .
+
+# ============================================================================
+# DCAT / Dublin Core  →  CRM
+# ============================================================================
+# Dataset and document description.
+
+dcat:Dataset
+    rdfs:subClassOf crm:E73_Information_Object .
+
+dcat:Catalog
+    rdfs:subClassOf crm:E78_Curated_Holding .
+
+dcterms:BibliographicResource
+    rdfs:subClassOf crm:E31_Document .
+
+# ============================================================================
+# Pleiades / fuzzy-sl  →  CRM
+# ============================================================================
+# Gazetteer (Pleiades) and squirrel.link Site model.
+
+pleiades:Place
+    rdfs:subClassOf crm:E53_Place .
+
+fuzzysl:Site
+    rdfs:subClassOf crm:E27_Site .
+
+fuzzysl:Georeferencing
+    rdfs:subClassOf crm:E13_Attribute_Assignment .
