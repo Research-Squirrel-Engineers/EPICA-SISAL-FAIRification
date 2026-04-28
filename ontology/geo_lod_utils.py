@@ -300,8 +300,7 @@ GEO_LOD_CORE_TTL: str = textwrap.dedent(
     <http://w3id.org/geo-lod/>
         a owl:Ontology ;
         rdfs:label   "geo-lod Core Ontology"@en ;
-        rdfs:comment "Shared vocabulary for EPICA ice-core and SISAL speleothem \\
-    palaeoclimate Linked Data. Domain extensions import this file."@en ;
+        rdfs:comment "Shared vocabulary for EPICA ice-core and SISAL speleothem  palaeoclimate Linked Data. Domain extensions import this file."@en ;
         owl:versionInfo "1.0" .
 
     # ==========================================================================
@@ -316,17 +315,16 @@ GEO_LOD_CORE_TTL: str = textwrap.dedent(
         rdfs:subClassOf crm:E53_Place ;
         rdfs:subClassOf crm:E27_Site ;
         rdfs:label   "Sampling Location"@en ;
-        rdfs:comment "A geographically identified location from which palaeoclimate \\
-    proxy material was obtained (ice-core drilling site or speleothem cave)."@en .
+        rdfs:comment "A geographically identified location from which palaeoclimate  proxy material was obtained (ice-core drilling site or speleothem cave)."@en .
 
     # -- PalaeoclimateSample  (superclass: IceCore in EPICA, Speleothem in SISAL) --
 
     geolod:PalaeoclimateSample
         a owl:Class ;
+        rdfs:subClassOf crm:E18_Physical_Thing ;
         rdfs:subClassOf sosa:Sample ;
         rdfs:label   "Palaeoclimate Sample"@en ;
-        rdfs:comment "A physical archive recording a palaeoclimate signal \\
-    (ice core or speleothem)."@en .
+        rdfs:comment "A physical archive recording a palaeoclimate signal  (ice core or speleothem)."@en .
 
     # -- PalaeoclimateObservation  (superclass for all measurement types) --
 
@@ -335,8 +333,7 @@ GEO_LOD_CORE_TTL: str = textwrap.dedent(
         rdfs:subClassOf crmsci:S4_Observation ;
         rdfs:subClassOf sosa:Observation ;
         rdfs:label   "Palaeoclimate Observation"@en ;
-        rdfs:comment "A single measured value (e.g. δ¹⁸O, δ¹³C, CH₄) at a \\
-    known depth or age within a palaeoclimate archive."@en .
+        rdfs:comment "A single measured value (e.g. δ¹⁸O, δ¹³C, CH₄) at a  known depth or age within a palaeoclimate archive."@en .
 
     # -- ObservableProperty --
 
@@ -345,23 +342,20 @@ GEO_LOD_CORE_TTL: str = textwrap.dedent(
         rdfs:subClassOf sosa:ObservableProperty ;
         rdfs:subClassOf crmsci:S9_Property_Type ;
         rdfs:label   "Observable Property"@en ;
-        rdfs:comment "A measurable geochemical or physical property of a \\
-    palaeoclimate sample (e.g. δ¹⁸O, δ¹³C, CH₄ concentration)."@en .
+        rdfs:comment "A measurable geochemical or physical property of a  palaeoclimate sample (e.g. δ¹⁸O, δ¹³C, CH₄ concentration)."@en .
 
     geolod:Delta18OProperty
         a owl:Class ;
         rdfs:subClassOf geolod:ObservableProperty ;
         rdfs:label   "δ¹⁸O Property"@en ;
-        rdfs:comment "Stable oxygen isotope ratio (δ¹⁸O), shared by both \\
-    ice-core and speleothem records."@en .
+        rdfs:comment "Stable oxygen isotope ratio (δ¹⁸O), shared by both  ice-core and speleothem records."@en .
 
     # -- Chronology  (superclass: IceCoreChronology in EPICA, UThChronology in SISAL) --
 
     geolod:Chronology
         a owl:Class ;
         rdfs:label   "Chronology"@en ;
-        rdfs:comment "A depth-age model assigning calendar ages to positions \\
-    within a palaeoclimate archive."@en .
+        rdfs:comment "A depth-age model assigning calendar ages to positions  within a palaeoclimate archive."@en .
 
     # -- MeasurementType --
 
@@ -377,30 +371,26 @@ GEO_LOD_CORE_TTL: str = textwrap.dedent(
         a owl:Class ;
         rdfs:subClassOf crmsci:S6_Data_Evaluation ;
         rdfs:label   "Smoothing Method"@en ;
-        rdfs:comment "A numerical method applied to reduce high-frequency \\
-    noise in a palaeoclimate time series."@en .
+        rdfs:comment "A numerical method applied to reduce high-frequency  noise in a palaeoclimate time series."@en .
 
     geolod:RollingMedianFilter
         a owl:Class ;
         rdfs:subClassOf geolod:SmoothingMethod ;
         rdfs:label   "Rolling Median Filter"@en ;
-        rdfs:comment "Non-parametric smoother computing the median within \\
-    a sliding window of fixed width."@en .
+        rdfs:comment "Non-parametric smoother computing the median within  a sliding window of fixed width."@en .
 
     geolod:SavitzkyGolayFilter
         a owl:Class ;
         rdfs:subClassOf geolod:SmoothingMethod ;
         rdfs:label   "Savitzky-Golay Filter"@en ;
-        rdfs:comment "Polynomial least-squares smoothing filter preserving \\
-    higher signal moments."@en .
+        rdfs:comment "Polynomial least-squares smoothing filter preserving  higher signal moments."@en .
 
     # -- ArchaeologicalContext vocabulary (SISAL archaeological enrichment) ---
 
     geolod:ArchaeologicalContext
         a owl:Class ;
         rdfs:label   "Archaeological Context"@en ;
-        rdfs:comment "Controlled vocabulary class for broader cultural-temporal \\
-    context categories used in archaeological cave site classification."@en .
+        rdfs:comment "Controlled vocabulary class for broader cultural-temporal  context categories used in archaeological cave site classification."@en .
 
     geolod:PalaeolithicContext
         a geolod:ArchaeologicalContext, owl:NamedIndividual ;
@@ -426,10 +416,10 @@ GEO_LOD_CORE_TTL: str = textwrap.dedent(
 
     geolod:DataSource
         a owl:Class ;
+        rdfs:subClassOf crm:E73_Information_Object ;
         rdfs:subClassOf prov:Entity ;
         rdfs:label   "Data Source"@en ;
-        rdfs:comment "A citable source (database, repository, publication) \\
-    from which palaeoclimate observations were obtained."@en .
+        rdfs:comment "A citable source (database, repository, publication)  from which palaeoclimate observations were obtained."@en .
 
     # ==========================================================================
     # OBJECT PROPERTIES
@@ -527,8 +517,7 @@ GEO_LOD_CORE_TTL: str = textwrap.dedent(
     geolod:Delta18O
         a geolod:Delta18OProperty, owl:NamedIndividual ;
         rdfs:label   "δ¹⁸O"@en ;
-        rdfs:comment "Stable oxygen isotope ratio — shared observable property \\
-    used in both ice-core and speleothem observations."@en .
+        rdfs:comment "Stable oxygen isotope ratio — shared observable property  used in both ice-core and speleothem observations."@en .
 
     geolod:MeasurementType_d18O
         a geolod:MeasurementType, owl:NamedIndividual ;
@@ -556,8 +545,7 @@ GEO_LOD_CORE_TTL: str = textwrap.dedent(
 
     sf:Point
         rdfs:label   "Point"@en ;
-        rdfs:comment "A single location in n-dimensional space (OGC Simple Features). \\
-    Subclass of geo:Geometry."@en .
+        rdfs:comment "A single location in n-dimensional space (OGC Simple Features).  Subclass of geo:Geometry."@en .
 
     crm:E27_Site
         rdfs:label   "Site"@en ;

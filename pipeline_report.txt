@@ -1,9 +1,9 @@
 
 ════════════════════════════════════════════════════════════════════════════════
-                             EPICA + SISAL Pipeline                             
+                          EPICA + SISAL + CI Pipeline                           
 ════════════════════════════════════════════════════════════════════════════════
 
-  Timestamp: 2026-03-23 15:07:47
+  Timestamp: 2026-04-28 09:26:18
   Directory: c:\git\EPICA-SISAL-FAIRification
 
 
@@ -23,7 +23,14 @@
   ✓ CI script found: ci_pipeline.py
 
 ────────────────────────────────────────────────────────────────────────────────
-  2. EPICA Dome C (Ice Core)
+  2. Regenerate canonical ontology
+────────────────────────────────────────────────────────────────────────────────
+
+  ▶ Regeneriere kanonische Ontologie-Dateien aus geo_lod_utils.py ...
+  ✓ geo_lod_core.ttl geschrieben (11.7 KB)
+
+────────────────────────────────────────────────────────────────────────────────
+  3. EPICA Dome C (Ice Core)
 ────────────────────────────────────────────────────────────────────────────────
 
   ▶ Starting EPICA Dome C Processing ...
@@ -32,7 +39,7 @@
   ✓ EPICA Dome C Processing completed successfully
 
 ────────────────────────────────────────────────────────────────────────────────
-  3. SISAL (Speleothems)
+  4. SISAL (Speleothems)
 ────────────────────────────────────────────────────────────────────────────────
 
   ▶ Starting SISAL Processing ...
@@ -41,7 +48,7 @@
   ✓ SISAL Processing completed successfully
 
 ────────────────────────────────────────────────────────────────────────────────
-  4. Campanian Ignimbrite (CI Findspots)
+  5. Campanian Ignimbrite (CI Findspots)
 ────────────────────────────────────────────────────────────────────────────────
 
   ▶ Starting CI Findspot Processing ...
@@ -49,13 +56,127 @@
     PYTHONPATH: c:\git\EPICA-SISAL-FAIRification\ontology
   ✓ CI Findspot Processing completed successfully
 
+────────────────────────────────────────────────────────────────────────────────
+  6. RDF Bundle & Validation
+────────────────────────────────────────────────────────────────────────────────
+
+  ▶ Sammle TTL-Quellen ...
+    Ontologie-Dateien: 1
+      • ontology\geo_lod_core.ttl
+    (Duplikate ignoriert - kanonische Version liegt in ontology/):
+      ~ c:\git\EPICA-SISAL-FAIRification\EPICA\rdf\geo_lod_core.ttl
+      ~ c:\git\EPICA-SISAL-FAIRification\SISAL\rdf\geo_lod_core.ttl
+    Instanz-Dateien:   10
+      • EPICA\rdf\epica_dome_c.ttl
+      • EPICA\rdf\epica_ontology.ttl
+      • SISAL\rdf\sisal_140_sanbao_data.ttl
+      • SISAL\rdf\sisal_144_botuvera_data.ttl
+      • SISAL\rdf\sisal_145_corchia_data.ttl
+      • SISAL\rdf\sisal_275_buracagloriosa_data.ttl
+      • SISAL\rdf\sisal_all_data.ttl
+      • SISAL\rdf\sisal_ontology.ttl
+      • SISAL\rdf\sisal_sites.ttl
+      • CI\rdf\ci_findspots.ttl
+
+  ▶ Parse & merge ...
+    + geo_lod_core.ttl:      155 Triples
+    + epica_dome_c.ttl:   40,258 Triples
+    + epica_ontology.ttl:      162 Triples
+    + sisal_140_sanbao_data.ttl:   70,069 Triples
+    + sisal_144_botuvera_data.ttl:   21,782 Triples
+    + sisal_145_corchia_data.ttl:   29,638 Triples
+    + sisal_275_buracagloriosa_data.ttl:   27,314 Triples
+    + sisal_all_data.ttl:    3,660 Triples
+    ✗ Fehler beim Parsen von sisal_ontology.ttl: at line 21 of <>:
+    + sisal_sites.ttl:        0 Triples
+    + ci_findspots.ttl:    3,512 Triples
+
+  ⚠  1 Datei(en) konnten nicht geparst werden.
+
+  ▶ Serialisiere Bundle nach geo-lod-bundle.ttl ...
+  ✓ Bundle geschrieben: 196,553 Triples, 10,168.5 KB
+
+  ▶ CIDOC-CRM Coverage-Check (strict CRM-family) ...
+    Instanz-Klassen geprüft: 46
+    ✓ mit CRM-Anker:         17
+    ✗ ohne CRM-Anker:        29
+
+    Klassen ohne CRM-Anker (Crosswalk in ontology/README.md):
+      • http://w3id.org/geo-lod/Delta18OSpeleothemObservation  (9110 Instanz/en)
+      • http://w3id.org/geo-lod/Delta13CSpeleothemObservation  (3278 Instanz/en)
+      • http://www.w3.org/ns/sosa/Observation  (2114 Instanz/en)
+      • http://www.opengis.net/ont/sf#Point  (380 Instanz/en)
+      • http://w3id.org/geo-lod/Cave  (309 Instanz/en)
+      • http://www.w3.org/ns/prov#Activity  (148 Instanz/en)
+      • http://fuzzy-sl.squirrel.link/ontology/Georeferencing  (74 Instanz/en)
+      • http://fuzzy-sl.squirrel.link/ontology/Site  (74 Instanz/en)
+      • http://w3id.org/geo-lod/CIFindspot  (74 Instanz/en)
+      • http://www.w3.org/ns/prov#Entity  (74 Instanz/en)
+      • https://pleiades.stoa.org/places/vocab#Place  (74 Instanz/en)
+      • http://www.cidoc-crm.org/crmarchaeo/A2_Stratigraphic_Volume_Unit  (46 Instanz/en)
+      • http://w3id.org/geo-lod/ArchaeologicalCaveSite  (37 Instanz/en)
+      • http://w3id.org/geo-lod/Speleothem  (29 Instanz/en)
+      • http://w3id.org/geo-lod/CIArchaeologicalSite  (9 Instanz/en)
+      • http://w3id.org/geo-lod/ArchaeologicalContext  (5 Instanz/en)
+      • http://www.opengis.net/ont/geosparql#FeatureCollection  (5 Instanz/en)
+      • http://w3id.org/geo-lod/UThChronology  (4 Instanz/en)
+      • http://www.w3.org/ns/dcat#Dataset  (3 Instanz/en)
+      • http://purl.org/dc/terms/BibliographicResource  (2 Instanz/en)
+      • http://w3id.org/geo-lod/DataSource  (2 Instanz/en)
+      • http://w3id.org/geo-lod/IceCoreChronology  (2 Instanz/en)
+      • http://www.w3.org/ns/prov#Agent  (2 Instanz/en)
+      • http://www.w3.org/ns/sosa/ObservableProperty  (2 Instanz/en)
+      • http://xmlns.com/foaf/0.1/Person  (2 Instanz/en)
+      • http://w3id.org/geo-lod/Delta13CProperty  (1 Instanz/en)
+      • http://www.opengis.net/ont/geosparql#Feature  (1 Instanz/en)
+      • http://www.w3.org/ns/dcat#Catalog  (1 Instanz/en)
+      • http://www.w3.org/ns/sosa/Sample  (1 Instanz/en)
+
+  ▶ SHACL-Validierung ...
+    ⚠  Keine Shape-Dateien gefunden - übersprungen.
+       Erwartet z.B. unter: c:\git\EPICA-SISAL-FAIRification\ontology\shapes/*.ttl
+
+  ▶ Sanity-Report ...
+    Triples:         196,553
+    Subjekte:        15,573
+    Distinkte Typen: 52
+    Distinkte Props: 88
+
+    Top-10 Klassen nach Instanzzahl:
+       9,110  http://w3id.org/geo-lod/Delta18OSpeleothemObservation
+       3,278  http://w3id.org/geo-lod/Delta13CSpeleothemObservation
+       2,114  http://www.ics.forth.gr/isl/CRMsci/S4_Observation
+       2,114  http://www.w3.org/ns/sosa/Observation
+         380  http://www.opengis.net/ont/sf#Point
+         309  http://w3id.org/geo-lod/Cave
+         148  http://www.w3.org/ns/prov#Activity
+          74  http://fuzzy-sl.squirrel.link/ontology/Georeferencing
+          74  http://www.ics.forth.gr/isl/CRMgeo/SP6_Declarative_Place
+          74  http://fuzzy-sl.squirrel.link/ontology/Site
+
+    Top-10 Properties nach Vorkommen:
+      18,142  http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+      14,881  http://www.w3.org/ns/prov#wasDerivedFrom
+      14,502  http://w3id.org/geo-lod/smoothedValue_rollingMedian
+      14,502  http://www.w3.org/ns/sosa/observedProperty
+      14,502  http://w3id.org/geo-lod/smoothingMethod_median
+      14,502  http://www.w3.org/ns/sosa/hasFeatureOfInterest
+      14,502  http://w3id.org/geo-lod/measurementType
+      14,502  http://w3id.org/geo-lod/smoothingMethod_savgol
+      14,502  http://w3id.org/geo-lod/smoothedValue_savgol
+      12,388  http://w3id.org/geo-lod/measuredValue
+
+    CRM-Coverage:   ✗
+    SHACL:          ✓
+
 ════════════════════════════════════════════════════════════════════════════════
                                     Summary                                     
 ════════════════════════════════════════════════════════════════════════════════
 
-  EPICA:  ✓ Success
-  SISAL:  ✓ Success
-  CI:     ✓ Success
+  EPICA:   ✓ Success
+  SISAL:   ✓ Success
+  CI:      ✓ Success
+  Bundle:  ✗ Failed / skipped
 
-  Total duration: 67.5 seconds
+  Total duration: 95.7 seconds
   Log saved to: c:\git\EPICA-SISAL-FAIRification\pipeline_report.txt

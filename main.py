@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-main.py - EPICA + SISAL Pipeline with logging
+main.py - EPICA + SISAL + CI Pipeline with logging and bundle step
 """
 
 import os
@@ -17,6 +17,7 @@ EPICA_SCRIPT = SCRIPT_DIR / "EPICA" / "plot_epica_from_tab.py"
 SISAL_SCRIPT = SCRIPT_DIR / "SISAL" / "plot_sisal_from_csv.py"
 CI_SCRIPT    = SCRIPT_DIR / "CI" / "ci_pipeline.py"
 ONTOLOGY_DIR = SCRIPT_DIR / "ontology"
+DIST_DIR     = SCRIPT_DIR / "dist"
 
 EPICA_PLOTS_DIR = SCRIPT_DIR / "EPICA" / "plots"
 EPICA_RDF_DIR = SCRIPT_DIR / "EPICA" / "rdf"
@@ -122,6 +123,7 @@ def clean_all_outputs() -> None:
     total += clean_directory(SISAL_RDF_DIR, "SISAL RDF")
     total += clean_directory(SISAL_REPORT_DIR, "SISAL reports")
     total += clean_directory(CI_RDF_DIR, "CI RDF")
+    total += clean_directory(DIST_DIR, "dist (bundle)")
 
     if ONTOLOGY_DIR.exists():
         count = 0
@@ -138,6 +140,38 @@ def clean_all_outputs() -> None:
     print("\n  Python cache cleanup:")
     total += clean_pycache(SCRIPT_DIR)
     print(f"\n  Total items removed: {total}")
+
+
+def regenerate_canonical_ontology() -> bool:
+    """Schritt 0: Schreibt die kanonischen Ontologie-Dateien aus
+    geo_lod_utils.py nach ontology/. Single Source of Truth - die Sub-
+    Skripte sollen keine eigenen Kopien mehr in ihre rdf/-Verzeichnisse
+    legen.
+
+    Aktuell wird nur ontology/geo_lod_core.ttl regeneriert; weitere
+    TTL-Konstanten (z.B. EPICA_ONTOLOGY_TTL, SISAL_ONTOLOGY_TTL) können
+    hier ergänzt werden, sobald sie nach geo_lod_utils.py gewandert sind.
+    """
+    print("\n  ▶ Regeneriere kanonische Ontologie-Dateien aus geo_lod_utils.py ...")
+
+    # geo_lod_utils.py liegt in ONTOLOGY_DIR
+    sys.path.insert(0, str(ONTOLOGY_DIR))
+    try:
+        from geo_lod_utils import GEO_LOD_CORE_TTL
+    except ImportError as e:
+        print(f"  ✗ geo_lod_utils.py konnte nicht importiert werden: {e}")
+        return False
+
+    ONTOLOGY_DIR.mkdir(parents=True, exist_ok=True)
+    target = ONTOLOGY_DIR / "geo_lod_core.ttl"
+    try:
+        target.write_text(GEO_LOD_CORE_TTL, encoding="utf-8")
+        size_kb = target.stat().st_size / 1024
+        print(f"  ✓ {target.name} geschrieben ({size_kb:.1f} KB)")
+        return True
+    except Exception as e:
+        print(f"  ✗ Fehler beim Schreiben von {target}: {e}")
+        return False
 
 
 def run_script(script_path: Path, description: str) -> bool:
@@ -180,24 +214,71 @@ def run_script(script_path: Path, description: str) -> bool:
         return False
 
 
-def print_summary(epica: bool, sisal: bool, ci: bool, start: datetime):
+def run_bundle(epica_ok: bool, sisal_ok: bool, ci_ok: bool) -> bool:
+    """Schritt 5: Ontologie + alle RDF-Outputs zu dist/geo-lod-bundle.ttl
+    zusammenführen und validieren (CRM-Coverage + SHACL).
+
+    Wird nur ausgeführt, wenn mindestens ein Subschritt erfolgreich war -
+    sonst ergibt das Bundle keinen Sinn.
+    """
+    if not (epica_ok or sisal_ok or ci_ok):
+        print("  ⚠  Kein Subschritt erfolgreich - Bundle wird übersprungen.")
+        return False
+
+    # bundle_rdf.py liegt neben main.py
+    try:
+        sys.path.insert(0, str(SCRIPT_DIR))
+        from bundle_rdf import run_bundle_step
+    except ImportError as e:
+        print(f"  ✗ bundle_rdf.py konnte nicht importiert werden: {e}")
+        return False
+
+    # Nur die RDF-Verzeichnisse einbeziehen, deren Subschritt erfolgreich war.
+    # So vermeiden wir, dass veraltete Outputs in ein neues Bundle geraten.
+    rdf_dirs = []
+    if epica_ok:
+        rdf_dirs.append(EPICA_RDF_DIR)
+    if sisal_ok:
+        rdf_dirs.append(SISAL_RDF_DIR)
+    if ci_ok:
+        rdf_dirs.append(CI_RDF_DIR)
+
+    try:
+        return run_bundle_step(
+            script_dir=SCRIPT_DIR,
+            ontology_dir=ONTOLOGY_DIR,
+            rdf_dirs=rdf_dirs,
+            dist_dir=DIST_DIR,
+        )
+    except Exception as e:
+        print(f"  ✗ Bundle-Schritt fehlgeschlagen: {e}")
+        return False
+
+
+def print_summary(epica: bool, sisal: bool, ci: bool, bundle: bool, start: datetime):
     print_header("Summary", char="═")
     duration = datetime.now() - start
-    print(f"  EPICA:  {'✓ Success' if epica else '✗ Failed / skipped'}")
-    print(f"  SISAL:  {'✓ Success' if sisal else '✗ Failed / skipped'}")
-    print(f"  CI:     {'✓ Success' if ci    else '✗ Failed / skipped'}")
+    print(f"  EPICA:   {'✓ Success' if epica  else '✗ Failed / skipped'}")
+    print(f"  SISAL:   {'✓ Success' if sisal  else '✗ Failed / skipped'}")
+    print(f"  CI:      {'✓ Success' if ci     else '✗ Failed / skipped'}")
+    print(f"  Bundle:  {'✓ Success' if bundle else '✗ Failed / skipped'}")
     print(f"\n  Total duration: {duration.total_seconds():.1f} seconds")
     print(f"  Log saved to: {LOG_FILE}")
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="EPICA + SISAL Palaeoclimate Data Processing Pipeline"
+        description="EPICA + SISAL + CI Palaeoclimate Data Processing Pipeline"
     )
     parser.add_argument("--epica-only", action="store_true")
     parser.add_argument("--sisal-only", action="store_true")
     parser.add_argument("--ci-only", action="store_true")
     parser.add_argument("--clean", action="store_true")
+    parser.add_argument(
+        "--no-bundle",
+        action="store_true",
+        help="Schritt 5 (RDF-Bundle + Validierung) überspringen",
+    )
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args()
 
@@ -207,7 +288,7 @@ def main():
 
     start = datetime.now()
 
-    print_header("EPICA + SISAL Pipeline", char="═")
+    print_header("EPICA + SISAL + CI Pipeline", char="═")
     print(f"  Timestamp: {start.strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"  Directory: {SCRIPT_DIR}")
     print()
@@ -227,30 +308,50 @@ def main():
     sisal_exists = check_file_exists(SISAL_SCRIPT, "SISAL script")
     ci_exists    = check_file_exists(CI_SCRIPT,    "CI script")
 
-    epica_ok = False
-    sisal_ok = False
-    ci_ok    = False
+    epica_ok  = False
+    sisal_ok  = False
+    ci_ok     = False
+    bundle_ok = False
+
+    print_section("2. Regenerate canonical ontology")
+    canonical_ok = regenerate_canonical_ontology()
+    if not canonical_ok:
+        print("\n  ⚠  Ontologie konnte nicht regeneriert werden - Bundle wird")
+        print("     vermutlich mit veralteter ontology/geo_lod_core.ttl arbeiten.")
 
     if not args.sisal_only and not args.ci_only and epica_exists:
-        print_section("2. EPICA Dome C (Ice Core)")
+        print_section("3. EPICA Dome C (Ice Core)")
         epica_ok = run_script(EPICA_SCRIPT, "EPICA Dome C Processing")
 
     if not args.epica_only and not args.ci_only and sisal_exists:
-        print_section("3. SISAL (Speleothems)")
+        print_section("4. SISAL (Speleothems)")
         sisal_ok = run_script(SISAL_SCRIPT, "SISAL Processing")
 
     if not args.epica_only and not args.sisal_only and ci_exists:
-        print_section("4. Campanian Ignimbrite (CI Findspots)")
+        print_section("5. Campanian Ignimbrite (CI Findspots)")
         ci_ok = run_script(CI_SCRIPT, "CI Findspot Processing")
 
-    print_summary(epica_ok, sisal_ok, ci_ok, start)
+    if not args.no_bundle:
+        print_section("6. RDF Bundle & Validation")
+        bundle_ok = run_bundle(epica_ok, sisal_ok, ci_ok)
+
+    print_summary(epica_ok, sisal_ok, ci_ok, bundle_ok, start)
 
     # Close log file
     tee.close()
     sys.stdout = tee.terminal
 
-    if not epica_ok or not sisal_ok or not ci_ok:
-        print("⚠  Some steps failed — see errors above.")
+    # Pipeline insgesamt nur grün, wenn alle aktivierten Schritte ok sind.
+    bundle_required = not args.no_bundle
+    overall_ok = (
+        epica_ok
+        and sisal_ok
+        and ci_ok
+        and (bundle_ok if bundle_required else True)
+    )
+
+    if not overall_ok:
+        print("⚠  Some steps failed - see errors above.")
         sys.exit(1)
     else:
         print("✓ Pipeline completed successfully!")
