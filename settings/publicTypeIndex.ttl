@@ -53,7 +53,6 @@ void:Linkset a owl:Class .
         <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Catalog>,
         <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Catalog_collection>,
         <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave>,
-        <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_145_corchia>,
         <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_collection>,
         <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0001>,
         <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_site_0001_Geometry>,
@@ -8287,9 +8286,6 @@ void:Linkset a owl:Class .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave> ns1:forClass <#> ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave> .
-
-<https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_145_corchia> ns1:forClass <http://w3id.org/geo-lod/Cave> ;
-    ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_145_corchia> .
 
 <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//settings/publicTypeIndex.ttl#Cave_collection> ns1:forClass skos:Collection ;
     ns1:instance <https://Research-Squirrel-Engineers.github.io/GeoScience-FAIRification-LOD//Cave_collection> .

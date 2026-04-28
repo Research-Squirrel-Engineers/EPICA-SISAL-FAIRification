@@ -9,8 +9,7 @@
         <https://www.iana.org/assignments/media-types/text/turtle#Resource> ;
     rdfs:label "Cave Instances Collection"@en ;
     void:inDataset <http://w3id.org/geo-lod/geo-lod> ;
-    rdfs:member <http://w3id.org/geo-lod/Cave_145_corchia>,
-        <http://w3id.org/geo-lod/Cave_site_0001>,
+    rdfs:member <http://w3id.org/geo-lod/Cave_site_0001>,
         <http://w3id.org/geo-lod/Cave_site_0002>,
         <http://w3id.org/geo-lod/Cave_site_0003>,
         <http://w3id.org/geo-lod/Cave_site_0004>,
